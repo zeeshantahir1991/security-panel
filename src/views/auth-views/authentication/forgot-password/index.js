@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Row, Col, Form, Input, Button, message } from "antd";
 import { MailOutlined } from '@ant-design/icons';
+import { Link as RouteLink } from 'react-router-dom';
 
 const backgroundStyle = {
 	backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -15,10 +16,10 @@ const ForgotPassword = () => {
 	const onSend = values => {
 		setLoading(true)
 		setTimeout(() => {
-      setLoading(false)
+			setLoading(false)
 			message.success('New password has send to your email!');
 		}, 1500);
-  };
+	};
 
 	return (
 		<div className="h-100" style={backgroundStyle}>
@@ -35,24 +36,26 @@ const ForgotPassword = () => {
 								<Row justify="center">
 									<Col xs={24} sm={24} md={20} lg={20}>
 										<Form form={form} layout="vertical" name="forget-password" onFinish={onSend}>
-											<Form.Item 
-												name="email" 
+											<Form.Item
+												name="email"
 												rules={
 													[
-														{ 
+														{
 															required: true,
 															message: 'Please input your email address'
 														},
-														{ 
+														{
 															type: 'email',
 															message: 'Please enter a validate email!'
 														}
 													]
 												}>
-												<Input placeholder="Email Address" prefix={<MailOutlined className="text-primary" />}/>
+												<Input placeholder="Email Address" prefix={<MailOutlined className="text-primary" />} />
 											</Form.Item>
 											<Form.Item>
-												<Button loading={loading} type="primary" htmlType="submit" block>{loading? 'Sending' : 'Send'}</Button>
+												<RouteLink to={'/auth/otp'}>
+													<Button loading={loading} type="primary" htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+												</RouteLink>
 											</Form.Item>
 										</Form>
 									</Col>

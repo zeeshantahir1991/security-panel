@@ -6,6 +6,7 @@ export const AppViews = ({match}) => {
   return (
     <Suspense fallback={<Loading cover="page"/>}>
       <Switch>
+      <Route path={`${match.url}/pricing`} component={lazy(() => import(`./../app-views/pages/pricing`))} />
         <Route path={`${match.url}/login`} component={lazy(() => import(`./authentication/login`))} />
         <Route path={`${match.url}/login-1`} component={lazy(() => import(`./authentication/login-1`))} />
         <Route path={`${match.url}/login-2`} component={lazy(() => import(`./authentication/login-2`))} />
@@ -14,7 +15,7 @@ export const AppViews = ({match}) => {
         <Route path={`${match.url}/forgot-password`} component={lazy(() => import(`./authentication/forgot-password`))} />
         <Route path={`${match.url}/error-1`} component={lazy(() => import(`./errors/error-page-1`))} />
         <Route path={`${match.url}/error-2`} component={lazy(() => import(`./errors/error-page-2`))} />
-        <Redirect from={`${match.url}`} to={`${match.url}/login`} />
+        <Redirect from={`${match.url}`} to={`${match.url}/pricing`} />
       </Switch>
     </Suspense>
   )

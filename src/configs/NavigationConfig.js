@@ -952,7 +952,7 @@ const docsNavTree = [
 const navigationConfig = [
   ...dashBoardNavTree,
   ...appsNavTree,
-  // ...componentsNavTree,
+  ...componentsNavTree,
   ...extraNavTree,
   // ...docsNavTree
 ];

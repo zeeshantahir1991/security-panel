@@ -1,47 +1,113 @@
 export const pricingData = [
+
+    {
+        image: "/img/others/img-1.png",
+        price: "",
+        duration: "a",
+        plan: "Limits",
+        features: [
+            "Number of Guards",
+            "Scheduling Hours",
+            "Storage",
+            "Additional Users",
+            "Backoffice & Compilance",
+            "E-signatures",
+            "Mobile Patrol",
+            "Key Holding",
+            "Guard Mobile"
+        ]
+
+    },
+
     {
         image: "/img/others/img-1.png",
         price: "0",
-        duration: "/ forever",
-        plan: "Startup",
+        duration: "/ month",
+        plan: "Free",
         features: [
-            "200 MB of Spaces",
-            "Unlimited Bandwidth",
-            "5 Add on Domains",
-            "Free Microsoft Office 365",
-            "Smart Sync",
-            "24/7 Support",
-            "1 Cloud Power"
+            "Upto 5 Guards",
+            "120 Hours - Trial period",
+            "1 GB Storage",
+            "2 Additional users",
+            "Included",
+            "50 E-signatures",
+            "Included",
+            "Included",
+            "Included"
         ]
+
     },
+
+    {
+        image: "/img/others/img-1.png",
+        price: "250",
+        duration: "/ month",
+        plan: "Basic",
+        features: [
+            "Upto 20 Guards",
+            "7200 Hours each month",
+            "20 GB Storage",
+            "4 Additional users",
+            "Included",
+            "Unlimited",
+            "Included",
+            "Included",
+            "Included"
+        ]
+
+    },
+
+    {
+        image: "/img/others/img-1.png",
+        price: "350",
+        duration: "/ month",
+        plan: "Silver",
+        features: [
+            "Upto 100 Guards",
+            "36000 Hours each month",
+            "50 GB Storage",
+            "8 Additional users",
+            "Included",
+            "Unlimited",
+            "Included",
+            "Included",
+            "Included"
+        ]
+
+    },
+
     {
         image: "/img/others/img-2.png",
-        price: "20",
-        duration: "/ per month",
-        plan: "Standard",
+        price: "450",
+        duration: "/ month",
+        plan: "Gold",
         features: [
-            "500 MB of Spaces",
-            "Unlimited Bandwidth",
-            "10 Add on Domains",
-            "Free Microsoft Office 365",
-            "Smart Sync",
-            "24/7 Support",
-            "5 Cloud Power"
+            "Upto 200 Guards",
+            "72000 Hours each month",
+            "100 GB Storage",
+            "12 Additional users",
+            "Included",
+            "Unlimited",
+            "Included",
+            "Included",
+            "Included"
         ]
     },
     {
         image: "/img/others/img-3.png",
-        price: "48",
-        duration: "/ per month",
-        plan: "Premium",
+        price: "",
+        duration: "Special Pricing",
+        plan: "Platinum",
         features: [
-            "Unlimited of Spaces",
-            "Unlimited Bandwidth",
-            "Unlimited Add on Domains",
-            "Free Microsoft Office 365",
-            "Smart Sync",
-            "24/7 Support",
-            "Unlimited Cloud Power"
+            "More than 200 Guards",
+            "Unlimited",
+            "Unlimited",
+            "36 Additional users",
+            "Included",
+            "Unlimited",
+            "Included",
+            "Included",
+            "Included"
         ]
     }
 ]

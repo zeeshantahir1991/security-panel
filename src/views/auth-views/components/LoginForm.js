@@ -5,31 +5,32 @@ import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { GoogleSVG, FacebookSVG } from 'assets/svg/icon';
 import CustomIcon from 'components/util-components/CustomIcon'
-import { 
-	signIn, 
-	showLoading, 
-	showAuthMessage, 
-	hideAuthMessage, 
-	signInWithGoogle, 
-	signInWithFacebook 
+import {
+	signIn,
+	showLoading,
+	showAuthMessage,
+	hideAuthMessage,
+	signInWithGoogle,
+	signInWithFacebook
 } from 'redux/actions/Auth';
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
+import { Link as RouteLink } from 'react-router-dom';
 
 export const LoginForm = props => {
 	let history = useHistory();
 
-	const { 
-		otherSignIn, 
-		showForgetPassword, 
+	const {
+		otherSignIn,
+		showForgetPassword,
 		hideAuthMessage,
 		onForgetPasswordClick,
 		showLoading,
 		signInWithGoogle,
 		signInWithFacebook,
-		extra, 
-		signIn, 
-		token, 
+		extra,
+		signIn,
+		token,
 		loading,
 		redirect,
 		showMessage,
@@ -61,13 +62,13 @@ export const LoginForm = props => {
 		if (token !== null && allowRedirect) {
 			history.push(redirect)
 		}
-		if(showMessage) {
+		if (showMessage) {
 			setTimeout(() => {
 				hideAuthMessage();
 			}, 3000);
 		}
 	});
-	
+
 	const renderOtherSignIn = (
 		<div>
 			{/* <Divider>
@@ -95,59 +96,61 @@ export const LoginForm = props => {
 
 	return (
 		<>
-			<motion.div 
-				initial={{ opacity: 0, marginBottom: 0 }} 
-				animate={{ 
+			<motion.div
+				initial={{ opacity: 0, marginBottom: 0 }}
+				animate={{
 					opacity: showMessage ? 1 : 0,
-					marginBottom: showMessage ? 20 : 0 
-				}}> 
+					marginBottom: showMessage ? 20 : 0
+				}}>
 				<Alert type="error" showIcon message={message}></Alert>
 			</motion.div>
-			<Form 
-				layout="vertical" 
-				name="login-form" 
+			<Form
+				layout="vertical"
+				name="login-form"
 				initialValues={initialCredential}
 				onFinish={onLogin}
 			>
-				<Form.Item 
-					name="email" 
-					label="Email" 
+				<Form.Item
+					name="email"
+					label="Email"
 					rules={[
-						{ 
+						{
 							required: true,
 							message: 'Please input your email',
 						},
-						{ 
+						{
 							type: 'email',
 							message: 'Please enter a validate email!'
 						}
 					]}>
-					<Input prefix={<MailOutlined className="text-primary" />}/>
+					<Input prefix={<MailOutlined className="text-primary" />} />
 				</Form.Item>
-				<Form.Item 
-					name="password" 
+				<Form.Item
+					name="password"
 					label={
-						<div className={`${showForgetPassword? 'd-flex justify-content-between w-100 align-items-center' : ''}`}>
+						<div className={`${'d-flex justify-content-between w-100 align-items-center'}`}>
 							<span>Password</span>
-							{
-								showForgetPassword && 
-								<span 
-									onClick={() => onForgetPasswordClick} 
+							{/* {
+								showForgetPassword &&  */}
+							<RouteLink to={'/auth/forgot-password'}>
+								<span
+									// onClick={() => onForgetPasswordClick} 
 									className="cursor-pointer font-size-sm font-weight-normal text-muted"
 								>
 									Forget Password?
 								</span>
-							} 
+							</RouteLink>
+							{/* }  */}
 						</div>
-					} 
+					}
 					rules={[
-						{ 
+						{
 							required: true,
 							message: 'Please input your password',
 						}
 					]}
 				>
-					<Input.Password prefix={<LockOutlined className="text-primary" />}/>
+					<Input.Password prefix={<LockOutlined className="text-primary" />} />
 				</Form.Item>
 				<Form.Item>
 					<Button type="primary" htmlType="submit" block loading={loading}>
@@ -157,7 +160,7 @@ export const LoginForm = props => {
 				{
 					otherSignIn ? renderOtherSignIn : null
 				}
-				{ extra }
+				{extra}
 			</Form>
 		</>
 	)
@@ -177,9 +180,9 @@ LoginForm.defaultProps = {
 	showForgetPassword: false
 };
 
-const mapStateToProps = ({auth}) => {
-	const {loading, message, showMessage, token, redirect} = auth;
-  return {loading, message, showMessage, token, redirect}
+const mapStateToProps = ({ auth }) => {
+	const { loading, message, showMessage, token, redirect } = auth;
+	return { loading, message, showMessage, token, redirect }
 }
 
 const mapDispatchToProps = {

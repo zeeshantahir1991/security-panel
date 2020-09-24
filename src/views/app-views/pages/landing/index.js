@@ -133,7 +133,7 @@ class Home extends React.Component {
 				}
 				<Row style={{ justifyContent: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
-						<img src={'/img/banner.jpg'} alt={`banner`} />
+						<img style={{ width: '100%', height: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 100, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
 						</div>
@@ -141,7 +141,7 @@ class Home extends React.Component {
 				</Row>
 				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
-						<img src={'/img/banner.jpg'} alt={`banner`} />
+						<img style={{ width: '100%', height: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
 						</div>
@@ -248,7 +248,7 @@ class Home extends React.Component {
 				</Row>
 				<Row style={{ justifyContent: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
-						<img src={'/img/cover.jpg'} alt={`banner`} />
+						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 100, textAlign: 'center' }}>SOME BLOCK HERE</h1>
 						</div>
@@ -256,7 +256,7 @@ class Home extends React.Component {
 				</Row>
 				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
-						<img src={'/img/cover.jpg'} alt={`banner`} />
+						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>SOME BLOCK HERE</h1>
 						</div>

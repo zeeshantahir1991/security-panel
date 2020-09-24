@@ -105,7 +105,7 @@ class Home extends React.Component {
 					<Row>
 						<Col xs={24} sm={24} md={0} lg={0} style={{ backgroundColor: 'white' }}>
 							<div className="nav-center" style={{ alignSelf: 'center', marginTop: 70 }}>
-								<Menu mode="vertical" style={{ textAlign: 'center'}}>
+								<Menu mode="vertical" style={{ textAlign: 'center' }}>
 									{menuItem.map((el, i) => {
 										return (
 											<Menu.Item>
@@ -160,7 +160,7 @@ class Home extends React.Component {
 									return (
 										<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={24 / colCount} lg={24 / colCount} className={colCount === (i + 1) ? '' : 'border-right'}>
 											{elm.plan.toUpperCase() == "LIMITS" ?
-												<div className="p-3">
+												<div className="p-3" style={elm.backgroundColor}>
 													<div style={{ visibility: 'hidden' }} className="text-center">
 														<img className="img-fluid" src={elm.image} alt="" />
 														<h1 className="display-4 mt-4">
@@ -190,17 +190,17 @@ class Home extends React.Component {
 												</div>
 												:
 												elm.plan.toUpperCase() == "" ? null :
-													<div className="p-3">
+													<div className="p-3" style={elm.backgroundColor}>
 														<div className="text-center">
 															<img className="img-fluid" src={elm.image} alt="" />
-															<h1 className="display-4 mt-4">
+															<h1 style={{ color: 'black' }} className="display-4 mt-4">
 																<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
 																<span>{elm.price}</span>
 															</h1>
-															<p className="mb-0">{elm.duration}</p>
+															<p style={{ color: 'black' }} className="mb-0">{elm.duration}</p>
 														</div>
 														<div className="mt-4">
-															<h2 className="text-center font-weight-semibold">{elm.plan}</h2>
+															<h2 style={{ color: 'black' }} className="text-center font-weight-semibold">{elm.plan}</h2>
 														</div>
 
 														<div className="d-flex justify-content-center mt-3">
@@ -208,7 +208,7 @@ class Home extends React.Component {
 																{
 																	elm.features.map((elm, i) => {
 																		return (
-																			<p key={`pricing-feature-${i}`}>
+																			<p style={{ color: 'black' }} key={`pricing-feature-${i}`}>
 																				<Badge color={'blue'} />
 																				<span>{elm}</span>
 																			</p>
@@ -234,7 +234,7 @@ class Home extends React.Component {
 
 					</div>
 				</Card>
-				<Row style={{ justifyContent: 'center', backgroundColor: '#75CFEB', textAlign: 'center' }}>
+				<Row style={{ justifyContent: 'center', backgroundColor: '#688285', textAlign: 'center' }}>
 					<Col xs={24} sm={24} md={24} lg={24} style={{ marginTop: 100, marginBottom: 100 }}>
 						<h1 className="font-weight-bold" style={{ color: 'white' }}>HOW OUR SOLUTION WORKS</h1>
 						<h3 style={{ color: 'white', marginLeft: 100, marginRight: 100, marginTop: 50 }}>
@@ -248,7 +248,7 @@ class Home extends React.Component {
 				</Row>
 				<Row style={{ justifyContent: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
-						<img src={'/img/cover.png'} alt={`banner`} />
+						<img src={'/img/cover.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 100, textAlign: 'center' }}>SOME BLOCK HERE</h1>
 						</div>
@@ -256,7 +256,7 @@ class Home extends React.Component {
 				</Row>
 				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
-						<img src={'/img/cover-sm.png'} alt={`banner`} />
+						<img src={'/img/cover.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>SOME BLOCK HERE</h1>
 						</div>

@@ -5,6 +5,9 @@ export const pricingData = [
         price: "",
         duration: "a",
         plan: "Limits",
+        backgroundColor: {
+            backgroundColor: 'white'
+        },
         features: [
             "Number of Guards",
             "Scheduling Hours",
@@ -24,6 +27,9 @@ export const pricingData = [
         price: "0",
         duration: "/ month",
         plan: "Free",
+        backgroundColor: {
+            backgroundColor: '#B7F6FE'
+        },
         features: [
             "Upto 5 Guards",
             "120 Hours - Trial period",
@@ -43,6 +49,9 @@ export const pricingData = [
         price: "250",
         duration: "/ month",
         plan: "Basic",
+        backgroundColor: {
+            backgroundColor: '#89F2FF'
+        },
         features: [
             "Upto 20 Guards",
             "7200 Hours each month",
@@ -62,6 +71,9 @@ export const pricingData = [
         price: "350",
         duration: "/ month",
         plan: "Silver",
+        backgroundColor: {
+            backgroundColor: '#43EAFF'
+        },
         features: [
             "Upto 100 Guards",
             "36000 Hours each month",
@@ -81,6 +93,9 @@ export const pricingData = [
         price: "450",
         duration: "/ month",
         plan: "Gold",
+        backgroundColor: {
+            backgroundColor: '#02D8F3'
+        },
         features: [
             "Upto 200 Guards",
             "72000 Hours each month",
@@ -98,6 +113,9 @@ export const pricingData = [
         price: "",
         duration: "Special Pricing",
         plan: "Platinum",
+        backgroundColor: {
+            backgroundColor: '#03BDD5'
+        },
         features: [
             "More than 200 Guards",
             "Unlimited",

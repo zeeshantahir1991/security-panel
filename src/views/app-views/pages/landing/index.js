@@ -103,7 +103,7 @@ class Home extends React.Component {
 				</Row>
 				{this.state.collapsed ?
 					<Row>
-						<Col xs={24} sm={24} md={0} lg={0} style={{ backgroundColor: 'white' }}>
+						<Col xs={24} sm={24} md={0} lg={0} style={{ backgroundColor: 'white', position: 'fixed', zIndex: 1, width: '100%' }}>
 							<div className="nav-center" style={{ alignSelf: 'center', marginTop: 70 }}>
 								<Menu mode="vertical" style={{ textAlign: 'center' }}>
 									{menuItem.map((el, i) => {
@@ -135,7 +135,7 @@ class Home extends React.Component {
 					<Col xs={0} sm={0} md={24} lg={24} style={{ height: 700 }}>
 						<img style={{ width: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
 						<div className="centered">
-							<h1 style={{ color: 'white', fontSize: 70, textAlign: 'center', fontFamily: 'jost' }}>MANAGED SECURITY SERVICES</h1>
+							<h1 style={{ color: 'white', fontSize: 70, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
 						</div>
 					</Col>
 				</Row>

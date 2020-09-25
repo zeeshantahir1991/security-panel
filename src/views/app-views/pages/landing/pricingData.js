@@ -50,7 +50,7 @@ export const pricingData = [
         duration: "/ month",
         plan: "Basic",
         backgroundColor: {
-            backgroundColor: '#89F2FF'
+            backgroundColor: '#A2A4A4'
         },
         features: [
             "Upto 20 Guards",
@@ -72,7 +72,7 @@ export const pricingData = [
         duration: "/ month",
         plan: "Silver",
         backgroundColor: {
-            backgroundColor: '#43EAFF'
+            backgroundColor: '#737373'
         },
         features: [
             "Upto 100 Guards",
@@ -94,7 +94,7 @@ export const pricingData = [
         duration: "/ month",
         plan: "Gold",
         backgroundColor: {
-            backgroundColor: '#02D8F3'
+            backgroundColor: '#4E4E4E'
         },
         features: [
             "Upto 200 Guards",
@@ -114,7 +114,7 @@ export const pricingData = [
         duration: "Special Pricing",
         plan: "Platinum",
         backgroundColor: {
-            backgroundColor: '#03BDD5'
+            backgroundColor: '#272727'
         },
         features: [
             "More than 200 Guards",

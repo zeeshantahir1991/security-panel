@@ -58,8 +58,8 @@ class Home extends React.Component {
 				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<Header className={`app-header `} >
-							<div className={'logo'}>
-								<img src={'/img/logo.png'} alt={`logo`} />
+							<div className="nav-left logo">
+								<img style={{ height: 100, width: 300 }} src={'/img/logo.png'} alt={`logo`} />
 							</div>
 							<div className="nav-right">
 								<Menu mode="horizontal">
@@ -76,9 +76,9 @@ class Home extends React.Component {
 									})}
 									<Menu.Item>
 										<RouteLink to={'/auth/login'}>
-											<span style={{ color: '#3f51b5' }}>
+											<Button type="primary">
 												Login
-								</span>
+								            </Button>
 										</RouteLink>
 									</Menu.Item>
 								</Menu>
@@ -90,7 +90,7 @@ class Home extends React.Component {
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<Header className={`app-header `} >
 							<div className={'logo'}>
-								<img src={'/img/logo.png'} alt={`logo`} />
+								<img style={{ height: 70, width: 200 }} src={'/img/logo.png'} alt={`logo`} />
 							</div>
 							<div className="nav-right" style={{ alignSelf: 'center' }}>
 								<Button type="secondary" onClick={this.toggleCollapsed}>
@@ -121,7 +121,7 @@ class Home extends React.Component {
 										<RouteLink to={'/auth/login'}>
 											<span style={{ color: '#3f51b5' }}>
 												Login
-										                </span>
+										    </span>
 										</RouteLink>
 									</Menu.Item>
 								</Menu>
@@ -139,7 +139,7 @@ class Home extends React.Component {
 						</div>
 					</Col>
 				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
+				<Row style={this.state.collapsed ? { justifyContent: 'center', textAlign: 'center' } : { justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<img style={{ width: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
 						<div className="centered">
@@ -160,24 +160,25 @@ class Home extends React.Component {
 								<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={24 / colCount} lg={24 / colCount} >
 									{elm.plan.toUpperCase() == "LIMITS" ?
 										<div className="p-3" style={elm.backgroundColor}>
+											<div className="mt-4">
+												<h1 style={{ color: 'white', fontSize: 40 }} className="text-left font-weight-semibold">{elm.plan}</h1>
+											</div>
 											<div style={{ visibility: 'hidden' }} className="text-center">
 												<img className="img-fluid" src={elm.image} alt="" />
-												<h1 className="display-4 mt-4">
+												<h2 className="display-4 mt-4">
 													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
 													<span>{elm.price}</span>
-												</h1>
-												<p className="mb-0">{elm.duration}</p>
+												</h2>
+												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
 											</div>
-											<div className="mt-4">
-												<h2 className="text-left font-weight-semibold">{elm.plan}</h2>
-											</div>
+
 
 											<div className="d-flex mt-3">
 												<div>
 													{
 														elm.features.map((elm, i) => {
 															return (
-																<p key={`pricing-feature-${i}`}>
+																<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
 																	{/* <Badge color={'blue'} /> */}
 																	<span >{elm}</span>
 																</p>
@@ -190,25 +191,26 @@ class Home extends React.Component {
 										:
 										elm.plan.toUpperCase() == "" ? null :
 											<div className="p-3" style={elm.backgroundColor}>
+												<div className="mt-4">
+													<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+												</div>
 												<div className="text-center">
 													<img className="img-fluid" src={elm.image} alt="" />
-													<h1 style={{ color: 'black' }} className="display-4 mt-4">
+													<h2 style={{ color: 'white' }} className="display-4 mt-4">
 														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
 														<span>{elm.price}</span>
-													</h1>
-													<p style={{ color: 'black' }} className="mb-0">{elm.duration}</p>
-												</div>
-												<div className="mt-4">
-													<h2 style={{ color: 'black' }} className="text-center font-weight-semibold">{elm.plan}</h2>
+													</h2>
+													<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
 												</div>
 
-												<div className="d-flex justify-content-center mt-3">
+
+												<div className="d-flex text-center justify-content-center mt-3">
 													<div>
 														{
 															elm.features.map((elm, i) => {
 																return (
-																	<p style={{ color: 'black' }} key={`pricing-feature-${i}`}>
-																		<Badge color={'blue'} />
+																	<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
 																		<span>{elm}</span>
 																	</p>
 																)
@@ -230,49 +232,95 @@ class Home extends React.Component {
 						})
 					}
 				</Row>
-				<Row style={{ justifyContent: 'center', backgroundColor: '#688285', textAlign: 'center' }}>
+				<Row style={{ justifyContent: 'center', backgroundColor: 'white', textAlign: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24} style={{ marginTop: 100, marginBottom: 100 }}>
-						<h1 className="font-weight-bold" style={{ color: 'white' }}>HOW OUR SOLUTION WORKS</h1>
+						<h1 className="font-weight-bold" style={{ color: 'black' }}>HOW OUR SOLUTION WORKS</h1>
 						<img style={{ marginTop: 50 }} src={'/img/how-solution-works.png'} alt={`how-solution-works`} />
-						<h3 style={{ color: 'white', marginLeft: 100, marginRight: 100, marginTop: 50 }}>
-							In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-							visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
-							before final copy is available, but it may also be used to temporarily replace copy in a process
-							called greeking, which allows designers to consider form without the meaning of the text influencing
-							the design.
-					</h3>
+						<h2 style={{ color: 'black', marginLeft: 300, marginRight: 300, marginTop: 50, fontSize: 20 }}>
+							GUARDSPUR: THE PREFERRED ALIENVAULT MSSP
+					    </h2>
+						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 300, marginRight: 300, marginTop: 50, fontSize: 15 }}>
+							At Guard spur, we are committed to provide professional SaaS solutions for security companies. We believe everyone is entitled to feel safe. Our software aids companies who provide security services. Our platform enable companies to effectively manage resources and ensures all things are in order to create a safe environment. With unique option to provision and customize compliance documents, it makes it much easiesr to on-board security personnels and manage resources.
+					    </h2>
+						<h2 style={{ color: 'black', marginLeft: 300, marginRight: 300, marginTop: 50, fontSize: 20 }}>
+							OUR MANAGED SECURITY SERVICES KEY CAPABILITIES
+						</h2>
+						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 300, marginRight: 300, marginTop: 50, fontSize: 15 }}>
+							GUARDSPUR provides expert services to protect our customers through AlienVault’s key capabilities:
+							<ul style={{ textAlign: 'left' }}>
+								<li>
+									Correctly configuring and deploying the product so that it’s working properly and optimally.
+							</li>
+								<li>
+									Expertly monitoring your system for threats around the clock.
+							</li>
+								<li>
+									Acting as your multi-tiered AlienVault support, able to troubleshoot issues and keep operations running smoothly.
+							</li>
+								<li>
+									Applying AlienVault patches and software updates, keeping your system properly maintained and up-to-date.
+							</li>
+							</ul>
+						</h2>
 					</Col>
-					<Col xs={24} sm={24} md={0} lg={0} style={{ marginTop: 100, marginBottom: 100 }}>
-						<h1 className="font-weight-bold" style={{ color: 'white' }}>HOW OUR SOLUTION WORKS</h1>
+					<Col xs={24} sm={24} md={0} lg={0} style={{ marginTop: 100 }}>
+						<h1 className="font-weight-bold" style={{ color: 'black' }}>HOW OUR SOLUTION WORKS</h1>
 						<img style={{ marginTop: 50, width: '100%' }} src={'/img/how-solution-works.png'} alt={`how-solution-works`} />
-						<h3 style={{ color: 'white', marginLeft: 100, marginRight: 100, marginTop: 50 }}>
-							In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-							visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
-							before final copy is available, but it may also be used to temporarily replace copy in a process
-							called greeking, which allows designers to consider form without the meaning of the text influencing
-							the design.
-					</h3>
+						<h2 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
+							GUARDSPUR: THE PREFERRED ALIENVAULT MSSP
+					    </h2>
+						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 12 }}>
+							At Guard spur, we are committed to provide professional SaaS solutions for security companies. We believe everyone is entitled to feel safe. Our software aids companies who provide security services. Our platform enable companies to effectively manage resources and ensures all things are in order to create a safe environment. With unique option to provision and customize compliance documents, it makes it much easiesr to on-board security personnels and manage resources.
+					    </h2>
+						<h2 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
+							OUR MANAGED SECURITY SERVICES KEY CAPABILITIES
+						</h2>
+						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 15 }}>
+							GUARDSPUR provides expert services to protect our customers through AlienVault’s key capabilities:
+							<ul style={{ textAlign: 'left' }}>
+								<li>
+									Correctly configuring and deploying the product so that it’s working properly and optimally.
+							</li>
+								<li>
+									Expertly monitoring your system for threats around the clock.
+							</li>
+								<li>
+									Acting as your multi-tiered AlienVault support, able to troubleshoot issues and keep operations running smoothly.
+							</li>
+								<li>
+									Applying AlienVault patches and software updates, keeping your system properly maintained and up-to-date.
+							</li>
+							</ul>
+						</h2>
 					</Col>
 				</Row>
-				<Row style={{ justifyContent: 'center' }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100, backgroundColor: 'white' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
-						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
-						<div className="centered">
+						<img style={{ width: '70%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
+						{/* <div className="centered">
 							<h1 style={{ color: 'white', fontSize: 100, textAlign: 'center' }}>SOME BLOCK HERE</h1>
-						</div>
+						</div> */}
 					</Col>
 				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100, backgroundColor: 'white' }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
+						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
+						{/* <div className="centered">
+							<h1 style={{ color: 'white', fontSize: 100, textAlign: 'center' }}>SOME BLOCK HERE</h1>
+						</div> */}
+					</Col>
+				</Row>
+				{/* <Row style={{ justifyContent: 'center', textAlign: 'center' }}>
+					<Col xs={24} sm={24} md={24} lg={24}>
 						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
 						<div className="centered">
 							<h1 style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>SOME BLOCK HERE</h1>
 						</div>
 					</Col>
-				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
+				</Row> */}
+				<Row style={{ justifyContent: 'center', textAlign: 'center', backgroundColor: '#737373' }}>
 					<Col xs={12} sm={12} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50 }}>
-						<span>
+						<span style={{ color: 'white' }}>
 							Email : sales@guardspur.com <br />
 						Tel  : +344 2935 9363 <br />
 						WhatsApp: +34333911347 <br /> <br />

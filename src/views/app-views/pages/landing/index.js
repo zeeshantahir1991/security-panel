@@ -59,7 +59,7 @@ class Home extends React.Component {
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<Header className={`app-header `} >
 							<div className="nav-left logo">
-								<img style={{ height: 100, width: 300 }} src={'/img/logo.png'} alt={`logo`} />
+								<img style={{ height: 100, width: 300 }} src={'/img/logo1.png'} alt={`logo`} />
 							</div>
 							<div className="nav-right">
 								<Menu mode="horizontal">
@@ -90,7 +90,7 @@ class Home extends React.Component {
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<Header className={`app-header `} >
 							<div className={'logo'}>
-								<img style={{ height: 70, width: 200 }} src={'/img/logo.png'} alt={`logo`} />
+								<img style={{ height: 70, width: 200 }} src={'/img/logo1.png'} alt={`logo`} />
 							</div>
 							<div className="nav-right" style={{ alignSelf: 'center' }}>
 								<Button type="secondary" onClick={this.toggleCollapsed}>

@@ -1,51 +1,51 @@
 export const pricingData = [
 
+    // {
+    //     // image: "/img/others/img-1.png",
+    //     price: "",
+    //     duration: "a",
+    //     plan: "Limits",
+    //     backgroundColor: {
+    //         backgroundColor: 'white'
+    //     },
+    //     features: [
+    //         "Number of Guards",
+    //         "Scheduling Hours",
+    //         "Storage",
+    //         "Additional Users",
+    //         "Backoffice & Compilance",
+    //         "E-signatures",
+    //         "Mobile Patrol",
+    //         "Key Holding",
+    //         "Guard Mobile"
+    //     ]
+
+    // },
+
+    // {
+    //     // image: "/img/others/img-1.png",
+    //     price: "0",
+    //     duration: "/ month",
+    //     plan: "Free",
+    //     backgroundColor: {
+    //         backgroundColor: '#B7F6FE'
+    //     },
+    //     features: [
+    //         "Upto 5 Guards",
+    //         "120 Hours - Trial period",
+    //         "1 GB Storage",
+    //         "2 Additional users",
+    //         "Included",
+    //         "50 E-signatures",
+    //         "Included",
+    //         "Included",
+    //         "Included"
+    //     ]
+
+    // },
+
     {
-        image: "/img/others/img-1.png",
-        price: "",
-        duration: "a",
-        plan: "Limits",
-        backgroundColor: {
-            backgroundColor: 'white'
-        },
-        features: [
-            "Number of Guards",
-            "Scheduling Hours",
-            "Storage",
-            "Additional Users",
-            "Backoffice & Compilance",
-            "E-signatures",
-            "Mobile Patrol",
-            "Key Holding",
-            "Guard Mobile"
-        ]
-
-    },
-
-    {
-        image: "/img/others/img-1.png",
-        price: "0",
-        duration: "/ month",
-        plan: "Free",
-        backgroundColor: {
-            backgroundColor: '#B7F6FE'
-        },
-        features: [
-            "Upto 5 Guards",
-            "120 Hours - Trial period",
-            "1 GB Storage",
-            "2 Additional users",
-            "Included",
-            "50 E-signatures",
-            "Included",
-            "Included",
-            "Included"
-        ]
-
-    },
-
-    {
-        image: "/img/others/img-1.png",
+        // image: "/img/others/img-1.png",
         price: "250",
         duration: "/ month",
         plan: "Basic",
@@ -67,7 +67,7 @@ export const pricingData = [
     },
 
     {
-        image: "/img/others/img-1.png",
+        // image: "/img/others/img-1.png",
         price: "350",
         duration: "/ month",
         plan: "Silver",
@@ -89,7 +89,7 @@ export const pricingData = [
     },
 
     {
-        image: "/img/others/img-2.png",
+        // image: "/img/others/img-2.png",
         price: "450",
         duration: "/ month",
         plan: "Gold",
@@ -109,7 +109,7 @@ export const pricingData = [
         ]
     },
     {
-        image: "/img/others/img-3.png",
+        // image: "/img/others/img-3.png",
         price: "",
         duration: "Special Pricing",
         plan: "Platinum",

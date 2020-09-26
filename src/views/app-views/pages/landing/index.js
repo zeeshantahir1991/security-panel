@@ -198,7 +198,7 @@ class Home extends React.Component {
 													<img className="img-fluid" src={elm.image} alt="" />
 													{elm.plan.toUpperCase() == "PLATINUM" ?
 														<h2 style={{ color: 'white' }} className="display-4 mt-4">
-															<span style={{ fontSize: 25, fontWeight: 'bold' }}>{elm.price}</span>
+															<span style={{ fontSize: 30 }}>{elm.price}</span>
 														</h2> :
 														<h2 style={{ color: 'white' }} className="display-4 mt-4">
 															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>

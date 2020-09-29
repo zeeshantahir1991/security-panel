@@ -10,7 +10,7 @@ export const AppViews = ({ match }) => {
         <Route path={`${match.url}/login`} component={lazy(() => import(`./authentication/login`))} />
         <Route path={`${match.url}/login-1`} component={lazy(() => import(`./authentication/login-1`))} />
         <Route path={`${match.url}/login-2`} component={lazy(() => import(`./authentication/login-2`))} />
-        <Route path={`${match.url}/register-1`} component={lazy(() => import(`./authentication/register-1`))} />
+        <Route path={`${match.url}/register`} component={lazy(() => import(`./authentication/register`))} />
         <Route path={`${match.url}/register-2`} component={lazy(() => import(`./authentication/register-2`))} />
         <Route path={`${match.url}/forgot-password`} component={lazy(() => import(`./authentication/forgot-password`))} />
         <Route path={`${match.url}/otp`} component={lazy(() => import(`./authentication/OTP`))} />

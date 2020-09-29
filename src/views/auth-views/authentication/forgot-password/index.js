@@ -4,9 +4,10 @@ import { MailOutlined } from '@ant-design/icons';
 import { Link as RouteLink } from 'react-router-dom';
 
 const backgroundStyle = {
-	backgroundImage: 'url(/img/others/img-17.jpg)',
-	backgroundRepeat: 'no-repeat',
-	backgroundSize: 'cover'
+	// backgroundImage: 'url(/img/others/img-17.jpg)',
+	// backgroundRepeat: 'no-repeat',
+	// backgroundSize: 'cover'
+	backgroundColor: '#A2A4A4'
 }
 
 const ForgotPassword = () => {
@@ -29,7 +30,7 @@ const ForgotPassword = () => {
 						<Card>
 							<div className="my-2">
 								<div className="text-center">
-									<img className="img-fluid" src="/img/logo.png" alt="" />
+									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
 									<h3 className="mt-3 font-weight-bold">Forgot Password?</h3>
 									<p className="mb-4">Enter your Email to reset password</p>
 								</div>

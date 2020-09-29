@@ -110,7 +110,7 @@ export const pricingData = [
     },
     {
         // image: "/img/others/img-3.png",
-        price: "Special Pricing",
+        price: "600",
         duration: "/ month",
         plan: "Platinum",
         backgroundColor: {

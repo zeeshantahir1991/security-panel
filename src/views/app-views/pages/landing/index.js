@@ -132,107 +132,185 @@ class Home extends React.Component {
 					: null
 				}
 				<Row style={{ justifyContent: 'center' }}>
-					<Col xs={0} sm={0} md={24} lg={24} style={{ height: 700 }}>
-						<img style={{ width: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
+					<Col xs={0} sm={0} md={24} lg={24}>
+						<img style={{ width: '100%', height: '100%' }} src={'/img/banner1.jpg'} alt={`banner`} />
 						<div className="centered">
-							<h1 style={{ color: 'white', fontSize: 70, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
+							<h1 style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
 						</div>
 					</Col>
 				</Row>
 				<Row style={this.state.collapsed ? { justifyContent: 'center', textAlign: 'center' } : { justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
-						<img style={{ width: '100%' }} src={'/img/banner.jpg'} alt={`banner`} />
+						<img style={{ width: '100%', height: '100%' }} src={'/img/banner1.jpg'} alt={`banner`} />
 						<div className="centered">
-							<h1 style={{ color: 'white', fontSize: 35, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
+							<h1 style={{ color: 'white', fontSize: 25, textAlign: 'center' }}>MANAGED SECURITY SERVICES</h1>
 						</div>
 					</Col>
 				</Row>
-
-				{/* <div className="text-center mb-4" style={{ marginTop: 100, marginBottom: 100 }}>
-					<h1 className="font-weight-semibold">Security Company Subscription</h1>
-
-				</div> */}
+				<Row>
+					<Col xs={0} sm={0} md={24} lg={24}>
+						<div className="text-center" style={{ marginTop: 50, marginBottom: 50 }}>
+							<h1 className="font-weight-bold" style={{ color: 'black' }}>OUR FLEXIBLE PLANS</h1>
+						</div>
+					</Col>
+					<Col xs={24} sm={24} md={0} lg={0}>
+						<div className="text-center" style={{ marginTop: 30, marginBottom: 30 }}>
+							<h3 className="font-weight-bold" style={{ color: 'black' }}>OUR FLEXIBLE PLANS</h3>
+						</div>
+					</Col>
+				</Row>
 
 				<Row style={{ justifyContent: 'center' }}>
 					{
 						pricingData.map((elm, i) => {
 							return (
-								<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={24 / colCount} lg={24 / colCount} >
-									{elm.plan.toUpperCase() == "LIMITS" ?
-										<div className="p-3" style={elm.backgroundColor}>
-											<div className="mt-4">
-												<h1 style={{ color: 'white', fontSize: 40 }} className="text-left font-weight-semibold">{elm.plan}</h1>
-											</div>
-											<div style={{ visibility: 'hidden' }} className="text-center">
-												<img className="img-fluid" src={elm.image} alt="" />
-												<h2 className="display-4 mt-4">
-													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-													<span style={{ fontSize: 30 }}>{elm.price}</span>
-												</h2>
-												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-											</div>
-
-
-											<div className="d-flex mt-3">
-												<div>
-													{
-														elm.features.map((elm, i) => {
-															return (
-																<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
-																	{/* <Badge color={'blue'} /> */}
-																	<span >{elm}</span>
-																</p>
-															)
-														})
-													}
-												</div>
-											</div>
-										</div>
-										:
-										elm.plan.toUpperCase() == "" ? null :
+								<>
+									<Col key={`price-column-${i}`} xs={0} sm={0} md={24 / colCount} lg={24 / colCount} >
+										{elm.plan.toUpperCase() == "LIMITS" ?
 											<div className="p-3" style={elm.backgroundColor}>
 												<div className="mt-4">
-													<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+													<h1 style={{ color: 'white', fontSize: 40 }} className="text-left font-weight-semibold">{elm.plan}</h1>
 												</div>
-												<div className="text-center">
+												<div style={{ visibility: 'hidden' }} className="text-center">
 													<img className="img-fluid" src={elm.image} alt="" />
-													{elm.plan.toUpperCase() == "PLATINUM" ?
-														<h2 style={{ color: 'white' }} className="display-4 mt-4">
-															<span style={{ fontSize: 30 }}>{elm.price}</span>
-														</h2> :
-														<h2 style={{ color: 'white' }} className="display-4 mt-4">
-															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-															<span style={{ fontSize: 50 }}>{elm.price}</span>
-														</h2>
-													}
-													<p style={elm.plan.toUpperCase() == "PLATINUM" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+													<h2 className="display-4 mt-4">
+														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+														<span style={{ fontSize: 30 }}>{elm.price}</span>
+													</h2>
+													<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
 												</div>
 
 
-												<div className="d-flex text-center justify-content-center mt-3">
+												<div className="d-flex mt-3">
 													<div>
 														{
 															elm.features.map((elm, i) => {
 																return (
-																	<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
-
-																		<span>{elm}</span>
+																	<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
+																		{/* <Badge color={'blue'} /> */}
+																		<span >{elm}</span>
 																	</p>
 																)
 															})
 														}
 													</div>
 												</div>
-												<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-													<RouteLink to={'/auth/login'}>
-														<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50 }} type="default">Get Started</Button>
-													</RouteLink>
+											</div>
+											:
+											elm.plan.toUpperCase() == "" ? null :
+												<div className="p-3" style={elm.backgroundColor}>
+													<div className="mt-4">
+														<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+													</div>
+													<div className="text-center">
+														<img className="img-fluid" src={elm.image} alt="" />
+
+														<h2 style={{ color: 'white' }} className="display-4 mt-4">
+															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+															<span style={{ fontSize: 50 }}>{elm.price}</span>
+														</h2>
+
+														<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+													</div>
+
+
+													<div className="d-flex text-center justify-content-center mt-3">
+														<div>
+															{
+																elm.features.map((elm, i) => {
+																	return (
+																		<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
+																			<span>{elm}</span>
+																		</p>
+																	)
+																})
+															}
+														</div>
+													</div>
+													<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+														<RouteLink to={'/auth/register'}>
+															<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+														</RouteLink>
+													</div>
+												</div>
+
+										}
+
+									</Col>
+									<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={0} lg={0} >
+										{elm.plan.toUpperCase() == "LIMITS" ?
+											<div className="p-3" style={elm.backgroundColor}>
+												<div className="mt-4">
+													<h1 style={{ color: 'white', fontSize: 20 }} className="text-left font-weight-semibold">{elm.plan}</h1>
+												</div>
+												<div style={{ visibility: 'hidden' }} className="text-center">
+													<img className="img-fluid" src={elm.image} alt="" />
+													<h2 className="display-4 mt-4">
+														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+														<span style={{ fontSize: 15 }}>{elm.price}</span>
+													</h2>
+													<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+												</div>
+
+
+												<div className="d-flex mt-3">
+													<div>
+														{
+															elm.features.map((elm, i) => {
+																return (
+																	<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
+																		{/* <Badge color={'blue'} /> */}
+																		<span >{elm}</span>
+																	</p>
+																)
+															})
+														}
+													</div>
 												</div>
 											</div>
+											:
+											elm.plan.toUpperCase() == "" ? null :
+												<div className="p-3" style={elm.backgroundColor}>
+													<div className="mt-4">
+														<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+													</div>
+													<div className="text-center">
+														<img className="img-fluid" src={elm.image} alt="" />
 
-									}
+														<h2 style={{ color: 'white' }} className="display-4 mt-4">
+															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+															<span style={{ fontSize: 25 }}>{elm.price}</span>
+														</h2>
+														<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+													</div>
 
-								</Col>
+
+													<div className="d-flex text-center justify-content-center mt-3">
+														<div>
+															{
+																elm.features.map((elm, i) => {
+																	return (
+																		<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
+																			<span>{elm}</span>
+																		</p>
+																	)
+																})
+															}
+														</div>
+													</div>
+													<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+														<RouteLink to={'/auth/register'}>
+															<Button style={{ borderRadius: 20, fontSize: 10, paddingLeft: 25, paddingRight: 25, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+														</RouteLink>
+													</div>
+												</div>
+
+										}
+
+									</Col>
+								</>
 							)
 						})
 					}
@@ -269,18 +347,18 @@ class Home extends React.Component {
 						</h2>
 					</Col>
 					<Col xs={24} sm={24} md={0} lg={0} style={{ marginTop: 100 }}>
-						<h1 className="font-weight-bold" style={{ color: 'black' }}>HOW OUR SOLUTION WORKS</h1>
+						<h3 className="font-weight-bold" style={{ color: 'black' }}>HOW OUR SOLUTION WORKS</h3>
 						<img style={{ marginTop: 50, width: '100%' }} src={'/img/how-solution-works.png'} alt={`how-solution-works`} />
-						<h2 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
+						<h3 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
 							GUARDSPUR: THE PREFERRED ALIENVAULT MSSP
-					    </h2>
-						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 12 }}>
+					    </h3>
+						<h3 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 12 }}>
 							At Guard spur, we are committed to provide professional SaaS solutions for security companies. We believe everyone is entitled to feel safe. Our software aids companies who provide security services. Our platform enable companies to effectively manage resources and ensures all things are in order to create a safe environment. With unique option to provision and customize compliance documents, it makes it much easiesr to on-board security personnels and manage resources.
-					    </h2>
-						<h2 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
+					    </h3>
+						<h3 style={{ color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 20 }}>
 							OUR MANAGED SECURITY SERVICES KEY CAPABILITIES
-						</h2>
-						<h2 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 15 }}>
+						</h3>
+						<h3 style={{ textAlign: 'left', color: 'black', marginLeft: 50, marginRight: 50, marginTop: 50, fontSize: 15 }}>
 							GUARDSPUR provides expert services to protect our customers through AlienVault’s key capabilities:
 							<ul style={{ textAlign: 'left' }}>
 								<li>
@@ -296,7 +374,7 @@ class Home extends React.Component {
 									Applying AlienVault patches and software updates, keeping your system properly maintained and up-to-date.
 							</li>
 							</ul>
-						</h2>
+						</h3>
 					</Col>
 				</Row>
 				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100, backgroundColor: 'white' }}>
@@ -324,7 +402,7 @@ class Home extends React.Component {
 					</Col>
 				</Row> */}
 				<Row style={{ justifyContent: 'center', textAlign: 'center', backgroundColor: '#737373' }}>
-					<Col xs={12} sm={12} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50 }}>
+					<Col xs={0} sm={0} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50 }}>
 						<span style={{ color: 'white' }}>
 							Email : sales@guardspur.com <br />
 						Tel  : +344 2935 9363 <br />
@@ -332,9 +410,23 @@ class Home extends React.Component {
 						© Guardspur 2020 All Rights Reserved
 					</span>
 					</Col>
-					<Col xs={12} sm={12} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50, alignSelf: 'center' }}>
+					<Col xs={0} sm={0} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50, alignSelf: 'center' }}>
 						<img style={{ width: 50, height: 50 }} src={'/img/facebook.png'} alt={`facebook`} />
 						<img style={{ width: 50, height: 50, marginLeft: 50 }} src={'/img/linkedin.png'} alt={`linkedin`} />
+					</Col>
+				</Row>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', backgroundColor: '#737373' }}>
+					<Col xs={10} sm={10} md={0} lg={0} style={{ marginTop: 50, marginBottom: 50 }}>
+						<span style={{ color: 'white', fontSize: 10 }}>
+							Email : sales@guardspur.com <br />
+						Tel  : +344 2935 9363 <br />
+						WhatsApp: +34333911347 <br /> <br />
+						© Guardspur 2020 All Rights Reserved
+					</span>
+					</Col>
+					<Col xs={10} sm={10} md={0} lg={0} style={{ marginTop: 50, marginBottom: 50, alignSelf: 'center' }}>
+						<img style={{ width: 25, height: 25 }} src={'/img/facebook.png'} alt={`facebook`} />
+						<img style={{ width: 25, height: 25, marginLeft: 25 }} src={'/img/linkedin.png'} alt={`linkedin`} />
 					</Col>
 				</Row>
 			</>

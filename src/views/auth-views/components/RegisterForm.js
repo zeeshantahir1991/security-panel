@@ -5,7 +5,7 @@ import { Button, Form, Input, Alert } from "antd";
 import { signUp, showAuthMessage, showLoading, hideAuthMessage } from 'redux/actions/Auth';
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Upload, message } from "antd";
 
 const rules = {
 	email: [
@@ -149,7 +149,7 @@ export const RegisterForm = (props) => {
 			}, 3000);
 		}
 	});
-
+	const imageUrl = "/img/logo1.png"
 	return (
 		<>
 			<motion.div
@@ -162,6 +162,20 @@ export const RegisterForm = (props) => {
 			</motion.div>
 			<Form form={form} layout="vertical" name="register-form" onFinish={onSignUp}>
 				<Row gutter={16}>
+					<Col xs={24} sm={24} md={24} lg={24}>
+						<Upload
+							name="avatar"
+							listType="picture-card"
+							className="avatar-uploader"
+							showUploadList={false}
+							action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+						// beforeUpload={beforeUpload}
+						// onChange={this.handleChange}
+						>
+							{/* {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton} */}
+							{<img src={imageUrl} alt="avatar" style={{ width: '100%' }} />}
+						</Upload>
+					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="company"

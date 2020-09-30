@@ -6,6 +6,7 @@ export const AppViews = ({ match }) => {
   return (
     <Suspense fallback={<Loading cover="page" />}>
       <Switch>
+      <Route path={`${match.url}/pricing`} component={lazy(() => import(`../app-views/pages/PricingDetail`))} />
         <Route path={`${match.url}/landing`} component={lazy(() => import(`../app-views/pages/landing`))} />
         <Route path={`${match.url}/login`} component={lazy(() => import(`./authentication/login`))} />
         <Route path={`${match.url}/login-1`} component={lazy(() => import(`./authentication/login-1`))} />

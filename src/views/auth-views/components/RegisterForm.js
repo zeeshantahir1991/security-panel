@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { LockOutlined, MailOutlined, BorderOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Alert } from "antd";
+import { BuildOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Alert, Avatar } from "antd";
 import { signUp, showAuthMessage, showLoading, hideAuthMessage } from 'redux/actions/Auth';
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
 import { Card, Row, Col, Upload, message } from "antd";
+
 
 const rules = {
 	email: [
@@ -149,7 +150,7 @@ export const RegisterForm = (props) => {
 			}, 3000);
 		}
 	});
-	const imageUrl = "/img/logo1.png"
+
 	return (
 		<>
 			<motion.div
@@ -160,22 +161,11 @@ export const RegisterForm = (props) => {
 				}}>
 				<Alert type="error" showIcon message={message}></Alert>
 			</motion.div>
+
 			<Form form={form} layout="vertical" name="register-form" onFinish={onSignUp}>
+			
 				<Row gutter={16}>
-					<Col xs={24} sm={24} md={24} lg={24}>
-						<Upload
-							name="avatar"
-							listType="picture-card"
-							className="avatar-uploader"
-							showUploadList={false}
-							action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-						// beforeUpload={beforeUpload}
-						// onChange={this.handleChange}
-						>
-							{/* {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton} */}
-							{<img src={imageUrl} alt="avatar" style={{ width: '100%' }} />}
-						</Upload>
-					</Col>
+
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="company"
@@ -183,7 +173,7 @@ export const RegisterForm = (props) => {
 							rules={rules.company}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<BuildOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -193,7 +183,7 @@ export const RegisterForm = (props) => {
 							rules={rules.regno}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -203,7 +193,7 @@ export const RegisterForm = (props) => {
 							rules={rules.vatno}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={12} lg={12}>
@@ -213,7 +203,7 @@ export const RegisterForm = (props) => {
 							rules={rules.refno}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={12} lg={12}>
@@ -223,9 +213,11 @@ export const RegisterForm = (props) => {
 							rules={rules.expdate}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input type="date" style={{ borderColor: '#222222' }} />
 						</Form.Item>
 					</Col>
+				</Row>
+				<Row gutter={16} style={{ marginTop: 50, marginBottom: 25 }}>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="firstname"
@@ -233,7 +225,7 @@ export const RegisterForm = (props) => {
 							rules={rules.firstname}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -243,7 +235,7 @@ export const RegisterForm = (props) => {
 							rules={rules.lastname}
 							hasFeedback
 						>
-							<Input prefix={<BorderOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -253,7 +245,7 @@ export const RegisterForm = (props) => {
 							rules={rules.email}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<MailOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -264,7 +256,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address1}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -274,7 +266,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address2}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -284,7 +276,7 @@ export const RegisterForm = (props) => {
 							rules={rules.city}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -294,7 +286,7 @@ export const RegisterForm = (props) => {
 							rules={rules.postcode}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -304,7 +296,7 @@ export const RegisterForm = (props) => {
 							rules={rules.phone}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -314,7 +306,7 @@ export const RegisterForm = (props) => {
 							rules={rules.mobile}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -324,7 +316,7 @@ export const RegisterForm = (props) => {
 							rules={rules.controlroom}
 							hasFeedback
 						>
-							<Input prefix={<MailOutlined className="text-primary" />} />
+							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 				</Row>

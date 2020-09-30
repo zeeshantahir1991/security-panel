@@ -49,6 +49,12 @@ class Home extends React.Component {
 			collapsed: !this.state.collapsed,
 		});
 	};
+	priceDetail = (data) => {
+		this.props.history.push({
+			pathname: '/auth/pricing',
+			state: { data }
+		})
+	}
 	render() {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
 		const colCount = pricingData.length
@@ -166,148 +172,79 @@ class Home extends React.Component {
 							return (
 								<>
 									<Col key={`price-column-${i}`} xs={0} sm={0} md={24 / colCount} lg={24 / colCount} >
-										{elm.plan.toUpperCase() == "LIMITS" ?
-											<div className="p-3" style={elm.backgroundColor}>
-												<div className="mt-4">
-													<h1 style={{ color: 'white', fontSize: 40 }} className="text-left font-weight-semibold">{elm.plan}</h1>
-												</div>
-												<div style={{ visibility: 'hidden' }} className="text-center">
-													<img className="img-fluid" src={elm.image} alt="" />
-													<h2 className="display-4 mt-4">
-														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-														<span style={{ fontSize: 30 }}>{elm.price}</span>
-													</h2>
-													<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-												</div>
+
+										<div className="p-3" style={elm.backgroundColor}>
+											<div className="mt-4">
+												<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+											</div>
+											<div className="text-center">
+												<img className="img-fluid" src={elm.image} alt="" />
+
+												<h2 style={{ color: 'white' }} className="display-4 mt-4">
+													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+													<span style={{ fontSize: 50 }}>{elm.price}</span>
+												</h2>
+
+												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+											</div>
 
 
-												<div className="d-flex mt-3">
-													<div>
-														{
-															elm.features.map((elm, i) => {
-																return (
-																	<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
-																		{/* <Badge color={'blue'} /> */}
-																		<span >{elm}</span>
-																	</p>
-																)
-															})
-														}
-													</div>
+											<div className="d-flex text-center justify-content-center mt-3">
+												<div>
+													{
+														elm.features.map((elm, i) => {
+															return (
+																<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
+																	<span>{elm}</span>
+																</p>
+															)
+														})
+													}
 												</div>
 											</div>
-											:
-											elm.plan.toUpperCase() == "" ? null :
-												<div className="p-3" style={elm.backgroundColor}>
-													<div className="mt-4">
-														<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
-													</div>
-													<div className="text-center">
-														<img className="img-fluid" src={elm.image} alt="" />
-
-														<h2 style={{ color: 'white' }} className="display-4 mt-4">
-															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-															<span style={{ fontSize: 50 }}>{elm.price}</span>
-														</h2>
-
-														<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-													</div>
-
-
-													<div className="d-flex text-center justify-content-center mt-3">
-														<div>
-															{
-																elm.features.map((elm, i) => {
-																	return (
-																		<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
-
-																			<span>{elm}</span>
-																		</p>
-																	)
-																})
-															}
-														</div>
-													</div>
-													<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-														<RouteLink to={'/auth/register'}>
-															<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-														</RouteLink>
-													</div>
-												</div>
-
-										}
+											<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+												<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+											</div>
+										</div>
 
 									</Col>
 									<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={0} lg={0} >
-										{elm.plan.toUpperCase() == "LIMITS" ?
-											<div className="p-3" style={elm.backgroundColor}>
-												<div className="mt-4">
-													<h1 style={{ color: 'white', fontSize: 20 }} className="text-left font-weight-semibold">{elm.plan}</h1>
-												</div>
-												<div style={{ visibility: 'hidden' }} className="text-center">
-													<img className="img-fluid" src={elm.image} alt="" />
-													<h2 className="display-4 mt-4">
-														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-														<span style={{ fontSize: 15 }}>{elm.price}</span>
-													</h2>
-													<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-												</div>
+
+										<div className="p-3" style={elm.backgroundColor}>
+											<div className="mt-4">
+												<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+											</div>
+											<div className="text-center">
+												<img className="img-fluid" src={elm.image} alt="" />
+
+												<h2 style={{ color: 'white' }} className="display-4 mt-4">
+													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+													<span style={{ fontSize: 25 }}>{elm.price}</span>
+												</h2>
+												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+											</div>
 
 
-												<div className="d-flex mt-3">
-													<div>
-														{
-															elm.features.map((elm, i) => {
-																return (
-																	<p key={`pricing-feature-${i}`} style={{ color: 'white' }}>
-																		{/* <Badge color={'blue'} /> */}
-																		<span >{elm}</span>
-																	</p>
-																)
-															})
-														}
-													</div>
+											<div className="d-flex text-center justify-content-center mt-3">
+												<div>
+													{
+														elm.features.map((elm, i) => {
+															return (
+																<p style={{ color: 'white', fontSize: 10 }} key={`pricing-feature-${i}`}>
+
+																	<span>{elm}</span>
+																</p>
+															)
+														})
+													}
 												</div>
 											</div>
-											:
-											elm.plan.toUpperCase() == "" ? null :
-												<div className="p-3" style={elm.backgroundColor}>
-													<div className="mt-4">
-														<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{elm.plan}</h1>
-													</div>
-													<div className="text-center">
-														<img className="img-fluid" src={elm.image} alt="" />
+											<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+												<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 25, paddingRight: 25, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+											</div>
+										</div>
 
-														<h2 style={{ color: 'white' }} className="display-4 mt-4">
-															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-															<span style={{ fontSize: 25 }}>{elm.price}</span>
-														</h2>
-														<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-													</div>
-
-
-													<div className="d-flex text-center justify-content-center mt-3">
-														<div>
-															{
-																elm.features.map((elm, i) => {
-																	return (
-																		<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
-
-																			<span>{elm}</span>
-																		</p>
-																	)
-																})
-															}
-														</div>
-													</div>
-													<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-														<RouteLink to={'/auth/register'}>
-															<Button style={{ borderRadius: 20, fontSize: 10, paddingLeft: 25, paddingRight: 25, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-														</RouteLink>
-													</div>
-												</div>
-
-										}
 
 									</Col>
 								</>

@@ -6,7 +6,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#A2A4A4'
+	backgroundColor: '#FFEBD4'
 }
 
 const LoginOne = props => {
@@ -16,7 +16,7 @@ const LoginOne = props => {
 				<Row justify="center">
 					<Col xs={20} sm={20} md={20} lg={7}>
 						<Card>
-							<div className="my-4">
+							{/* <div className="my-4"> */}
 								<div className="text-center">
 									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
 									{/* <p>Don't have an account yet? <a href="/auth/register-1">Sign Up</a></p> */}
@@ -26,7 +26,7 @@ const LoginOne = props => {
 										<LoginForm {...props} />
 									</Col>
 								</Row>
-							</div>
+							{/* </div> */}
 						</Card>
 					</Col>
 				</Row>

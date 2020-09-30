@@ -6,7 +6,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#A2A4A4'
+	backgroundColor: '#FFEBD4'
 }
 
 const OTP = () => {
@@ -27,7 +27,7 @@ const OTP = () => {
 				<Row justify="center">
 					<Col xs={20} sm={20} md={20} lg={9}>
 						<Card>
-							<div className="my-2">
+							{/* <div className="my-2"> */}
 								<div className="text-center">
 									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
 									{/* <h3 className="mt-3 font-weight-bold">Reset Password</h3> */}
@@ -90,7 +90,7 @@ const OTP = () => {
 										</Form>
 									</Col>
 								</Row>
-							</div>
+							{/* </div> */}
 						</Card>
 					</Col>
 				</Row>

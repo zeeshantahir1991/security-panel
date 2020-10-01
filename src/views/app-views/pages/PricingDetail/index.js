@@ -54,9 +54,10 @@ class PricingDetail extends React.Component {
 		});
 	};
 
-	goToSummary = (data) => {
+	goToRegister = (data) => {
+		console.log("goToRegister", data)
 		this.props.history.push({
-			pathname: '/auth/ordersummary',
+			pathname: '/auth/register',
 			state: { data }
 		})
 	}
@@ -196,7 +197,7 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
 							</div>
 						</div>
 
@@ -233,7 +234,7 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
 							</div>
 						</div>
 
@@ -272,7 +273,7 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
 							</div>
 						</div>
 					</Col>
@@ -309,7 +310,7 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
 							</div>
 						</div>
 

@@ -127,7 +127,7 @@ const rules = {
 
 export const RegisterForm = (props) => {
 
-	const { signUp, showLoading, token, loading, redirect, message, showMessage, hideAuthMessage, allowRedirect } = props
+	const { signUp, showLoading, token, loading, redirect, message, showMessage, hideAuthMessage, allowRedirect, location } = props
 	const [form] = Form.useForm();
 	let history = useHistory();
 
@@ -138,6 +138,14 @@ export const RegisterForm = (props) => {
 		}).catch(info => {
 			console.log('Validate Failed:', info);
 		});
+	}
+
+	const goToSummary = () => {
+		console.log("goToSummary", location.state.data)
+		props.history.push({
+			pathname: '/auth/ordersummary',
+			state: { data: location.state.data }
+		})
 	}
 
 	useEffect(() => {
@@ -347,15 +355,18 @@ export const RegisterForm = (props) => {
 				</Form.Item> */}
 				<Row gutter={16} style={{ paddingTop: 20 }}>
 					<Col xs={12} sm={12} md={12} lg={12}>
+
 						<Form.Item>
 							<Button style={{ color: 'white' }} type="danger" htmlType="submit" block loading={loading}>
 								Cancel
 					        </Button>
 						</Form.Item>
+
 					</Col>
 					<Col xs={12} sm={12} md={12} lg={12}>
+
 						<Form.Item>
-							<Button type="primary" htmlType="submit" block loading={loading}>
+							<Button onClick={goToSummary} type="primary" htmlType="submit" block loading={loading}>
 								Sign Up
 					        </Button>
 						</Form.Item>

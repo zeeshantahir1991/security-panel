@@ -34,6 +34,7 @@ export class RegisterOne extends React.Component {
 		reader.addEventListener('load', () => callback(reader.result));
 		reader.readAsDataURL(img);
 	}
+	
 	render() {
 		let props = this.props;
 		const { avatarUrl } = this.state;

@@ -40,11 +40,17 @@ const menuItem = [
 
 const { useBreakpoint } = Grid;
 
-class PricingDetail extends React.Component {
+class OrderSummary extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			collapsed: false,
+			invoiceData: [{
+				key: "1",
+				package: "",
+				cycle: "",
+				price: null
+			}],
 			pricingData: null
 		};
 	}
@@ -53,12 +59,13 @@ class PricingDetail extends React.Component {
 			collapsed: !this.state.collapsed,
 		});
 	};
-
-	goToSummary = (data) => {
-		this.props.history.push({
-			pathname: '/auth/ordersummary',
-			state: { data }
+	total() {
+		const { invoiceData } = this.state;
+		let total = 0;
+		invoiceData.forEach((elm) => {
+			total += elm.price;
 		})
+		return total
 	}
 	componentDidMount() {
 		let dataArray = []
@@ -69,6 +76,7 @@ class PricingDetail extends React.Component {
 			price: this.props.location.state.data.price
 		})
 		this.setState({
+			invoiceData: dataArray,
 			pricingData: this.props.location.state.data
 		})
 		console.log("jhdjshds", this.props.location.state.data)
@@ -77,7 +85,7 @@ class PricingDetail extends React.Component {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
 		// const colCount = pricingData.length
 		// console.log('isMobile', isMobile)
-		const { pricingData } = this.state;
+		const { invoiceData, pricingData } = this.state;
 		return (
 			<>
 				<Row style={{ justifyContent: 'center' }}>
@@ -85,7 +93,6 @@ class PricingDetail extends React.Component {
 						<Header className={`app-header `} >
 							<div className="nav-left logo">
 								<RouteLink to={'/'}>
-
 									<img style={{ height: 70, width: 200 }} src={'/img/logo1.png'} alt={`logo`} />
 								</RouteLink>
 							</div>
@@ -165,7 +172,7 @@ class PricingDetail extends React.Component {
 
 				<Row style={{ justifyContent: 'center', marginTop: 120, marginBottom: 100 }}>
 
-					<Col className="card" xs={0} sm={0} md={10} lg={10} >
+					<Col className="card" xs={0} sm={0} md={4} lg={4} >
 
 						<div className="p-3" style={{ backgroundColor: 'white' }}>
 							<div className="mt-4">
@@ -196,12 +203,14 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<RouteLink to={'/auth/register'}>
+									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								</RouteLink>
 							</div>
 						</div>
 
 					</Col>
-					<Col className="card" xs={0} sm={0} md={10} lg={10} >
+					<Col className="card" xs={0} sm={0} md={6} lg={6} >
 						<div className="p-3" style={pricingData?.backgroundColor}>
 							<div className="mt-4">
 								<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
@@ -233,16 +242,111 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<RouteLink to={'/auth/register'}>
+									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								</RouteLink>
 							</div>
 						</div>
 
+					</Col>
+					<Col xs={0} sm={0} md={2} lg={2} style={{ alignSelf: 'center' }}></Col>
+					<Col xs={0} sm={0} md={10} lg={10} style={{ alignSelf: 'center' }}>
+						{/* <Card style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}> */}
+						<Card className="card" style={{ paddingTop: 25, paddingBottom: 25 }}>
+							<div className="text-center">
+								<h1 className="mb-1 font-weight-semibold">Order Summary</h1>
+
+							</div>
+							<div className="d-md-flex justify-content-md-between">
+								<div>
+									{/* <img src="/img/logo.png" alt="" /> */}
+									<address>
+										<p>
+											<span className="font-weight-semibold text-dark font-size-md">Guardspur, Inc.</span><br />
+											<span>9498 Harvard Street</span><br />
+											<span>Fairfield, Chicago Town 06824</span><br />
+											<abbr className="text-dark" title="Phone">Phone:</abbr>
+											<span>(123) 456-7890</span>
+										</p>
+									</address>
+								</div>
+								{/* <div className="mt-3 text-right">
+									<h2 className="mb-1 font-weight-semibold">Invoice #9972</h2>
+
+									<address>
+										<p>
+											<span className="font-weight-semibold text-dark font-size-md">Genting Holdings.</span><br />
+											<span>8626 Maiden Dr. </span><br />
+											<span>Niagara Falls, New York 14304</span>
+										</p>
+									</address>
+								</div> */}
+							</div>
+							<div className="mt-4">
+								<Table dataSource={invoiceData} pagination={false} className="mb-5">
+									<Column title="No." dataIndex="key" key="key" />
+									<Column title="Package" dataIndex="package" key="package" />
+									<Column title="Billing Cycle" dataIndex="cycle" key="cycle" />
+									<Column title="Sub Total"
+										render={(text) => (
+											<NumberFormat
+												displayType={'text'}
+												value={(Math.round(text.price * 100) / 100).toFixed(2)}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										)}
+										key="price"
+									/>
+									{/* <Column
+										title="Total"
+										render={(text) => (
+											<NumberFormat
+												displayType={'text'}
+												value={(Math.round((text.price * text.quantity) * 100) / 100).toFixed(2)}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										)}
+										key="total"
+									/> */}
+								</Table>
+								<div className="d-flex justify-content-end">
+									<div className="text-right ">
+										<div className="border-bottom">
+											<p className="mb-2">
+												<span>Sub - Total amount: </span>
+												<NumberFormat
+													displayType={'text'}
+													value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+													prefix={'$'}
+													thousandSeparator={true}
+												/>
+											</p>
+											{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+										</div>
+										<h2 className="font-weight-semibold mt-3">
+											<span className="mr-1">Grand Total: </span>
+											<NumberFormat
+												displayType={'text'}
+												// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
+												value={((Math.round((this.total()) * 100) / 100))}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										</h2>
+									</div>
+								</div>
+
+							</div>
+
+						</Card>
 					</Col>
 
 					{/* Mobile View */}
 
 
-					<Col className="card" xs={11} sm={11} md={0} lg={0}>
+					<Col className="card" xs={12} sm={12} md={0} lg={0}>
 						<div className="p-3" style={{ backgroundColor: 'white' }}>
 							<div className="mt-4">
 								<h1 style={{ fontSize: 20 }} className="text-center font-weight-semibold">{limits.plan}</h1>
@@ -272,11 +376,13 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<RouteLink to={'/auth/register'}>
+									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								</RouteLink>
 							</div>
 						</div>
 					</Col>
-					<Col className="card" xs={11} sm={11} md={0} lg={0}>
+					<Col className="card" xs={12} sm={12} md={0} lg={0}>
 
 						<div className="p-3" style={pricingData?.backgroundColor}>
 							<div className="mt-4">
@@ -309,11 +415,106 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToSummary(pricingData)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<RouteLink to={'/auth/register'}>
+									<Button style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								</RouteLink>
 							</div>
 						</div>
 
 					</Col>
+					<Col xs={20} sm={20} md={0} lg={0} style={{ alignSelf: 'center' }}>
+						{/* <Card style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}> */}
+						<Card className="card" style={{ marginTop: 100, paddingTop: 25, paddingBottom: 25 }}>
+							<div className="text-center" style={{ marginBottom: 25 }}>
+								<h2 className="mb-1 font-weight-semibold">Order Summary</h2>
+
+							</div>
+							<div className="d-md-flex justify-content-md-between">
+								<div>
+									{/* <img src="/img/logo.png" alt="" /> */}
+									<address>
+										<p>
+											<span className="font-weight-semibold text-dark font-size-md">Guardspur, Inc.</span><br />
+											<span>9498 Harvard Street</span><br />
+											<span>Fairfield, Chicago Town 06824</span><br />
+											<abbr className="text-dark" title="Phone">Phone:</abbr>
+											<span>(123) 456-7890</span>
+										</p>
+									</address>
+								</div>
+								{/* <div className="mt-3 text-right">
+									<h2 className="mb-1 font-weight-semibold">Invoice #9972</h2>
+
+									<address>
+										<p>
+											<span className="font-weight-semibold text-dark font-size-md">Genting Holdings.</span><br />
+											<span>8626 Maiden Dr. </span><br />
+											<span>Niagara Falls, New York 14304</span>
+										</p>
+									</address>
+								</div> */}
+							</div>
+							<div className="mt-4">
+								<Table dataSource={invoiceData} pagination={false} className="mb-5">
+									<Column title="No." dataIndex="key" key="key" />
+									<Column title="Package" dataIndex="package" key="package" />
+									<Column title="Billing Cycle" dataIndex="cycle" key="cycle" />
+									<Column title="Sub Total"
+										render={(text) => (
+											<NumberFormat
+												displayType={'text'}
+												value={(Math.round(text.price * 100) / 100).toFixed(2)}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										)}
+										key="price"
+									/>
+									{/* <Column
+										title="Total"
+										render={(text) => (
+											<NumberFormat
+												displayType={'text'}
+												value={(Math.round((text.price * text.quantity) * 100) / 100).toFixed(2)}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										)}
+										key="total"
+									/> */}
+								</Table>
+								<div className="d-flex justify-content-end">
+									<div className="text-right ">
+										<div className="border-bottom">
+											<p className="mb-2">
+												<span>Sub - Total amount: </span>
+												<NumberFormat
+													displayType={'text'}
+													value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+													prefix={'$'}
+													thousandSeparator={true}
+												/>
+											</p>
+											{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+										</div>
+										<h4 className="font-weight-semibold mt-3">
+											<span className="mr-1">Grand Total: </span>
+											<NumberFormat
+												displayType={'text'}
+												// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
+												value={((Math.round((this.total()) * 100) / 100))}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										</h4>
+									</div>
+								</div>
+
+							</div>
+
+						</Card>
+					</Col>
+
 
 				</Row>
 
@@ -350,5 +551,5 @@ class PricingDetail extends React.Component {
 	}
 }
 
-export default PricingDetail
+export default OrderSummary
 

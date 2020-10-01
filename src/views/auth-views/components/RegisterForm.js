@@ -163,9 +163,12 @@ export const RegisterForm = (props) => {
 			</motion.div>
 
 			<Form form={form} layout="vertical" name="register-form" onFinish={onSignUp}>
-			
-				<Row gutter={16}>
 
+				<Row gutter={16} style={{ borderWidth: 1, borderColor: '#222222', borderRadius: 10, borderStyle: 'solid', padding: 20 }}>
+					<Col xs={24} sm={24} md={24} lg={24}>
+						<h2>Company Info</h2>
+						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#222222' }}></div>
+					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="company"
@@ -196,7 +199,7 @@ export const RegisterForm = (props) => {
 							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
-					<Col xs={24} sm={24} md={12} lg={12}>
+					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="refno"
 							label="ACS Reference Number"
@@ -206,7 +209,7 @@ export const RegisterForm = (props) => {
 							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
-					<Col xs={24} sm={24} md={12} lg={12}>
+					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="expdate"
 							label="Expiry Date of Approval"
@@ -216,8 +219,22 @@ export const RegisterForm = (props) => {
 							<Input type="date" style={{ borderColor: '#222222' }} />
 						</Form.Item>
 					</Col>
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="controlroom"
+							label="Control Room Phone"
+							rules={rules.controlroom}
+							hasFeedback
+						>
+							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
+						</Form.Item>
+					</Col>
 				</Row>
-				<Row gutter={16} style={{ marginTop: 50, marginBottom: 25 }}>
+				<Row gutter={16} style={{ borderWidth: 1, borderColor: '#222222', borderRadius: 10, borderStyle: 'solid', padding: 20, marginTop: 50, marginBottom: 25 }}>
+					<Col xs={24} sm={24} md={24} lg={24}>
+						<h2>Personal Info</h2>
+						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#222222' }}></div>
+					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="firstname"
@@ -309,16 +326,7 @@ export const RegisterForm = (props) => {
 							<Input style={{ borderColor: '#222222' }} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
-					<Col xs={24} sm={24} md={8} lg={8}>
-						<Form.Item
-							name="controlroom"
-							label="Control Room Phone"
-							rules={rules.controlroom}
-							hasFeedback
-						>
-							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
-						</Form.Item>
-					</Col>
+
 				</Row>
 
 				{/* <Form.Item 
@@ -337,11 +345,22 @@ export const RegisterForm = (props) => {
 				>
 					<Input.Password prefix={<LockOutlined className="text-primary" />}/>
 				</Form.Item> */}
-				<Form.Item>
-					<Button type="primary" htmlType="submit" block loading={loading}>
-						Sign Up
-					</Button>
-				</Form.Item>
+				<Row gutter={16} style={{ paddingTop: 20 }}>
+					<Col xs={12} sm={12} md={12} lg={12}>
+						<Form.Item>
+							<Button style={{ color: 'white' }} type="danger" htmlType="submit" block loading={loading}>
+								Cancel
+					        </Button>
+						</Form.Item>
+					</Col>
+					<Col xs={12} sm={12} md={12} lg={12}>
+						<Form.Item>
+							<Button type="primary" htmlType="submit" block loading={loading}>
+								Sign Up
+					        </Button>
+						</Form.Item>
+					</Col>
+				</Row>
 			</Form>
 		</>
 	)

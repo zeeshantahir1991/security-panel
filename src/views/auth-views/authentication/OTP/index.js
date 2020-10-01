@@ -6,7 +6,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#FFEBD4'
+	backgroundColor: '#60b0f4'
 }
 
 const OTP = () => {
@@ -26,70 +26,70 @@ const OTP = () => {
 			<div className="container d-flex flex-column justify-content-center h-100">
 				<Row justify="center">
 					<Col xs={20} sm={20} md={20} lg={9}>
-						<Card>
+						<Card className="card">
 							{/* <div className="my-2"> */}
-								<div className="text-center">
-									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
-									{/* <h3 className="mt-3 font-weight-bold">Reset Password</h3> */}
-									<p className="mb-4">Enter your OTP to reset password</p>
-								</div>
-								<Row justify="center">
-									<Col xs={24} sm={24} md={20} lg={20}>
-										<Form form={form} layout="vertical" name="forget-password" onFinish={onSend}>
-											<Form.Item
-												name="email"
-												rules={
-													[
-														{
-															required: true,
-															message: 'Please input your email address'
-														},
-														{
-															type: 'email',
-															message: 'Please enter a validate email!'
-														}
-													]
-												}>
-												<Input placeholder="OTP" prefix={<MailOutlined className="text-primary" />} />
-											</Form.Item>
-											<Form.Item
-												name="password"
-												rules={
-													[
-														{
-															required: true,
-															message: 'Please input your password'
-														},
-														{
-															type: 'email',
-															message: 'Please enter a valid Password!'
-														}
-													]
-												}>
-												<Input placeholder="New Password" prefix={<MailOutlined className="text-primary" />} />
-											</Form.Item>
-											<Form.Item
-												name="password"
-												rules={
-													[
-														{
-															required: true,
-															message: 'Please input your password'
-														},
-														{
-															type: 'email',
-															message: 'Please enter a valid Password!'
-														}
-													]
-												}>
-												<Input placeholder="Confirm Password" prefix={<MailOutlined className="text-primary" />} />
-											</Form.Item>
-											<Form.Item>
-												<Button loading={loading} type="primary" htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
-											</Form.Item>
-										</Form>
-									</Col>
-								</Row>
+							<div className="text-center">
+								<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
+								{/* <h3 className="mt-3 font-weight-bold">Reset Password</h3> */}
+								<p className="mb-4">Enter your OTP to reset password</p>
+							</div>
+							<Row justify="center">
+								<Col xs={24} sm={24} md={20} lg={20}>
+									<Form form={form} layout="vertical" name="forget-password" onFinish={onSend}>
+										<Form.Item
+											name="email"
+											rules={
+												[
+													{
+														required: true,
+														message: 'Please input your email address'
+													},
+													{
+														type: 'email',
+														message: 'Please enter a validate email!'
+													}
+												]
+											}>
+											<Input style={{ borderColor: '#222222' }} placeholder="OTP" prefix={<MailOutlined />} />
+										</Form.Item>
+										<Form.Item
+											name="password"
+											rules={
+												[
+													{
+														required: true,
+														message: 'Please input your password'
+													},
+													{
+														type: 'email',
+														message: 'Please enter a valid Password!'
+													}
+												]
+											}>
+											<Input style={{ borderColor: '#222222' }} placeholder="New Password" prefix={<MailOutlined />} />
+										</Form.Item>
+										<Form.Item
+											name="password"
+											rules={
+												[
+													{
+														required: true,
+														message: 'Please input your password'
+													},
+													{
+														type: 'email',
+														message: 'Please enter a valid Password!'
+													}
+												]
+											}>
+											<Input style={{ borderColor: '#222222' }} placeholder="Confirm Password" prefix={<MailOutlined />} />
+										</Form.Item>
+										<Form.Item>
+											<Button loading={loading} type="primary" htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+										</Form.Item>
+									</Form>
+								</Col>
+							</Row>
 							{/* </div> */}
 						</Card>
 					</Col>

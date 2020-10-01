@@ -65,7 +65,10 @@ class Home extends React.Component {
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<Header className={`app-header `} >
 							<div className="nav-left logo">
-								<img style={{ height: 70, width: 200 }} src={'/img/logo1.png'} alt={`logo`} />
+								<RouteLink to={'/'}>
+
+									<img style={{ height: 70, width: 200 }} src={'/img/logo1.png'} alt={`logo`} />
+								</RouteLink>
 							</div>
 							<div className="nav-right">
 								<Menu mode="horizontal">
@@ -96,7 +99,10 @@ class Home extends React.Component {
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<Header className={`app-header `} >
 							<div className={'logo'}>
-								<img style={{ height: 50, width: 150 }} src={'/img/logo1.png'} alt={`logo`} />
+								<RouteLink to={'/'}>
+
+									<img style={{ height: 50, width: 150 }} src={'/img/logo1.png'} alt={`logo`} />
+								</RouteLink>
 							</div>
 							<div className="nav-right" style={{ alignSelf: 'center' }}>
 								<Button type="secondary" onClick={this.toggleCollapsed}>
@@ -171,7 +177,7 @@ class Home extends React.Component {
 						pricingData.map((elm, i) => {
 							return (
 								<>
-									<Col key={`price-column-${i}`} xs={0} sm={0} md={24 / colCount} lg={24 / colCount} >
+									<Col className="card" key={`price-column-${i}`} xs={0} sm={0} md={24 / colCount} lg={24 / colCount} >
 
 										<div className="p-3" style={elm.backgroundColor}>
 											<div className="mt-4">
@@ -209,7 +215,7 @@ class Home extends React.Component {
 										</div>
 
 									</Col>
-									<Col key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={0} lg={0} >
+									<Col className="card" key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={0} lg={0} >
 
 										<div className="p-3" style={elm.backgroundColor}>
 											<div className="mt-4">

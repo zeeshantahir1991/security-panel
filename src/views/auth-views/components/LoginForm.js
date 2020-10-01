@@ -123,7 +123,7 @@ export const LoginForm = props => {
 							message: 'Please enter a validate email!'
 						}
 					]}>
-					<Input prefix={<MailOutlined className="text-primary" />} />
+					<Input style={{ borderColor: '#222222' }} prefix={<MailOutlined />} />
 				</Form.Item>
 				<Form.Item
 					name="password"
@@ -150,7 +150,7 @@ export const LoginForm = props => {
 						}
 					]}
 				>
-					<Input.Password prefix={<LockOutlined className="text-primary" />} />
+					<Input.Password style={{ borderColor: '#222222' }} prefix={<LockOutlined />} />
 				</Form.Item>
 				<Form.Item>
 					<Button type="primary" htmlType="submit" block loading={loading}>

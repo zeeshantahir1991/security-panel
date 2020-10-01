@@ -10,7 +10,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#FFEBD4'
+	backgroundColor: '#60b0f4'
 }
 
 export class RegisterOne extends React.Component {
@@ -88,7 +88,7 @@ export class RegisterOne extends React.Component {
 				<div className="container d-flex flex-column justify-content-center">
 					<Row justify="center" style={{ paddingTop: 100, paddingBottom: 100 }}>
 						<Col xs={20} sm={20} md={20} lg={20}>
-							<Card>
+							<Card className="card">
 								{/* <div className="my-2"> */}
 								<div className="text-center">
 									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />

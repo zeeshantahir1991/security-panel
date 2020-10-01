@@ -24,9 +24,9 @@ export const pricingData = [
 
     // {
     //     // image: "/img/others/img-1.png",
-    //     price: "0",
-    //     duration: "/ month",
-    //     plan: "Free",
+    //     price: "Free",
+    //     duration: "",
+    //     plan: "Trial",
     //     backgroundColor: {
     //         backgroundColor: '#B7F6FE'
     //     },

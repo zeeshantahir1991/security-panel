@@ -22,30 +22,38 @@ export const pricingData = [
 
     // },
 
-    // {
-    //     // image: "/img/others/img-1.png",
-    //     price: "Free",
-    //     duration: "",
-    //     plan: "Trial",
-    //     backgroundColor: {
-    //         backgroundColor: '#B7F6FE'
-    //     },
-    //     features: [
-    //         "Upto 5 Guards",
-    //         "120 Hours - Trial period",
-    //         "1 GB Storage",
-    //         "2 Additional users",
-    //         "Included",
-    //         "50 E-signatures",
-    //         "Included",
-    //         "Included",
-    //         "Included"
-    //     ]
+    {
+        // image: "/img/others/img-1.png",
+        button: {
+            text: 'Try - Free',
+            path: '/auth/pricing'
+        },
+        price: "Free",
+        duration: "/ month",
+        plan: "Trial",
+        backgroundColor: {
+            backgroundColor: '#D0D1D1'
+        },
+        features: [
+            "Upto 5 Guards",
+            "120 Hours - Trial period",
+            "1 GB Storage",
+            "2 Additional users",
+            "Included",
+            "50 E-signatures",
+            "Included",
+            "Included",
+            "Included"
+        ]
 
-    // },
+    },
 
     {
         // image: "/img/others/img-1.png",
+        button: {
+            text: 'Subscribe',
+            path: '/auth/pricing'
+        },
         price: "250",
         duration: "/ month",
         plan: "Basic",
@@ -68,6 +76,10 @@ export const pricingData = [
 
     {
         // image: "/img/others/img-1.png",
+        button: {
+            text: 'Subscribe',
+            path: '/auth/pricing'
+        },
         price: "350",
         duration: "/ month",
         plan: "Silver",
@@ -90,6 +102,10 @@ export const pricingData = [
 
     {
         // image: "/img/others/img-2.png",
+        button: {
+            text: 'Subscribe',
+            path: '/auth/pricing'
+        },
         price: "450",
         duration: "/ month",
         plan: "Gold",
@@ -110,7 +126,11 @@ export const pricingData = [
     },
     {
         // image: "/img/others/img-3.png",
-        price: "600",
+        button: {
+            text: 'Contact',
+            path: '/auth/contact'
+        },
+        price: "Special Pricing",
         duration: "/ month",
         plan: "Platinum",
         backgroundColor: {

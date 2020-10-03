@@ -172,10 +172,10 @@ export const RegisterForm = (props) => {
 
 			<Form form={form} layout="vertical" name="register-form" onFinish={onSignUp}>
 
-				<Row gutter={16} style={{ borderWidth: 1, borderColor: '#222222', borderRadius: 10, borderStyle: 'solid', padding: 20 }}>
+				<Row className="card" gutter={16} style={{ borderRadius: 10, padding: 20, backgroundColor: 'white' }}>
 					<Col xs={24} sm={24} md={24} lg={24}>
 						<h2>Company Info</h2>
-						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#222222' }}></div>
+						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
@@ -184,7 +184,7 @@ export const RegisterForm = (props) => {
 							rules={rules.company}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<BuildOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<BuildOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -194,7 +194,7 @@ export const RegisterForm = (props) => {
 							rules={rules.regno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -204,7 +204,7 @@ export const RegisterForm = (props) => {
 							rules={rules.vatno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -214,7 +214,7 @@ export const RegisterForm = (props) => {
 							rules={rules.refno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<NumberOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -224,7 +224,7 @@ export const RegisterForm = (props) => {
 							rules={rules.expdate}
 							hasFeedback
 						>
-							<Input type="date" style={{ borderColor: '#222222' }} />
+							<Input type="date" style={{ borderColor: '#b4a19d' }} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -234,14 +234,14 @@ export const RegisterForm = (props) => {
 							rules={rules.controlroom}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 				</Row>
-				<Row gutter={16} style={{ borderWidth: 1, borderColor: '#222222', borderRadius: 10, borderStyle: 'solid', padding: 20, marginTop: 50, marginBottom: 25 }}>
+				<Row className="card" gutter={16} style={{ borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: 'white' }}>
 					<Col xs={24} sm={24} md={24} lg={24}>
 						<h2>Personal Info</h2>
-						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#222222' }}></div>
+						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
@@ -250,7 +250,7 @@ export const RegisterForm = (props) => {
 							rules={rules.firstname}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<UserOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -260,7 +260,7 @@ export const RegisterForm = (props) => {
 							rules={rules.lastname}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<UserOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -270,7 +270,7 @@ export const RegisterForm = (props) => {
 							rules={rules.email}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<MailOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<MailOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -281,7 +281,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address1}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<HomeOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -291,7 +291,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address2}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<HomeOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -301,7 +301,7 @@ export const RegisterForm = (props) => {
 							rules={rules.city}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<CompassOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -311,7 +311,7 @@ export const RegisterForm = (props) => {
 							rules={rules.postcode}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<CompassOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -321,7 +321,7 @@ export const RegisterForm = (props) => {
 							rules={rules.phone}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<PhoneOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -331,7 +331,7 @@ export const RegisterForm = (props) => {
 							rules={rules.mobile}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#222222' }} prefix={<MobileOutlined />} />
+							<Input style={{ borderColor: '#b4a19d' }} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -353,11 +353,11 @@ export const RegisterForm = (props) => {
 				>
 					<Input.Password prefix={<LockOutlined className="text-primary" />}/>
 				</Form.Item> */}
-				<Row gutter={16} style={{ paddingTop: 20 }}>
+				<Row gutter={16} style={{ paddingTop: 50 }}>
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button style={{ color: 'white' }} type="danger" htmlType="submit" block loading={loading}>
+							<Button style={{ borderRadius: 10, color: '#ff4040', borderWidth: 1, borderStyle: 'solid', borderColor: '#ff4040' }} htmlType="submit" block loading={loading}>
 								Cancel
 					        </Button>
 						</Form.Item>
@@ -366,7 +366,7 @@ export const RegisterForm = (props) => {
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button onClick={goToSummary} type="primary" htmlType="submit" block loading={loading}>
+							<Button onClick={goToSummary} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} htmlType="submit" block loading={loading}>
 								Sign Up
 					        </Button>
 						</Form.Item>

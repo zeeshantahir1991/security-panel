@@ -51,7 +51,7 @@ class Home extends React.Component {
 	};
 	priceDetail = (data) => {
 		this.props.history.push({
-			pathname: '/auth/pricing',
+			pathname: data.button.path,
 			state: { data }
 		})
 	}
@@ -60,7 +60,7 @@ class Home extends React.Component {
 		const colCount = pricingData.length
 		// console.log('isMobile', isMobile)
 		return (
-			<>
+			<div style={{ backgroundColor: 'white' }}>
 				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<Header className={`app-header `} >
@@ -177,59 +177,99 @@ class Home extends React.Component {
 						pricingData.map((elm, i) => {
 							return (
 								<>
-									<Col className="card" key={`price-column-${i}`} xs={0} sm={0} md={24 / colCount} lg={24 / colCount} >
 
-										<div className="p-3" style={elm.backgroundColor}>
-											<div className="mt-4">
-												<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
-											</div>
-											<div className="text-center">
-												<img className="img-fluid" src={elm.image} alt="" />
+									<div style={{ width: 100 / colCount + '%' }}>
+										<Col className="card" xs={0} sm={0} md={24} lg={24}>
+											<div className="p-3" style={elm.backgroundColor}>
+												<div className="mt-4">
+													<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
+												</div>
+												{elm.plan.toUpperCase() == "PLATINUM" ?
+													<div className="text-center">
+														<img className="img-fluid" src={elm.image} alt="" />
 
-												<h2 style={{ color: 'white' }} className="display-4 mt-4">
-													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-													<span style={{ fontSize: 50 }}>{elm.price}</span>
-												</h2>
+														<h2 style={{ color: 'white' }} className="display-4 mt-4">
+															<span className="font-size-md d-inline-block mr-1" style={{ visibility: 'hidden' }}>£</span>
+															<span style={{ fontSize: 30, overflow: 'hidden' }}>{elm.price}</span>
+														</h2>
 
-												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-											</div>
+														<p style={{ color: 'white', fontWeight: 'bold', visibility: 'hidden' }} className="mb-0">{elm.duration}</p>
+													</div> :
+													<div className="text-center">
+														<img className="img-fluid" src={elm.image} alt="" />
+
+														<h2 style={{ color: 'white' }} className="display-4 mt-4">
+															<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+															<span style={{ fontSize: 40 }}>{elm.price}</span>
+														</h2>
+
+														<p style={elm.plan.toUpperCase() == "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+													</div>
+												}
 
 
-											<div className="d-flex text-center justify-content-center mt-3">
-												<div>
-													{
-														elm.features.map((elm, i) => {
-															return (
-																<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
 
-																	<span>{elm}</span>
-																</p>
-															)
-														})
-													}
+												<div className="d-flex text-center justify-content-center mt-3">
+													<div>
+														{
+															elm.features.map((elm, i) => {
+																return (
+																	<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
+																		<span>{elm}</span>
+																	</p>
+																)
+															})
+														}
+													</div>
+												</div>
+												<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+													<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+														{elm.button.text}
+													</Button>
 												</div>
 											</div>
-											<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-												<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-											</div>
-										</div>
+										</Col>
 
-									</Col>
-									<Col className="card" key={`price-column-${i}`} xs={48 / colCount} sm={48 / colCount} md={0} lg={0} >
+									</div>
+
+								</>
+							)
+						})
+					}
+				</Row>
+				<Row>
+					{
+						pricingData.map((elm, i) => {
+							return (
+								<>
+									<Col className="card" xs={24 / 2} sm={24 / 2} md={0} lg={0} >
 
 										<div className="p-3" style={elm.backgroundColor}>
 											<div className="mt-4">
 												<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{elm.plan}</h1>
 											</div>
-											<div className="text-center">
-												<img className="img-fluid" src={elm.image} alt="" />
+											{elm.plan.toUpperCase() == "PLATINUM" ?
+												<div className="text-center">
+													<img className="img-fluid" src={elm.image} alt="" />
 
-												<h2 style={{ color: 'white' }} className="display-4 mt-4">
-													<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-													<span style={{ fontSize: 25 }}>{elm.price}</span>
-												</h2>
-												<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
-											</div>
+													<h2 style={{ color: 'white' }} className="display-4 mt-4">
+														<span className="font-size-md d-inline-block mr-1" style={{ visibility: 'hidden' }}>£</span>
+														<span style={{ fontSize: 15 }}>{elm.price}</span>
+													</h2>
+
+													<p style={{ visibility: 'hidden' }} className="mb-0">{elm.duration}</p>
+												</div> :
+												<div className="text-center">
+													<img className="img-fluid" src={elm.image} alt="" />
+
+													<h2 style={{ color: 'white' }} className="display-4 mt-4">
+														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+														<span style={{ fontSize: 25 }}>{elm.price}</span>
+													</h2>
+													<p style={elm.plan.toUpperCase() == "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+												</div>
+											}
 
 
 											<div className="d-flex text-center justify-content-center mt-3">
@@ -247,18 +287,21 @@ class Home extends React.Component {
 												</div>
 											</div>
 											<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-												<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 25, paddingRight: 25, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+												<Button onClick={() => this.priceDetail(elm)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 25, paddingRight: 25, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+													{elm.button.text}
+												</Button>
 											</div>
 										</div>
 
 
 									</Col>
+
 								</>
 							)
 						})
 					}
 				</Row>
-				<Row style={{ justifyContent: 'center', backgroundColor: 'white', textAlign: 'center' }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24} style={{ marginTop: 100, marginBottom: 100 }}>
 						<h1 className="font-weight-bold" style={{ color: 'black' }}>HOW OUR SOLUTION WORKS</h1>
 						<img style={{ marginTop: 50 }} src={'/img/how-solution-works.png'} alt={`how-solution-works`} />
@@ -320,7 +363,7 @@ class Home extends React.Component {
 						</h3>
 					</Col>
 				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100, backgroundColor: 'white' }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100 }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<img style={{ width: '70%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
 						{/* <div className="centered">
@@ -328,7 +371,7 @@ class Home extends React.Component {
 						</div> */}
 					</Col>
 				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100, backgroundColor: 'white' }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', paddingBottom: 100 }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<img style={{ width: '100%', height: '100%' }} src={'/img/cover.jpg'} alt={`banner`} />
 						{/* <div className="centered">
@@ -372,7 +415,7 @@ class Home extends React.Component {
 						<img style={{ width: 25, height: 25, marginLeft: 25 }} src={'/img/linkedin.png'} alt={`linkedin`} />
 					</Col>
 				</Row>
-			</>
+			</div>
 		)
 	}
 }

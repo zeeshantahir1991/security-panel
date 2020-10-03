@@ -7,7 +7,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#60b0f4'
+	// backgroundColor: '#60b0f4'
 }
 
 const ForgotPassword = () => {
@@ -51,11 +51,11 @@ const ForgotPassword = () => {
 														}
 													]
 												}>
-												<Input style={{ borderColor: '#222222' }} placeholder="Email Address" prefix={<MailOutlined />} />
+												<Input style={{ borderColor: '#b4a19d' }} placeholder="Email Address" prefix={<MailOutlined />} />
 											</Form.Item>
 											<Form.Item>
 												<RouteLink to={'/auth/otp'}>
-													<Button loading={loading} type="primary" htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+													<Button loading={loading} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
 												</RouteLink>
 											</Form.Item>
 										</Form>

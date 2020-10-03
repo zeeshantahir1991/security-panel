@@ -207,17 +207,28 @@ class PricingDetail extends React.Component {
 							<div className="mt-4">
 								<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 							</div>
-							<div className="text-center">
-								<img className="img-fluid" src={pricingData?.image} alt="" />
+							{pricingData?.plan.toUpperCase() == "PLATINUM" ?
+								<div className="text-center">
+									<img className="img-fluid" src={pricingData?.image} alt="" />
 
-								<h2 style={{ color: 'white' }} className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 50 }}>{pricingData?.price}</span>
-								</h2>
+									<h2 style={{ color: 'white' }} className="display-4 mt-4">
+										<span className="font-size-md d-inline-block mr-1" style={{ visibility: 'hidden' }}>£</span>
+										<span style={{ fontSize: 40, overflow: 'hidden' }}>{pricingData?.price}</span>
+									</h2>
 
-								<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
-							</div>
+									<p style={{ color: 'white', fontWeight: 'bold', visibility: 'hidden' }} className="mb-0">{pricingData?.duration}</p>
+								</div> :
+								<div className="text-center">
+									<img className="img-fluid" src={pricingData?.image} alt="" />
 
+									<h2 style={{ color: 'white' }} className="display-4 mt-4">
+										<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+										<span style={{ fontSize: 50 }}>{pricingData?.price}</span>
+									</h2>
+
+									<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
+								</div>
+							}
 
 							<div className="d-flex text-center justify-content-center mt-3">
 								<div>
@@ -234,7 +245,9 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{pricingData?.button.text}
+								</Button>
 							</div>
 						</div>
 
@@ -283,17 +296,28 @@ class PricingDetail extends React.Component {
 							<div className="mt-4">
 								<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 							</div>
-							<div className="text-center">
-								<img className="img-fluid" src={pricingData?.image} alt="" />
+							{pricingData?.plan.toUpperCase() == "PLATINUM" ?
+								<div className="text-center">
+									<img className="img-fluid" src={pricingData?.image} alt="" />
 
-								<h2 style={{ color: 'white' }} className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 25 }}>{pricingData?.price}</span>
-								</h2>
+									<h2 style={{ color: 'white' }} className="display-4 mt-4">
+										<span className="font-size-md d-inline-block mr-1" style={{ visibility: 'hidden' }}>£</span>
+										<span style={{ fontSize: 25, overflow: 'hidden' }}>{pricingData?.price}</span>
+									</h2>
 
-								<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
-							</div>
+									<p style={{ color: 'white', fontWeight: 'bold', visibility: 'hidden' }} className="mb-0">{pricingData?.duration}</p>
+								</div> :
+								<div className="text-center">
+									<img className="img-fluid" src={pricingData?.image} alt="" />
 
+									<h2 style={{ color: 'white' }} className="display-4 mt-4">
+										<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+										<span style={{ fontSize: 25 }}>{pricingData?.price}</span>
+									</h2>
+
+									<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
+								</div>
+							}
 
 							<div className="d-flex text-center justify-content-center mt-3">
 								<div>
@@ -310,7 +334,9 @@ class PricingDetail extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+								<Button onClick={() => this.goToRegister(pricingData)} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{pricingData?.button.text}
+								</Button>
 							</div>
 						</div>
 

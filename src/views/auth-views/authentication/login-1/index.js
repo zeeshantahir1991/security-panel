@@ -6,7 +6,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#60b0f4'
+	// backgroundColor: '#60b0f4'
 }
 
 const LoginOne = props => {

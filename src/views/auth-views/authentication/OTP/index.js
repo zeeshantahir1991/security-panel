@@ -6,7 +6,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#60b0f4'
+	// backgroundColor: '#60b0f4'
 }
 
 const OTP = () => {
@@ -50,7 +50,7 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#222222' }} placeholder="OTP" prefix={<MailOutlined />} />
+											<Input style={{ borderColor: '#b4a19d' }} placeholder="OTP" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -66,7 +66,7 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#222222' }} placeholder="New Password" prefix={<MailOutlined />} />
+											<Input style={{ borderColor: '#b4a19d' }} placeholder="New Password" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -82,10 +82,10 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#222222' }} placeholder="Confirm Password" prefix={<MailOutlined />} />
+											<Input style={{ borderColor: '#b4a19d' }} placeholder="Confirm Password" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item>
-											<Button loading={loading} type="primary" htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+											<Button loading={loading} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4', marginTop: 25 }} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
 										</Form.Item>
 									</Form>
 								</Col>

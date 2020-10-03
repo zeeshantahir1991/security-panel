@@ -10,7 +10,7 @@ const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
 	// backgroundSize: 'cover'
-	backgroundColor: '#60b0f4'
+	// backgroundColor: '#60b0f4'
 }
 
 export class RegisterOne extends React.Component {
@@ -34,7 +34,7 @@ export class RegisterOne extends React.Component {
 		reader.addEventListener('load', () => callback(reader.result));
 		reader.readAsDataURL(img);
 	}
-	
+
 	render() {
 		let props = this.props;
 		const { avatarUrl } = this.state;
@@ -89,31 +89,31 @@ export class RegisterOne extends React.Component {
 				<div className="container d-flex flex-column justify-content-center">
 					<Row justify="center" style={{ paddingTop: 100, paddingBottom: 100 }}>
 						<Col xs={20} sm={20} md={20} lg={20}>
-							<Card className="card">
-								{/* <div className="my-2"> */}
-								<div className="text-center">
-									<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
-									<p className="text-muted">Registration Form</p>
-								</div>
-								<Row justify="center" style={{ marginBottom: 25, marginTop: 25 }}>
 
-									<Flex alignItems="center" mobileFlex={false} className="text-center text-md-left">
-										<Avatar size={90} src={avatarUrl} icon={<UserOutlined />} />
-										<div className="ml-md-3 mt-md-0 mt-3">
-											<Upload onChange={onUploadAavater} showUploadList={false} action={this.avatarEndpoint}>
-												<Button type="primary">Change</Button>
-											</Upload>
-											<Button className="ml-2" onClick={onRemoveAvater}>Remove</Button>
-										</div>
-									</Flex>
-								</Row>
-								<Row justify="center">
-									<Col xs={24} sm={24} md={20} lg={20}>
-										<RegisterForm {...props} />
-									</Col>
-								</Row>
-								{/* </div> */}
-							</Card>
+							{/* <div className="my-2"> */}
+							<div className="text-center">
+								<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
+								<p className="text-muted">Registration Form</p>
+							</div>
+							<Row justify="center" style={{ marginBottom: 25, marginTop: 25 }}>
+
+								<Flex alignItems="center" mobileFlex={false} className="text-center text-md-left">
+									<Avatar size={90} src={avatarUrl} icon={<UserOutlined />} />
+									<div className="ml-md-3 mt-md-0 mt-3">
+										<Upload onChange={onUploadAavater} showUploadList={false} action={this.avatarEndpoint}>
+											<Button type="primary">Change</Button>
+										</Upload>
+										<Button className="ml-2" onClick={onRemoveAvater}>Remove</Button>
+									</div>
+								</Flex>
+							</Row>
+							<Row justify="center">
+								<Col xs={24} sm={24} md={20} lg={20}>
+									<RegisterForm {...props} />
+								</Col>
+							</Row>
+							{/* </div> */}
+
 						</Col>
 					</Row>
 				</div>

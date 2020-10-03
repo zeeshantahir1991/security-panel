@@ -203,9 +203,11 @@ class OrderSummary extends React.Component {
 								</div>
 							</div>
 							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<RouteLink to={'/auth/register'}>
-									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-								</RouteLink>
+								{/* <RouteLink to={'/auth/register'}> */}
+								<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{pricingData?.button.text}
+								</Button>
+								{/* </RouteLink> */}
 							</div>
 						</div>
 
@@ -242,9 +244,11 @@ class OrderSummary extends React.Component {
 								</div>
 							</div>
 							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<RouteLink to={'/auth/register'}>
-									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-								</RouteLink>
+								{/* <RouteLink to={'/auth/register'}> */}
+								<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{pricingData?.button.text}
+								</Button>
+								{/* </RouteLink> */}
 							</div>
 						</div>
 

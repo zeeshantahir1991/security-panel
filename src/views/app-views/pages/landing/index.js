@@ -13,27 +13,9 @@ import {
 import { Link as RouteLink } from 'react-router-dom';
 import { pricingData } from './pricingData';
 import utils from 'utils';
+import { AuthHeader } from "../../../auth-views/components/AuthHeader"
+import { AuthFooter } from "../../../auth-views/components/AuthFooter"
 
-const { Header } = Layout;
-const menuItem = [
-	{
-		title: "About Us",
-		path: "/"
-	},
-
-	{
-		title: "Solutions",
-		path: "/"
-	},
-	{
-		title: "Contact Us",
-		path: "/"
-	},
-	{
-		title: "FAQ's",
-		path: "/"
-	}
-]
 
 const { useBreakpoint } = Grid;
 
@@ -41,14 +23,9 @@ class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			collapsed: false,
 		};
 	}
-	toggleCollapsed = () => {
-		this.setState({
-			collapsed: !this.state.collapsed,
-		});
-	};
+
 	priceDetail = (data) => {
 		this.props.history.push({
 			pathname: data.button.path,
@@ -61,88 +38,7 @@ class Home extends React.Component {
 		// console.log('isMobile', isMobile)
 		return (
 			<div style={{ backgroundColor: 'white' }}>
-				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
-					<Col xs={0} sm={0} md={24} lg={24}>
-						<Header className={`app-header `} >
-							<div className="nav-left logo">
-								<RouteLink to={'/'}>
-
-									<img style={{ height: 70, width: 200 }} src={'/img/logo1.png'} alt={`logo`} />
-								</RouteLink>
-							</div>
-							<div className="nav-right">
-								<Menu mode="horizontal">
-									{menuItem.map((el, i) => {
-										return (
-											<Menu.Item>
-												<RouteLink to={el.path}>
-													<span>
-														{el.title}
-													</span>
-												</RouteLink>
-											</Menu.Item>
-										);
-									})}
-									<Menu.Item>
-										<RouteLink to={'/auth/login'}>
-											<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50 }} type="primary">
-												Login
-								            </Button>
-										</RouteLink>
-									</Menu.Item>
-								</Menu>
-							</div>
-						</Header>
-					</Col>
-				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center' }}>
-					<Col xs={24} sm={24} md={0} lg={0}>
-						<Header className={`app-header `} >
-							<div className={'logo'}>
-								<RouteLink to={'/'}>
-
-									<img style={{ height: 50, width: 150 }} src={'/img/logo1.png'} alt={`logo`} />
-								</RouteLink>
-							</div>
-							<div className="nav-right" style={{ alignSelf: 'center' }}>
-								<Button type="secondary" onClick={this.toggleCollapsed}>
-									{React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-								</Button>
-							</div>
-
-						</Header>
-					</Col>
-				</Row>
-				{this.state.collapsed ?
-					<Row>
-						<Col xs={24} sm={24} md={0} lg={0} style={{ backgroundColor: 'white', position: 'fixed', zIndex: 1, width: '100%' }}>
-							<div className="nav-center" style={{ alignSelf: 'center', marginTop: 70 }}>
-								<Menu mode="vertical" style={{ textAlign: 'center' }}>
-									{menuItem.map((el, i) => {
-										return (
-											<Menu.Item>
-												<RouteLink to={el.path}>
-													<span>
-														{el.title}
-													</span>
-												</RouteLink>
-											</Menu.Item>
-										);
-									})}
-									<Menu.Item>
-										<RouteLink to={'/auth/login'}>
-											<span style={{ color: '#3f51b5' }}>
-												Login
-										    </span>
-										</RouteLink>
-									</Menu.Item>
-								</Menu>
-							</div>
-
-						</Col>
-					</Row>
-					: null
-				}
+				<AuthHeader />
 				<Row style={{ justifyContent: 'center' }}>
 					<Col xs={0} sm={0} md={24} lg={24}>
 						<img style={{ width: '100%', height: '100%' }} src={'/img/banner1.jpg'} alt={`banner`} />
@@ -151,7 +47,7 @@ class Home extends React.Component {
 						</div>
 					</Col>
 				</Row>
-				<Row style={this.state.collapsed ? { justifyContent: 'center', textAlign: 'center' } : { justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
+				<Row style={{ justifyContent: 'center', textAlign: 'center', marginTop: 50 }}>
 					<Col xs={24} sm={24} md={0} lg={0}>
 						<img style={{ width: '100%', height: '100%' }} src={'/img/banner1.jpg'} alt={`banner`} />
 						<div className="centered">
@@ -387,34 +283,7 @@ class Home extends React.Component {
 						</div>
 					</Col>
 				</Row> */}
-				<Row style={{ justifyContent: 'center', textAlign: 'center', backgroundColor: '#737373' }}>
-					<Col xs={0} sm={0} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50 }}>
-						<span style={{ color: 'white' }}>
-							Email : sales@guardspur.com <br />
-						Tel  : +344 2935 9363 <br />
-						WhatsApp: +34333911347 <br /> <br />
-						© Guardspur 2020 All Rights Reserved
-					</span>
-					</Col>
-					<Col xs={0} sm={0} md={12} lg={12} style={{ marginTop: 50, marginBottom: 50, alignSelf: 'center' }}>
-						<img style={{ width: 50, height: 50 }} src={'/img/facebook.png'} alt={`facebook`} />
-						<img style={{ width: 50, height: 50, marginLeft: 50 }} src={'/img/linkedin.png'} alt={`linkedin`} />
-					</Col>
-				</Row>
-				<Row style={{ justifyContent: 'center', textAlign: 'center', backgroundColor: '#737373' }}>
-					<Col xs={10} sm={10} md={0} lg={0} style={{ marginTop: 50, marginBottom: 50 }}>
-						<span style={{ color: 'white', fontSize: 10 }}>
-							Email : sales@guardspur.com <br />
-						Tel  : +344 2935 9363 <br />
-						WhatsApp: +34333911347 <br /> <br />
-						© Guardspur 2020 All Rights Reserved
-					</span>
-					</Col>
-					<Col xs={10} sm={10} md={0} lg={0} style={{ marginTop: 50, marginBottom: 50, alignSelf: 'center' }}>
-						<img style={{ width: 25, height: 25 }} src={'/img/facebook.png'} alt={`facebook`} />
-						<img style={{ width: 25, height: 25, marginLeft: 25 }} src={'/img/linkedin.png'} alt={`linkedin`} />
-					</Col>
-				</Row>
+				<AuthFooter />
 			</div>
 		)
 	}

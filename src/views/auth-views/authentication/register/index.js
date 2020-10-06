@@ -4,7 +4,8 @@ import { Form, Avatar, Button, Input, DatePicker, Row, Col, message, Upload, Car
 import { ROW_GUTTER } from 'constants/ThemeConstant';
 import { UserOutlined } from '@ant-design/icons';
 import Flex from 'components/shared-components/Flex'
-
+import { AuthHeader } from "./../../components/AuthHeader"
+import { AuthFooter } from "./../../components/AuthFooter"
 
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -86,14 +87,15 @@ export class RegisterOne extends React.Component {
 
 		return (
 			<div style={backgroundStyle}>
+				<AuthHeader />
 				<div className="container d-flex flex-column justify-content-center">
 					<Row justify="center" style={{ paddingTop: 100, paddingBottom: 100 }}>
 						<Col xs={20} sm={20} md={20} lg={20}>
 
 							{/* <div className="my-2"> */}
 							<div className="text-center">
-								<img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" />
-								<p className="text-muted">Registration Form</p>
+								{/* <img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" /> */}
+								<h1 className="text-bold">Registration Form</h1>
 							</div>
 							<Row justify="center" style={{ marginBottom: 25, marginTop: 25 }}>
 
@@ -117,6 +119,7 @@ export class RegisterOne extends React.Component {
 						</Col>
 					</Row>
 				</div>
+				<AuthFooter />
 			</div>
 		)
 	}

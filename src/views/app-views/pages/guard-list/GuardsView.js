@@ -12,7 +12,7 @@ import {
 	GlobalOutlined
 } from '@ant-design/icons';
 
-export class UserView extends Component {
+export class GuardsView extends Component {
 	render() {
 		const { data, visible, close} = this.props;
 		return (
@@ -79,4 +79,4 @@ export class UserView extends Component {
 	}
 }
 
-export default UserView
+export default GuardsView

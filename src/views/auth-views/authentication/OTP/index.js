@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Card, Row, Col, Form, Input, Button, message } from "antd";
 import { MailOutlined } from '@ant-design/icons';
+import { AuthHeader } from "./../../components/AuthHeader"
+import { AuthFooter } from "./../../components/AuthFooter"
 
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -23,6 +25,7 @@ const OTP = () => {
 
 	return (
 		<div className="h-100" style={backgroundStyle}>
+			<AuthHeader />
 			<div className="container d-flex flex-column justify-content-center h-100">
 				<Row justify="center">
 					<Col xs={20} sm={20} md={20} lg={9}>
@@ -95,6 +98,7 @@ const OTP = () => {
 					</Col>
 				</Row>
 			</div>
+			<AuthFooter />
 		</div>
 	)
 }

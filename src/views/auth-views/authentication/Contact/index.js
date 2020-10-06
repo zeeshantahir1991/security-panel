@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Card, Row, Col, Form, Input, Button, message, Checkbox } from "antd";
 import { BuildOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-
+import { AuthHeader } from "./../../components/AuthHeader"
+import { AuthFooter } from "./../../components/AuthFooter"
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
@@ -23,16 +24,17 @@ const Contact = () => {
 
 	return (
 		<div className="h-100" style={backgroundStyle}>
+			<AuthHeader />
 			<div className="container d-flex flex-column justify-content-center h-100">
-			<Row justify="center" style={{ paddingTop: 100, paddingBottom: 100 }}>
+				<Row justify="center" style={{ paddingTop: 100, paddingBottom: 100 }}>
 					<Col xs={20} sm={20} md={20} lg={12}>
-
+						<Col xs={24} sm={24} md={24} lg={24}>
+							<h1 style={{ textAlign: 'center' }}>Contact Form</h1>
+							{/* <div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div> */}
+						</Col>
 						<Form style={{ marginTop: 25 }} form={form} layout="vertical" name="forget-password" onFinish={onSend}>
 							<Row className="card" gutter={16} style={{ borderRadius: 10, padding: 20, backgroundColor: 'white' }}>
-								<Col xs={24} sm={24} md={24} lg={24}>
-									<h2 style={{ textAlign: 'center' }}>Contact Form</h2>
-									<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div>
-								</Col>
+
 								<Col xs={24} sm={24} md={8} lg={8}>
 									<Form.Item
 										name="name"
@@ -114,6 +116,7 @@ const Contact = () => {
 					</Col>
 				</Row>
 			</div>
+			<AuthFooter />
 		</div>
 	)
 }

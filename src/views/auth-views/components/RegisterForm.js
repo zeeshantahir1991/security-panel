@@ -6,6 +6,8 @@ import { signUp, showAuthMessage, showLoading, hideAuthMessage } from 'redux/act
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
 import { Card, Row, Col, Upload, message } from "antd";
+import { componentStyles } from "./../authentication/register/styles"
+import { AppStyles } from './../../../assets/styles/index';
 
 
 const rules = {
@@ -126,7 +128,7 @@ const rules = {
 }
 
 export const RegisterForm = (props) => {
-
+	const companyAvatarUrl = "/img/avatars/company-logo.jpeg"
 	const { signUp, showLoading, token, loading, redirect, message, showMessage, hideAuthMessage, allowRedirect, location } = props
 	const [form] = Form.useForm();
 	let history = useHistory();
@@ -172,10 +174,22 @@ export const RegisterForm = (props) => {
 
 			<Form form={form} layout="vertical" name="register-form" onFinish={onSignUp}>
 
-				<Row className="card" gutter={16} style={{ borderRadius: 10, padding: 20, backgroundColor: 'white' }}>
-					<Col xs={24} sm={24} md={24} lg={24}>
-						<h2>Company Info</h2>
-						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div>
+				<Row className="card" gutter={16} style={componentStyles.companyInfoContainer}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.flexDirectionRow}>
+						<Avatar size={50} src={companyAvatarUrl} icon={<UserOutlined />} />
+						<div style={AppStyles.alignSelfCenter}>
+							<div style={AppStyles.marginLeft30}>
+								<h2>Company Info</h2>
+
+							</div>
+						</div>
+
+					</Col>
+					<Col xs={24} sm={24} md={24} lg={24} >
+						<div style={AppStyles.marginTop20Bottom40}>
+							<div style={AppStyles.horizontallLineWidth100}>
+							</div>
+						</div>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
@@ -184,7 +198,7 @@ export const RegisterForm = (props) => {
 							rules={rules.company}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<BuildOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<BuildOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -194,7 +208,7 @@ export const RegisterForm = (props) => {
 							rules={rules.regno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -204,7 +218,7 @@ export const RegisterForm = (props) => {
 							rules={rules.vatno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -214,7 +228,7 @@ export const RegisterForm = (props) => {
 							rules={rules.refno}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<NumberOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -224,7 +238,7 @@ export const RegisterForm = (props) => {
 							rules={rules.expdate}
 							hasFeedback
 						>
-							<Input type="date" style={{ borderColor: '#b4a19d' }} />
+							<Input type="date" style={componentStyles.borderColor} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -234,14 +248,26 @@ export const RegisterForm = (props) => {
 							rules={rules.controlroom}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<PhoneOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 				</Row>
-				<Row className="card" gutter={16} style={{ borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: 'white' }}>
-					<Col xs={24} sm={24} md={24} lg={24}>
-						<h2>Personal Info</h2>
-						<div style={{ marginTop: 20, marginBottom: 40, width: '100%', height: 0.5, backgroundColor: '#b4a19d' }}></div>
+				<Row className="card" gutter={16} style={componentStyles.personalInfoContainer}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.flexDirectionRow}>
+						<Avatar size={50} icon={<UserOutlined />} />
+						<div style={AppStyles.alignSelfCenter}>
+							<div style={AppStyles.marginLeft30}>
+								<h2>Personal Info</h2>
+
+							</div>
+						</div>
+
+					</Col>
+					<Col xs={24} sm={24} md={24} lg={24} >
+						<div style={AppStyles.marginTop20Bottom40}>
+							<div style={AppStyles.horizontallLineWidth100}>
+							</div>
+						</div>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
@@ -250,7 +276,7 @@ export const RegisterForm = (props) => {
 							rules={rules.firstname}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<UserOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -260,7 +286,7 @@ export const RegisterForm = (props) => {
 							rules={rules.lastname}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<UserOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -270,7 +296,7 @@ export const RegisterForm = (props) => {
 							rules={rules.email}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<MailOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<MailOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -281,7 +307,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address1}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<HomeOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -291,7 +317,7 @@ export const RegisterForm = (props) => {
 							rules={rules.address2}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<HomeOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<HomeOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -301,7 +327,7 @@ export const RegisterForm = (props) => {
 							rules={rules.city}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<CompassOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -311,7 +337,7 @@ export const RegisterForm = (props) => {
 							rules={rules.postcode}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<CompassOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -321,7 +347,7 @@ export const RegisterForm = (props) => {
 							rules={rules.phone}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<PhoneOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -331,7 +357,7 @@ export const RegisterForm = (props) => {
 							rules={rules.mobile}
 							hasFeedback
 						>
-							<Input style={{ borderColor: '#b4a19d' }} prefix={<MobileOutlined />} />
+							<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -357,7 +383,7 @@ export const RegisterForm = (props) => {
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button style={{ borderRadius: 10, color: '#ff4040', borderWidth: 1, borderStyle: 'solid', borderColor: '#ff4040' }} htmlType="submit" block loading={loading}>
+							<Button style={componentStyles.signUpButton} htmlType="submit" block loading={loading}>
 								Cancel
 					        </Button>
 						</Form.Item>
@@ -366,7 +392,7 @@ export const RegisterForm = (props) => {
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button onClick={goToSummary} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} htmlType="submit" block loading={loading}>
+							<Button onClick={goToSummary} style={componentStyles.signUpButton} htmlType="submit" block loading={loading}>
 								Sign Up
 					        </Button>
 						</Form.Item>

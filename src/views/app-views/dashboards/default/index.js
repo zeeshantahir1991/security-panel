@@ -171,7 +171,7 @@ export const DefaultDashboard = () => {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col xs={24} sm={24} md={24} lg={24}>
+        <Col xs={0} sm={0} md={24} lg={24}>
           <Card title="Filters" style={AppStyles.paddingBottom20}>
             <div style={AppStyles.flexDirectionRow}>
 
@@ -256,6 +256,94 @@ export const DefaultDashboard = () => {
             </div>
           </Card>
         </Col>
+        <Col xs={24} sm={24} md={0} lg={0}>
+          <Card title="Filters" style={AppStyles.paddingBottom20}>
+            <div style={AppStyles.justifyContentCenter}>
+
+              <Select
+                showSearch
+                style={componentStyles.selectStyleSM}
+                bordered={false}
+                placeholder="Employment Type"
+                optionFilterProp="children"
+                onChange={onChange}
+                // onFocus={onFocus}
+                // onBlur={onBlur}
+                // onSearch={onSearch}
+                filterOption={(input, option) =>
+                  option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+              >
+                <Option value="jack">Employment Type 1</Option>
+                <Option value="lucy">Employment Type 2</Option>
+                <Option value="tom">Employment Type 3</Option>
+              </Select>
+
+
+              <Select
+                showSearch
+                style={componentStyles.selectStyleSM}
+                bordered={false}
+                placeholder="Subcontractor Name"
+                optionFilterProp="children"
+                onChange={onChange}
+                // onFocus={onFocus}
+                // onBlur={onBlur}
+                // onSearch={onSearch}
+                filterOption={(input, option) =>
+                  option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+              >
+                <Option value="jack">ABC</Option>
+                <Option value="lucy">DEF</Option>
+                <Option value="tom">GHI</Option>
+              </Select>
+
+              <Select
+                showSearch
+                style={componentStyles.selectStyleSM}
+                bordered={false}
+                placeholder="Position"
+                optionFilterProp="children"
+                onChange={onChange}
+                // onFocus={onFocus}
+                // onBlur={onBlur}
+                // onSearch={onSearch}
+                filterOption={(input, option) =>
+                  option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+              >
+                <Option value="jack">SG</Option>
+                <Option value="lucy">SG</Option>
+                <Option value="tom">SG</Option>
+              </Select>
+
+              <Select
+                showSearch
+                style={componentStyles.selectStyleSM}
+                bordered={false}
+                placeholder="Status"
+                optionFilterProp="children"
+                onChange={onChange}
+                // onFocus={onFocus}
+                // onBlur={onBlur}
+                // onSearch={onSearch}
+                filterOption={(input, option) =>
+                  option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }
+              >
+                <Option value="jack">Active</Option>
+                <Option value="lucy">Inactive</Option>
+              </Select>
+              <div style={AppStyles.marginLeftRight20}>
+                <div style={AppStyles.marginTop20}>
+                  <SearchInput />
+                </div>
+              </div>
+            </div>
+          </Card>
+        </Col>
+
         <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
           <Card title="Guards List" extra={cardDropdown(latestTransactionOption)}>
             <GuardsList />

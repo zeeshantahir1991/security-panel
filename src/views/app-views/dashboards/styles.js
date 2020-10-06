@@ -17,6 +17,15 @@ export const componentStyles = {
         borderRadius: 10,
         marginLeft: 20,
         marginRight: 20
+    },
+
+    selectStyleSM: {
+        width: '100%',
+        borderWidth: 1,
+        borderColor: AppColors.martini,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginTop: 20
     }
 
 }

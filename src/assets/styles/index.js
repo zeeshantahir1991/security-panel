@@ -199,6 +199,10 @@ export const AppStyles = {
         marginRight: 10,
         marginLeft: 10
     },
+    marginLeftRight20: {
+        marginRight: 20,
+        marginLeft: 20
+    },
     marginLeftRight5: {
         marginRight: 5,
         marginLeft: 5
@@ -403,6 +407,9 @@ export const AppStyles = {
     //GuardSpur
     horizontallLineWidth100: { width: '100%', height: 0.5, backgroundColor: AppColors.martini },
     borderColorMartini: { borderColor: AppColors.martini },
+    paddingBottom20: {
+        paddingBottom: 20
+    }
 
 
 };

@@ -171,9 +171,10 @@ export const DefaultDashboard = () => {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col xs={24} sm={24} md={24} lg={7}>
-          <Card title="Filters">
-            <div className="mt-3">
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Card title="Filters" style={AppStyles.paddingBottom20}>
+            <div style={AppStyles.flexDirectionRow}>
+
               <Select
                 showSearch
                 style={componentStyles.selectStyle}
@@ -192,8 +193,8 @@ export const DefaultDashboard = () => {
                 <Option value="lucy">Employment Type 2</Option>
                 <Option value="tom">Employment Type 3</Option>
               </Select>
-            </div>
-            <div className="mt-3">
+
+
               <Select
                 showSearch
                 style={componentStyles.selectStyle}
@@ -212,8 +213,7 @@ export const DefaultDashboard = () => {
                 <Option value="lucy">DEF</Option>
                 <Option value="tom">GHI</Option>
               </Select>
-            </div>
-            <div className="mt-3">
+
               <Select
                 showSearch
                 style={componentStyles.selectStyle}
@@ -232,8 +232,7 @@ export const DefaultDashboard = () => {
                 <Option value="lucy">SG</Option>
                 <Option value="tom">SG</Option>
               </Select>
-            </div>
-            <div className="mt-3">
+
               <Select
                 showSearch
                 style={componentStyles.selectStyle}
@@ -251,14 +250,14 @@ export const DefaultDashboard = () => {
                 <Option value="jack">Active</Option>
                 <Option value="lucy">Inactive</Option>
               </Select>
+              <div style={AppStyles.marginLeftRight20}>
+                <SearchInput />
+              </div>
             </div>
           </Card>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={17} style={{ justifyContent: 'center' }}>
+        <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
           <Card title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-            <div style={{ width: 300, marginBottom: 25 }}>
-              <SearchInput />
-            </div>
             <GuardsList />
           </Card>
         </Col>

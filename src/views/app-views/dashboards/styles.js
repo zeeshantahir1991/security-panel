@@ -14,7 +14,9 @@ export const componentStyles = {
         borderWidth: 1,
         borderColor: AppColors.martini,
         borderStyle: 'solid',
-        borderRadius: 10
+        borderRadius: 10,
+        marginLeft: 20,
+        marginRight: 20
     }
 
 }

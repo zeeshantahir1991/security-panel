@@ -7,12 +7,12 @@ export const componentStyles = {
         textAlign: 'center'
     },
 
-    borderColor: { borderColor: AppColors.martini },
+    borderColor: { borderColor: AppColors.alto },
 
     selectStyle: {
         width: '100%',
         borderWidth: 1,
-        borderColor: AppColors.martini,
+        borderColor: AppColors.alto,
         borderStyle: 'solid',
         borderRadius: 10,
         marginLeft: 20,
@@ -22,7 +22,7 @@ export const componentStyles = {
     selectStyleSM: {
         width: '100%',
         borderWidth: 1,
-        borderColor: AppColors.martini,
+        borderColor: AppColors.alto,
         borderStyle: 'solid',
         borderRadius: 10,
         marginTop: 20

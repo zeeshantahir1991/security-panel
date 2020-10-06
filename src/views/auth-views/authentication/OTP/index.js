@@ -3,6 +3,7 @@ import { Card, Row, Col, Form, Input, Button, message } from "antd";
 import { MailOutlined } from '@ant-design/icons';
 import { AuthHeader } from "./../../components/AuthHeader"
 import { AuthFooter } from "./../../components/AuthFooter"
+import { componentStyles } from '../login-1/styles';
 
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -53,7 +54,7 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#b4a19d' }} placeholder="OTP" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="OTP" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -69,7 +70,7 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#b4a19d' }} placeholder="New Password" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="New Password" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -85,10 +86,10 @@ const OTP = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#b4a19d' }} placeholder="Confirm Password" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="Confirm Password" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item>
-											<Button loading={loading} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4', marginTop: 25 }} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+											<Button loading={loading} style={componentStyles.signInButton} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
 										</Form.Item>
 									</Form>
 								</Col>

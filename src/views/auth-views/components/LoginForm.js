@@ -16,6 +16,8 @@ import {
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
 import { Link as RouteLink } from 'react-router-dom';
+import { componentStyles } from '../authentication/login-1/styles';
+import { AppStyles } from "./../../../assets/styles/index"
 
 export const LoginForm = props => {
 	let history = useHistory();
@@ -123,7 +125,7 @@ export const LoginForm = props => {
 							message: 'Please enter a validate email!'
 						}
 					]}>
-					<Input style={{ borderColor: '#b4a19d' }} prefix={<MailOutlined />} />
+					<Input style={AppStyles.borderColorAlto} prefix={<MailOutlined />} />
 				</Form.Item>
 				<Form.Item
 					name="password"
@@ -150,10 +152,10 @@ export const LoginForm = props => {
 						}
 					]}
 				>
-					<Input.Password style={{ borderColor: '#b4a19d' }} prefix={<LockOutlined />} />
+					<Input.Password style={AppStyles.borderColorAlto} prefix={<LockOutlined />} />
 				</Form.Item>
 				<Form.Item>
-					<Button style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4', marginTop: 25 }} htmlType="submit" block loading={loading}>
+					<Button style={componentStyles.signInButton} htmlType="submit" block loading={loading}>
 						Sign In
 					</Button>
 				</Form.Item>

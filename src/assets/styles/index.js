@@ -405,8 +405,8 @@ export const AppStyles = {
 
 
     //GuardSpur
-    horizontallLineWidth100: { width: '100%', height: 0.5, backgroundColor: AppColors.martini },
-    borderColorMartini: { borderColor: AppColors.martini },
+    horizontallLineWidth100: { width: '100%', height: 0.5, backgroundColor: AppColors.alto },
+    borderColorAlto: { borderColor: AppColors.alto },
     paddingBottom20: {
         paddingBottom: 20
     }

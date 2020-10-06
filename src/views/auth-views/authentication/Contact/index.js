@@ -3,6 +3,7 @@ import { Card, Row, Col, Form, Input, Button, message, Checkbox } from "antd";
 import { BuildOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import { AuthHeader } from "./../../components/AuthHeader"
 import { AuthFooter } from "./../../components/AuthFooter"
+import { componentStyles } from '../login-1/styles';
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
@@ -42,7 +43,7 @@ const Contact = () => {
 										// rules={rules.firstname}
 										hasFeedback
 									>
-										<Input style={{ borderColor: '#b4a19d' }} prefix={<UserOutlined />} />
+										<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
 									</Form.Item>
 								</Col>
 
@@ -53,7 +54,7 @@ const Contact = () => {
 										// rules={rules.email}
 										hasFeedback
 									>
-										<Input style={{ borderColor: '#b4a19d' }} prefix={<MailOutlined />} />
+										<Input style={componentStyles.borderColor} prefix={<MailOutlined />} />
 									</Form.Item>
 								</Col>
 
@@ -64,7 +65,7 @@ const Contact = () => {
 										// rules={rules.lastname}
 										hasFeedback
 									>
-										<Input style={{ borderColor: '#b4a19d' }} prefix={<MobileOutlined />} />
+										<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 									</Form.Item>
 								</Col>
 								<Col xs={24} sm={24} md={24} lg={24}>
@@ -75,7 +76,7 @@ const Contact = () => {
 										hasFeedback
 									>
 										{/* <Checkbox onChange={onChange}>Checkbox</Checkbox> */}
-										<Checkbox style={{ borderColor: '#b4a19d' }} checked>List of Subscription Packages</Checkbox>
+										<Checkbox style={componentStyles.borderColor} checked>List of Subscription Packages</Checkbox>
 									</Form.Item>
 								</Col>
 								<Col xs={24} sm={24} md={24} lg={24}>
@@ -85,7 +86,7 @@ const Contact = () => {
 										// rules={rules.address1}
 										hasFeedback
 									>
-										<Input.TextArea placeholder="Message" style={{ borderColor: '#b4a19d' }} />
+										<Input.TextArea placeholder="Message" style={componentStyles.borderColor} />
 									</Form.Item>
 								</Col>
 								<Col xs={24} sm={24} md={8} lg={8}>
@@ -95,14 +96,14 @@ const Contact = () => {
 										// rules={rules.address1}
 										hasFeedback
 									>
-										<Input placeholder="Captcha" style={{ borderColor: '#b4a19d' }} />
+										<Input placeholder="Captcha" style={componentStyles.borderColor} />
 									</Form.Item>
 								</Col>
 
 								<Col xs={24} sm={24} md={24} lg={24}>
 
 									<Form.Item>
-										<Button loading={loading} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4', marginTop: 25 }} htmlType="submit" block>{loading ? 'Submiting' : 'Submit'}</Button>
+										<Button loading={loading} style={componentStyles.signInButton} htmlType="submit" block>{loading ? 'Submiting' : 'Submit'}</Button>
 									</Form.Item>
 								</Col>
 

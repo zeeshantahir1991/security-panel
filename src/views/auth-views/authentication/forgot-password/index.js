@@ -4,6 +4,7 @@ import { MailOutlined } from '@ant-design/icons';
 import { Link as RouteLink } from 'react-router-dom';
 import { AuthHeader } from "./../../components/AuthHeader"
 import { AuthFooter } from "./../../components/AuthFooter"
+import { componentStyles } from '../login-1/styles';
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
@@ -53,11 +54,11 @@ const ForgotPassword = () => {
 													}
 												]
 											}>
-											<Input style={{ borderColor: '#b4a19d' }} placeholder="Email Address" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="Email Address" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item>
 											<RouteLink to={'/auth/otp'}>
-												<Button loading={loading} style={{ borderRadius: 10, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
+												<Button loading={loading} style={componentStyles.signInButton} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>
 											</RouteLink>
 										</Form.Item>
 									</Form>

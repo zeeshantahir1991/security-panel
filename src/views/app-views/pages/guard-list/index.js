@@ -163,7 +163,7 @@ export class GuardsList extends Component {
 
 			{
 				title: 'Status',
-				dataIndex: 'status',				
+				dataIndex: 'status',
 				render: status => (
 					<Tag className="text-capitalize" color={status === 'active' ? 'cyan' : 'red'}>{status}</Tag>
 				),
@@ -188,7 +188,7 @@ export class GuardsList extends Component {
 		];
 		return (
 			<>
-				<Table columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }}/>
+				<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
 				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 			</>
 		)

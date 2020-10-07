@@ -5,7 +5,7 @@ import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import { AppColors } from 'assets/styles/colors';
 import { AppStyles } from 'assets/styles';
 
-const StatisticWidget = ({ title, value, status, subtitle, prefix }) => {
+const StatisticWidget = ({ title, value, status, subtitle, prefix, backgroundColor }) => {
 	return (
 		<Card>
 			{title && <h4 className="mb-0">{title}</h4>}
@@ -14,7 +14,9 @@ const StatisticWidget = ({ title, value, status, subtitle, prefix }) => {
 				<div>
 					<div className="" style={AppStyles.flexDirectionRow}>
 						<div style={{ flex: 1 }}>
-							<img style={{ height: 50, width: 50 }} src={'/img/bar-graph.png'} alt={`stats`} />
+							<div style={{ height: 70, width: 70, backgroundColor: backgroundColor, textAlign: 'center' }}>
+								<img style={{ height: 50, width: 50, marginTop: 10 }} src={'/img/bar-graph.png'} alt={`stats`} />
+							</div>
 						</div>
 						<div style={{ alignSelf: 'center' }}>
 							<h1 className=" font-weight-bold" style={{ color: AppColors.cornFlowerBlue }}>{value}</h1>

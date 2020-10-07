@@ -29,18 +29,21 @@ export const AnnualStatisticData = [
 	{
 		title: 'Expired SIA Licence',
 		value:'20', 
+		backgroundColor: "#60b0f4"
 		// status: -11.4,
 		// subtitle: `Compare to last year (2019)`
 	},
 	{
 		title: 'Non Compilant Guards',
 		value:'20', 
+		backgroundColor: "#A6D34E"
 		// status: 8.2,
 		// subtitle: `Compare to last year (2019)`
 	},
 	{
 		title: 'Missing Information',
-		value:'20', 
+		value:'20',
+		backgroundColor: "#EF4545" 
 		// status: 0.7,
 		// subtitle: `Compare to last year (2019)`
 	}

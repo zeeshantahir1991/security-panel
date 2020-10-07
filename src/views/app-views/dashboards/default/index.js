@@ -162,6 +162,7 @@ export const DefaultDashboard = () => {
                     value={elm.value}
                     status={elm.status}
                     subtitle={elm.subtitle}
+                    backgroundColor= {elm.backgroundColor}
                   />
                 </Col>
               ))

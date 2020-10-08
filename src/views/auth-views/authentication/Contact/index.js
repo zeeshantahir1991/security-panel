@@ -68,17 +68,14 @@ const Contact = () => {
 										<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 									</Form.Item>
 								</Col>
-								<Col xs={24} sm={24} md={24} lg={24}>
+								{/* <Col xs={24} sm={24} md={24} lg={24}>
 									<Form.Item
-										// name="message"
-										// label="Message"
-										// rules={rules.address1}
+								
 										hasFeedback
 									>
-										{/* <Checkbox onChange={onChange}>Checkbox</Checkbox> */}
 										<Checkbox style={componentStyles.borderColor} checked>List of Subscription Packages</Checkbox>
 									</Form.Item>
-								</Col>
+								</Col> */}
 								<Col xs={24} sm={24} md={24} lg={24}>
 									<Form.Item
 										name="message"
@@ -89,16 +86,7 @@ const Contact = () => {
 										<Input.TextArea placeholder="Message" style={componentStyles.borderColor} />
 									</Form.Item>
 								</Col>
-								<Col xs={24} sm={24} md={8} lg={8}>
-									<Form.Item
-										name="message"
-										// label="Message"
-										// rules={rules.address1}
-										hasFeedback
-									>
-										<Input placeholder="Captcha" style={componentStyles.borderColor} />
-									</Form.Item>
-								</Col>
+							
 
 								<Col xs={24} sm={24} md={24} lg={24}>
 

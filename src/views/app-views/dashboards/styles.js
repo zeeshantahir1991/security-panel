@@ -15,7 +15,6 @@ export const componentStyles = {
         borderColor: AppColors.alto,
         borderStyle: 'solid',
         borderRadius: 10,
-        marginLeft: 20,
         marginRight: 20
     },
 
@@ -26,6 +25,8 @@ export const componentStyles = {
         borderStyle: 'solid',
         borderRadius: 10,
         marginTop: 20
-    }
+    },
+    searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue }
+
 
 }

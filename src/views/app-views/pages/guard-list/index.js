@@ -1,17 +1,74 @@
 import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col } from 'antd';
-import { EyeOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu } from 'antd';
+import {
+	EyeOutlined, DeleteOutlined,
+	UserAddOutlined,
+	FileExcelOutlined,
+	PrinterOutlined,
+	PlusOutlined,
+	EllipsisOutlined,
+	StopOutlined,
+	ReloadOutlined
+} from '@ant-design/icons';
 import moment from 'moment';
 import GuardsView from './GuardsView';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { AppStyles } from "./../../../../assets/styles";
+import { componentStyles } from "./../../dashboards/styles";
+import SearchInput from "./../../../../components/layout-components/NavSearch/SearchInput.js"
 import userData from "assets/data/user-list.data.json";
+
+const { Option } = Select;
+
+const latestTransactionOption = (
+	<Menu>
+		<Menu.Item key="0">
+			<span>
+				<div className="d-flex align-items-center">
+					<ReloadOutlined />
+					<span className="ml-2">Refresh</span>
+				</div>
+			</span>
+		</Menu.Item>
+		<Menu.Item key="1">
+			<span>
+				<div className="d-flex align-items-center">
+					<PrinterOutlined />
+					<span className="ml-2">Print</span>
+				</div>
+			</span>
+		</Menu.Item>
+		<Menu.Item key="12">
+			<span>
+				<div className="d-flex align-items-center">
+					<FileExcelOutlined />
+					<span className="ml-2">Export</span>
+				</div>
+			</span>
+		</Menu.Item>
+	</Menu>
+);
+
+const cardDropdown = (menu) => (
+	<Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
+		<a href="/#" className="text-gray font-size-lg" onClick={e => e.preventDefault()}>
+			<EllipsisOutlined />
+		</a>
+	</Dropdown>
+)
 
 export class GuardsList extends Component {
 
 	state = {
 		users: userData,
 		userProfileVisible: false,
-		selectedUser: null
+		selectedUser: null,
+		search: {
+			empType: "",
+			subcontractName: "",
+			position: "",
+			status: "",
+		}
 	}
 
 	// deleteUser = userId => {
@@ -34,6 +91,34 @@ export class GuardsList extends Component {
 	// 		selectedUser: null
 	// });
 	// }
+	handleChange = (type, value) => {
+		console.log(`selected ${value}`);
+		const { search } = this.state;
+		this.setState({
+			search: {
+				...search,
+				[type]: value
+			}
+		})
+
+	}
+	searchInTable = () => {
+		const { users, search } = this.state;
+		let empType = search.empType
+		let subcontractName = search.subcontractName
+		let position = search.position
+		let status = search.status
+
+		let filteredArray = []
+		filteredArray = users.filter(element => {
+			if (empType && subcontractName) {
+				return element.empType == empType && element.subcontractName == subcontractName
+			}
+
+		});
+		this.setState({ users: filteredArray })
+
+	}
 
 	render() {
 		const { users, userProfileVisible, selectedUser } = this.state;
@@ -188,7 +273,187 @@ export class GuardsList extends Component {
 		];
 		return (
 			<>
-				<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
+				<Row gutter={16}>
+					<Col xs={0} sm={0} md={24} lg={24}>
+						<Card title="Filters" style={AppStyles.paddingBottom20}>
+							<div style={AppStyles.flexDirectionRow}>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Employment Type"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("empType", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="Employment Type 1">Employment Type 1</Option>
+									<Option value="Employment Type 2">Employment Type 2</Option>
+									<Option value="Employment Type 3">Employment Type 3</Option>
+								</Select>
+
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Subcontractor Name"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("subcontractName", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="ABC">ABC</Option>
+									<Option value="DEF">DEF</Option>
+									<Option value="GHI">GHI</Option>
+								</Select>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Position"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("position", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="SG">SG</Option>
+									<Option value="SG">SG</Option>
+									<Option value="SG">SG</Option>
+								</Select>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Status"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("status", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="active">Active</Option>
+									<Option value="active">Inactive</Option>
+								</Select>
+								<Button onClick={() => { this.searchInTable() }} style={componentStyles.searchButton} htmlType="submit" block>
+									Search
+					            </Button>
+							</div>
+						</Card>
+					</Col>
+					{/* <Col xs={24} sm={24} md={0} lg={0}>
+						<Card title="Filters" style={AppStyles.paddingBottom20}>
+							<div style={AppStyles.justifyContentCenter}>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Employment Type"
+									optionFilterProp="children"
+									onChange={onChange}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="jack">Employment Type 1</Option>
+									<Option value="lucy">Employment Type 2</Option>
+									<Option value="tom">Employment Type 3</Option>
+								</Select>
+
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Subcontractor Name"
+									optionFilterProp="children"
+									onChange={onChange}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="jack">ABC</Option>
+									<Option value="lucy">DEF</Option>
+									<Option value="tom">GHI</Option>
+								</Select>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Position"
+									optionFilterProp="children"
+									onChange={onChange}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="jack">SG</Option>
+									<Option value="lucy">SG</Option>
+									<Option value="tom">SG</Option>
+								</Select>
+
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Status"
+									optionFilterProp="children"
+									onChange={onChange}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="jack">Active</Option>
+									<Option value="lucy">Inactive</Option>
+								</Select>
+								<div style={AppStyles.marginLeftRight20}>
+									<div style={AppStyles.marginTop20}>
+										<SearchInput />
+									</div>
+								</div>
+							</div>
+						</Card>
+					</Col>
+					 */}
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
+						<Card title="Guards List" extra={cardDropdown(latestTransactionOption)}>
+							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
+						</Card>
+					</Col>
+				</Row>
+
 				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 			</>
 		)

@@ -35,14 +35,14 @@
     "email": "ronnie_vergas@infotech.io",
     "img": "/img/avatars/thumb-3.jpg",
     "position": "SG",
-    "status": "active",
+    "status": "inactive",
     "birthday": 1583107200,
     "phoneNumber": "+12-123-1234",
     "siaLicence": "890",
     "siaLicenceExpiry": 1583107200,
     "payRate": 11,
-    "empType": "Employment GHI",
-    "subcontractName": "ABC"
+    "empType": "Employment 1",
+    "subcontractName": "GHI"
 
   }
 ]

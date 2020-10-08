@@ -17,6 +17,7 @@ import { AppStyles } from "./../../../../assets/styles";
 import { componentStyles } from "./../../dashboards/styles";
 import SearchInput from "./../../../../components/layout-components/NavSearch/SearchInput.js"
 import userData from "assets/data/user-list.data.json";
+import Position from 'views/app-views/components/data-display/carousel/Position';
 
 const { Option } = Select;
 
@@ -104,15 +105,74 @@ export class GuardsList extends Component {
 	}
 	searchInTable = () => {
 		const { users, search } = this.state;
+		let userList = userData
 		let empType = search.empType
 		let subcontractName = search.subcontractName
 		let position = search.position
 		let status = search.status
 
 		let filteredArray = []
-		filteredArray = users.filter(element => {
-			if (empType && subcontractName) {
+		filteredArray = userList.filter(element => {
+			if (empType && subcontractName && position && status) {
+
+				return element.empType == empType && element.subcontractName == subcontractName && element.position == position && element.status == status
+			
+			} else if (empType && subcontractName && position) {
+
+				return element.empType == empType && element.subcontractName == subcontractName && element.position == position
+
+			} else if (empType && subcontractName && status) {
+
+				return element.empType == empType && element.subcontractName == subcontractName && element.status == status
+
+			} else if (subcontractName && position && status) {
+
+				return element.subcontractName == subcontractName && element.position == position && element.status == status
+
+			} else if (empType && position && status) {
+
+				return element.empType == empType && element.position == position && element.status == status
+
+			} else if (empType && subcontractName) {
+
 				return element.empType == empType && element.subcontractName == subcontractName
+
+			} else if (empType && position) {
+
+				return element.empType == empType && element.position == position
+
+			} else if (empType && status) {
+
+				return element.empType == empType && element.status == status
+
+			} else if (subcontractName && position) {
+
+				return element.subcontractName == subcontractName && element.position == position
+
+			} else if (subcontractName && status) {
+
+				return element.subcontractName == subcontractName && element.status == status
+
+			} else if (position && status) {
+
+				return element.position == position && element.status == status
+
+			} else if (empType) {
+
+				return element.empType == empType
+
+			} else if (subcontractName) {
+
+				return element.subcontractName == subcontractName
+
+			} else if (position) {
+
+				return element.position == position
+
+			} else if (status) {
+
+				return element.status == status
+
 			}
 
 		});
@@ -121,7 +181,7 @@ export class GuardsList extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser } = this.state;
+		const { users, userProfileVisible, selectedUser, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -139,7 +199,7 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 150,
+				width: 200,
 				fixed: 'left'
 			},
 			{
@@ -292,9 +352,9 @@ export class GuardsList extends Component {
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
 								>
-									<Option value="Employment Type 1">Employment Type 1</Option>
-									<Option value="Employment Type 2">Employment Type 2</Option>
-									<Option value="Employment Type 3">Employment Type 3</Option>
+									<Option value="Employment 1">Employment 1</Option>
+									<Option value="Employment 2">Employment 2</Option>
+									<Option value="Employment 3">Employment 3</Option>
 								</Select>
 
 
@@ -351,15 +411,19 @@ export class GuardsList extends Component {
 									}
 								>
 									<Option value="active">Active</Option>
-									<Option value="active">Inactive</Option>
+									<Option value="inactive">Inactive</Option>
 								</Select>
-								<Button onClick={() => { this.searchInTable() }} style={componentStyles.searchButton} htmlType="submit" block>
+								<Button
+									disabled={!(search.empType || search.subcontractName || search.position || search.status)}
+									onClick={() => { this.searchInTable() }}
+									style={!(search.empType || search.subcontractName || search.position || search.status) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									htmlType="submit" block>
 									Search
 					            </Button>
 							</div>
 						</Card>
 					</Col>
-					{/* <Col xs={24} sm={24} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -369,7 +433,7 @@ export class GuardsList extends Component {
 									bordered={false}
 									placeholder="Employment Type"
 									optionFilterProp="children"
-									onChange={onChange}
+									onChange={(val) => this.handleChange("empType", val)}
 									// onFocus={onFocus}
 									// onBlur={onBlur}
 									// onSearch={onSearch}
@@ -377,9 +441,9 @@ export class GuardsList extends Component {
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
 								>
-									<Option value="jack">Employment Type 1</Option>
-									<Option value="lucy">Employment Type 2</Option>
-									<Option value="tom">Employment Type 3</Option>
+									<Option value="Employment 1">Employment 1</Option>
+									<Option value="Employment 2">Employment 2</Option>
+									<Option value="Employment 3">Employment 3</Option>
 								</Select>
 
 
@@ -389,7 +453,7 @@ export class GuardsList extends Component {
 									bordered={false}
 									placeholder="Subcontractor Name"
 									optionFilterProp="children"
-									onChange={onChange}
+									onChange={(val) => this.handleChange("subcontractName", val)}
 									// onFocus={onFocus}
 									// onBlur={onBlur}
 									// onSearch={onSearch}
@@ -397,9 +461,9 @@ export class GuardsList extends Component {
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
 								>
-									<Option value="jack">ABC</Option>
-									<Option value="lucy">DEF</Option>
-									<Option value="tom">GHI</Option>
+									<Option value="ABC">ABC</Option>
+									<Option value="DEF">DEF</Option>
+									<Option value="GHI">GHI</Option>
 								</Select>
 
 								<Select
@@ -408,7 +472,7 @@ export class GuardsList extends Component {
 									bordered={false}
 									placeholder="Position"
 									optionFilterProp="children"
-									onChange={onChange}
+									onChange={(val) => this.handleChange("position", val)}
 									// onFocus={onFocus}
 									// onBlur={onBlur}
 									// onSearch={onSearch}
@@ -416,9 +480,9 @@ export class GuardsList extends Component {
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
 								>
-									<Option value="jack">SG</Option>
-									<Option value="lucy">SG</Option>
-									<Option value="tom">SG</Option>
+									<Option value="SG">SG</Option>
+									<Option value="SG">SG</Option>
+									<Option value="SG">SG</Option>
 								</Select>
 
 								<Select
@@ -427,7 +491,7 @@ export class GuardsList extends Component {
 									bordered={false}
 									placeholder="Status"
 									optionFilterProp="children"
-									onChange={onChange}
+									onChange={(val) => this.handleChange("status", val)}
 									// onFocus={onFocus}
 									// onBlur={onBlur}
 									// onSearch={onSearch}
@@ -435,18 +499,24 @@ export class GuardsList extends Component {
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
 								>
-									<Option value="jack">Active</Option>
-									<Option value="lucy">Inactive</Option>
+									<Option value="active">Active</Option>
+									<Option value="inactive">Inactive</Option>
 								</Select>
-								<div style={AppStyles.marginLeftRight20}>
-									<div style={AppStyles.marginTop20}>
-										<SearchInput />
-									</div>
+								<div style={AppStyles.marginTop20}>
+									<Button
+										disabled={!(search.empType || search.subcontractName || search.position || search.status)}
+										onClick={() => { this.searchInTable() }}
+										style={!(search.empType || search.subcontractName || search.position || search.status) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+										htmlType="submit"
+										block>
+										Search
+										
+					                </Button>
 								</div>
 							</div>
 						</Card>
 					</Col>
-					 */}
+
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card title="Guards List" extra={cardDropdown(latestTransactionOption)}>
 							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />

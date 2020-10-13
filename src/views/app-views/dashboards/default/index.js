@@ -26,7 +26,7 @@ import { withRouter } from 'react-router-dom';
 import { AppStyles } from "./../../../../assets/styles";
 import { AppColors } from "./../../../../assets/styles/colors";
 import { componentStyles } from "./../styles";
-import { GuardsList } from "./../../pages/guard-list/index"
+import { GuardsList } from "../../pages/Guard/guard-list/index"
 import SearchInput from "./../../../../components/layout-components/NavSearch/SearchInput.js"
 
 const { Option } = Select;

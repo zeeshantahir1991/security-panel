@@ -13,9 +13,9 @@ import {
 import moment from 'moment';
 import GuardsView from './GuardsView';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
-import { AppStyles } from "./../../../../assets/styles";
-import { componentStyles } from "./../../dashboards/styles";
-import SearchInput from "./../../../../components/layout-components/NavSearch/SearchInput.js"
+import { AppStyles } from "../../../../../assets/styles";
+import { componentStyles } from "../../../dashboards/styles";
+import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 import userData from "assets/data/user-list.data.json";
 import Position from 'views/app-views/components/data-display/carousel/Position';
 

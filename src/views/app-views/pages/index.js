@@ -11,7 +11,10 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/home`} component={lazy(() => import(`./landing`))} />
       <Route path={`${match.url}/faq`} component={lazy(() => import(`./faq`))} />
       <Route path={`${match.url}/setting`} component={lazy(() => import(`./setting`))} />
-      <Route path={`${match.url}/guard-list`} component={lazy(() => import(`./guard-list`))} />
+      <Route path={`${match.url}/guard-list`} component={lazy(() => import(`./Guard/guard-list`))} />
+      <Route path={`${match.url}/add-guard`} component={lazy(() => import(`./Guard/add-guard`))} />
+      <Route path={`${match.url}/sia-licence`} component={lazy(() => import(`./Guard/sia-licence`))} />
+
     </Switch>
   </Suspense>
 );

@@ -27,149 +27,6 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 
-const extraNavTree = [
-  {
-    key: "extra",
-    path: "/app/pages",
-    title: "sidenav.pages",
-    icon: PlusCircleOutlined,
-    breadcrumb: true,
-    submenu: [
-      {
-        key: "extra-pages",
-        path: "/app/pages",
-        title: "sidenav.pages",
-        icon: FileTextOutlined,
-        breadcrumb: true,
-        submenu: [
-          {
-            key: "extra-pages-profile",
-            path: "/app/pages/profile",
-            title: "sidenav.pages.profile",
-            icon: "",
-            breadcrumb: false,
-            submenu: [],
-          },
-          {
-            key: "extra-pages-list",
-            path: "/app/pages/user-list",
-            title: "sidenav.pages.userlist",
-            icon: "",
-            breadcrumb: true,
-            submenu: [],
-          },
-          {
-            key: "extra-pages-invoice",
-            path: "/app/pages/invoice",
-            title: "sidenav.pages.invoice",
-            icon: "",
-            breadcrumb: true,
-            submenu: [],
-          },
-          {
-            key: "extra-pages-pricing",
-            path: "/app/pages/pricing",
-            title: "sidenav.pages.pricing",
-            icon: "",
-            breadcrumb: true,
-            submenu: [],
-          },
-          {
-            key: "extra-pages-faq",
-            path: "/app/pages/faq",
-            title: "sidenav.pages.faq",
-            icon: "",
-            breadcrumb: false,
-            submenu: [],
-          },
-          {
-            key: "extra-pages-setting",
-            path: "/app/pages/setting",
-            title: "sidenav.pages.setting",
-            icon: "",
-            breadcrumb: true,
-            submenu: [],
-          },
-        ],
-      },
-      // {
-      //   key: 'extra-auth',
-      //   path: '/auth',
-      //   title: 'sidenav.authentication',
-      //   icon: SafetyOutlined,
-      //   breadcrumb: true,
-      //   submenu: [
-      //     {
-      //       key: 'extra-auth-login-1',
-      //       path: '/auth/login-1',
-      //       title: 'sidenav.authentication.login.1',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'extra-auth-login-2',
-      //       path: '/auth/login-2',
-      //       title: 'sidenav.authentication.login.2',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'extra-auth-register-1',
-      //       path: '/auth/register-1',
-      //       title: 'sidenav.authentication.register.1',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'extra-auth-register-2',
-      //       path: '/auth/register-2',
-      //       title: 'sidenav.authentication.register.2',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'extra-auth-forgot-password',
-      //       path: '/auth/forgot-password',
-      //       title: 'sidenav.authentication.forgetPassword',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     }
-      //   ]
-      // },
-      // {
-      //   key: 'extra-errors',
-      //   path: '/auth/error-1',
-      //   title: 'sidenav.errors',
-      //   icon: StopOutlined,
-      //   breadcrumb: true,
-      //   submenu: [
-      //     {
-      //       key: 'extra-errors-error-1',
-      //       path: '/auth/error-1',
-      //       title: 'sidenav.errors.error.1',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'extra-errors-error-2',
-      //       path: '/auth/error-2',
-      //       title: 'sidenav.errors.error.2',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     }
-      //   ]
-      // }
-    ],
-  },
-];
-
 const dashBoardNavTree = [
   {
     key: "dashboards",
@@ -214,22 +71,22 @@ const appsNavTree = [
     icon: AppstoreOutlined,
     breadcrumb: false,
     submenu: [
-      // {
-      //   key: 'apps-mail',
-      //   path: '/app/apps/mail/inbox',
-      //   title: 'sidenav.apps.mail',
-      //   icon: MailOutlined,
-      //   breadcrumb: false,
-      //   submenu: []
-      // },
-      // {
-      //   key: 'apps-chat',
-      //   path: '/app/apps/chat',
-      //   title: 'sidenav.apps.chat',
-      //   icon: MessageOutlined,
-      //   breadcrumb: false,
-      //   submenu: []
-      // },
+      {
+        key: 'apps-mail',
+        path: '/app/apps/mail/inbox',
+        title: 'sidenav.apps.mail',
+        icon: MailOutlined,
+        breadcrumb: false,
+        submenu: []
+      },
+      {
+        key: 'apps-chat',
+        path: '/app/apps/chat',
+        title: 'sidenav.apps.chat',
+        icon: MessageOutlined,
+        breadcrumb: false,
+        submenu: []
+      },
       {
         key: "apps-calendar",
         path: "/app/apps/calendar",
@@ -238,72 +95,72 @@ const appsNavTree = [
         breadcrumb: true,
         submenu: [],
       },
-      // {
-      //   key: 'apps-project',
-      //   path: '/app/apps/project',
-      //   title: 'sidenav.apps.project',
-      //   icon: BulbOutlined,
-      //   breadcrumb: true,
-      //   submenu: [
-      //     {
-      //       key: 'apps-project-list',
-      //       path: '/app/apps/project/list',
-      //       title: 'sidenav.apps.project.list',
-      //       icon: '',
-      //       breadcrumb: false,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'apps-project-scrumboard',
-      //       path: '/app/apps/project/scrumboard',
-      //       title: 'sidenav.apps.project.scrumboard',
-      //       icon: '',
-      //       breadcrumb: false,
-      //       submenu: []
-      //     }
-      //   ]
-      // },
-      // {
-      //   key: 'apps-ecommerce',
-      //   path: '/app/apps/ecommerce',
-      //   title: 'sidenav.apps.ecommerce',
-      //   icon: ShoppingCartOutlined,
-      //   breadcrumb: true,
-      //   submenu: [
-      //     {
-      //       key: 'apps-ecommerce-productList',
-      //       path: '/app/apps/ecommerce/product-list',
-      //       title: 'sidenav.apps.ecommerce.productList',
-      //       icon: '',
-      //       breadcrumb: true,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'apps-ecommerce-addProduct',
-      //       path: '/app/apps/ecommerce/add-product',
-      //       title: 'sidenav.apps.ecommerce.addProduct',
-      //       icon: '',
-      //       breadcrumb: false,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'apps-ecommerce-editProduct',
-      //       path: '/app/apps/ecommerce/edit-product/12',
-      //       title: 'sidenav.apps.ecommerce.editProduct',
-      //       icon: '',
-      //       breadcrumb: false,
-      //       submenu: []
-      //     },
-      //     {
-      //       key: 'apps-ecommerce-orders',
-      //       path: '/app/apps/ecommerce/orders',
-      //       title: 'sidenav.apps.ecommerce.orders',
-      //       icon: '',
-      //       breadcrumb: false,
-      //       submenu: []
-      //     }
-      //   ]
-      // }
+      {
+        key: 'apps-project',
+        path: '/app/apps/project',
+        title: 'sidenav.apps.project',
+        icon: BulbOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: 'apps-project-list',
+            path: '/app/apps/project/list',
+            title: 'sidenav.apps.project.list',
+            icon: '',
+            breadcrumb: false,
+            submenu: []
+          },
+          {
+            key: 'apps-project-scrumboard',
+            path: '/app/apps/project/scrumboard',
+            title: 'sidenav.apps.project.scrumboard',
+            icon: '',
+            breadcrumb: false,
+            submenu: []
+          }
+        ]
+      },
+      {
+        key: 'apps-ecommerce',
+        path: '/app/apps/ecommerce',
+        title: 'sidenav.apps.ecommerce',
+        icon: ShoppingCartOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: 'apps-ecommerce-productList',
+            path: '/app/apps/ecommerce/product-list',
+            title: 'sidenav.apps.ecommerce.productList',
+            icon: '',
+            breadcrumb: true,
+            submenu: []
+          },
+          {
+            key: 'apps-ecommerce-addProduct',
+            path: '/app/apps/ecommerce/add-product',
+            title: 'sidenav.apps.ecommerce.addProduct',
+            icon: '',
+            breadcrumb: false,
+            submenu: []
+          },
+          {
+            key: 'apps-ecommerce-editProduct',
+            path: '/app/apps/ecommerce/edit-product/12',
+            title: 'sidenav.apps.ecommerce.editProduct',
+            icon: '',
+            breadcrumb: false,
+            submenu: []
+          },
+          {
+            key: 'apps-ecommerce-orders',
+            path: '/app/apps/ecommerce/orders',
+            title: 'sidenav.apps.ecommerce.orders',
+            icon: '',
+            breadcrumb: false,
+            submenu: []
+          }
+        ]
+      }
     ],
   },
 ];
@@ -949,11 +806,370 @@ const docsNavTree = [
   },
 ];
 
+const securityNavTree = [
+  {
+    key: "security",
+    path: "/app/pages",
+    title: "Security Company",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "security-pages",
+        path: "/app/pages",
+        title: "Security Company",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const staffNavTree = [
+  {
+    key: "staff",
+    path: "/app/pages",
+    title: "Staff",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "staff-pages",
+        path: "/app/pages",
+        title: "Staff",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "staff-pages-guards",
+            path: "/app/dashboards/default",
+            title: "Guards",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "staff-pages-addguard",
+            path: "/app/pages/add-guard",
+            title: "Add Guard",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
+      },
+    ],
+  },
+];
+
+const clientNavTree = [
+  {
+    key: "client",
+    path: "/app/pages",
+    title: "Client",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "client-pages",
+        path: "/app/pages",
+        title: "Client",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "client-pages-clients",
+            path: "/app/pages/clients",
+            title: "Clients",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "client-pages-addclient",
+            path: "/app/pages/addclient",
+            title: "Add Client",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
+      },
+    ],
+  },
+];
+
+const siteNavTree = [
+  {
+    key: "site",
+    path: "/app/pages",
+    title: "Site",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "site-pages",
+        path: "/app/pages",
+        title: "Site",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "site-pages-sites",
+            path: "/app/pages/sites",
+            title: "Sites",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "client-pages-addsite",
+            path: "/app/pages/addsite",
+            title: "Add Site",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
+      },
+    ],
+  },
+];
+
+const subcontractorNavTree = [
+  {
+    key: "subcontractor",
+    path: "/app/pages",
+    title: "Sub Contractor",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "subcontractor-pages",
+        path: "/app/pages",
+        title: "Sub Contractor",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "subcontractor-pages-subcontractors",
+            path: "/app/pages/subcontractors",
+            title: "Sub Contractors",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "subcontractor-pages-addsubcontractor",
+            path: "/app/pages/addsubcontractor",
+            title: "Add Sub Contractor",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
+      },
+    ],
+  },
+];
+
+const optNavTree = [
+  {
+    key: "opt",
+    path: "/app/pages",
+    title: "Operations Centre",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "opt-pages",
+        path: "/app/pages",
+        title: "Operations Centre",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const schedulingNavTree = [
+  {
+    key: "scheduling",
+    path: "/app/pages",
+    title: "Scheduling",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "scheduling-pages",
+        path: "/app/pages",
+        title: "Scheduling",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const mobilepatrolNavTree = [
+  {
+    key: "mobile",
+    path: "/app/pages",
+    title: "Mobile Patrol",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "mobile-pages",
+        path: "/app/pages",
+        title: "Mobile Patrol",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const keyholdingNavTree = [
+  {
+    key: "keyHolding",
+    path: "/app/pages",
+    title: "Key Holding",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "keyHolding-pages",
+        path: "/app/pages",
+        title: "Key Holding",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const compilanceNavTree = [
+  {
+    key: "compilance",
+    path: "/app/pages",
+    title: "Compilance",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "compilance-pages",
+        path: "/app/pages",
+        title: "Compilance",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "compilance-pages-compilanceTemplates",
+            path: "/app/pages/compilanceTemplates",
+            title: "Compilance Templates",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "compilance-pages-interviews",
+            path: "/app/pages/interviews",
+            title: "Interviews",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "compilance-pages-vetting",
+            path: "/app/pages/vetting",
+            title: "Vetting",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "compilance-pages-trainings",
+            path: "/app/pages/trainings",
+            title: "Trainings",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "compilance-pages-siaRecords",
+            path: "/app/pages/siaRecords",
+            title: "Sia Records",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
+      },
+    ],
+  },
+];
+
+const backOfficeNavTree = [
+  {
+    key: "backOffice",
+    path: "/app/pages",
+    title: "Backoffice",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "backOffice-pages",
+        path: "/app/pages",
+        title: "Backoffice",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
+
+const reportsNavTree = [
+  {
+    key: "reports",
+    path: "/app/pages",
+    title: "Reports",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "reports-pages",
+        path: "/app/pages",
+        title: "Reports",
+        icon: FileTextOutlined,
+        breadcrumb: true,
+        submenu: [],
+      }
+    ],
+  },
+];
 const navigationConfig = [
   ...dashBoardNavTree,
-  ...appsNavTree,
+  // ...appsNavTree,
   // ...componentsNavTree,
-  ...extraNavTree,
+  ...securityNavTree,
+  ...staffNavTree,
+  ...clientNavTree,
+  ...siteNavTree,
+  ...subcontractorNavTree,
+  ...optNavTree,
+  ...schedulingNavTree,
+  ...mobilepatrolNavTree,
+  ...compilanceNavTree,
+  ...keyholdingNavTree,
+  ...backOfficeNavTree,
+  ...reportsNavTree
   // ...docsNavTree
 ];
 

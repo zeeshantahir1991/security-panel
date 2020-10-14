@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { BuildOutlined, CalendarOutlined, LockOutlined, DeleteOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { AppStyles } from "../../../../../assets/styles";
@@ -11,57 +11,11 @@ import Position from 'views/app-views/components/data-display/carousel/Position'
 const { Option } = Select;
 
 const rules = {
-	title: [
-		{
-			// required: true,
-			message: 'Please input title'
-		}
-	],
-	email: [
-		{
-			// required: true,
-			message: 'Please input your email address'
-		},
-		{
-			type: 'email',
-			message: 'Please enter a validate email!'
-		}
-	],
 
-	firstname: [
+	licenceNo: [
 		{
 			required: true,
-			message: 'Please input your first name'
-		}
-	],
-	lastname: [
-		{
-			required: true,
-			message: 'Please input your last name'
-		}
-	],
-	mobile: [
-		{
-			required: true,
-			message: 'Please input your mobile number'
-		}
-	],
-	niNumber: [
-		{
-			// required: true,
-			message: 'Please input your NI Number'
-		}
-	],
-	dob: [
-		{
-			required: true,
-			message: 'Please input date of birth'
-		}
-	],
-	origin: [
-		{
-			// required: true,
-			message: 'Please select origin'
+			message: 'Please input Licence Number'
 		}
 	],
 	confirm: [
@@ -85,27 +39,15 @@ export class SiaLicence extends Component {
 		super(props);
 		this.state = {
 
-			title: "",
-			origin: "",
+			licenceNo: "",
 
 		};
 	}
 
-	handleChange = (type, value) => {
-		console.log(`selected ${value}`);
-		const { search } = this.state;
-		this.setState({
-
-			[type]: value
-
-		})
-
-	}
-
-	goToSummary = () => {
+	goToPositionAndPay = () => {
 		// console.log("goToSummary", location.state.data)
 		this.props.history.push({
-			pathname: '/app/profile',
+			pathname: '/app/pages/position-and-pay',
 			// state: { data: location.state.data }
 		})
 	}
@@ -114,10 +56,10 @@ export class SiaLicence extends Component {
 		const { users, userProfileVisible, selectedUser, search } = this.state;
 
 		return (
-			<>
+			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={15} lg={15} >
-						<Card title="Personal Information" style={AppStyles.paddingBottom20}>
+						<Card title="SIA Licence" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >
@@ -126,131 +68,86 @@ export class SiaLicence extends Component {
 											</div>
 										</div>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="title"
-											label="Title"
-											rules={rules.title}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Title"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("title", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Mr">Mr</Option>
-												<Option value="Miss">Miss</Option>
-												<Option value="Mrs">Mrs</Option>
-											</Select>
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="firstname"
-											label="First Name"
-											rules={rules.firstname}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="lastname"
-											label="Last Name"
-											rules={rules.lastname}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="email"
-											label="Email"
-											rules={rules.email}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<MailOutlined />} />
-										</Form.Item>
-									</Col>
 
-
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="dob"
-											label="DOB"
-											rules={rules.dob}
-											hasFeedback
-										>
-											<Input type="date" style={componentStyles.borderColor} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="mobile"
-											label="Mobile"
-											rules={rules.mobile}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
-										</Form.Item>
-									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>
 										<Form.Item
-											name="niNumber"
-											label="Ni Number"
-											rules={rules.niNumber}
+											name="licenceNo"
+											label="Licence Number"
+											rules={rules.licenceNo}
 											hasFeedback
 										>
 											<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
+
 									<Col xs={24} sm={24} md={12} lg={12}>
-										<Form.Item
-											name="origin"
-											label="Ethinic Origin"
-											rules={rules.origin}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Origin"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("origin", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="British">British</Option>
-												<Option value="African">African</Option>
-												<Option value="Carebian">Carebian</Option>
-												<Option value="Asian">Asian</Option>
-											</Select>
+
+										<Form.Item>
+											<div style={AppStyles.marginTop27}>
+												<Button style={componentStyles.continueButton} htmlType="submit" block>
+													Add
+												</Button>
+
+											</div>
 										</Form.Item>
 									</Col>
+									<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>
+										<Row justify="center">
 
+											<Col xs={24} sm={24} md={24} lg={24}>
+												<div style={componentStyles.deleteIcon}>
+													<Tooltip title="Delete">
+														<Button danger icon={<DeleteOutlined />}
+															// onClick={() => { this.deleteUser(elm.id) }} 
+															size="small" />
+													</Tooltip>
+												</div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}> First Name </div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Last Name </div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>SIA Licence Number </div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Role </div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Licence Sector</div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Expiry Date </div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Status</div>
+											</Col>
+											<Col xs={12} sm={12} md={6} lg={6}>
+												<div style={componentStyles.licenceDataTitleContainer}>Date Checked </div>
+											</Col>
+
+										</Row>
+									</Col>
 									<Col xs={12} sm={12} md={12} lg={12}>
 
 										<Form.Item>
-											<div style={AppStyles.marginTop40}>
-												<Button onClick={this.goToSummary} style={componentStyles.continueButton} htmlType="submit" block>
+											<div style={AppStyles.marginTop20}>
+												<Button onClick={() => this.props.history.goBack()} style={componentStyles.continueButton} htmlType="submit" block>
+													Back
+		                                        </Button>
+
+											</div>
+										</Form.Item>
+									</Col>
+									<Col xs={12} sm={12} md={12} lg={12}>
+
+										<Form.Item>
+											<div style={AppStyles.marginTop20}>
+												<Button onClick={this.goToPositionAndPay} style={componentStyles.continueButton} htmlType="submit" block>
 													Continue
-													</Button>
+		                                        </Button>
 
 											</div>
 										</Form.Item>
@@ -261,7 +158,7 @@ export class SiaLicence extends Component {
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>
 				</Row>
-			</>
+			</div>
 		)
 	}
 }

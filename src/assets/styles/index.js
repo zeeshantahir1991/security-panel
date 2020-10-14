@@ -77,6 +77,12 @@ export const AppStyles = {
     marginTop24: {
         marginTop: 24
     },
+    marginTop25: {
+        marginTop: 25
+    },
+    marginTop27: {
+        marginTop: 27
+    },
     marginTop30: {
         marginTop: 30
     },
@@ -89,6 +95,11 @@ export const AppStyles = {
     marginTop45: {
         marginTop: 45
     },
+
+    marginTop50: {
+        marginTop: 50
+    },
+
     marginTop55: {
         marginTop: 55
     },

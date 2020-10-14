@@ -21,4 +21,35 @@ export const componentStyles = {
         borderRadius: 10,
         marginRight: 20
     },
+
+    licenceDataContainer: {
+        marginTop: 30,
+        marginBottom: 30,
+        padding: 30,
+        backgroundColor: AppColors.alabaster2,
+        borderRadius: 10
+    },
+
+    licenceDataTitleContainer: {
+        // color: 'grey',
+        fontWeight: 'bold',
+        padding: 10,
+        borderRadius: 10,
+        borderColor: AppColors.mineShaft,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        textAlign: 'center',
+        marginRight: 5,
+        marginTop: 5
+    },
+
+    deleteIcon: {
+        textAlign: 'end',
+        marginRight: 5,
+        marginBottom: 5
+    },
+
+    switchStyle: {
+     marginRight: 10
+    }
 }

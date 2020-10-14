@@ -39,6 +39,7 @@ export const AppColors = {
   emperor: '#555555',
   alto: '#DDDDDD',
   alabaster1: '#FAFAFA',
+  alabaster2: '#F7F7F7',
   gray2: '#444444',
 
   //black

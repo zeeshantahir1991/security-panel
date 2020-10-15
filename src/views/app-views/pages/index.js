@@ -15,6 +15,7 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-guard`} component={lazy(() => import(`./Guard/add-guard`))} />
       <Route path={`${match.url}/sia-licence`} component={lazy(() => import(`./Guard/sia-licence`))} />
       <Route path={`${match.url}/position-and-pay`} component={lazy(() => import(`./Guard/position-pay`))} />
+      <Route path={`${match.url}/right-to-work`} component={lazy(() => import(`./Guard/right-to-work`))} />
 
     </Switch>
   </Suspense>

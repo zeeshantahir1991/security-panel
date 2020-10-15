@@ -76,9 +76,9 @@ export class PositionAndPay extends Component {
 	}
 
 	goToRightToWork = () => {
-		// this.props.history.push({
-		// 	pathname: '/app/pages/sia-licence',
-		// })
+		this.props.history.push({
+			pathname: '/app/pages/right-to-work',
+		})
 
 
 

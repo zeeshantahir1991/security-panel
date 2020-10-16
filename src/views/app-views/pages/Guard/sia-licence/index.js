@@ -40,8 +40,11 @@ export class SiaLicence extends Component {
 		this.state = {
 
 			licenceNo: "",
+			data: null
 
 		};
+		this.addLicense = this.addLicense.bind(this);
+
 	}
 
 	goToPositionAndPay = () => {
@@ -52,8 +55,39 @@ export class SiaLicence extends Component {
 		})
 	}
 
+
+	async addLicense() {
+		const { licenceNo } = this.state;
+		let data = {
+			"LicenseNo": licenceNo
+		}
+		await fetch('http://localhost:3001/getLicenseInfo', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data),
+		})
+			.then((res) => res.json())
+			.then((resp) => {
+				if (resp.result) {
+					this.setState({ data: resp.data })
+				}
+
+			})
+			.catch(e => console.log(e))
+
+	}
+
+	handleChange = (type, e) => {
+		this.setState({
+
+			[type]: e.target.value
+
+		})
+
+	}
+
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
+		const { users, userProfileVisible, selectedUser, search, data } = this.state;
 
 		return (
 			<div style={AppStyles.marginTop50}>
@@ -76,7 +110,9 @@ export class SiaLicence extends Component {
 											rules={rules.licenceNo}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input
+												onChange={(val) => this.handleChange("licenceNo", val)}
+												style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -84,52 +120,58 @@ export class SiaLicence extends Component {
 
 										<Form.Item>
 											<div style={AppStyles.marginTop27}>
-												<Button style={componentStyles.continueButton} htmlType="submit" block>
+												<Button onClick={this.addLicense} style={componentStyles.continueButton} htmlType="submit" block>
 													Add
 												</Button>
 
 											</div>
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>
-										<Row justify="center">
+									{data ?
+										<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>
+											<Row justify="center">
 
-											<Col xs={24} sm={24} md={24} lg={24}>
-												<div style={componentStyles.deleteIcon}>
-													<Tooltip title="Delete">
-														<Button danger icon={<DeleteOutlined />}
-															// onClick={() => { this.deleteUser(elm.id) }} 
-															size="small" />
-													</Tooltip>
-												</div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}> First Name </div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Last Name </div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>SIA Licence Number </div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Role </div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Licence Sector</div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Expiry Date </div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Status</div>
-											</Col>
-											<Col xs={12} sm={12} md={6} lg={6}>
-												<div style={componentStyles.licenceDataTitleContainer}>Date Checked </div>
-											</Col>
+												<Col xs={24} sm={24} md={24} lg={24}>
+													<div style={componentStyles.deleteIcon}>
+														<Tooltip title="Delete">
+															<Button danger icon={<DeleteOutlined />}
+																// onClick={() => { this.deleteUser(elm.id) }} 
+																size="small" />
+														</Tooltip>
+													</div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}> {data.firstName} </div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.surName} </div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.licenseNo}</div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.role}</div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.licenseSector}</div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.expiryDate}</div>
+												</Col>
+												<Col xs={12} sm={12} md={12} lg={12}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.status}</div>
+												</Col>
+												<Col xs={12} sm={12} md={12} lg={12}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.statusExplaination}</div>
+												</Col>
+												<Col xs={12} sm={12} md={6} lg={6}>
+													<div style={componentStyles.licenceDataTitleContainer}>{data.additionalLicenseCondition}</div>
+												</Col>
 
-										</Row>
-									</Col>
+											</Row>
+										</Col> : null
+									}
+
 									<Col xs={12} sm={12} md={12} lg={12}>
 
 										<Form.Item>

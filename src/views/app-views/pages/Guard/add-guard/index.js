@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input } from 'antd';
+import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker } from 'antd';
 import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -204,7 +204,7 @@ export class AddGuard extends Component {
 											rules={rules.email}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<MailOutlined />} />
+											<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -216,7 +216,11 @@ export class AddGuard extends Component {
 											rules={rules.dob}
 											hasFeedback
 										>
-											<Input type="date" style={componentStyles.borderColor} />
+											{/* <Input type="date" style={componentStyles.borderColor} /> */}
+											<DatePicker style={componentStyles.datePicker}
+												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+												format={'YYYY/MM/DD'} />
+
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={8} lg={8}>
@@ -226,7 +230,7 @@ export class AddGuard extends Component {
 											rules={rules.mobile}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+											<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>
@@ -236,7 +240,7 @@ export class AddGuard extends Component {
 											rules={rules.niNumber}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>

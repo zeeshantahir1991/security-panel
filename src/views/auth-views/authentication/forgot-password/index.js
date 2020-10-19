@@ -54,7 +54,7 @@ const ForgotPassword = () => {
 													}
 												]
 											}>
-											<Input style={componentStyles.borderColor} placeholder="Email Address" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} maxLength={30} placeholder="Email Address" prefix={<MailOutlined />} />
 										</Form.Item>
 										<Form.Item>
 											<RouteLink to={'/auth/otp'}>

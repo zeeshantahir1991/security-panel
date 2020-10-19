@@ -75,8 +75,8 @@ export const HeaderNav = props => {
             </Menu>
           </div>
           <div className="nav-right">
-            <NavNotification />
-            <NavLanguage />
+            {/* <NavNotification /> */}
+            {/* <NavLanguage /> */}
             <NavProfile />
             <NavPanel />
           </div>

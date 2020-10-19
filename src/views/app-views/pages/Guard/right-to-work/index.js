@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input } from 'antd';
+import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker } from 'antd';
 import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -177,7 +177,9 @@ export class RightToWork extends Component {
 													rules={rules.issueDate}
 													hasFeedback
 												>
-													<Input type="date" style={componentStyles.borderColor} />
+													<DatePicker style={componentStyles.datePicker}
+														// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+														format={'YYYY/MM/DD'} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={8} lg={8}>
@@ -187,7 +189,9 @@ export class RightToWork extends Component {
 													rules={rules.expdate}
 													hasFeedback
 												>
-													<Input type="date" style={componentStyles.borderColor} />
+													<DatePicker style={componentStyles.datePicker}
+														// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+														format={'YYYY/MM/DD'} />
 												</Form.Item>
 											</Col>
 
@@ -198,7 +202,9 @@ export class RightToWork extends Component {
 													rules={rules.dob}
 													hasFeedback
 												>
-													<Input type="date" style={componentStyles.borderColor} />
+													<DatePicker style={componentStyles.datePicker}
+														//  defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+														format={'YYYY/MM/DD'} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={8} lg={8}>
@@ -285,7 +291,9 @@ export class RightToWork extends Component {
 													rules={rules.issueDate}
 													hasFeedback
 												>
-													<Input type="date" style={componentStyles.borderColor} />
+													<DatePicker style={componentStyles.datePicker}
+														// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+														format={'YYYY/MM/DD'} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={8} lg={8}>
@@ -295,7 +303,9 @@ export class RightToWork extends Component {
 													rules={rules.expdate}
 													hasFeedback
 												>
-													<Input type="date" style={componentStyles.borderColor} />
+													<DatePicker style={componentStyles.datePicker}
+														//  defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+														format={'YYYY/MM/DD'} />
 												</Form.Item>
 											</Col>
 

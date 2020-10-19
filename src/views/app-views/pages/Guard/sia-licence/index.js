@@ -5,14 +5,33 @@ import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
+import { connect } from "react-redux";
+import {
+	licenseActions
+} from 'redux/actions/License';
 
 const { Option } = Select;
+function mapStateToProps(state) {
 
+	return {
+
+		licenseData: state.license.licenseData
+	};
+}
+
+
+function mapDispatchToProps(dispatch) {
+
+	return {
+		ongetLicense: (licenseData) => { dispatch(licenseActions.getLicense(licenseData)); },
+
+	}
+
+
+}
 const rules = {
 
-	licenceNo: [
+	licenseNo: [
 		{
 			required: true,
 			message: 'Please input Licence Number'
@@ -39,8 +58,8 @@ export class SiaLicence extends Component {
 		super(props);
 		this.state = {
 
-			licenceNo: "",
-			data: null
+			licenseNo: "",
+			// licenseData: this.props.licenseData
 
 		};
 		this.addLicense = this.addLicense.bind(this);
@@ -57,23 +76,31 @@ export class SiaLicence extends Component {
 
 
 	async addLicense() {
-		const { licenceNo } = this.state;
+		const { licenseNo, licenseData } = this.state;
 		let data = {
-			"LicenseNo": licenceNo
+			"LicenseNo": licenseNo
 		}
-		await fetch('http://localhost:3001/getLicenseInfo', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(data),
-		})
-			.then((res) => res.json())
-			.then((resp) => {
-				if (resp.result) {
-					this.setState({ data: resp.data })
-				}
-
+		const found = this.props.licenseData.find(element => element.licenseNo.trim() == licenseNo.trim());
+		if (!found) {
+			await fetch('http://localhost:3001/getLicenseInfo', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data),
 			})
-			.catch(e => console.log(e))
+				.then((res) => res.json())
+				.then((resp) => {
+					if (resp.result) {
+						// localStorage.setItem('GETLICENSE', JSON.stringify(dataArray));
+
+						this.props.ongetLicense(resp.data);
+
+						// this.setState({ licenseData: resp.data })
+					}
+
+				})
+				.catch(e => console.log(e))
+		}
+
 
 	}
 
@@ -87,12 +114,147 @@ export class SiaLicence extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, data } = this.state;
+		const { users, userProfileVisible, selectedUser, search } = this.state;
+		let licenseData = this.props.licenseData;
+		const tableColumns = [
+			{
+				title: 'First Name',
+				dataIndex: 'firstName',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.firstName} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.firstName.toLowerCase();
+						b = b.firstName.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150,
+				fixed: 'left'
+			},
+			{
+				title: 'Sur Name',
+				dataIndex: 'surName',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.surName} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.surName.toLowerCase();
+						b = b.surName.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+			{
+				title: 'License Number',
+				dataIndex: 'licenseNo',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.licenseNo} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => a.licenseNo.length - b.licenseNo.length,
+				},
+				width: 200
+			},
+			{
+				title: 'Role',
+				dataIndex: 'role',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.role} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.role.toLowerCase();
+						b = b.role.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+			{
+				title: 'License Sector',
+				dataIndex: 'licenseSector',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.licenseSector} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.licenseSector.toLowerCase();
+						b = b.licenseSector.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+			// {
+			// 	title: 'Expiry Date',
+			// 	dataIndex: 'expiryDate',
+			// 	render: date => (
+			// 		<span>{moment.unix(date).format("YYYY/MM/DD")} </span>
+			// 	),
+			// 	sorter: (a, b) => moment(a.expiryDate).unix() - moment(b.expiryDate).unix(),
+			// 	width: 150
+			// },
+			{
+				title: 'Expiry Date',
+				dataIndex: 'expiryDate',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.expiryDate} </span>
+					</div>
+				),
+				sorter: (a, b) => moment(a.expiryDate).unix() - moment(b.expiryDate).unix(),
+				width: 150
+			},
+			{
+				title: 'Status',
+				dataIndex: 'status',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span >{record.status} </span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.status.toLowerCase();
+						b = b.status.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+			{
+				title: '',
+				dataIndex: 'status',
+				render: (_, elm) => (
+					<div className="text-right">
 
+						<Tooltip title="Delete">
+							<Button danger icon={<DeleteOutlined />}
+								onClick={() => { this.deleteUser(elm.id) }}
+								size="small" />
+						</Tooltip>
+					</div>
+				)
+			}
+		];
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
-					<Col xs={24} sm={24} md={15} lg={15} >
+					<Col xs={24} sm={24} md={18} lg={18} >
 						<Card title="SIA Licence" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
@@ -105,14 +267,15 @@ export class SiaLicence extends Component {
 
 									<Col xs={24} sm={24} md={12} lg={12}>
 										<Form.Item
-											name="licenceNo"
+											name="licenseNo"
 											label="Licence Number"
-											rules={rules.licenceNo}
-											hasFeedback
+											rules={rules.licenseNo}
+										// hasFeedback
 										>
 											<Input
-												onChange={(val) => this.handleChange("licenceNo", val)}
-												style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+												type="number"
+												onChange={(val) => this.handleChange("licenseNo", val)}
+												style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 
@@ -127,48 +290,56 @@ export class SiaLicence extends Component {
 											</div>
 										</Form.Item>
 									</Col>
-									{data ?
-										<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>
-											<Row justify="center">
+									{/* {licenseData.length != 0 ?
+										licenseData.map((value, index) =>
+											<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>
+												<Row justify="center">
 
-												<Col xs={24} sm={24} md={24} lg={24}>
-													<div style={componentStyles.deleteIcon}>
-														<Tooltip title="Delete">
-															<Button danger icon={<DeleteOutlined />}
-																// onClick={() => { this.deleteUser(elm.id) }} 
-																size="small" />
-														</Tooltip>
-													</div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}> {data.firstName} </div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.surName} </div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.licenseNo}</div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.role}</div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.licenseSector}</div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.expiryDate}</div>
-												</Col>
-												<Col xs={12} sm={12} md={12} lg={12}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.status}</div>
-												</Col>
-												<Col xs={12} sm={12} md={12} lg={12}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.statusExplaination}</div>
-												</Col>
-												<Col xs={12} sm={12} md={6} lg={6}>
-													<div style={componentStyles.licenceDataTitleContainer}>{data.additionalLicenseCondition}</div>
-												</Col>
+													<Col xs={24} sm={24} md={24} lg={24}>
+														<div style={componentStyles.deleteIcon}>
+															<Tooltip title="Delete">
+																<Button danger icon={<DeleteOutlined />}
+																	// onClick={() => { this.deleteUser(elm.id) }} 
+																	size="small" />
+															</Tooltip>
+														</div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}> {value.firstName} </div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.surName} </div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.licenseNo}</div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.role}</div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.licenseSector}</div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.expiryDate}</div>
+													</Col>
+													<Col xs={12} sm={12} md={12} lg={12}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.status}</div>
+													</Col>
+													<Col xs={12} sm={12} md={12} lg={12}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.statusExplaination}</div>
+													</Col>
+													<Col xs={12} sm={12} md={6} lg={6}>
+														<div style={componentStyles.licenceDataTitleContainer}>{value.additionalLicenseCondition}</div>
+													</Col>
 
-											</Row>
+												</Row>
+											</Col>) : null
+									} */}
+									{licenseData.length != 0 ?
+										<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
+											<Card title="License List">
+												<Table bordered columns={tableColumns} dataSource={this.props.licenseData} rowKey='id' scroll={{ x: 1200, y: 200 }} />
+											</Card>
 										</Col> : null
 									}
 
@@ -205,4 +376,5 @@ export class SiaLicence extends Component {
 	}
 }
 
-export default SiaLicence
+
+export default connect(mapStateToProps, mapDispatchToProps)(SiaLicence)

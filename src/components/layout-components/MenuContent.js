@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { SIDE_NAV_LIGHT, NAV_TYPE_SIDE } from "constants/ThemeConstant";
 import utils from 'utils'
 import { onMobileNavToggle } from "redux/actions/Theme";
+import { AppColors } from "assets/styles/colors";
 
 const { SubMenu } = Menu;
 const { useBreakpoint } = Grid;
@@ -30,13 +31,13 @@ const setDefaultOpen = (key) => {
 };
 
 const SideNavContent = (props) => {
-	const { sideNavTheme, routeInfo, hideGroupTitle, localization, onMobileNavToggle } = props;
-	const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
-	const closeMobileNav = () => {
-		if (isMobile) {
-			onMobileNavToggle(false)
-		}
-	}
+  const { sideNavTheme, routeInfo, hideGroupTitle, localization, onMobileNavToggle } = props;
+  const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
+  const closeMobileNav = () => {
+    if (isMobile) {
+      onMobileNavToggle(false)
+    }
+  }
   return (
     <Menu
       theme={sideNavTheme === SIDE_NAV_LIGHT ? "light" : "dark"}
@@ -50,7 +51,16 @@ const SideNavContent = (props) => {
         menu.submenu.length > 0 ? (
           <Menu.ItemGroup
             key={menu.key}
-            title={setLocale(localization, menu.title)}
+            style={{
+              marginTop: menu.title != "sidenav.dashboard" && menu.title != "Security Company" ? -35 : menu.title == "Security Company" ? -25 : null,
+              borderBottomColor: menu.title == "sidenav.dashboard" ? AppColors.alto : "white",
+              borderBottomWidth: menu.title == "sidenav.dashboard" ? 3 : 0,
+              borderTopWidth: 0,
+              borderLeftWidth: 0,
+              borderRightWidth: 0,
+              borderStyle: menu.title == "sidenav.dashboard" ? "solid" : null
+            }}
+            title={menu.title == "sidenav.dashboard" ? setLocale(localization, menu.title) : null}
           >
             {menu.submenu.map((subMenuFirst) =>
               subMenuFirst.submenu.length > 0 ? (
@@ -76,23 +86,23 @@ const SideNavContent = (props) => {
                   ))}
                 </SubMenu>
               ) : (
-                <Menu.Item key={subMenuFirst.key}>
-                  {subMenuFirst.icon ? <Icon type={subMenuFirst.icon} /> : null}
-                  <span>{setLocale(localization, subMenuFirst.title)}</span>
-                  <Link onClick={() => closeMobileNav()} to={subMenuFirst.path} />
-                </Menu.Item>
-              )
+                  <Menu.Item key={subMenuFirst.key}>
+                    {subMenuFirst.icon ? <Icon type={subMenuFirst.icon} /> : null}
+                    <span>{setLocale(localization, subMenuFirst.title)}</span>
+                    <Link onClick={() => closeMobileNav()} to={subMenuFirst.path} />
+                  </Menu.Item>
+                )
             )}
           </Menu.ItemGroup>
         ) : (
-          <Menu.Item key={menu.key}>
-            {menu.icon ? <Icon type={menu?.icon} /> : null}
-            <span>{setLocale(localization, menu?.title)}</span>
-            {menu.path ? <Link onClick={() => closeMobileNav()} to={menu.path} /> : null}
-          </Menu.Item>
-        )
+            <Menu.Item key={menu.key}>
+              {menu.icon ? <Icon type={menu?.icon} /> : null}
+              <span>{setLocale(localization, menu?.title)}</span>
+              {menu.path ? <Link onClick={() => closeMobileNav()} to={menu.path} /> : null}
+            </Menu.Item>
+          )
       )}
-    </Menu>
+    </Menu >
   );
 };
 
@@ -133,23 +143,23 @@ const TopNavContent = (props) => {
                   ))}
                 </SubMenu>
               ) : (
-                <Menu.Item key={subMenuFirst.key}>
-                  {subMenuFirst.icon ? (
-                    <Icon type={subMenuFirst?.icon} />
-                  ) : null}
-                  <span>{setLocale(localization, subMenuFirst.title)}</span>
-                  <Link to={subMenuFirst.path} />
-                </Menu.Item>
-              )
+                  <Menu.Item key={subMenuFirst.key}>
+                    {subMenuFirst.icon ? (
+                      <Icon type={subMenuFirst?.icon} />
+                    ) : null}
+                    <span>{setLocale(localization, subMenuFirst.title)}</span>
+                    <Link to={subMenuFirst.path} />
+                  </Menu.Item>
+                )
             )}
           </SubMenu>
         ) : (
-          <Menu.Item key={menu.key}>
-            {menu.icon ? <Icon type={menu?.icon} /> : null}
-            <span>{setLocale(localization, menu?.title)}</span>
-            {menu.path ? <Link to={menu.path} /> : null}
-          </Menu.Item>
-        )
+            <Menu.Item key={menu.key}>
+              {menu.icon ? <Icon type={menu?.icon} /> : null}
+              <span>{setLocale(localization, menu?.title)}</span>
+              {menu.path ? <Link to={menu.path} /> : null}
+            </Menu.Item>
+          )
       )}
     </Menu>
   );
@@ -159,8 +169,8 @@ const MenuContent = (props) => {
   return props.type === NAV_TYPE_SIDE ? (
     <SideNavContent {...props} />
   ) : (
-    <TopNavContent {...props} />
-  );
+      <TopNavContent {...props} />
+    );
 };
 
 const mapStateToProps = ({ theme }) => {

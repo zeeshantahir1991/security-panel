@@ -125,7 +125,7 @@ export const LoginForm = props => {
 							message: 'Please enter a validate email!'
 						}
 					]}>
-					<Input style={AppStyles.borderColorAlto} prefix={<MailOutlined />} />
+					<Input maxLength={30} style={AppStyles.borderColorAlto} prefix={<MailOutlined />} />
 				</Form.Item>
 				<Form.Item
 					name="password"

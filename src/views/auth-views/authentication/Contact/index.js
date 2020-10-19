@@ -54,7 +54,7 @@ const Contact = () => {
 										// rules={rules.email}
 										hasFeedback
 									>
-										<Input style={componentStyles.borderColor} prefix={<MailOutlined />} />
+										<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
 									</Form.Item>
 								</Col>
 
@@ -65,7 +65,7 @@ const Contact = () => {
 										// rules={rules.lastname}
 										hasFeedback
 									>
-										<Input style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+										<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 									</Form.Item>
 								</Col>
 								{/* <Col xs={24} sm={24} md={24} lg={24}>

@@ -54,7 +54,7 @@ const pushRoute = () => {
   })
 }
 
-export const DefaultDashboard = () => {
+export const DefaultDashboard = (props) => {
   const [visitorChartData] = useState(VisitorChartData);
   const [annualStatisticData] = useState(AnnualStatisticData);
   const [recentTransactionData] = useState(RecentTransactionData)
@@ -71,10 +71,24 @@ export const DefaultDashboard = () => {
   // function onSearch(val) {
   //   console.log('search:', val);
   // }
+  function goToAddGuard() {
+    props.history.push({
+      pathname: '/app/pages/add-guard',
+    })
+  }
   return (
     <>
       <Row gutter={16}>
         <Col xs={24} sm={24} md={24} lg={24}>
+          <Row gutter={16} justify="end">
+
+            <Col xs={20} sm={20} md={6} lg={6} xl={6} style={AppStyles.marginBottom20}>
+              <Button onClick={goToAddGuard} style={componentStyles.searchButton} htmlType="submit" block>
+                Add Guard
+		          </Button>
+            </Col>
+
+          </Row>
           <Row gutter={16}>
             {
               annualStatisticData.map((elm, i) => (

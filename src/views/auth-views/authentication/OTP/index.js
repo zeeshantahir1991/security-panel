@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Row, Col, Form, Input, Button, message } from "antd";
-import { MailOutlined } from '@ant-design/icons';
+import { LockOutlined } from '@ant-design/icons';
 import { AuthHeader } from "./../../components/AuthHeader"
 import { AuthFooter } from "./../../components/AuthFooter"
 import { componentStyles } from '../login-1/styles';
@@ -41,20 +41,20 @@ const OTP = () => {
 								<Col xs={24} sm={24} md={20} lg={20}>
 									<Form form={form} layout="vertical" name="forget-password" onFinish={onSend}>
 										<Form.Item
-											name="email"
+											name="otp"
 											rules={
 												[
 													{
 														required: true,
-														message: 'Please input your email address'
+														message: 'Please input your otp'
 													},
 													{
-														type: 'email',
-														message: 'Please enter a validate email!'
+														type: 'text',
+														message: 'Please enter a valid otp!'
 													}
 												]
 											}>
-											<Input style={componentStyles.borderColor} placeholder="OTP" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="OTP" prefix={<LockOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -65,12 +65,12 @@ const OTP = () => {
 														message: 'Please input your password'
 													},
 													{
-														type: 'email',
+														type: 'password',
 														message: 'Please enter a valid Password!'
 													}
 												]
 											}>
-											<Input style={componentStyles.borderColor} placeholder="New Password" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="New Password" prefix={<LockOutlined />} />
 										</Form.Item>
 										<Form.Item
 											name="password"
@@ -81,12 +81,12 @@ const OTP = () => {
 														message: 'Please input your password'
 													},
 													{
-														type: 'email',
+														type: 'password',
 														message: 'Please enter a valid Password!'
 													}
 												]
 											}>
-											<Input style={componentStyles.borderColor} placeholder="Confirm Password" prefix={<MailOutlined />} />
+											<Input style={componentStyles.borderColor} placeholder="Confirm Password" prefix={<LockOutlined />} />
 										</Form.Item>
 										<Form.Item>
 											<Button loading={loading} style={componentStyles.signInButton} htmlType="submit" block>{loading ? 'Sending' : 'Send'}</Button>

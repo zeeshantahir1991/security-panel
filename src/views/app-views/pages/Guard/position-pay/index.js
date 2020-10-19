@@ -93,7 +93,7 @@ export class PositionAndPay extends Component {
 					<Col xs={24} sm={24} md={15} lg={15} >
 						<Card title="Position & Pay" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
-								<Row gutter={16} justify="center">
+								<Row gutter={16} >
 									<Col xs={24} sm={24} md={24} lg={24} >
 										<div style={AppStyles.marginBottom40}>
 											<div style={AppStyles.horizontallLineWidth100}>
@@ -107,7 +107,7 @@ export class PositionAndPay extends Component {
 											rules={rules.payRate}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+											<Input type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={8} lg={8}>
@@ -168,11 +168,8 @@ export class PositionAndPay extends Component {
 											</Select>
 										</Form.Item>
 									</Col>
-									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
-										<Checkbox style={componentStyles.borderColor} checked>Sub Contractor's Guard ?</Checkbox>
-									</Col>
-									<Col xs={12} sm={12} md={12} lg={12}>
+									<Col xs={8} sm={8} md={8} lg={8}>
 
 										<Form.Item
 											name="subcontractor"
@@ -201,9 +198,13 @@ export class PositionAndPay extends Component {
 											</Select>
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop20}>
+									<Col xs={8} sm={8} md={8} lg={8} style={AppStyles.alignSelfCenter}>
 
 										<Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Status
+									</Col>
+									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}>
+
+										<Checkbox style={componentStyles.borderColor} checked>Sub Contractor's Guard ?</Checkbox>
 									</Col>
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop20}>
 

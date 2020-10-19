@@ -25,6 +25,7 @@ import {
   BookOutlined,
   FileUnknownOutlined,
   ProfileOutlined,
+  SecurityScanTwoTone
 } from "@ant-design/icons";
 
 const dashBoardNavTree = [
@@ -811,14 +812,14 @@ const securityNavTree = [
     key: "security",
     path: "/app/pages",
     title: "Security Company",
-    icon: PlusCircleOutlined,
+    icon: SecurityScanTwoTone,
     breadcrumb: true,
     submenu: [
       {
         key: "security-pages",
         path: "/app/pages",
         title: "Security Company",
-        icon: FileTextOutlined,
+        icon: SecurityScanTwoTone,
         breadcrumb: true,
         submenu: [],
       }

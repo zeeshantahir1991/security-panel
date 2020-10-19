@@ -7,6 +7,8 @@ import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
 import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 import Position from 'views/app-views/components/data-display/carousel/Position';
+import { Link as RouteLink } from 'react-router-dom';
+import { AppColors } from 'assets/styles/colors';
 
 const { Option } = Select;
 
@@ -108,10 +110,75 @@ export class RightToWork extends Component {
 
 	render() {
 		const { users, userProfileVisible, selectedUser, search, nationality } = this.state;
+		const { classes, location: { pathname }, history } = this.props;
 
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
+					<Col md={4} lg={4}>
+						<Menu mode="vertical">
+
+							<Menu.Item
+								style={'/app/pages/add-guard' === pathname ? componentStyles.staffMenuItemSelected : null
+								}
+							>
+								<RouteLink
+									style={{
+										color: '/app/pages/add-guard' === pathname ? AppColors.pictonBlue : null
+									}}
+									to={'/app/pages/add-guard'}>
+									<span>
+										Personal Information
+
+									</span>
+								</RouteLink>
+							</Menu.Item>
+
+							<Menu.Item
+								style={'/app/pages/sia-licence' === pathname ? componentStyles.staffMenuItemSelected : null
+								}
+							>
+								<RouteLink
+									style={{
+										color: '/app/pages/sia-licence' === pathname ? AppColors.pictonBlue : null
+									}}
+									to={'/app/pages/sia-licence'}>
+									<span>
+										SIA Licence
+								    </span>
+								</RouteLink>
+							</Menu.Item>
+							<Menu.Item
+								style={'/app/pages/position-and-pay' === pathname ? componentStyles.staffMenuItemSelected : null
+								}
+							>
+								<RouteLink
+									style={{
+										color: '/app/pages/position-and-pay' === pathname ? AppColors.pictonBlue : null
+									}}
+									to={'/app/pages/position-and-pay'}>
+									<span>
+										Position & Pay
+								    </span>
+								</RouteLink>
+							</Menu.Item>
+							<Menu.Item
+								style={'/app/pages/right-to-work' === pathname ? componentStyles.staffMenuItemSelected : null
+								}
+							>
+								<RouteLink
+									style={{
+										color: '/app/pages/right-to-work' === pathname ? AppColors.pictonBlue : null
+									}}
+									to={'/app/pages/right-to-work'}>
+									<span>
+										Right to Work
+								    </span>
+								</RouteLink>
+							</Menu.Item>
+						</Menu>
+					</Col>
+					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >
 						<Card title="Right to Work" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">

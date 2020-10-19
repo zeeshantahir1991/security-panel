@@ -52,5 +52,25 @@ export const componentStyles = {
 
     switchStyle: {
         marginRight: 10
+    },
+
+    staffMenuItemSelected: {
+        backgroundColor: AppColors.tropicalBlue,
+        borderRightColor: 'blue',
+        borderRightWidth: 2,
+        borderLeftWidth: 0,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        borderStyle: 'solid'
+    },
+
+    staffMenuItem: {
+        backgroundColor: AppColors.white,
+        borderRightColor: AppColors.white,
+        borderRightWidth: 2,
+        borderLeftWidth: 0,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        borderStyle: 'solid'
     }
 }

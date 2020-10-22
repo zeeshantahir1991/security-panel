@@ -248,7 +248,7 @@ export const RegisterForm = (props) => {
 							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
-					<Col xs={24} sm={24} md={8} lg={8}>
+					{/* <Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="refno"
 							label="ACS Reference Number"
@@ -280,6 +280,7 @@ export const RegisterForm = (props) => {
 							<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
+				 */}
 				</Row>
 				<Row className="card" gutter={16} style={componentStyles.personalInfoContainer}>
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.flexDirectionRow}>
@@ -356,20 +357,79 @@ export const RegisterForm = (props) => {
 							<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
 						</Form.Item>
 					</Col>
-
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="password"
+							label="Password"
+							rules={rules.password}
+						>
+							<Input.Password style={AppStyles.borderColorAlto} prefix={<LockOutlined />} />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="confirm"
+							label="Re-Type Password"
+							rules={rules.confirm}
+						>
+							<Input.Password style={AppStyles.borderColorAlto} prefix={<LockOutlined />} />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="address1"
+							label="Address Line 1"
+							rules={rules.address1}
+							hasFeedback
+						>
+							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+						</Form.Item>
+					</Col>
 
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
-							name="dob"
-							label="DOB"
-							rules={rules.dob}
+							name="address2"
+							label="Address Line 2"
+							rules={rules.address2}
 							hasFeedback
 						>
-							<DatePicker style={componentStyles.datePicker}
-								// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-								format={'YYYY/MM/DD'} />
+							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 						</Form.Item>
 					</Col>
+
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="city"
+							label="Town / City"
+							rules={rules.city}
+							hasFeedback
+						>
+							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+						</Form.Item>
+					</Col>
+
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="postcode"
+							label="Post Code"
+							rules={rules.postcode}
+							hasFeedback
+						>
+							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+						</Form.Item>
+					</Col>
+
+					<Col xs={24} sm={24} md={8} lg={8}>
+						<Form.Item
+							name="phone"
+							label="Phone"
+							rules={rules.phone}
+							hasFeedback
+						>
+							<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+						</Form.Item>
+					</Col>
+
 					<Col xs={24} sm={24} md={8} lg={8}>
 						<Form.Item
 							name="mobile"
@@ -380,44 +440,8 @@ export const RegisterForm = (props) => {
 							<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
-					<Col xs={24} sm={24} md={12} lg={12}>
-						<Form.Item
-							name="niNumber"
-							label="Ni Number"
-							rules={rules.niNumber}
-							hasFeedback
-						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-						</Form.Item>
-					</Col>
-					<Col xs={24} sm={24} md={12} lg={12}>
-						<Form.Item
-							name="origin"
-							label="Ethinic Origin"
-							rules={rules.origin}
-							hasFeedback
-						>
-							<Select
-								showSearch
-								style={componentStyles.selectStyle}
-								bordered={false}
-								placeholder="Origin"
-								optionFilterProp="children"
-								// onChange={(val) => this.handleChange("origin", val)}
-								// onFocus={onFocus}
-								// onBlur={onBlur}
-								// onSearch={onSearch}
-								filterOption={(input, option) =>
-									option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-								}
-							>
-								<Option value="British">British</Option>
-								<Option value="African">African</Option>
-								<Option value="Carebian">Carebian</Option>
-								<Option value="Asian">Asian</Option>
-							</Select>
-						</Form.Item>
-					</Col>
+
+
 
 				</Row>
 

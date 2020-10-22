@@ -9,6 +9,7 @@ import { SIDE_NAV_LIGHT, NAV_TYPE_SIDE } from "constants/ThemeConstant";
 import utils from 'utils'
 import { onMobileNavToggle } from "redux/actions/Theme";
 import { AppColors } from "assets/styles/colors";
+import { AppStyles } from "assets/styles";
 
 const { SubMenu } = Menu;
 const { useBreakpoint } = Grid;
@@ -31,7 +32,7 @@ const setDefaultOpen = (key) => {
 };
 
 const SideNavContent = (props) => {
-  const { sideNavTheme, routeInfo, hideGroupTitle, localization, onMobileNavToggle } = props;
+  const { sideNavTheme, routeInfo, hideGroupTitle, localization, onMobileNavToggle, navCollapsed } = props;
   const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
   const closeMobileNav = () => {
     if (isMobile) {
@@ -52,13 +53,13 @@ const SideNavContent = (props) => {
           <Menu.ItemGroup
             key={menu.key}
             style={{
-              marginTop: menu.title != "sidenav.dashboard" && menu.title != "Security Company" ? -35 : menu.title == "Security Company" ? -25 : null,
-              borderBottomColor: menu.title == "sidenav.dashboard" ? AppColors.alto : "white",
-              borderBottomWidth: menu.title == "sidenav.dashboard" ? 3 : 0,
+              marginTop: menu.title !== "sidenav.dashboard" && menu.title !== "Security Company" && !navCollapsed ? -35 : menu.title === "Security Company" && !navCollapsed ? -25 : null,
+              borderBottomColor: menu.title === "sidenav.dashboard" && !navCollapsed ? AppColors.alto : "white",
+              borderBottomWidth: menu.title === "sidenav.dashboard" && !navCollapsed ? 3 : 0,
               borderTopWidth: 0,
               borderLeftWidth: 0,
               borderRightWidth: 0,
-              borderStyle: menu.title == "sidenav.dashboard" ? "solid" : null
+              borderStyle: menu.title == "sidenav.dashboard" && !navCollapsed ? "solid" : null
             }}
             title={menu.title == "sidenav.dashboard" ? setLocale(localization, menu.title) : null}
           >
@@ -67,7 +68,8 @@ const SideNavContent = (props) => {
                 <SubMenu
                   icon={
                     subMenuFirst.icon ? (
-                      <Icon type={subMenuFirst?.icon} />
+                      <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} alt={`logo`} />
+
                     ) : null
                   }
                   key={subMenuFirst.key}
@@ -76,7 +78,7 @@ const SideNavContent = (props) => {
                   {subMenuFirst.submenu.map((subMenuSecond) => (
                     <Menu.Item key={subMenuSecond.key}>
                       {subMenuSecond.icon ? (
-                        <Icon type={subMenuSecond?.icon} />
+                        <img style={AppStyles.sideBarIcon} src={subMenuSecond.icon} alt={`logo`} />
                       ) : null}
                       <span>
                         {setLocale(localization, subMenuSecond.title)}
@@ -87,7 +89,8 @@ const SideNavContent = (props) => {
                 </SubMenu>
               ) : (
                   <Menu.Item key={subMenuFirst.key}>
-                    {subMenuFirst.icon ? <Icon type={subMenuFirst.icon} /> : null}
+                    {subMenuFirst.icon ? <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} alt={`logo`} />
+                      : null}
                     <span>{setLocale(localization, subMenuFirst.title)}</span>
                     <Link onClick={() => closeMobileNav()} to={subMenuFirst.path} />
                   </Menu.Item>
@@ -174,8 +177,8 @@ const MenuContent = (props) => {
 };
 
 const mapStateToProps = ({ theme }) => {
-  const { sideNavTheme, topNavColor } = theme;
-  return { sideNavTheme, topNavColor };
+  const { sideNavTheme, topNavColor, navCollapsed } = theme;
+  return { sideNavTheme, topNavColor, navCollapsed };
 };
 
 export default connect(mapStateToProps, { onMobileNavToggle })(MenuContent);

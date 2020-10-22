@@ -7,15 +7,16 @@ import {
 	SIGNUP_SUCCESS,
 	SHOW_LOADING,
 	SIGNIN_WITH_GOOGLE_AUTHENTICATED,
-  SIGNIN_WITH_FACEBOOK_AUTHENTICATED
+	SIGNIN_WITH_FACEBOOK_AUTHENTICATED,
+	FALSE_LOADING
 } from '../constants/Auth';
 
 const initState = {
-  loading: false,
-  message: '',
-  showMessage: false,
-  redirect: '',
-  token: localStorage.getItem(AUTH_TOKEN),
+	loading: false,
+	message: '',
+	showMessage: false,
+	redirect: '',
+	token: localStorage.getItem(AUTH_TOKEN),
 }
 
 const auth = (state = initState, action) => {
@@ -27,14 +28,14 @@ const auth = (state = initState, action) => {
 				redirect: '/',
 				token: action.token
 			}
-		case SHOW_AUTH_MESSAGE: 
+		case SHOW_AUTH_MESSAGE:
 			return {
 				...state,
 				message: action.message,
 				showMessage: true,
 				loading: false
 			}
-		case HIDE_AUTH_MESSAGE: 
+		case HIDE_AUTH_MESSAGE:
 			return {
 				...state,
 				message: '',
@@ -50,15 +51,21 @@ const auth = (state = initState, action) => {
 		}
 		case SIGNUP_SUCCESS: {
 			return {
-			  ...state,
-			  loading: false,
-			  token: action.token
+				...state,
+				loading: false,
+				token: action.token
 			}
 		}
 		case SHOW_LOADING: {
 			return {
 				...state,
 				loading: true
+			}
+		}
+		case FALSE_LOADING: {
+			return {
+				...state,
+				loading: false
 			}
 		}
 		case SIGNIN_WITH_GOOGLE_AUTHENTICATED: {

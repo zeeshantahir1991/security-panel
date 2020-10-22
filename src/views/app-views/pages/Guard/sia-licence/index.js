@@ -9,6 +9,9 @@ import { connect } from "react-redux";
 import {
 	licenseActions
 } from 'redux/actions/License';
+import {
+	showLoading, falseLoading
+} from 'redux/actions/Auth';
 import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 
@@ -17,7 +20,9 @@ function mapStateToProps(state) {
 
 	return {
 
-		licenseData: state.license.licenseData
+		licenseData: state.license.licenseData,
+		auth: state.auth
+
 	};
 }
 
@@ -26,6 +31,8 @@ function mapDispatchToProps(dispatch) {
 
 	return {
 		ongetLicense: (licenseData) => { dispatch(licenseActions.getLicense(licenseData)); },
+		onLoading: () => { dispatch(showLoading()) },
+		onLoadEnd: () => { dispatch(falseLoading()) }
 
 	}
 
@@ -61,6 +68,7 @@ export class SiaLicence extends Component {
 		this.state = {
 
 			licenseNo: "",
+			errorMessage: ""
 			// licenseData: this.props.licenseData
 
 		};
@@ -79,32 +87,59 @@ export class SiaLicence extends Component {
 
 	async addLicense() {
 		const { licenseNo, licenseData } = this.state;
-		let data = {
-			"LicenseNo": licenseNo
-		}
-		const found = this.props.licenseData.find(element => element.licenseNo.trim() == licenseNo.trim());
-		if (!found) {
-			await fetch('http://localhost:3001/getLicenseInfo', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data),
-			})
-				.then((res) => res.json())
-				.then((resp) => {
-					if (resp.result) {
-						// localStorage.setItem('GETLICENSE', JSON.stringify(dataArray));
-
-						this.props.ongetLicense(resp.data);
-
-						// this.setState({ licenseData: resp.data })
-					}
-
+		this.props.onLoading()
+		try {
+			let data = {
+				"LicenseNo": licenseNo
+			}
+			const found = this.props?.licenseData?.find(element => element?.licenseNo?.trim() == licenseNo?.trim());
+			if (!found) {
+				await fetch('http://localhost:3001/getLicenseInfo', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data),
 				})
-				.catch(e => console.log(e))
+					.then((res) => res.json())
+					.then((resp) => {
+						if (resp.result) {
+							this.props.onLoadEnd()
+							// localStorage.setItem('GETLICENSE', JSON.stringify(dataArray));
+							this.props.ongetLicense(resp.data);
+
+							// this.setState({ licenseData: resp.data })
+						} else {
+							this.props.onLoadEnd()
+							this.setState({ errorMessage: "No results found!" })
+
+							this.timeoutHandler = setTimeout(function () {
+								this.setState({ errorMessage: "" })
+							}.bind(this), 1500);
+
+
+						}
+
+					})
+					.catch(e =>
+						this.setState({ errorMessage: "Please check your internet connection!" }),
+						this.timeoutHandler = setTimeout(function () {
+							this.setState({ errorMessage: "" })
+							this.props.onLoadEnd()
+						}.bind(this), 1500)
+					)
+			}
+		} catch (error) {
+			this.props.onLoadEnd()
+			this.setState({ errorMessage: "Please check your internet connection!" })
+			this.timeoutHandler = setTimeout(function () {
+
+				this.setState({ errorMessage: "" })
+			}.bind(this), 1500);
+
 		}
 
 
 	}
+
 
 	handleChange = (type, e) => {
 		this.setState({
@@ -116,7 +151,7 @@ export class SiaLicence extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
+		const { users, userProfileVisible, selectedUser, search, errorMessage } = this.state;
 		let licenseData = this.props.licenseData;
 		const { classes, location: { pathname }, history } = this.props;
 
@@ -265,6 +300,8 @@ export class SiaLicence extends Component {
 								style={'/app/pages/add-guard' === pathname ? componentStyles.staffMenuItemSelected : null
 								}
 							>
+								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} />
+
 								<RouteLink
 									style={{
 										color: '/app/pages/add-guard' === pathname ? AppColors.pictonBlue : null
@@ -277,10 +314,13 @@ export class SiaLicence extends Component {
 								</RouteLink>
 							</Menu.Item>
 
+
 							<Menu.Item
 								style={'/app/pages/sia-licence' === pathname ? componentStyles.staffMenuItemSelected : null
 								}
 							>
+								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
+
 								<RouteLink
 									style={{
 										color: '/app/pages/sia-licence' === pathname ? AppColors.pictonBlue : null
@@ -295,13 +335,24 @@ export class SiaLicence extends Component {
 								style={'/app/pages/position-and-pay' === pathname ? componentStyles.staffMenuItemSelected : null
 								}
 							>
-								<RouteLink to={'/app/pages/position-and-pay'}>
+								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
+
+								<RouteLink
+									style={{
+										color: '/app/pages/position-and-pay' === pathname ? AppColors.pictonBlue : null
+									}}
+									to={'/app/pages/position-and-pay'}>
 									<span>
 										Position & Pay
 								    </span>
 								</RouteLink>
 							</Menu.Item>
-							<Menu.Item>
+							<Menu.Item
+								style={'/app/pages/right-to-work' === pathname ? componentStyles.staffMenuItemSelected : null
+								}
+							>
+								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
+
 								<RouteLink
 									style={{
 										color: '/app/pages/right-to-work' === pathname ? AppColors.pictonBlue : null
@@ -344,13 +395,23 @@ export class SiaLicence extends Component {
 
 										<Form.Item>
 											<div style={AppStyles.marginTop27}>
-												<Button onClick={this.addLicense} style={componentStyles.continueButton} htmlType="submit" block>
+												<Button onClick={this.addLicense} style={componentStyles.continueButton} htmlType="submit" block
+													loading={this.props.auth.loading}
+												>
 													Add
 												</Button>
 
 											</div>
 										</Form.Item>
 									</Col>
+									{errorMessage ?
+										<Col xs={24} sm={24} md={24} lg={24}>
+											<div style={componentStyles.errorMessage}>
+												{errorMessage}
+											</div>
+										</Col> : null
+									}
+
 									{/* {licenseData.length != 0 ?
 										licenseData.map((value, index) =>
 											<Col xs={24} sm={24} md={24} lg={24} style={componentStyles.licenceDataContainer}>

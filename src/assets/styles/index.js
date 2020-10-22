@@ -420,7 +420,10 @@ export const AppStyles = {
     borderColorAlto: { borderColor: AppColors.alto },
     paddingBottom20: {
         paddingBottom: 20
-    }
+    },
+
+    sideBarIcon: { height: 20, width: 20, marginRight: 30, marginBottom: 10 },
+    staffSideBarIcon: { height: 15, width: 15, marginRight: 10, marginBottom: 5 }
 
 
 };

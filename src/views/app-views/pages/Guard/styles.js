@@ -72,5 +72,9 @@ export const componentStyles = {
         borderTopWidth: 0,
         borderBottomWidth: 0,
         borderStyle: 'solid'
+    },
+
+    errorMessage: {
+        color: AppColors.radicalRed
     }
 }

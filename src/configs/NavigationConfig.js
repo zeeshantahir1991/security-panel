@@ -40,7 +40,7 @@ const dashBoardNavTree = [
         key: "dashboards-default",
         path: "/app/dashboards/default",
         title: "sidenav.dashboard.default",
-        icon: DashboardOutlined,
+        icon: '/img/sidebar/default.png',
         breadcrumb: false,
         submenu: [],
       },
@@ -48,7 +48,7 @@ const dashBoardNavTree = [
         key: "dashboards-analytic",
         path: "/app/dashboards/analytic",
         title: "sidenav.dashboard.analytic",
-        icon: DotChartOutlined,
+        icon: '/img/sidebar/doughnut.png',
         breadcrumb: false,
         submenu: [],
       },
@@ -56,7 +56,7 @@ const dashBoardNavTree = [
         key: "dashboards-sales",
         path: "/app/dashboards/sales",
         title: "sidenav.dashboard.sales",
-        icon: FundOutlined,
+        icon: '/img/sidebar/shopping-bag.png',
         breadcrumb: false,
         submenu: [],
       },
@@ -819,7 +819,7 @@ const securityNavTree = [
         key: "security-pages",
         path: "/app/pages",
         title: "Security Company",
-        icon: SecurityScanTwoTone,
+        icon: "/img/sidebar/company.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -839,7 +839,7 @@ const staffNavTree = [
         key: "staff-pages",
         path: "/app/pages",
         title: "Staff",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/security-man.png",
         breadcrumb: true,
         submenu: [
           {
@@ -876,7 +876,7 @@ const clientNavTree = [
         key: "client-pages",
         path: "/app/pages",
         title: "Client",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/customer-review.png",
         breadcrumb: true,
         submenu: [
           {
@@ -913,7 +913,7 @@ const siteNavTree = [
         key: "site-pages",
         path: "/app/pages",
         title: "Site",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/internet.png",
         breadcrumb: true,
         submenu: [
           {
@@ -950,7 +950,7 @@ const subcontractorNavTree = [
         key: "subcontractor-pages",
         path: "/app/pages",
         title: "Sub Contractor",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/carpenter.png",
         breadcrumb: true,
         submenu: [
           {
@@ -987,7 +987,7 @@ const optNavTree = [
         key: "opt-pages",
         path: "/app/pages",
         title: "Operations Centre",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/operating-system.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -1007,7 +1007,7 @@ const schedulingNavTree = [
         key: "scheduling-pages",
         path: "/app/pages",
         title: "Scheduling",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/calendar.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -1027,7 +1027,7 @@ const mobilepatrolNavTree = [
         key: "mobile-pages",
         path: "/app/pages",
         title: "Mobile Patrol",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/police-car.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -1047,7 +1047,7 @@ const keyholdingNavTree = [
         key: "keyHolding-pages",
         path: "/app/pages",
         title: "Key Holding",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/wallet.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -1067,7 +1067,7 @@ const compilanceNavTree = [
         key: "compilance-pages",
         path: "/app/pages",
         title: "Compilance",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/data.png",
         breadcrumb: true,
         submenu: [
           {
@@ -1128,7 +1128,7 @@ const backOfficeNavTree = [
         key: "backOffice-pages",
         path: "/app/pages",
         title: "Backoffice",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/challenges.png",
         breadcrumb: true,
         submenu: [],
       }
@@ -1148,7 +1148,7 @@ const reportsNavTree = [
         key: "reports-pages",
         path: "/app/pages",
         title: "Reports",
-        icon: FileTextOutlined,
+        icon: "/img/sidebar/document.png",
         breadcrumb: true,
         submenu: [],
       }

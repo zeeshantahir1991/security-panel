@@ -11,7 +11,8 @@ import {
   SIGNIN_WITH_GOOGLE,
   SIGNIN_WITH_GOOGLE_AUTHENTICATED,
   SIGNIN_WITH_FACEBOOK,
-  SIGNIN_WITH_FACEBOOK_AUTHENTICATED
+  SIGNIN_WITH_FACEBOOK_AUTHENTICATED,
+  FALSE_LOADING
 } from '../constants/Auth';
 
 export const signIn = (user) => {
@@ -96,5 +97,11 @@ export const hideAuthMessage = () => {
 export const showLoading = () => {
   return {
     type: SHOW_LOADING,
+  };
+};
+
+export const falseLoading = () => {
+  return {
+    type: FALSE_LOADING,
   };
 };

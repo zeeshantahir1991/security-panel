@@ -15,7 +15,7 @@ const menuItem = [
 	{
 		title: "Edit Profile",
 		icon: EditOutlined ,
-		path: "/"
+		path: "/app/pages/setting/edit-profile"
     },
     
     {

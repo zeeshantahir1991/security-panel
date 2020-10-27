@@ -10,9 +10,9 @@ export class EditProfile extends Component {
 
 	state= {
 		avatarUrl: '/img/avatars/thumb-6.jpg',
-		name: 'Charlie Howard',
-		email: 'charlie.howard@themenate.com',
-		userName: 'Charlie',
+		name: 'ABC',
+		email: 'ABC@xyz.com',
+		userName: 'ABC',
 		dateOfBirth: null,
 		phoneNumber: '+44 (1532) 135 7921',
 		website: '',

@@ -422,7 +422,7 @@ export const AppStyles = {
         paddingBottom: 20
     },
 
-    sideBarIcon: { height: 20, width: 20, marginRight: 30, marginBottom: 10 },
+    sideBarIcon: { height: 30, width: 30, marginRight: 30 },
     staffSideBarIcon: { height: 15, width: 15, marginRight: 10, marginBottom: 5 }
 
 

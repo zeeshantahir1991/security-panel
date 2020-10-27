@@ -143,7 +143,7 @@ export class AddGuard extends Component {
 		return (
 			<>
 				<Row justify="center">
-					<Col md={4} lg={4}>
+					<Col md={7} lg={7}>
 						<Menu mode="vertical">
 
 							<Menu.Item

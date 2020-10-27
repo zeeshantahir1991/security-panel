@@ -115,7 +115,7 @@ export class RightToWork extends Component {
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
-				<Col md={4} lg={4}>
+				<Col md={7} lg={7}>
 						<Menu mode="vertical">
 
 							<Menu.Item

@@ -10,6 +10,7 @@ import utils from 'utils'
 import { onMobileNavToggle } from "redux/actions/Theme";
 import { AppColors } from "assets/styles/colors";
 import { AppStyles } from "assets/styles";
+import { componentStyles } from "./styles";
 
 const { SubMenu } = Menu;
 const { useBreakpoint } = Grid;
@@ -66,6 +67,7 @@ const SideNavContent = (props) => {
             {menu.submenu.map((subMenuFirst) =>
               subMenuFirst.submenu.length > 0 ? (
                 <SubMenu
+                  style={componentStyles.subMenuBackgroundColor}
                   icon={
                     subMenuFirst.icon ? (
                       <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} alt={`logo`} />
@@ -73,15 +75,17 @@ const SideNavContent = (props) => {
                     ) : null
                   }
                   key={subMenuFirst.key}
-                  title={setLocale(localization, subMenuFirst.title)}
+                  title={setLocale(localization, subMenuFirst.title.toUpperCase())}
                 >
                   {subMenuFirst.submenu.map((subMenuSecond) => (
-                    <Menu.Item key={subMenuSecond.key}>
+                    <Menu.Item
+
+                      key={subMenuSecond.key}>
                       {subMenuSecond.icon ? (
                         <img style={AppStyles.sideBarIcon} src={subMenuSecond.icon} alt={`logo`} />
                       ) : null}
-                      <span>
-                        {setLocale(localization, subMenuSecond.title)}
+                      <span style={{ marginLeft: 50 }}>
+                        {setLocale(localization, subMenuSecond.title.toUpperCase())}
                       </span>
                       <Link onClick={() => closeMobileNav()} to={subMenuSecond.path} />
                     </Menu.Item>
@@ -91,7 +95,7 @@ const SideNavContent = (props) => {
                   <Menu.Item key={subMenuFirst.key}>
                     {subMenuFirst.icon ? <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} alt={`logo`} />
                       : null}
-                    <span>{setLocale(localization, subMenuFirst.title)}</span>
+                    <span>{setLocale(localization, subMenuFirst.title.toUpperCase())}</span>
                     <Link onClick={() => closeMobileNav()} to={subMenuFirst.path} />
                   </Menu.Item>
                 )
@@ -100,7 +104,7 @@ const SideNavContent = (props) => {
         ) : (
             <Menu.Item key={menu.key}>
               {menu.icon ? <Icon type={menu?.icon} /> : null}
-              <span>{setLocale(localization, menu?.title)}</span>
+              <span>{setLocale(localization, menu?.title.toUpperCase())}</span>
               {menu.path ? <Link onClick={() => closeMobileNav()} to={menu.path} /> : null}
             </Menu.Item>
           )

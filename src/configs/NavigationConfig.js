@@ -821,7 +821,32 @@ const securityNavTree = [
         title: "Security Company",
         icon: "/img/sidebar/company.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "security-pages-manageDetails",
+            path: "/app/pages/manage-details",
+            title: "Manage Details",
+            icon: "",
+            breadcrumb: false,
+            submenu: [],
+          },
+          {
+            key: "security-pages-letterHeadSettings",
+            path: "/app/pages/letter-head-settings",
+            title: "Letter Head Settings",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "security-pages-docs",
+            path: "/app/pages/docs",
+            title: "Docs",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ],
       }
     ],
   },
@@ -989,7 +1014,16 @@ const optNavTree = [
         title: "Operations Centre",
         icon: "/img/sidebar/operating-system.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "opt-pages",
+            path: "/app/pages",
+            title: "Operations Centre",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
@@ -1009,7 +1043,16 @@ const schedulingNavTree = [
         title: "Scheduling",
         icon: "/img/sidebar/calendar.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "scheduling-pages",
+            path: "/app/pages",
+            title: "Scheduling",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
@@ -1029,7 +1072,16 @@ const mobilepatrolNavTree = [
         title: "Mobile Patrol",
         icon: "/img/sidebar/police-car.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "mobile-pages",
+            path: "/app/pages",
+            title: "Mobile Patrol",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
@@ -1049,7 +1101,16 @@ const keyholdingNavTree = [
         title: "Key Holding",
         icon: "/img/sidebar/wallet.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "keyHolding-pages",
+            path: "/app/pages",
+            title: "Key Holding",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
@@ -1130,7 +1191,62 @@ const backOfficeNavTree = [
         title: "Backoffice",
         icon: "/img/sidebar/challenges.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "backOffice-pages",
+            path: "/app/pages",
+            title: "Backoffice",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
+      }
+    ],
+  },
+];
+
+
+const subAndBillingNavTree = [
+  {
+    key: "subscription-and-billing",
+    path: "/app/pages",
+    title: "Subscription and Billing",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "subscription-and-billing-pages",
+        path: "/app/pages",
+        title: "Subscription and Billing",
+        icon: "/img/sidebar/receipt.png",
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "subscription-and-billing-pages-billing-details",
+            path: "/app/pages/billing-details",
+            title: "Billing Details",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "subscription-and-billing-pages-manage-payment-info",
+            path: "/app/pages/manage-payment-info",
+            title: "Manage Payment info",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "subscription-and-billing-pages-change-package",
+            path: "/app/pages/change-package",
+            title: "Change Package",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
@@ -1150,13 +1266,92 @@ const reportsNavTree = [
         title: "Reports",
         icon: "/img/sidebar/document.png",
         breadcrumb: true,
-        submenu: [],
+        submenu: [
+          {
+            key: "reports-pages",
+            path: "/app/pages",
+            title: "Reports",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
       }
     ],
   },
 ];
+
+const settingsNavTree = [
+  {
+    key: "settings",
+    path: "/app/pages",
+    title: "Settings",
+    icon: PlusCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "settings-pages",
+        path: "/app/pages",
+        title: "Settings",
+        icon: "/img/sidebar/mechanical-gears.png",
+        breadcrumb: true,
+        submenu: [
+          {
+            key: "settings-pages-trainings",
+            path: "/app/pages/trainings",
+            title: "Trainings",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "settings-pages-system-users",
+            path: "/app/pages/system-users",
+            title: "System Users",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "settings-pages-guard-positions",
+            path: "/app/pages/guard-positions",
+            title: "Guard Positions",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "settings-pages-security-services",
+            path: "/app/pages/security-services",
+            title: "Security Services",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "settings-pages-expense-types",
+            path: "/app/pages/expense-types",
+            title: "Expense Types",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "settings-pages-roles-and-permission",
+            path: "/app/pages/roles-and-permission",
+            title: "Roles And Permission",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          }
+        ]
+      }
+    ],
+  },
+];
+
 const navigationConfig = [
-  ...dashBoardNavTree,
+  // ...dashBoardNavTree,
   // ...appsNavTree,
   // ...componentsNavTree,
   ...securityNavTree,
@@ -1170,7 +1365,9 @@ const navigationConfig = [
   ...compilanceNavTree,
   ...keyholdingNavTree,
   ...backOfficeNavTree,
-  ...reportsNavTree
+  ...subAndBillingNavTree,
+  ...reportsNavTree,
+  ...settingsNavTree
   // ...docsNavTree
 ];
 

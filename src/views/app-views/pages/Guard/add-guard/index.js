@@ -9,6 +9,7 @@ import SearchInput from "../../../../../components/layout-components/NavSearch/S
 import Position from 'views/app-views/components/data-display/carousel/Position';
 import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
+import { GuardSidebar } from './../GuardSidebar';
 const { SubMenu } = Menu;
 
 const { Option } = Select;
@@ -143,77 +144,8 @@ export class AddGuard extends Component {
 		return (
 			<>
 				<Row justify="center">
-					<Col md={7} lg={7}>
-						<Menu mode="vertical">
-
-							<Menu.Item
-								style={'/app/pages/add-guard' === pathname ? componentStyles.staffMenuItemSelected : null
-								}
-							>
-								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} />
-
-								<RouteLink
-									style={{
-										color: '/app/pages/add-guard' === pathname ? AppColors.pictonBlue : null
-									}}
-									to={'/app/pages/add-guard'}>
-									<span>
-										Personal Information
-
-									</span>
-								</RouteLink>
-							</Menu.Item>
-
-
-							<Menu.Item
-								style={'/app/pages/sia-licence' === pathname ? componentStyles.staffMenuItemSelected : null
-								}
-							>
-								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
-
-								<RouteLink
-									style={{
-										color: '/app/pages/sia-licence' === pathname ? AppColors.pictonBlue : null
-									}}
-									to={'/app/pages/sia-licence'}>
-									<span>
-										SIA Licence
-								    </span>
-								</RouteLink>
-							</Menu.Item>
-							<Menu.Item
-								style={'/app/pages/position-and-pay' === pathname ? componentStyles.staffMenuItemSelected : null
-								}
-							>
-								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
-
-								<RouteLink
-									style={{
-										color: '/app/pages/position-and-pay' === pathname ? AppColors.pictonBlue : null
-									}}
-									to={'/app/pages/position-and-pay'}>
-									<span>
-										Position & Pay
-								    </span>
-								</RouteLink>
-							</Menu.Item>
-							<Menu.Item
-								style={'/app/pages/right-to-work' === pathname ? componentStyles.staffMenuItemSelected : null
-								}
-							>
-								<img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
-
-								<RouteLink
-									style={{
-										color: '/app/pages/right-to-work' === pathname ? AppColors.pictonBlue : null
-									}}
-									to={'/app/pages/right-to-work'}>
-									<span>
-										Right to Work
-								    </span>
-								</RouteLink>
-							</Menu.Item>
-						</Menu>
+					<Col md={8} lg={8}>
+						<GuardSidebar location={this.props.location} />
 					</Col>
 					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >

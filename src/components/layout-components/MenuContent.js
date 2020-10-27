@@ -79,7 +79,7 @@ const SideNavContent = (props) => {
                 >
                   {subMenuFirst.submenu.map((subMenuSecond) => (
                     <Menu.Item
-
+                      className="menuHover"
                       key={subMenuSecond.key}>
                       {subMenuSecond.icon ? (
                         <img style={AppStyles.sideBarIcon} src={subMenuSecond.icon} alt={`logo`} />

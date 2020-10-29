@@ -32,6 +32,8 @@ export const componentStyles = {
 
 
     subMenuBackgroundColor: {
-        backgroundColor: AppColors.alabaster
+        // backgroundColor: AppColors.alabaster
+        // backgroundColor: "#60b0f4"
+        backgroundColor: AppColors.twilightBlue
     }
 }

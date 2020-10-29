@@ -11,7 +11,7 @@ export const SideNav = ({navCollapsed, sideNavTheme, routeInfo, hideGroupTitle, 
   const props = { sideNavTheme, routeInfo , hideGroupTitle, localization}
   return (
     <Sider 
-      className={`side-nav ${sideNavTheme === SIDE_NAV_DARK? 'side-nav-dark' : ''}`} 
+      className={`side-nav card ${sideNavTheme === SIDE_NAV_DARK? 'side-nav-dark' : ''}`} 
       width={SIDE_NAV_WIDTH} 
       collapsed={navCollapsed}
     >

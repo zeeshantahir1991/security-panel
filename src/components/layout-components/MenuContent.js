@@ -85,7 +85,7 @@ const SideNavContent = (props) => {
                         <img style={AppStyles.sideBarIcon} src={subMenuSecond.icon} alt={`logo`} />
                       ) : null}
                       <span style={{ marginLeft: 50 }}>
-                        {setLocale(localization, subMenuSecond.title.toUpperCase())}
+                        {setLocale(localization, subMenuSecond.title)}
                       </span>
                       <Link onClick={() => closeMobileNav()} to={subMenuSecond.path} />
                     </Menu.Item>

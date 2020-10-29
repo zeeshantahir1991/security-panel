@@ -299,7 +299,7 @@ export class SiaLicence extends Component {
 					</Col>
 					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >
-						<Card title="SIA Licence" style={AppStyles.paddingBottom20}>
+						<Card className="card" title="SIA Licence" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >

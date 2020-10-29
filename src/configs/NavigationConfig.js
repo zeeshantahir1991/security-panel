@@ -827,7 +827,7 @@ const securityNavTree = [
             path: "/app/pages/manage-details",
             title: "Manage Details",
             icon: "",
-            breadcrumb: false,
+            breadcrumb: true,
             submenu: [],
           },
           {

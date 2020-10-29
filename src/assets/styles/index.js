@@ -58,6 +58,11 @@ export const AppStyles = {
     marginTop4: {
         marginTop: 4
     },
+
+    marginTop5: {
+        marginTop: 5
+    },
+
     marginTop7: {
         marginTop: 7
     },
@@ -221,6 +226,11 @@ export const AppStyles = {
     marginLeft30: {
         marginLeft: 30
     },
+
+    padding20: {
+        padding: 20
+    },
+
     width5: {
         width: '5%'
     },

@@ -149,7 +149,7 @@ export class AddGuard extends Component {
 					</Col>
 					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >
-						<Card title="Personal Information" style={AppStyles.paddingBottom20}>
+						<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >

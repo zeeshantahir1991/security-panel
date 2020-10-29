@@ -518,7 +518,7 @@ export class GuardsList extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-						<Card title="Guards List" extra={cardDropdown(latestTransactionOption)}>
+						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
 							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
 						</Card>
 					</Col>

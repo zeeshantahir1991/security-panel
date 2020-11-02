@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "companyName": "ABC Ltd",
+        "email": "eileen_h@hotmail.com",
+        "img": "/img/avatars/company-logo.jpeg",
+        "phoneNumber": "+12-123-1234",
+        "acsRefNumber": "ONONE1221",
+        "status": "active",
+        "cp": "Yes",
+        "sg": "No",
+        "cctv": "Yes",
+        "ds": "Yes",
+        "vi": "Yes",
+        "kh": "Yes",
+        "cvit": "Yes"
+    },
+    {
+        "id": "2",
+        "companyName": "XYZ Ltd",
+        "email": "terrancemoreno@gmail.com",
+        "img": "/img/avatars/company-logo.jpeg",
+        "phoneNumber": "+12-123-1234",
+        "acsRefNumber": "ONONE1221",
+        "status": "inactive",
+        "cp": "No",
+        "sg": "No",
+        "cctv": "Yes",
+        "ds": "Yes",
+        "vi": "Yes",
+        "kh": "Yes",
+        "cvit": "Yes"
+    },
+    {
+        "id": "3",
+        "companyName": "DEF Ltd",
+        "email": "ronnie_vergas@infotech.io",
+        "img": "/img/avatars/company-logo.jpeg",
+        "phoneNumber": "+12-123-1234",
+        "acsRefNumber": "ONONE1221",
+        "status": "active",
+        "cp": "Yes",
+        "sg": "No",
+        "cctv": "Yes",
+        "ds": "Yes",
+        "vi": "Yes",
+        "kh": "Yes",
+        "cvit": "Yes"
+    }
+]

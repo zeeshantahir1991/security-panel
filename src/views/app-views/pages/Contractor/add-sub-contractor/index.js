@@ -4,7 +4,7 @@ import { DollarOutlined, BuildOutlined, CalendarOutlined, LockOutlined, NumberOu
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 import Position from 'views/app-views/components/data-display/carousel/Position';
 import { Link as RouteLink } from 'react-router-dom';
@@ -154,7 +154,7 @@ const rules = {
 	]
 }
 
-export class manageDetails extends Component {
+export class AddSubContractor extends Component {
 
 	constructor(props) {
 		super(props);
@@ -345,7 +345,7 @@ export class manageDetails extends Component {
 										<Form.Item
 											name="email"
 											label="Email"
-											rules={rules.email}
+											// rules={rules.email}
 											hasFeedback
 										>
 											<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
@@ -407,26 +407,7 @@ export class manageDetails extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={12} lg={12}>
-										<Form.Item
-											name="mobile"
-											label="Mobile"
-											// rules={rules.mobile}
-											hasFeedback
-										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
-										<Form.Item
-											name="controlroom"
-											label="Control Room Phone"
-											// rules={rules.controlroom}
-											hasFeedback
-										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
-										</Form.Item>
-									</Col>
+									
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>
@@ -446,4 +427,4 @@ export class manageDetails extends Component {
 	}
 }
 
-export default manageDetails
+export default AddSubContractor

@@ -980,7 +980,7 @@ const subcontractorNavTree = [
         submenu: [
           {
             key: "subcontractor-pages-subcontractors",
-            path: "/app/pages/subcontractors",
+            path: "/app/pages/sub-contractors",
             title: "Sub Contractors",
             icon: "",
             breadcrumb: false,
@@ -988,7 +988,7 @@ const subcontractorNavTree = [
           },
           {
             key: "subcontractor-pages-addsubcontractor",
-            path: "/app/pages/addsubcontractor",
+            path: "/app/pages/add-sub-contractor",
             title: "Add Sub Contractor",
             icon: "",
             breadcrumb: true,
@@ -1133,15 +1133,15 @@ const compilanceNavTree = [
         submenu: [
           {
             key: "compilance-pages-compilanceTemplates",
-            path: "/app/pages/compilanceTemplates",
+            path: "/app/pages/compilance-templates",
             title: "Compilance Templates",
             icon: "",
-            breadcrumb: false,
+            breadcrumb: true,
             submenu: [],
           },
           {
             key: "compilance-pages-interviews",
-            path: "/app/pages/interviews",
+            path: "/app/pages/compilance-interviews",
             title: "Interviews",
             icon: "",
             breadcrumb: true,

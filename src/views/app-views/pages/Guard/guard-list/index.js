@@ -333,8 +333,8 @@ export class GuardsList extends Component {
 		];
 		return (
 			<>
-				<Row gutter={16}>
-					<Col xs={0} sm={0} md={24} lg={24}>
+				<Row gutter={16} justify="center">
+					<Col xs={0} sm={0} md={20} lg={20}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -423,7 +423,7 @@ export class GuardsList extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={24} sm={24} md={0} lg={0}>
+					<Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -517,7 +517,7 @@ export class GuardsList extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
+					<Col xs={20} sm={20} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
 							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
 						</Card>

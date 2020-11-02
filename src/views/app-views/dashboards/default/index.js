@@ -78,8 +78,8 @@ export const DefaultDashboard = (props) => {
   }
   return (
     <>
-      <Row gutter={16}>
-        <Col xs={24} sm={24} md={24} lg={24}>
+      <Row gutter={16} justify="center">
+        <Col xs={20} sm={20} md={20} lg={20}>
           <Row gutter={16} justify="end">
 
             <Col xs={20} sm={20} md={6} lg={6} xl={6} style={AppStyles.marginBottom20}>
@@ -92,7 +92,7 @@ export const DefaultDashboard = (props) => {
           <Row gutter={16}>
             {
               annualStatisticData.map((elm, i) => (
-                <Col xs={24} sm={24} md={24} lg={24} xl={8} key={i}>
+                <Col xs={24} sm={24} md={8} lg={8} xl={8} key={i}>
                   <StatisticWidget
                     title={elm.title}
                     value={elm.value}

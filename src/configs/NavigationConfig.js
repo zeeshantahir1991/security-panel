@@ -1149,7 +1149,7 @@ const compilanceNavTree = [
           },
           {
             key: "compilance-pages-vetting",
-            path: "/app/pages/vetting",
+            path: "/app/pages/compilance-vetting",
             title: "Vetting",
             icon: "",
             breadcrumb: true,
@@ -1157,7 +1157,7 @@ const compilanceNavTree = [
           },
           {
             key: "compilance-pages-trainings",
-            path: "/app/pages/trainings",
+            path: "/app/pages/compilance-trainings",
             title: "Trainings",
             icon: "",
             breadcrumb: true,
@@ -1165,7 +1165,7 @@ const compilanceNavTree = [
           },
           {
             key: "compilance-pages-siaRecords",
-            path: "/app/pages/siaRecords",
+            path: "/app/pages/compilance-sia-records",
             title: "Sia Records",
             icon: "",
             breadcrumb: true,

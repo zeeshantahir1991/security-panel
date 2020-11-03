@@ -23,6 +23,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-sub-contractor`} component={lazy(() => import(`./Contractor/add-sub-contractor`))} />
       <Route path={`${match.url}/compilance-templates`} component={lazy(() => import(`./Compilance/compilance-templates`))} />
       <Route path={`${match.url}/compilance-interviews`} component={lazy(() => import(`./Compilance/compilance-interviews`))} />
+      <Route path={`${match.url}/compilance-vetting`} component={lazy(() => import(`./Compilance/compilance-vetting`))} />
+      <Route path={`${match.url}/compilance-trainings`} component={lazy(() => import(`./Compilance/compilance-trainings`))} />
+      <Route path={`${match.url}/compilance-sia-records`} component={lazy(() => import(`./Compilance/compilance-sia-records`))} />
 
 
     </Switch>

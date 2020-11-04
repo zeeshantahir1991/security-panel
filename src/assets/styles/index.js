@@ -188,6 +188,11 @@ export const AppStyles = {
     marginBottom60: {
         marginBottom: 60
     },
+
+    marginBottom50: {
+        marginBottom: 50
+    },
+
     marginBottom20: {
         marginBottom: 20
     },
@@ -433,9 +438,9 @@ export const AppStyles = {
     },
 
     sideBarIcon: { height: 30, width: 30, marginRight: 30 },
-    staffSideBarIcon: { height: 15, width: 15, marginRight: 10, marginBottom: 5 }
-
-
+    staffSideBarIcon: { height: 15, width: 15, marginRight: 10, marginTop: 10, marginBottom: 10, marginLeft: 10, marginRight: 10 },
+    staffSideBarIconSelectedContainer: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue }
+    ,
 };
 
 export const ButtonStyles = {

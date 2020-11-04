@@ -15,6 +15,7 @@ import {
 import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from '../GuardSidebar';
+import { Stepper } from './../stepper';
 
 const { Option } = Select;
 function mapStateToProps(state) {
@@ -294,10 +295,9 @@ export class SiaLicence extends Component {
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
-					<Col md={8} lg={8}>
-						<GuardSidebar location={this.props.location} />
+					<Col xs={24} sm={24} md={24} lg={24} >
+						<Stepper location={this.props.location} />
 					</Col>
-					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >
 						<Card className="card" title="SIA Licence" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">

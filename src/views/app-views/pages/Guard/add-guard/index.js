@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker } from 'antd';
+import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps } from 'antd';
 import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -10,8 +10,9 @@ import Position from 'views/app-views/components/data-display/carousel/Position'
 import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from './../GuardSidebar';
+import { Stepper } from './../stepper';
 const { SubMenu } = Menu;
-
+const { Step } = Steps;
 const { Option } = Select;
 
 const rules = {
@@ -142,12 +143,11 @@ export class AddGuard extends Component {
 		const { users, userProfileVisible, selectedUser, search } = this.state;
 		const { classes, location: { pathname }, history } = this.props;
 		return (
-			<>
+			<div style={AppStyles.marginTop20}>
 				<Row justify="center">
-					<Col md={8} lg={8}>
-						<GuardSidebar location={this.props.location} />
+					<Col xs={24} sm={24} md={24} lg={24} >
+						<Stepper location={this.props.location} />
 					</Col>
-					<Col md={1} lg={1}></Col>
 					<Col xs={24} sm={24} md={15} lg={15} >
 						<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
@@ -297,7 +297,7 @@ export class AddGuard extends Component {
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>
 				</Row>
-			</>
+			</div>
 		)
 	}
 }

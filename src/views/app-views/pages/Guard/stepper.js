@@ -14,7 +14,7 @@ export const Stepper = ({ location: { pathname } }) => {
     return (
 
         <Row justify="center">
-            <Col style={AppStyles.marginBottom50} xs={24} sm={24} md={22} lg={22} >
+            <Col style={AppStyles.marginBottom50} xs={24} sm={24} md={20} lg={20} >
                 <Steps>
                     <Step status="finish" title="Personal Information"
                         icon={

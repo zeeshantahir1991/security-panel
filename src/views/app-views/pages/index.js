@@ -28,7 +28,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/compilance-sia-records`} component={lazy(() => import(`./Compilance/compilance-sia-records`))} />
       <Route path={`${match.url}/add-client`} component={lazy(() => import(`./Client/add-client`))} />
       <Route path={`${match.url}/clients`} component={lazy(() => import(`./Client/clients`))} />
-
+      <Route path={`${match.url}/add-sg-site`} component={lazy(() => import(`./Sites/add-sg-site`))} />
+      <Route path={`${match.url}/add-ds-site`} component={lazy(() => import(`./Sites/add-ds-site`))} />
+      <Route path={`${match.url}/static-sites`} component={lazy(() => import(`./Sites/static-sites`))} />
 
     </Switch>
   </Suspense>

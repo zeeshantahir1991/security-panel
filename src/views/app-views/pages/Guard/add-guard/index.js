@@ -148,7 +148,7 @@ export class AddGuard extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Stepper location={this.props.location} />
 					</Col>
-					<Col xs={24} sm={24} md={15} lg={15} >
+					<Col xs={24} sm={24} md={20} lg={20} >
 						<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">

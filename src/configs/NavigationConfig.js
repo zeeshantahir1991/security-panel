@@ -1090,9 +1090,17 @@ const mobilepatrolNavTree = [
         breadcrumb: true,
         submenu: [
           {
-            key: "mobile-pages",
-            path: "/app/pages",
-            title: "Mobile Patrol",
+            key: "mobile-pages-sites",
+            path: "/app/pages/mobile-patrol-sites",
+            title: "Mobile Patrol Sites",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "mobile-pages-add-sites",
+            path: "/app/pages/add-mobile-patrol-site",
+            title: "Add Mobile Patrol Site",
             icon: "",
             breadcrumb: true,
             submenu: [],

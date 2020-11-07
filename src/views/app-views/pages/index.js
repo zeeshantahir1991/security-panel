@@ -31,7 +31,8 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-sg-site`} component={lazy(() => import(`./Sites/add-sg-site`))} />
       <Route path={`${match.url}/add-ds-site`} component={lazy(() => import(`./Sites/add-ds-site`))} />
       <Route path={`${match.url}/static-sites`} component={lazy(() => import(`./Sites/static-sites`))} />
-
+      <Route path={`${match.url}/mobile-patrol-sites`} component={lazy(() => import(`./MobilePatrol/mobile-patrol-sites`))} />
+      <Route path={`${match.url}/add-mobile-patrol-site`} component={lazy(() => import(`./MobilePatrol/add-mobile-patrol-site`))} />
     </Switch>
   </Suspense>
 );

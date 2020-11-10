@@ -12,7 +12,12 @@
     "siaLicenceExpiry": 1579132800,
     "payRate": 12,
     "empType": "Employment 1",
-    "subcontractName": "DEF"
+    "subcontractName": "DEF",
+    "title": "Miss",
+    "niNumber": 12232234,
+    "origin": "Asian",
+    "compilanceSc": 30
+
   },
   {
     "id": "2",
@@ -27,7 +32,14 @@
     "siaLicenceExpiry": 1582416000,
     "payRate": 13,
     "empType": "Employment 1",
-    "subcontractName": "ABC"
+    "subcontractName": "ABC",
+    "title": "Mr",
+    "niNumber": 12232234,
+    "origin": "African",
+    "compilanceSc": 50
+
+
+
   },
   {
     "id": "3",
@@ -42,7 +54,12 @@
     "siaLicenceExpiry": 1583107200,
     "payRate": 11,
     "empType": "Employment 1",
-    "subcontractName": "GHI"
+    "subcontractName": "GHI",
+    "title": "Mr",
+    "niNumber": 12232234,
+    "origin": "British",
+    "compilanceSc": 100
+
 
   }
 ]

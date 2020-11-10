@@ -113,12 +113,12 @@ export class RightToWork extends Component {
 	render() {
 		const { users, userProfileVisible, selectedUser, search, nationality } = this.state;
 		const { classes, location: { pathname }, history } = this.props;
-
+	
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={24} lg={24} >
-						<Stepper location={this.props.location} />
+					<Stepper location={this.props.location} history={this.props.history} />
 					</Col>
 					<Col xs={24} sm={24} md={20} lg={20} >
 						<Card className="card" className="card" title="Right to Work" style={AppStyles.paddingBottom20}>

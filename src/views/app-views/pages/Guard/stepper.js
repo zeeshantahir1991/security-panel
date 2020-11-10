@@ -9,7 +9,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 const { Step } = Steps;
 
-export const Stepper = ({ location: { pathname } }) => {
+export const Stepper = ({ location: { pathname }, history }) => {
 
     return (
 
@@ -17,29 +17,49 @@ export const Stepper = ({ location: { pathname } }) => {
             <Col style={AppStyles.marginBottom50} xs={24} sm={24} md={20} lg={20} >
                 <Steps>
                     <Step status="finish" title="Personal Information"
+
+                        style={AppStyles.pointer}
+                        onClick={() => history.push({
+                            pathname: '/app/pages/add-guard',
+                        })}
                         icon={
                             <div style={'/app/pages/add-guard' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
                                 <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} />
                             </div>
                         } />
-                    <Step status="finish" title="SIA Licence" icon={
-                        <div style={'/app/pages/sia-licence' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                    <Step status="finish" title="SIA Licence"
+                        style={AppStyles.pointer}
+                        onClick={() => history.push({
+                            pathname: '/app/pages/sia-licence',
+                        })}
+                        icon={
+                            <div style={'/app/pages/sia-licence' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
-                            <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
-                        </div>
-                    } />
-                    <Step status="finish" title=" Position & Pay" icon={
-                        <div style={'/app/pages/position-and-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
+                            </div>
+                        } />
+                    <Step status="finish" title=" Position & Pay"
+                        style={AppStyles.pointer}
+                        onClick={() => history.push({
+                            pathname: '/app/pages/position-and-pay',
+                        })}
+                        icon={
+                            <div style={'/app/pages/position-and-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
-                            <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
-                        </div>
-                    } />
-                    <Step status="finish" title="Right to Work" icon={
-                        <div style={'/app/pages/right-to-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
+                            </div>
+                        } />
+                    <Step status="finish" title="Right to Work"
+                        style={AppStyles.pointer}
+                        onClick={() => history.push({
+                            pathname: '/app/pages/right-to-work',
+                        })}
+                        icon={
+                            <div style={'/app/pages/right-to-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
-                            <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
-                        </div>
-                    } />
+                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
+                            </div>
+                        } />
                 </Steps>
             </Col>
 

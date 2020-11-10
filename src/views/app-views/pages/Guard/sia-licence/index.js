@@ -156,7 +156,7 @@ export class SiaLicence extends Component {
 		const { users, userProfileVisible, selectedUser, search, errorMessage } = this.state;
 		let licenseData = this.props.licenseData;
 		const { classes, location: { pathname }, history } = this.props;
-
+	
 		const tableColumns = [
 			{
 				title: 'First Name',
@@ -296,7 +296,7 @@ export class SiaLicence extends Component {
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={24} lg={24} >
-						<Stepper location={this.props.location} />
+						<Stepper location={this.props.location} history={this.props.history} />
 					</Col>
 					<Col xs={24} sm={24} md={20} lg={20} >
 						<Card className="card" title="SIA Licence" style={AppStyles.paddingBottom20}>

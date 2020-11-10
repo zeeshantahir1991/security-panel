@@ -142,160 +142,346 @@ export class AddGuard extends Component {
 	render() {
 		const { users, userProfileVisible, selectedUser, search } = this.state;
 		const { classes, location: { pathname }, history } = this.props;
+		let record = null
+		let action = null
+		if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
+			record = this.props.location.state.record
+			action = this.props.location.state.action
+		}
 		return (
 			<div style={AppStyles.marginTop20}>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={24} lg={24} >
-						<Stepper location={this.props.location} />
+						<Stepper location={this.props.location} history={this.props.history} />
 					</Col>
-					<Col xs={24} sm={24} md={20} lg={20} >
-						<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
-							<Form layout="vertical">
-								<Row gutter={16} justify="center">
-									<Col xs={24} sm={24} md={24} lg={24} >
-										<div style={AppStyles.marginBottom40}>
-											<div style={AppStyles.horizontallLineWidth100}>
+					{action && record ?
+						<Col xs={24} sm={24} md={20} lg={20} >
+							<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
+								<Form layout="vertical">
+									<Row gutter={16}>
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<div style={AppStyles.marginBottom40}>
+												<div style={AppStyles.horizontallLineWidth100}>
+												</div>
 											</div>
-										</div>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="title"
-											label="Title"
-											rules={rules.title}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Title"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("title", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="title"
+												label="Title"
+												rules={action == "viewItem" ? null : rules.title}
+												hasFeedback
 											>
-												<Option value="Mr">Mr</Option>
-												<Option value="Miss">Miss</Option>
-												<Option value="Mrs">Mrs</Option>
-											</Select>
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="firstname"
-											label="First Name"
-											rules={rules.firstname}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="lastname"
-											label="Last Name"
-											rules={rules.lastname}
-											hasFeedback
-										>
-											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="email"
-											label="Email"
-											rules={rules.email}
-											hasFeedback
-										>
-											<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
-										</Form.Item>
-									</Col>
-
-
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="dob"
-											label="DOB"
-											rules={rules.dob}
-											hasFeedback
-										>
-											{/* <Input type="date" style={componentStyles.borderColor} /> */}
-											<DatePicker style={componentStyles.datePicker}
-												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-												format={'YYYY/MM/DD'} />
-
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
-										<Form.Item
-											name="mobile"
-											label="Mobile"
-											rules={rules.mobile}
-											hasFeedback
-										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
-										<Form.Item
-											name="niNumber"
-											label="Ni Number"
-											rules={rules.niNumber}
-											hasFeedback
-										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
-										<Form.Item
-											name="origin"
-											label="Ethinic Origin"
-											rules={rules.origin}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Origin"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("origin", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												{action == "viewItem" ?
+													record.title
+													:
+													<Select
+														showSearch
+														style={componentStyles.selectStyle}
+														bordered={false}
+														placeholder="Title"
+														optionFilterProp="children"
+														onChange={(val) => this.handleChange("title", val)}
+														// onFocus={onFocus}
+														// onBlur={onBlur}
+														// onSearch={onSearch}
+														defaultValue={record.title ? record.title : "Mr"}
+														filterOption={(input, option) =>
+															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+														}
+													>
+														<Option value="Mr">Mr</Option>
+														<Option value="Miss">Miss</Option>
+														<Option value="Mrs">Mrs</Option>
+													</Select>
 												}
+
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="firstname"
+												label="Full Name"
+												rules={action == "viewItem" ? null : rules.firstname}
+												hasFeedback
 											>
-												<Option value="British">British</Option>
-												<Option value="African">African</Option>
-												<Option value="Carebian">Carebian</Option>
-												<Option value="Asian">Asian</Option>
-											</Select>
-										</Form.Item>
-									</Col>
+												{action == "viewItem" ?
+													record.name :
+													<Input
+														defaultValue={record.name ? record.name : ""}
+														style={componentStyles.borderColor} prefix={<UserOutlined />} />
+												}
+											</Form.Item>
+										</Col>
 
-									<Col xs={12} sm={12} md={12} lg={12}>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="email"
+												label="Email"
+												rules={action == "viewItem" ? null : rules.email}
+												hasFeedback
+											>
+												{action == "viewItem" ?
+													record.email :
+													<Input
+														defaultValue={record.email ? record.email : ""}
+														maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
+												}
+											</Form.Item>
+										</Col>
 
-										<Form.Item>
-											<div style={AppStyles.marginTop40}>
-												<Button onClick={this.goToSiaLicence} style={componentStyles.continueButton} htmlType="submit" block>
-													Continue
+
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="dob"
+												label="DOB"
+												rules={action == "viewItem" ? null : rules.dob}
+												hasFeedback
+											>
+												{action == "viewItem" ?
+
+													moment.unix(record.birthday).format("YYYY/MM/DD")
+													:
+													<DatePicker style={componentStyles.datePicker}
+														defaultValue={record.birthday ? moment.unix(record.birthday) : ""}
+														format={'YYYY/MM/DD'} />
+												}
+
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="mobile"
+												label="Mobile"
+												rules={action == "viewItem" ? null : rules.phoneNumber}
+												hasFeedback
+											>
+												{action == "viewItem" ?
+													record.phoneNumber :
+													<Input
+														defaultValue={record.phoneNumber ? parseInt(record.phoneNumber) : ""}
+														type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+												}
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="niNumber"
+												label="Ni Number"
+												rules={action == "viewItem" ? null : rules.niNumber}
+												hasFeedback
+											>
+												{action == "viewItem" ?
+													record.niNumber :
+													<Input
+														defaultValue={record.niNumber ? record.niNumber : ""}
+														type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+
+												}
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="origin"
+												label="Ethinic Origin"
+												rules={action == "viewItem" ? null : rules.origin}
+												hasFeedback
+											>
+												{action == "viewItem" ?
+													record.origin
+													:
+													<Select
+														showSearch
+														style={componentStyles.selectStyle}
+														bordered={false}
+														placeholder="Origin"
+														optionFilterProp="children"
+														onChange={(val) => this.handleChange("origin", val)}
+														// onFocus={onFocus}
+														// onBlur={onBlur}
+														// onSearch={onSearch}
+														defaultValue={record.origin ? record.origin : ""}
+														filterOption={(input, option) =>
+															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+														}
+													>
+														<Option value="British">British</Option>
+														<Option value="African">African</Option>
+														<Option value="Carebian">Carebian</Option>
+														<Option value="Asian">Asian</Option>
+													</Select>
+												}
+											</Form.Item>
+										</Col>
+									</Row>
+									<Row gutter={16} justify="center">
+
+										<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+
+											<Form.Item>
+												<Button
+													onClick={() => this.props.history.goBack()}
+													style={componentStyles.continueButton} htmlType="submit" block>
+													Back
+		                                        </Button>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+							{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+						</Col>
+
+
+						: <Col xs={24} sm={24} md={20} lg={20} >
+							<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
+								<Form layout="vertical">
+									<Row gutter={16} justify="center">
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<div style={AppStyles.marginBottom40}>
+												<div style={AppStyles.horizontallLineWidth100}>
+												</div>
+											</div>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="title"
+												label="Title"
+												rules={rules.title}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Title"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("title", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Mr">Mr</Option>
+													<Option value="Miss">Miss</Option>
+													<Option value="Mrs">Mrs</Option>
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="firstname"
+												label="First Name"
+												rules={rules.firstname}
+												hasFeedback
+											>
+												<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="lastname"
+												label="Last Name"
+												rules={rules.lastname}
+												hasFeedback
+											>
+												<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="email"
+												label="Email"
+												rules={rules.email}
+												hasFeedback
+											>
+												<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
+											</Form.Item>
+										</Col>
+
+
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="dob"
+												label="DOB"
+												rules={rules.dob}
+												hasFeedback
+											>
+												{/* <Input type="date" style={componentStyles.borderColor} /> */}
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={8} lg={8}>
+											<Form.Item
+												name="mobile"
+												label="Mobile"
+												rules={rules.mobile}
+												hasFeedback
+											>
+												<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={12} lg={12}>
+											<Form.Item
+												name="niNumber"
+												label="Ni Number"
+												rules={rules.niNumber}
+												hasFeedback
+											>
+												<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={12} lg={12}>
+											<Form.Item
+												name="origin"
+												label="Ethinic Origin"
+												rules={rules.origin}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Origin"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("origin", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="British">British</Option>
+													<Option value="African">African</Option>
+													<Option value="Carebian">Carebian</Option>
+													<Option value="Asian">Asian</Option>
+												</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={12} sm={12} md={12} lg={12}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button onClick={this.goToSiaLicence} style={componentStyles.continueButton} htmlType="submit" block>
+														Continue
 													</Button>
 
-											</div>
-										</Form.Item>
-									</Col>
-								</Row>
-							</Form>
-						</Card>
-						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
-					</Col>
+												</div>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+							{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+						</Col>
+					}
 				</Row>
 			</div>
 		)

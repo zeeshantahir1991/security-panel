@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu } from 'antd';
+import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Progress } from 'antd';
 import {
-	EyeOutlined, DeleteOutlined,
+	EditOutlined, DeleteOutlined,
 	UserAddOutlined,
 	FileExcelOutlined,
 	PrinterOutlined,
@@ -18,6 +18,7 @@ import { componentStyles } from "../../../dashboards/styles";
 import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 import userData from "assets/data/user-list.data.json";
 import Position from 'views/app-views/components/data-display/carousel/Position';
+import { AppColors } from 'assets/styles/colors';
 
 const { Option } = Select;
 
@@ -180,16 +181,30 @@ export class GuardsList extends Component {
 
 	}
 
+	viewItem = (action, record) => {
+		this.props.propsData.history.push({
+			pathname: '/app/pages/add-guard',
+			state: { action, record }
+		})
+	}
+
 	render() {
 		const { users, userProfileVisible, selectedUser, search } = this.state;
 
 		const tableColumns = [
+			
 			{
 				title: 'Guard Name',
 				dataIndex: 'name',
 				render: (_, record) => (
 					<div className="d-flex">
-						<AvatarStatus src={record.img} name={record.name} />
+						<AvatarStatus src={record.img} />
+
+						<span style={AppStyles.alignSelfCenter}>
+							<a onClick={()=>this.viewItem("viewItem", record)}>
+							{record.name}
+							</a>
+						</span>
 					</div>
 				),
 				sorter: {
@@ -202,6 +217,35 @@ export class GuardsList extends Component {
 				width: 200,
 				fixed: 'left'
 			},
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-center">
+						<Tooltip title="Edit">
+							<Button type="primary" className="mr-2" icon={<EditOutlined />} 
+							onClick={() => { this.viewItem("editItem", elm) }} 
+							size="small" />
+						</Tooltip>
+					</div>
+				)
+			},
+			{
+				title: 'Compilance SC',
+				dataIndex: 'compilanceSc',
+				render: (_, record) => (
+					<div className="d-flex">
+						{record.compilanceSc && record.compilanceSc < 50 ? 
+						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.radicalRed}/> :
+						 record.compilanceSc && record.compilanceSc >= 50 && record.compilanceSc != 100 ?
+						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.brightSun}/> :
+						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.conifer}/>
+						}
+					</div>
+				),
+				width: 300
+			},
+		
 			{
 				title: 'Date of Birth',
 				dataIndex: 'birthday',
@@ -320,10 +364,8 @@ export class GuardsList extends Component {
 				title: '',
 				dataIndex: 'actions',
 				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
+					<div className="text-center">
+					
 						<Tooltip title="Delete">
 							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
 						</Tooltip>
@@ -519,7 +561,7 @@ export class GuardsList extends Component {
 
 					<Col xs={20} sm={20} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2000, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

@@ -64,5 +64,8 @@ export const AppColors = {
   conifer: '#A6D34E',
 
 
-  martini: '#b4a19d'
+  martini: '#b4a19d',
+
+  //Yello
+  brightSun: "#F7DE42"
 }

@@ -219,7 +219,7 @@ export class AddSGSite extends Component {
 									<Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="securityServices"
-											label="Security Services"
+											label="Service Types"
 											// rules={rules.securityServices}
 											hasFeedback
 										>
@@ -227,7 +227,7 @@ export class AddSGSite extends Component {
 												showSearch
 												style={componentStyles.selectStyle}
 												bordered={false}
-												placeholder="Security Services"
+												placeholder="Service Types"
 												optionFilterProp="children"
 												onChange={(val) => this.handleChange("securityServices", val)}
 												// onFocus={onFocus}

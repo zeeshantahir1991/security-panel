@@ -110,7 +110,7 @@ export const DefaultDashboard = (props) => {
       <Row gutter={16}>
 
         <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-          <GuardsList />
+          <GuardsList propsData={props} />
         </Col>
       </Row>
     </>

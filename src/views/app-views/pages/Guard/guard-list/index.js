@@ -183,7 +183,7 @@ export class GuardsList extends Component {
 
 	viewItem = (action, record) => {
 		this.props.propsData.history.push({
-			pathname: '/app/pages/add-guard',
+			pathname: '/app/pages/guard-view',
 			state: { action, record }
 		})
 	}
@@ -241,6 +241,17 @@ export class GuardsList extends Component {
 						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.brightSun}/> :
 						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.conifer}/>
 						}
+					</div>
+				),
+				width: 300
+			},
+
+			{
+				title: 'Progress',
+				dataIndex: 'progress',
+				render: (_, record) => (
+					<div className="d-flex">
+						 <Progress percent={record.progress}  strokeColor={AppColors.skyBlue}/>
 					</div>
 				),
 				width: 300
@@ -561,7 +572,7 @@ export class GuardsList extends Component {
 
 					<Col xs={20} sm={20} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2600, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2800, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

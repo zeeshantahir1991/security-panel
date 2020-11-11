@@ -260,7 +260,7 @@ export class SiaRecordList extends Component {
         }
         if (action && record) {
             return (
-                <div style={AppStyles.marginTop20}>
+                <div style={AppStyles.marginTop50}>
                     <Row gutter={16} justify="center">
                         <Col xs={24} sm={24} md={24} lg={24} >
                             <Stepper location={this.props.location} history={this.props.history} action={action} record={record} />

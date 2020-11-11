@@ -150,7 +150,7 @@ export class ViewGuard extends Component {
         }
         if (action && record) {
             return (
-                <div style={AppStyles.marginTop20}>
+                <div style={AppStyles.marginTop50}>
                     <Row justify="center">
                         <Col xs={24} sm={24} md={24} lg={24} >
                             <Stepper location={this.props.location} history={this.props.history} action={action} record={record} />
@@ -318,14 +318,21 @@ export class ViewGuard extends Component {
                                     <Row gutter={16} justify="center">
 
                                         <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
-
-                                            <Form.Item>
-                                                <Button
-                                                    onClick={() => this.props.history.goBack()}
-                                                    style={componentStyles.continueButton} htmlType="submit" block>
-                                                    Back
+                                            {action == "viewItem" ?
+                                                <Form.Item>
+                                                    <Button
+                                                        onClick={() => this.props.history.goBack()}
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Back
                                                     </Button>
-                                            </Form.Item>
+                                                </Form.Item> :
+                                                <Form.Item>
+                                                    <Button
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Update
+                                                </Button>
+                                                </Form.Item>
+                                            }
                                         </Col>
                                     </Row>
                                 </Form>

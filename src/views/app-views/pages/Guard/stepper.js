@@ -42,22 +42,24 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                             } />
                         <Step status="finish" title=" Position & Pay"
                             style={AppStyles.pointer}
-                            // onClick={() => history.push({
-                            //     pathname: '/app/pages/position-and-pay',
-                            // })}
+                            onClick={() => history.push({
+                                pathname: '/app/pages/guard-position-pay',
+                                state: { action, record }
+                            })}
                             icon={
-                                <div style={'/app/pages/position-and-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pages/guard-position-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
                                     <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
                                 </div>
                             } />
                         <Step status="finish" title="Right to Work"
                             style={AppStyles.pointer}
-                            // onClick={() => history.push({
-                            //     pathname: '/app/pages/right-to-work',
-                            // })}
+                            onClick={() => history.push({
+                                pathname: '/app/pages/guard-right-work',
+                                state: { action, record }
+                            })}
                             icon={
-                                <div style={'/app/pages/right-to-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pagesguard-right-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
                                     <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
                                 </div>

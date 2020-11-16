@@ -1127,9 +1127,17 @@ const keyholdingNavTree = [
         breadcrumb: true,
         submenu: [
           {
-            key: "keyHolding-pages",
-            path: "/app/pages",
-            title: "Key Holding",
+            key: "keyHolding-pages-key-holding-sites",
+            path: "/app/pages/key-holding-sites",
+            title: "Key Holding Sites",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "keyHolding-pages-add-key-holding",
+            path: "/app/pages/add-key-holding",
+            title: "Add Key Holding Site",
             icon: "",
             breadcrumb: true,
             submenu: [],

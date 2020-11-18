@@ -346,7 +346,7 @@ export class Clients extends Component {
 				sorter: (a, b) => moment(a.dateCreated).unix() - moment(b.dateCreated).unix(),
 				width: 200
 			},
-	
+
 
 			{
 				title: '',
@@ -365,7 +365,7 @@ export class Clients extends Component {
 		];
 
 		return (
-			<>
+			<div style={AppStyles.marginTop50}>
 
 				<Row gutter={16} justify="center">
 					<Col xs={0} sm={0} md={20} lg={20}>
@@ -545,7 +545,7 @@ export class Clients extends Component {
 				</Row>
 
 				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
-			</>
+			</div>
 		)
 	}
 }

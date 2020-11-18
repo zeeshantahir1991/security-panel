@@ -1141,6 +1141,22 @@ const keyholdingNavTree = [
             icon: "",
             breadcrumb: true,
             submenu: [],
+          },
+          {
+            key: "keyHolding-pages-dispatch-calls",
+            path: "/app/pages/dispatch-calls",
+            title: "Dispatch Calls",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "keyHolding-pages-new-dispatch-call",
+            path: "/app/pages/new-dispatch-call",
+            title: "New Dispatch Call",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
           }
         ]
       }

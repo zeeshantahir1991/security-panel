@@ -47,6 +47,8 @@ const Pages = ({ match }) => (
 
       <Route path={`${match.url}/key-holding-sites`} component={lazy(() => import(`./KeyHolding/key-holding-sites`))} />
       <Route path={`${match.url}/add-key-holding`} component={lazy(() => import(`./KeyHolding/add-key-holding`))} />
+      <Route path={`${match.url}/dispatch-calls`} component={lazy(() => import(`./KeyHolding/dispatch-calls`))} />
+      <Route path={`${match.url}/new-dispatch-call`} component={lazy(() => import(`./KeyHolding/new-dispatch-call`))} />
 
     </Switch>
   </Suspense>

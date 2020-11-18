@@ -253,7 +253,7 @@ export class AddKeyHoldingSite extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={22} sm={22} md={20} lg={20}>
+									<Col xs={20} sm={20} md={22} lg={22}>
 										<Row className="card" gutter={16} justify="center" style={componentStyles.addKeyContainer}>
 											<Col xs={24} sm={24} md={24} lg={24}>
 												<Form.Item

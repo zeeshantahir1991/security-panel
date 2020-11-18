@@ -12,6 +12,7 @@ export const componentStyles = {
 
     borderColor: { borderColor: AppColors.alto },
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
+    datePicker1: { borderColor: AppColors.alto, width: '100%' },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
     selectStyle: {
@@ -106,5 +107,7 @@ export const componentStyles = {
         marginRight: 20
     },
 
-    addKeyContainer: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 50, padding: 20, marginBottom: 50 }
+    addKeyContainer: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 50, padding: 20, marginBottom: 50 },
+    addKeyNotes: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 25, padding: 20, marginBottom: 50 }
+
 }

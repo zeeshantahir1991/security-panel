@@ -29,6 +29,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/compilance-vetting`} component={lazy(() => import(`./Compilance/compilance-vetting`))} />
       <Route path={`${match.url}/compilance-trainings`} component={lazy(() => import(`./Compilance/compilance-trainings`))} />
       <Route path={`${match.url}/compilance-sia-records`} component={lazy(() => import(`./Compilance/compilance-sia-records`))} />
+      <Route path={`${match.url}/site-survey`} component={lazy(() => import(`./Compilance/site-survey`))} />
+      <Route path={`${match.url}/key-receipts`} component={lazy(() => import(`./Compilance/key-receipts`))} />
+      <Route path={`${match.url}/key-log-register`} component={lazy(() => import(`./Compilance/key-log-register`))} />
 
       <Route path={`${match.url}/add-client`} component={lazy(() => import(`./Client/add-client`))} />
       <Route path={`${match.url}/clients`} component={lazy(() => import(`./Client/clients`))} />

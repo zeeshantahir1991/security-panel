@@ -17,6 +17,7 @@ import { componentStyles } from "./../styles";
 import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import { Stepper } from './../stepper';
+import CompilanceData from './../compilanceStepper'
 
 const siaRecordData = [
     {
@@ -379,7 +380,13 @@ export class SiaRecordList extends Component {
                             </Card>
                         </Col>
                     </Row>
-
+                    <div style={AppStyles.marginTop50}>
+                        <Row>
+                            <Col xs={24} sm={24} md={24} lg={24} >
+                                <CompilanceData location={this.props.location} history={this.props.history} />
+                            </Col>
+                        </Row>
+                    </div>
                     {/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
                 </div>
             )

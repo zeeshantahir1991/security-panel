@@ -11,6 +11,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from '../GuardSidebar';
 import { Stepper } from './../stepper';
+import CompilanceData from './../compilanceStepper'
 
 const { Option } = Select;
 
@@ -91,17 +92,17 @@ export class PositionAndPay extends Component {
 	render() {
 		const { users, userProfileVisible, selectedUser, search } = this.state;
 		const { classes, location: { pathname }, history } = this.props;
-        let record = null
-        let action = null
-        if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
-            record = this.props.location.state.record
-            action = this.props.location.state.action
-        }
+		let record = null
+		let action = null
+		if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
+			record = this.props.location.state.record
+			action = this.props.location.state.action
+		}
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={24} lg={24} >
-                    <Stepper location={this.props.location} history={this.props.history} action={action} record={record} />
+						<Stepper location={this.props.location} history={this.props.history} action={action} record={record} />
 					</Col>
 					<Col xs={24} sm={24} md={20} lg={20} >
 						<Card className="card" title="Position & Pay" style={AppStyles.paddingBottom20}>
@@ -223,27 +224,25 @@ export class PositionAndPay extends Component {
 
 										<Checkbox style={componentStyles.borderColor} checked>Allow mobile app access ?</Checkbox>
 									</Col>
-									<Col xs={12} sm={12} md={12} lg={12}>
 
-										<Form.Item>
-											<div style={AppStyles.marginTop40}>
-												<Button onClick={() => this.props.history.goBack()} style={componentStyles.continueButton} htmlType="submit" block>
+								</Row>
+								<Row gutter={16} justify="center">
+									<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop30}>
+										{action == "viewItem" ?
+											<Form.Item>
+												<Button
+													onClick={() => this.props.history.goBack()}
+													style={componentStyles.continueButton} htmlType="submit" block>
 													Back
-		                                        </Button>
-
-											</div>
-										</Form.Item>
-									</Col>
-									<Col xs={12} sm={12} md={12} lg={12}>
-
-										<Form.Item>
-											<div style={AppStyles.marginTop40}>
-												<Button onClick={this.goToRightToWork} style={componentStyles.continueButton} htmlType="submit" block>
-													Continue
-		                                        </Button>
-
-											</div>
-										</Form.Item>
+                                                    </Button>
+											</Form.Item> :
+											<Form.Item>
+												<Button
+													style={componentStyles.continueButton} htmlType="submit" block>
+													Update
+                                                </Button>
+											</Form.Item>
+										}
 									</Col>
 								</Row>
 							</Form>
@@ -251,6 +250,13 @@ export class PositionAndPay extends Component {
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>
 				</Row>
+				<div style={AppStyles.marginTop50}>
+					<Row>
+						<Col xs={24} sm={24} md={24} lg={24} >
+							<CompilanceData location={this.props.location} history={this.props.history} />
+						</Col>
+					</Row>
+				</div>
 			</div>
 		)
 	}

@@ -11,6 +11,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from '../GuardSidebar';
 import { Stepper } from './../stepper';
+import CompilanceData from './../compilanceStepper'
 
 const { Option } = Select;
 
@@ -327,27 +328,25 @@ export class RightToWork extends Component {
 
 
 
-                                    <Col xs={12} sm={12} md={12} lg={12}>
 
-                                        <Form.Item>
-                                            <div style={AppStyles.marginTop40}>
-                                                <Button onClick={() => this.props.history.goBack()} style={componentStyles.continueButton} htmlType="submit" block>
+                                </Row>
+                                <Row gutter={16} justify="center">
+                                    <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+                                        {action == "viewItem" ?
+                                            <Form.Item>
+                                                <Button
+                                                    onClick={() => this.props.history.goBack()}
+                                                    style={componentStyles.continueButton} htmlType="submit" block>
                                                     Back
-		                                        </Button>
-
-                                            </div>
-                                        </Form.Item>
-                                    </Col>
-                                    <Col xs={12} sm={12} md={12} lg={12}>
-
-                                        <Form.Item>
-                                            <div style={AppStyles.marginTop40}>
-                                                <Button style={componentStyles.continueButton} htmlType="submit" block>
-                                                    Create Guard
-		                                        </Button>
-
-                                            </div>
-                                        </Form.Item>
+                                                    </Button>
+                                            </Form.Item> :
+                                            <Form.Item>
+                                                <Button
+                                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                                    Update
+                                                </Button>
+                                            </Form.Item>
+                                        }
                                     </Col>
                                 </Row>
                             </Form>
@@ -355,6 +354,13 @@ export class RightToWork extends Component {
                         {/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
                     </Col>
                 </Row>
+                <div style={AppStyles.marginTop50}>
+                    <Row>
+                        <Col xs={24} sm={24} md={24} lg={24} >
+                            <CompilanceData location={this.props.location} history={this.props.history} />
+                        </Col>
+                    </Row>
+                </div>
             </div>
         )
     }

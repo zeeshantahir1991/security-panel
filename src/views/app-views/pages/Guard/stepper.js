@@ -59,7 +59,7 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                                 state: { action, record }
                             })}
                             icon={
-                                <div style={'/app/pagesguard-right-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pages/guard-right-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
 
                                     <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
                                 </div>

@@ -11,6 +11,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from './../GuardSidebar';
 import { Stepper } from './../stepper';
+import CompilanceData from './../compilanceStepper'
 const { SubMenu } = Menu;
 const { Step } = Steps;
 const { Option } = Select;
@@ -341,6 +342,13 @@ export class ViewGuard extends Component {
                         </Col>
 
                     </Row>
+                    <div style={AppStyles.marginTop50}>
+                        <Row>
+                            <Col xs={24} sm={24} md={24} lg={24} >
+                                <CompilanceData location={this.props.location} history={this.props.history} />
+                            </Col>
+                        </Row>
+                    </div>
                 </div>
             )
         }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout, Table } from 'antd';
+import { Row, Col, Card, Grid, Button, Badge, Menu, Layout, Table, Input, Form, Tooltip } from 'antd';
 import {
 	AppstoreOutlined,
 	MenuUnfoldOutlined,
@@ -9,6 +9,7 @@ import {
 	DesktopOutlined,
 	ContainerOutlined,
 	MailOutlined,
+	DeleteOutlined, CreditCardOutlined, CalendarOutlined, QuestionCircleOutlined
 } from '@ant-design/icons';
 import { Link as RouteLink } from 'react-router-dom';
 import { limits, data } from './limits';
@@ -16,6 +17,10 @@ import utils from 'utils';
 import NumberFormat from 'react-number-format';
 import { AuthHeader } from "../../../auth-views/components/AuthHeader"
 import { AuthFooter } from "../../../auth-views/components/AuthFooter"
+import { AppStyles } from 'assets/styles';
+import { ROW_GUTTER } from 'constants/ThemeConstant';
+import { componentStyles } from './styles';
+
 const { Column } = Table;
 const { Header } = Layout;
 
@@ -32,7 +37,8 @@ class OrderSummary extends React.Component {
 				cycle: "",
 				price: null
 			}],
-			pricingData: null
+			pricingData: null,
+			billing: false
 		};
 	}
 
@@ -62,95 +68,213 @@ class OrderSummary extends React.Component {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
 		// const colCount = pricingData.length
 		// console.log('isMobile', isMobile)
-		const { invoiceData, pricingData } = this.state;
+		const { invoiceData, pricingData, billing } = this.state;
 		return (
 			<>
 
 				<AuthHeader />
 
 				<Row style={{ justifyContent: 'center', marginTop: 120, marginBottom: 100 }}>
+					{/* Desktop View */}
 
-					<Col className="card" xs={0} sm={0} md={4} lg={4} >
+					<Col className="card" xs={0} sm={0} md={10} lg={10} >
+						{billing ?
+							<Card title="Add Card" style={AppStyles.paddingBottom20}>
+								<Col xs={0} sm={0} md={24} lg={24} >
+									<div style={AppStyles.marginBottom40}>
+										<div style={AppStyles.horizontallLineWidth100}>
+										</div>
+									</div>
+								</Col>
+								<Form
+									name="addCardForm"
+									layout="vertical"
+									style={AppStyles.padding20}
+								>
+									<Form.Item
+										label="Card holder name"
+										name="cardHolderName"
+										rules={
+											[
+												{
+													require: true,
+													message: 'Please enter card holder name!'
+												}
+											]
+										}
+									>
+										<Input style={componentStyles.borderColor} suffix={<CreditCardOutlined />} placeholder="Card holder name" />
+									</Form.Item>
+									<Form.Item
+										label="Card number"
+										name="cardNumber"
+										hasFeedback
+										rules={
+											[
+												{
+													pattern: /(\d{4}[-. ]?){4}|\d{4}[-. ]?\d{6}[-. ]?\d{5}/g,
+													message: 'Please enter a valid credit card number!'
+												}
+											]
+										}
+									>
+										<Input style={componentStyles.borderColor} suffix={<CreditCardOutlined />} placeholder="0000 0000 0000 00" />
+									</Form.Item>
+									<Row gutter={ROW_GUTTER}>
+										<Col xs={0} sm={0} md={12} lg={12}>
+											<Form.Item
+												label="Expiry date"
+												name="exp"
+												rules={
+													[
+														{
+															pattern: /^(0[1-9]|1[0-2])[- /.]\d{2}/,
+															message: 'Please enter a valid date format!'
+														}
+													]
+												}
+											>
+												<Input style={componentStyles.borderColor} suffix={<CalendarOutlined />} placeholder="MM/YY" />
+											</Form.Item>
+										</Col>
+										<Col xs={0} sm={0} md={12} lg={12}>
+											<Form.Item
+												label="CVV code"
+												name="cvv"
+												rules={
+													[
+														{
+															pattern: /^[0-9]{3,4}$/,
+															message: 'Please enter a CVV code format!'
+														}
+													]
+												}
+											>
+												<Input
+													style={componentStyles.borderColor}
+													suffix={
+														<Tooltip title="The last three digits printed on the back of the card">
+															<QuestionCircleOutlined className="cursor-pointer" />
+														</Tooltip>
+													}
+													placeholder="000"
+												/>
+											</Form.Item>
 
-						<div className="p-3" style={{ backgroundColor: 'white' }}>
-							<div className="mt-4">
-								<h1 style={{ fontSize: 40 }} className="text-center font-weight-semibold">{limits.plan}</h1>
-							</div>
-							<div style={{ visibility: 'hidden' }} className="text-center">
-								<img className="img-fluid" src={limits.image} alt="" />
-								<h2 className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 30 }}>{limits.price}</span>
-								</h2>
-								<p style={{ fontWeight: 'bold' }} className="mb-0">{limits.duration}</p>
-							</div>
+										</Col>
+										<Col xs={0} sm={0} md={12} lg={12} style={AppStyles.marginTop50}>
+											<Form.Item>
+												<Button
+													onClick={() => this.setState({ billing: false })}
+													style={componentStyles.cancelButton}
+													htmlType="submit" block>
+													Cancel
+                                                </Button>
+											</Form.Item>
+										</Col>
+										<Col xs={0} sm={0} md={12} lg={12} style={AppStyles.marginTop50}>
+											<Form.Item>
+												<Button
+													style={componentStyles.continueButton}
+													htmlType="submit" block>
+													Add Card
+                                                </Button>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+
+							:
+							<div style={AppStyles.flexDirectionRow}>
+								<Col className="card" xs={0} sm={0} md={12} lg={12} >
+									<div className="p-3" style={{ backgroundColor: 'white' }}>
+										<div className="mt-4">
+											<h1 style={{ fontSize: 40 }} className="text-center font-weight-semibold">{limits.plan}</h1>
+										</div>
+										<div style={{ visibility: 'hidden' }} className="text-center">
+											<img className="img-fluid" src={limits.image} alt="" />
+											<h2 className="display-4 mt-4">
+												<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+												<span style={{ fontSize: 30 }}>{limits.price}</span>
+											</h2>
+											<p style={{ fontWeight: 'bold' }} className="mb-0">{limits.duration}</p>
+										</div>
 
 
-							<div className="d-flex text-center justify-content-center mt-3">
-								<div>
-									{
-										limits.features.map((elm, i) => {
-											return (
-												<p key={`pricing-feature-${i}`}>
-													{/* <Badge color={'blue'} /> */}
-													<span >{elm}</span>
-												</p>
-											)
-										})
-									}
-								</div>
+										<div className="d-flex text-center justify-content-center mt-3">
+											<div>
+												{
+													limits.features.map((elm, i) => {
+														return (
+															<p key={`pricing-feature-${i}`}>
+																{/* <Badge color={'blue'} /> */}
+																<span >{elm}</span>
+															</p>
+														)
+													})
+												}
+											</div>
+										</div>
+										<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
+											{/* <RouteLink to={'/auth/register'}> */}
+											<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+												{pricingData?.button.text}
+											</Button>
+											{/* </RouteLink> */}
+										</div>
+									</div>
+								</Col>
+								<Col className="card" xs={0} sm={0} md={12} lg={12} >
+									<div className="p-3" style={pricingData?.backgroundColor}>
+										<div className="mt-4">
+											<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
+										</div>
+										<div className="text-center">
+											<img className="img-fluid" src={pricingData?.image} alt="" />
+
+											<h2 style={{ color: 'white' }} className="display-4 mt-4">
+												<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+												<span style={{ fontSize: 50 }}>{pricingData?.price}</span>
+											</h2>
+
+											<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
+										</div>
+
+
+										<div className="d-flex text-center justify-content-center mt-3">
+											<div>
+												{
+													pricingData?.features.map((elm, i) => {
+														return (
+															<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
+
+																<span>{elm}</span>
+															</p>
+														)
+													})
+												}
+											</div>
+										</div>
+										<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+											{/* <RouteLink to={'/auth/register'}> */}
+											<Button onClick={() => this.setState({ billing: true })}
+												style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+												{pricingData?.button.text}
+											</Button>
+											{/* </RouteLink> */}
+										</div>
+									</div>
+								</Col>
 							</div>
-							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								{/* <RouteLink to={'/auth/register'}> */}
-								<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
-									{pricingData?.button.text}
-								</Button>
-								{/* </RouteLink> */}
-							</div>
-						</div>
+
+						}
+
 
 					</Col>
-					<Col className="card" xs={0} sm={0} md={6} lg={6} >
-						<div className="p-3" style={pricingData?.backgroundColor}>
-							<div className="mt-4">
-								<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
-							</div>
-							<div className="text-center">
-								<img className="img-fluid" src={pricingData?.image} alt="" />
-
-								<h2 style={{ color: 'white' }} className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 50 }}>{pricingData?.price}</span>
-								</h2>
-
-								<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
-							</div>
 
 
-							<div className="d-flex text-center justify-content-center mt-3">
-								<div>
-									{
-										pricingData?.features.map((elm, i) => {
-											return (
-												<p style={{ color: 'white' }} key={`pricing-feature-${i}`}>
-
-													<span>{elm}</span>
-												</p>
-											)
-										})
-									}
-								</div>
-							</div>
-							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								{/* <RouteLink to={'/auth/register'}> */}
-								<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
-									{pricingData?.button.text}
-								</Button>
-								{/* </RouteLink> */}
-							</div>
-						</div>
-
-					</Col>
+					{/* Order Summary */}
 					<Col xs={0} sm={0} md={2} lg={2} style={{ alignSelf: 'center' }}></Col>
 					<Col xs={0} sm={0} md={10} lg={10} style={{ alignSelf: 'center' }}>
 						{/* <Card style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}> */}
@@ -247,82 +371,195 @@ class OrderSummary extends React.Component {
 
 					{/* Mobile View */}
 
+					<Col className="card" xs={24} sm={24} md={0} lg={0}>
+						{billing ?
+							<Card title="Add Card" style={AppStyles.paddingBottom20}>
+								<Col xs={24} sm={24} md={0} lg={0} >
+									<div style={AppStyles.marginBottom40}>
+										<div style={AppStyles.horizontallLineWidth100}>
+										</div>
+									</div>
+								</Col>
+								<Form
+									name="addCardForm"
+									layout="vertical"
+									style={AppStyles.padding20}
+								>
+									<Form.Item
+										label="Card holder name"
+										name="cardHolderName"
+										rules={
+											[
+												{
+													require: true,
+													message: 'Please enter card holder name!'
+												}
+											]
+										}
+									>
+										<Input style={componentStyles.borderColor} suffix={<CreditCardOutlined />} placeholder="Card holder name" />
+									</Form.Item>
+									<Form.Item
+										label="Card number"
+										name="cardNumber"
+										hasFeedback
+										rules={
+											[
+												{
+													pattern: /(\d{4}[-. ]?){4}|\d{4}[-. ]?\d{6}[-. ]?\d{5}/g,
+													message: 'Please enter a valid credit card number!'
+												}
+											]
+										}
+									>
+										<Input style={componentStyles.borderColor} suffix={<CreditCardOutlined />} placeholder="0000 0000 0000 00" />
+									</Form.Item>
+									<Row gutter={ROW_GUTTER}>
+										<Col xs={12} sm={12} md={0} lg={0}>
+											<Form.Item
+												label="Expiry date"
+												name="exp"
+												rules={
+													[
+														{
+															pattern: /^(0[1-9]|1[0-2])[- /.]\d{2}/,
+															message: 'Please enter a valid date format!'
+														}
+													]
+												}
+											>
+												<Input style={componentStyles.borderColor} suffix={<CalendarOutlined />} placeholder="MM/YY" />
+											</Form.Item>
+										</Col>
+										<Col xs={12} sm={12} md={0} lg={0}>
+											<Form.Item
+												label="CVV code"
+												name="cvv"
+												rules={
+													[
+														{
+															pattern: /^[0-9]{3,4}$/,
+															message: 'Please enter a CVV code format!'
+														}
+													]
+												}
+											>
+												<Input
+													style={componentStyles.borderColor}
+													suffix={
+														<Tooltip title="The last three digits printed on the back of the card">
+															<QuestionCircleOutlined className="cursor-pointer" />
+														</Tooltip>
+													}
+													placeholder="000"
+												/>
+											</Form.Item>
 
-					<Col className="card" xs={12} sm={12} md={0} lg={0}>
-						<div className="p-3" style={{ backgroundColor: 'white' }}>
-							<div className="mt-4">
-								<h1 style={{ fontSize: 20 }} className="text-center font-weight-semibold">{limits.plan}</h1>
+										</Col>
+										<Col xs={12} sm={12} md={0} lg={0} style={AppStyles.marginTop50}>
+											<Form.Item>
+												<Button
+													onClick={() => this.setState({ billing: false })}
+													style={componentStyles.cancelButton}
+													htmlType="submit" block>
+													Cancel
+                                                </Button>
+											</Form.Item>
+										</Col>
+										<Col xs={12} sm={12} md={0} lg={0} style={AppStyles.marginTop50}>
+											<Form.Item>
+												<Button
+													style={componentStyles.continueButton}
+													htmlType="submit" block>
+													Add Card
+                                                </Button>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+
+							: <div style={AppStyles.flexDirectionRow}>
+
+								<Col className="card" xs={12} sm={12} md={0} lg={0}>
+
+									<div className="p-3" style={{ backgroundColor: 'white' }}>
+										<div className="mt-4">
+											<h1 style={{ fontSize: 20 }} className="text-center font-weight-semibold">{limits.plan}</h1>
+										</div>
+										<div style={{ visibility: 'hidden' }} className="text-center">
+											<img className="img-fluid" src={limits.image} alt="" />
+											<h2 className="display-4 mt-4">
+												<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+												<span style={{ fontSize: 15 }}>{limits.price}</span>
+											</h2>
+											<p style={{ fontWeight: 'bold' }} className="mb-0">{limits.duration}</p>
+										</div>
+
+
+										<div className="d-flex text-center justify-content-center mt-3">
+											<div>
+												{
+													limits.features.map((elm, i) => {
+														return (
+															<p key={`pricing-feature-${i}`} style={{ fontSize: 10 }}>
+																{/* <Badge color={'blue'} /> */}
+																<span >{elm}</span>
+															</p>
+														)
+													})
+												}
+											</div>
+										</div>
+										<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
+											<RouteLink to={'/auth/register'}>
+												<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+											</RouteLink>
+										</div>
+									</div>
+								</Col>
+								<Col className="card" xs={12} sm={12} md={0} lg={0}>
+
+
+									<div className="p-3" style={pricingData?.backgroundColor}>
+										<div className="mt-4">
+											<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
+										</div>
+										<div className="text-center">
+											<img className="img-fluid" src={pricingData?.image} alt="" />
+
+											<h2 style={{ color: 'white' }} className="display-4 mt-4">
+												<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
+												<span style={{ fontSize: 25 }}>{pricingData?.price}</span>
+											</h2>
+
+											<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
+										</div>
+
+
+										<div className="d-flex text-center justify-content-center mt-3">
+											<div>
+												{
+													pricingData?.features.map((elm, i) => {
+														return (
+															<p style={{ color: 'white', fontSize: 10 }} key={`pricing-feature-${i}`}>
+
+																<span>{elm}</span>
+															</p>
+														)
+													})
+												}
+											</div>
+										</div>
+										<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+											{/* <RouteLink to={'/auth/register'}> */}
+											<Button onClick={() => this.setState({ billing: true })} style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
+											{/* </RouteLink> */}
+										</div>
+									</div>
+								</Col>
 							</div>
-							<div style={{ visibility: 'hidden' }} className="text-center">
-								<img className="img-fluid" src={limits.image} alt="" />
-								<h2 className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 15 }}>{limits.price}</span>
-								</h2>
-								<p style={{ fontWeight: 'bold' }} className="mb-0">{limits.duration}</p>
-							</div>
-
-
-							<div className="d-flex text-center justify-content-center mt-3">
-								<div>
-									{
-										limits.features.map((elm, i) => {
-											return (
-												<p key={`pricing-feature-${i}`} style={{ fontSize: 10 }}>
-													{/* <Badge color={'blue'} /> */}
-													<span >{elm}</span>
-												</p>
-											)
-										})
-									}
-								</div>
-							</div>
-							<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
-								<RouteLink to={'/auth/register'}>
-									<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-								</RouteLink>
-							</div>
-						</div>
-					</Col>
-					<Col className="card" xs={12} sm={12} md={0} lg={0}>
-
-						<div className="p-3" style={pricingData?.backgroundColor}>
-							<div className="mt-4">
-								<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
-							</div>
-							<div className="text-center">
-								<img className="img-fluid" src={pricingData?.image} alt="" />
-
-								<h2 style={{ color: 'white' }} className="display-4 mt-4">
-									<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
-									<span style={{ fontSize: 25 }}>{pricingData?.price}</span>
-								</h2>
-
-								<p style={{ color: 'white', fontWeight: 'bold' }} className="mb-0">{pricingData?.duration}</p>
-							</div>
-
-
-							<div className="d-flex text-center justify-content-center mt-3">
-								<div>
-									{
-										pricingData?.features.map((elm, i) => {
-											return (
-												<p style={{ color: 'white', fontSize: 10 }} key={`pricing-feature-${i}`}>
-
-													<span>{elm}</span>
-												</p>
-											)
-										})
-									}
-								</div>
-							</div>
-							<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
-								<RouteLink to={'/auth/register'}>
-									<Button style={{ borderRadius: 20, fontSize: 10, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">Get Started</Button>
-								</RouteLink>
-							</div>
-						</div>
-
+						}
 					</Col>
 					<Col xs={20} sm={20} md={0} lg={0} style={{ alignSelf: 'center' }}>
 						{/* <Card style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}> */}

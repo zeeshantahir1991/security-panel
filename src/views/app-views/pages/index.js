@@ -53,6 +53,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/dispatch-calls`} component={lazy(() => import(`./KeyHolding/dispatch-calls`))} />
       <Route path={`${match.url}/new-dispatch-call`} component={lazy(() => import(`./KeyHolding/new-dispatch-call`))} />
 
+      <Route path={`${match.url}/new-shift`} component={lazy(() => import(`./Scheduling/new-shift`))} />
+      <Route path={`${match.url}/shift-list`} component={lazy(() => import(`./Scheduling/shift-list`))} />
+
     </Switch>
   </Suspense>
 );

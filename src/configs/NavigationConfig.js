@@ -1061,9 +1061,17 @@ const schedulingNavTree = [
         breadcrumb: true,
         submenu: [
           {
-            key: "scheduling-pages",
-            path: "/app/pages",
-            title: "Scheduling",
+            key: "scheduling-pages-new-shift",
+            path: "/app/pages/new-shift",
+            title: "New Shift",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
+            key: "scheduling-pages-shift-list",
+            path: "/app/pages/shift-list",
+            title: "Shift List",
             icon: "",
             breadcrumb: true,
             submenu: [],

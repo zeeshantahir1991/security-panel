@@ -95,7 +95,7 @@ export const componentStyles = {
         borderColor: AppColors.alto,
         marginRight: 20
     },
-    addCheckpointContainer: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 50, padding: 20, marginBottom: 100 },
+    addCheckpointContainer: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
     selectWhiteStyle: {
         width: '100%',
         borderWidth: 1,
@@ -105,4 +105,8 @@ export const componentStyles = {
         backgroundColor: AppColors.white,
         marginRight: 20
     },
+    addIntervalContainer: { backgroundColor: AppColors.alabaster2, borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
+    daysStyle: {
+        padding: 20
+    }
 }

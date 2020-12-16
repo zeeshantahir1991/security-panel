@@ -214,7 +214,7 @@ export class NewShift extends Component {
 
 				</Modal>
 				<Row justify="center">
-					<Col xs={24} sm={24} md={20} lg={20} >
+					<Col xs={24} sm={24} md={18} lg={18} >
 						<Card className="card" title="New Shift"
 							extra={
 								<Button style={componentStyles.continueButton} htmlType="submit" block>
@@ -486,25 +486,27 @@ export class NewShift extends Component {
 													hasFeedback
 												>
 													<div style={AppStyles.flexDirectionRow}>
-														<div onClick={() => this.handleDays(0)} style={{ backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(0)} style={{
+															backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid'
+														}}>
 															Monday
                                                         </div>
-														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Tuesday
                                                         </div>
-														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Wednesday
                                                         </div>
-														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Thursday
                                                         </div>
-														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Friday
                                                         </div>
-														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Saturday
                                                         </div>
-														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer' }}>
+														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Sunday
                                                         </div>
 													</div>

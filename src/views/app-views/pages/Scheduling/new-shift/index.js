@@ -388,15 +388,7 @@ export class NewShift extends Component {
 										style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
 								</Form.Item>
 							</Col>
-							<Col xs={24} sm={24} md={24} lg={24}>
-								{assignPosition.length != 0 ?
 
-									<Card className="card" title="Assigned Positions">
-										<Table bordered columns={tableColumns} dataSource={assignPosition} rowKey='id' scroll={{ x: 600, y: 200 }} />
-									</Card>
-									: null
-								}
-							</Col>
 						</Row>
 					</Form>
 
@@ -920,6 +912,25 @@ export class NewShift extends Component {
 									</Col>
 
 								</Row>
+								{assignPosition.length != 0 ?
+									<Row gutter={16} justify="center">
+										<Col xs={20} sm={20} md={22} lg={22}>
+											<Row className="card" gutter={16} style={componentStyles.tableContainer}>
+
+												<Col xs={24} sm={24} md={24} lg={24}>
+
+
+													<Card className="card" title="Assigned Positions">
+														<Table bordered columns={tableColumns} dataSource={assignPosition} rowKey='id' scroll={{ x: 600, y: 200 }} />
+													</Card>
+
+												</Col>
+											</Row>
+										</Col>
+
+									</Row>
+									: null
+								}
 								<Row gutter={16} justify="center">
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 

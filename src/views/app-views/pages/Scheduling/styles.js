@@ -108,5 +108,7 @@ export const componentStyles = {
     addIntervalContainer: { backgroundColor: AppColors.alabaster2, borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
     daysStyle: {
         padding: 20
-    }
+    },
+    tableContainer: { backgroundColor: AppColors.alabaster2, borderRadius: 10, marginTop: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20, marginBottom: 20 },
+
 }

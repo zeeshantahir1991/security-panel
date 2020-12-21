@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Modal, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps, Checkbox, TimePicker } from 'antd';
-import { BuildOutlined, CalendarOutlined, CheckCircleOutlined, PoundCircleOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, CheckCircleOutlined, PoundCircleOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { AppStyles } from "../../../../../assets/styles";
@@ -43,12 +43,14 @@ export class NewShift extends Component {
 			break: "",
 			position: "",
 			guardName: "",
+			payRate: null,
 			qrScanInterval: "",
 			signinRadius: "",
 			trackingInterval: "",
 			callCheckInterval: "",
 			expense: "",
 			nextPage: false,
+
 			daysWeek: [
 				{
 					select: false,
@@ -81,7 +83,9 @@ export class NewShift extends Component {
 
 			],
 
-			modal: false,
+			checkpointModal: false,
+			positionModal: false,
+			assignPosition: [],
 
 		};
 	}
@@ -115,27 +119,120 @@ export class NewShift extends Component {
 		});
 	}
 
-	showModal = () => {
-		const { modal } = this.state;
+	showModal = (value) => {
+		const { checkpointModal, positionModal } = this.state;
+		if (value == "checkpoint") {
+			this.setState({
+				checkpointModal: !checkpointModal
+			})
+		} else {
+			this.setState({
+				positionModal: !positionModal
+			})
+		}
+
+	};
+
+	handleCancel = (value) => {
+		if (value == "checkpoint") {
+			this.setState({ checkpointModal: false });
+
+		} else {
+			this.setState({ positionModal: false });
+
+		}
+	};
+
+
+	handleInputChange = (type, event) => {
+		console.log(`selected ${event}`);
 		this.setState({
-			modal: !modal
+
+			[type]: event.target.value
+
 		})
-	};
 
-	handleCancel = () => {
-		this.setState({ modal: false });
-	};
+	}
 
+	assignPosition = () => {
+		const { position, guardName, payRate } = this.state;
+		let assignPosition = [...this.state.assignPosition];;
+		assignPosition.push({ position: position, guardName: guardName, payRate: payRate })
+		this.setState({
+			assignPosition
+		})
+	}
 
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, nextPage, daysWeek, modal } = this.state;
+		const { users, userProfileVisible, selectedUser, search, nextPage, daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignPosition } = this.state;
 		const { classes, location: { pathname }, history } = this.props;
+		const tableColumns = [
+			{
+				title: 'Position',
+				dataIndex: 'position',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.position}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.position.toLowerCase();
+						b = b.position.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+
+			{
+				title: 'Guard name',
+				dataIndex: 'guardName',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.guardName}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.guardName.toLowerCase();
+						b = b.guardName.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 150
+			},
+
+			{
+				title: 'Pay Rate',
+				dataIndex: 'payRate',
+				sorter: {
+					compare: (a, b) => a.payRate.length - b.payRate.length,
+				},
+				width: 150
+			},
+
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+						<Tooltip title="View">
+							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+						</Tooltip>
+						<Tooltip title="Delete">
+							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+						</Tooltip>
+					</div>
+				)
+			}
+		];
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Modal title="Add Checkpoint"
-					onCancel={this.handleCancel}
-					visible={modal}
+					onCancel={() => this.handleCancel('checkpoint')}
+					visible={checkpointModal}
 					footer={[
 						<Button
 							style={componentStyles.continueButton} htmlType="submit" block>
@@ -147,7 +244,7 @@ export class NewShift extends Component {
 
 						<Row gutter={16}>
 
-							<Col xs={24} sm={24} md={8} lg={8}>
+							<Col xs={24} sm={24} md={12} lg={12}>
 								<Form.Item
 									name="siteName"
 									label="Site Name"
@@ -157,7 +254,7 @@ export class NewShift extends Component {
 									<Input type="text" disabled defaultValue={'Site A'} style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
 								</Form.Item>
 							</Col>
-							<Col xs={24} sm={24} md={8} lg={8}>
+							<Col xs={24} sm={24} md={12} lg={12}>
 								<Form.Item
 									name="checkpointName"
 									label="Checkpoint Name"
@@ -168,14 +265,14 @@ export class NewShift extends Component {
 								</Form.Item>
 							</Col>
 
-							<Col xs={24} sm={24} md={8} lg={8}>
+							<Col xs={24} sm={24} md={24} lg={24}>
 								<Form.Item
 									name="checkpointDescriptor"
 									label="Checkpoint Descriptor"
 									// rules={rules.checkpointDescriptor}
 									hasFeedback
 								>
-									<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
+									<Textarea placeholder={'Description...'} style={componentStyles.borderColor} />
 								</Form.Item>
 							</Col>
 
@@ -213,13 +310,117 @@ export class NewShift extends Component {
 					</Form>
 
 				</Modal>
+				<Modal title="Assign Position"
+					onCancel={() => this.handleCancel('position')}
+					visible={positionModal}
+					footer={[
+						<Button
+							disabled={!(position && guardName && payRate)}
+							onClick={this.assignPosition}
+							style={componentStyles.continueButton} htmlType="submit" block>
+							Assign Position
+					    </Button>
+					]}
+				>
+					<Form layout="vertical">
+
+						<Row gutter={16}>
+
+							<Col xs={24} sm={24} md={8} lg={8}>
+								<Form.Item
+									name="position"
+									label="Select Position"
+									// rules={rules.position}
+									hasFeedback
+								>
+									<Select
+										showSearch
+										style={componentStyles.selectWhiteStyle}
+										bordered={false}
+										placeholder="Select Position"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("position", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="Security">Security</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+							<Col xs={24} sm={24} md={8} lg={8}>
+								<Form.Item
+									name="guardName"
+									label="Select Guard"
+									// rules={rules.guardName}
+									hasFeedback
+								>
+									<Select
+										showSearch
+										style={componentStyles.selectWhiteStyle}
+										bordered={false}
+										placeholder="Select Guard"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("guardName", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="John">John</Option>
+										<Option value="John Sm">John Sm</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+							<Col xs={24} sm={24} md={8} lg={8}>
+								<Form.Item
+									name="payRate"
+									label="Pay Rate"
+									// rules={rules.chargeRate}
+									hasFeedback
+								>
+									<Input type="number" onChange={(val) => this.handleInputChange("payRate", val)}
+										style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
+								</Form.Item>
+							</Col>
+							<Col xs={24} sm={24} md={24} lg={24}>
+								{assignPosition.length != 0 ?
+
+									<Card className="card" title="Assigned Positions">
+										<Table bordered columns={tableColumns} dataSource={assignPosition} rowKey='id' scroll={{ x: 600, y: 200 }} />
+									</Card>
+									: null
+								}
+							</Col>
+						</Row>
+					</Form>
+
+				</Modal>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={18} lg={18} >
 						<Card className="card" title="New Shift"
 							extra={
-								<Button style={componentStyles.continueButton} htmlType="submit" block>
-									Add Position
-								</Button>
+								<div style={AppStyles.flexDirectionRow}>
+									<div style={AppStyles.marginRight20}>
+										<Button
+											onClick={() => this.showModal('position')}
+											style={componentStyles.continueButton} htmlType="submit" block>
+											Assign Position
+								        </Button>
+									</div>
+									<div>
+										<Button
+											onClick={() => this.showModal('checkpoint')}
+											style={componentStyles.continueButton} htmlType="submit" block>
+											Add Checkpoint
+								        </Button>
+									</div>
+								</div>
 							}
 							style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
@@ -487,26 +688,26 @@ export class NewShift extends Component {
 												>
 													<div style={AppStyles.flexDirectionRow}>
 														<div onClick={() => this.handleDays(0)} style={{
-															backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid'
+															backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid'
 														}}>
 															Monday
                                                         </div>
-														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Tuesday
                                                         </div>
-														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Wednesday
                                                         </div>
-														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Thursday
                                                         </div>
-														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Friday
                                                         </div>
-														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Saturday
                                                         </div>
-														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
 															Sunday
                                                         </div>
 													</div>
@@ -571,16 +772,6 @@ export class NewShift extends Component {
 											</Col>
 
 
-											<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
-
-												<Form.Item>
-													<Button
-														onClick={this.showModal}
-														style={componentStyles.continueButton} htmlType="submit" block>
-														Add Checkpoint
-								                     </Button>
-												</Form.Item>
-											</Col>
 
 										</Row>
 									</Col>

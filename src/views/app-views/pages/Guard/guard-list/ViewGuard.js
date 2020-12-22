@@ -12,6 +12,7 @@ import { AppColors } from 'assets/styles/colors';
 import { GuardSidebar } from './../GuardSidebar';
 import { Stepper } from './../stepper';
 import CompilanceData from './../compilanceStepper'
+import GuardProfile from './../guard-profile/index'
 const { SubMenu } = Menu;
 const { Step } = Steps;
 const { Option } = Select;
@@ -349,6 +350,7 @@ export class ViewGuard extends Component {
                             </Col>
                         </Row>
                     </div>
+                    <GuardProfile location={this.props.location} history={this.props.history} record={record} />
                 </div>
             )
         }

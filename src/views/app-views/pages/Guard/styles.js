@@ -11,7 +11,7 @@ export const componentStyles = {
     companyInfoContainer: { borderRadius: 10, padding: 20, backgroundColor: AppColors.white },
 
     borderColor: { borderColor: AppColors.alto },
-    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height:45 },
+    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
     selectStyle: {
@@ -93,5 +93,19 @@ export const componentStyles = {
     filtersInputStyle: {
         borderColor: AppColors.alto,
         marginRight: 20
+    },
+
+    guardNameText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 20
+    },
+
+    documentAndSitePreferencesLinkStyle: {
+        fontSize: 15,
+        color: AppColors.cornFlowerBlue,
+        textAlign: 'center',
+        cursor: 'pointer'
+
     }
 }

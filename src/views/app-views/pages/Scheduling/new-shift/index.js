@@ -50,6 +50,7 @@ export class NewShift extends Component {
 			callCheckInterval: "",
 			expense: "",
 			nextPage: false,
+			positionModal:false,
 
 			daysWeek: [
 				{
@@ -159,7 +160,8 @@ export class NewShift extends Component {
 		let assignPosition = [...this.state.assignPosition];;
 		assignPosition.push({ position: position, guardName: guardName, payRate: payRate })
 		this.setState({
-			assignPosition
+			assignPosition,
+			positionModal: false
 		})
 	}
 

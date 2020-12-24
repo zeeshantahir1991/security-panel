@@ -1,21 +1,6 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { Card, Col, Row, Table } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const compilanceTemplatesData = [
 	{
@@ -47,7 +32,6 @@ const compilanceTemplatesData = [
 
 	}
 ]
-const { Option } = Select;
 
 
 
@@ -85,7 +69,7 @@ export class CompilanceTemplates extends Component {
 
 
 	render() {
-		const { compilanceTemplates, userProfileVisible, selectedUser, search } = this.state;
+		const { compilanceTemplates } = this.state;
 
 		const tableColumns = [
 			{

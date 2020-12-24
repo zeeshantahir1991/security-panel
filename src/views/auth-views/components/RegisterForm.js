@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { BuildOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import { Select, Button, Form, Input, Alert, Avatar, DatePicker } from "antd";
-import moment from 'moment';
-import { signUp, showAuthMessage, showLoading, hideAuthMessage } from 'redux/actions/Auth';
+import { BuildOutlined, CompassOutlined, LockOutlined, MailOutlined, MobileOutlined, NumberOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { Alert, Avatar, Button, Col, Form, Input, Row, Select } from "antd";
+import { motion } from "framer-motion";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { motion } from "framer-motion"
-import { Card, Row, Col, Upload, message } from "antd";
-import { componentStyles } from "./../authentication/register/styles"
+import { hideAuthMessage, showAuthMessage, showLoading, signUp } from 'redux/actions/Auth';
 import { AppStyles } from './../../../assets/styles/index';
+import { componentStyles } from "./../authentication/register/styles";
 const { Option } = Select;
 
 
@@ -144,7 +142,7 @@ const rules = {
 			message: 'Please confirm your password!'
 		},
 		({ getFieldValue }) => ({
-			validator(rule, value) {
+			validator(value) {
 				if (!value || getFieldValue('password') === value) {
 					return Promise.resolve();
 				}

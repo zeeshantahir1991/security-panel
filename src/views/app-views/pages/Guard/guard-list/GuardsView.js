@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
-import { Avatar, Drawer, Divider } from 'antd';
-import { 
-	MobileOutlined, 
-	MailOutlined, 
-	UserOutlined, 
-	CompassOutlined,
-	CalendarOutlined,
+import {
+	CalendarOutlined, CompassOutlined,
+
 	FacebookOutlined,
-	InstagramOutlined,
-	TwitterOutlined,
-	GlobalOutlined
+
+
+	GlobalOutlined, InstagramOutlined, MailOutlined, MobileOutlined,
+
+
+
+
+
+
+	TwitterOutlined, UserOutlined
 } from '@ant-design/icons';
+import { Avatar, Divider, Drawer } from 'antd';
+import React, { Component } from 'react';
 
 export class GuardsView extends Component {
 	render() {

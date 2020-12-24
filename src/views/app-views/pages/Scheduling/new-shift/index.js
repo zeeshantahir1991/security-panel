@@ -1,18 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Modal, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps, Checkbox, TimePicker } from 'antd';
-import { DeleteOutlined, EyeOutlined, CheckCircleOutlined, PoundCircleOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { CheckCircleOutlined, DeleteOutlined, EyeOutlined, PoundCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Select, Table, TimePicker, Tooltip } from 'antd';
+import { AppColors } from 'assets/styles/colors';
+import React, { Component } from 'react';
+import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 
-const { SubMenu } = Menu;
-const { Step } = Steps;
 const { Option } = Select;
 const format = 'HH:mm';
 
@@ -50,7 +43,6 @@ export class NewShift extends Component {
 			callCheckInterval: "",
 			expense: "",
 			nextPage: false,
-			positionModal:false,
 
 			daysWeek: [
 				{
@@ -93,7 +85,6 @@ export class NewShift extends Component {
 
 	handleChange = (type, value) => {
 		console.log(`selected ${value}`);
-		const { search } = this.state;
 		this.setState({
 
 			[type]: value
@@ -102,11 +93,11 @@ export class NewShift extends Component {
 
 	}
 
-	handleDays = (index, select) => {
+	handleDays = (index) => {
 		var daysWeek = this.state.daysWeek;
 		for (var i = 0; i < daysWeek.length; i++) {
-			if (i == index) {
-				if (daysWeek[i].select == true) {
+			if (i === index) {
+				if (daysWeek[i].select === true) {
 					daysWeek[i].select = false
 
 				} else {
@@ -122,7 +113,7 @@ export class NewShift extends Component {
 
 	showModal = (value) => {
 		const { checkpointModal, positionModal } = this.state;
-		if (value == "checkpoint") {
+		if (value === "checkpoint") {
 			this.setState({
 				checkpointModal: !checkpointModal
 			})
@@ -135,7 +126,7 @@ export class NewShift extends Component {
 	};
 
 	handleCancel = (value) => {
-		if (value == "checkpoint") {
+		if (value === "checkpoint") {
 			this.setState({ checkpointModal: false });
 
 		} else {
@@ -167,8 +158,8 @@ export class NewShift extends Component {
 
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, nextPage, daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignPosition } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignPosition } = this.state;
+		const {  } = this.props;
 		const tableColumns = [
 			{
 				title: 'Position',
@@ -914,7 +905,7 @@ export class NewShift extends Component {
 									</Col>
 
 								</Row>
-								{assignPosition.length != 0 ?
+								{assignPosition.length !== 0 ?
 									<Row gutter={16} justify="center">
 										<Col xs={20} sm={20} md={22} lg={22}>
 											<Row className="card" gutter={16} style={componentStyles.tableContainer}>

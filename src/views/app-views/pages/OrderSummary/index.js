@@ -1,31 +1,18 @@
-import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout, Table, Input, Form, Tooltip } from 'antd';
-import {
-	AppstoreOutlined,
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
-	MenuOutlined,
-	PieChartOutlined,
-	DesktopOutlined,
-	ContainerOutlined,
-	MailOutlined,
-	DeleteOutlined, CreditCardOutlined, CalendarOutlined, QuestionCircleOutlined
-} from '@ant-design/icons';
-import { Link as RouteLink } from 'react-router-dom';
-import { limits, data } from './limits';
-import utils from 'utils';
-import NumberFormat from 'react-number-format';
-import { AuthHeader } from "../../../auth-views/components/AuthHeader"
-import { AuthFooter } from "../../../auth-views/components/AuthFooter"
+import { CalendarOutlined, CreditCardOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Form, Grid, Input, Layout, Row, Table, Tooltip } from 'antd';
 import { AppStyles } from 'assets/styles';
 import { ROW_GUTTER } from 'constants/ThemeConstant';
+import React from 'react';
+import NumberFormat from 'react-number-format';
+import { Link as RouteLink } from 'react-router-dom';
+import { AuthFooter } from "../../../auth-views/components/AuthFooter";
+import { AuthHeader } from "../../../auth-views/components/AuthHeader";
+import { limits } from './limits';
 import { componentStyles } from './styles';
 
 const { Column } = Table;
-const { Header } = Layout;
 
 
-const { useBreakpoint } = Grid;
 
 class OrderSummary extends React.Component {
 	constructor(props) {

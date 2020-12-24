@@ -1,27 +1,11 @@
-import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout, Table } from 'antd';
-import {
-	AppstoreOutlined,
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
-	MenuOutlined,
-	PieChartOutlined,
-	DesktopOutlined,
-	ContainerOutlined,
-	MailOutlined,
-} from '@ant-design/icons';
-import { Link as RouteLink } from 'react-router-dom';
-import { limits, data } from './limits';
-import utils from 'utils';
-import NumberFormat from 'react-number-format';
-import { AuthHeader } from "../../../auth-views/components/AuthHeader"
-import { AuthFooter } from "../../../auth-views/components/AuthFooter"
-
-const { Column } = Table;
-const { Header } = Layout;
+import { Button, Col, Row } from 'antd';
+import React from 'react';
+import { AuthFooter } from "../../../auth-views/components/AuthFooter";
+import { AuthHeader } from "../../../auth-views/components/AuthHeader";
+import { limits } from './limits';
 
 
-const { useBreakpoint } = Grid;
+
 
 class PricingDetail extends React.Component {
 	constructor(props) {
@@ -105,7 +89,7 @@ class PricingDetail extends React.Component {
 							<div className="mt-4">
 								<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 							</div>
-							{pricingData?.plan.toUpperCase() == "PLATINUM" ?
+							{pricingData?.plan.toUpperCase() === "PLATINUM" ?
 								<div className="text-center">
 									<img className="img-fluid" src={pricingData?.image} alt="" />
 
@@ -194,7 +178,7 @@ class PricingDetail extends React.Component {
 							<div className="mt-4">
 								<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 							</div>
-							{pricingData?.plan.toUpperCase() == "PLATINUM" ?
+							{pricingData?.plan.toUpperCase() === "PLATINUM" ?
 								<div className="text-center">
 									<img className="img-fluid" src={pricingData?.image} alt="" />
 

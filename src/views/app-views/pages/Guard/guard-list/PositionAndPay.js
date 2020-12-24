@@ -1,17 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, Checkbox, Switch } from 'antd';
-import { DollarOutlined, BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { DollarOutlined } from '@ant-design/icons';
+import { Button, Card, Checkbox, Col, Form, Input, Row, Select, Switch } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import { GuardSidebar } from '../GuardSidebar';
+import CompilanceData from './../compilanceStepper';
 import { Stepper } from './../stepper';
-import CompilanceData from './../compilanceStepper'
+import { componentStyles } from "./../styles";
 
 const { Option } = Select;
 
@@ -47,7 +40,7 @@ const rules = {
 			message: 'Please confirm your password!'
 		},
 		({ getFieldValue }) => ({
-			validator(rule, value) {
+			validator(value) {
 				if (!value || getFieldValue('password') === value) {
 					return Promise.resolve();
 				}
@@ -71,7 +64,6 @@ export class PositionAndPay extends Component {
 
 	handleChange = (type, value) => {
 		console.log(`selected ${value}`);
-		const { search } = this.state;
 		this.setState({
 
 			[type]: value
@@ -90,8 +82,7 @@ export class PositionAndPay extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const {  } = this.props;
 		let record = null
 		let action = null
 		if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
@@ -228,7 +219,7 @@ export class PositionAndPay extends Component {
 								</Row>
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop30}>
-										{action == "viewItem" ?
+										{action === "viewItem" ?
 											<Form.Item>
 												<Button
 													onClick={() => this.props.history.goBack()}

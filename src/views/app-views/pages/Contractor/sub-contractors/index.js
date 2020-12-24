@@ -1,35 +1,13 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Input, Row, Select, Table, Tag, Tooltip } from 'antd';
+import userData from "assets/data/contractor-list.data.json";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import userData from "assets/data/contractor-list.data.json";
-import Position from 'views/app-views/components/data-display/carousel/Position';
 
 const { Option } = Select;
 
-const rules = {
-
-	subcontractName: [
-		{
-			required: true,
-			message: 'Please input your subcontractName name'
-		}
-	]
-
-}
 
 export class ContractorList extends Component {
 
@@ -68,14 +46,13 @@ export class ContractorList extends Component {
 	}
 
 	searchInTable = () => {
-		const { users, search } = this.state;
+		const { search } = this.state;
 		let userList = userData
 		let securityServices = search.securityServices
 		let subcontractName = search.subcontractName
-		let getPropertyNames = Object.getOwnPropertyNames(userList[0]);
 		let filteredArray = userList.filter((el, idx) => {
 			if (securityServices && subcontractName) {
-		       return userList[idx][securityServices].toUpperCase() == "YES" && el.companyName.toUpperCase() == subcontractName.toUpperCase()
+		       return userList[idx][securityServices].toUpperCase() === "YES" && el.companyName.toUpperCase() === subcontractName.toUpperCase()
 		    } else {
 				return userList
 			}
@@ -87,7 +64,7 @@ export class ContractorList extends Component {
 		// filteredArray = userList.filter(element => {
 		// 	if (securityServices && subcontractName) {
 
-		// 		return element.securityServices == securityServices && element.companyName.toUpperCase() == subcontractName.toUpperCase()
+		// 		return element.securityServices === securityServices && element.companyName.toUpperCase() === subcontractName.toUpperCase()
 			
 		// 	} 
 
@@ -103,7 +80,7 @@ export class ContractorList extends Component {
 	  }
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
+		const { users } = this.state;
 
 		const tableColumns = [
 			{

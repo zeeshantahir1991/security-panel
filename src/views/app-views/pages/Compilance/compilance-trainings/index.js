@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const trainingData = [
 	{
@@ -114,7 +104,7 @@ export class CompilanceTraining extends Component {
 	}
 
 	searchInTable = () => {
-		const { training, search } = this.state;
+		const { search } = this.state;
 		let userList = trainingData
 		let trainingStatus = search.trainingStatus
 		let trainer = search.trainer
@@ -135,7 +125,7 @@ export class CompilanceTraining extends Component {
 
 
 	render() {
-		const { training, userProfileVisible, selectedUser, search } = this.state;
+		const { training, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -198,7 +188,7 @@ export class CompilanceTraining extends Component {
 				title: 'Training Date',
 				dataIndex: 'trainingDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.trainingDate).unix() - moment(b.trainingDate).unix(),
 				width: 200
@@ -225,7 +215,7 @@ export class CompilanceTraining extends Component {
 				title: 'Audit Date',
 				dataIndex: 'auditDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.auditDate).unix() - moment(b.auditDate).unix(),
 				width: 200
@@ -455,179 +445,179 @@ export default CompilanceTraining
 export const filterCombination = (trainingStatus, trainer, auditBy, guardName, trainingDate, element) => {
 	if (trainingStatus && trainer && auditBy && guardName && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 	} else if (trainingStatus && trainer && auditBy && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainingStatus && trainer && guardName && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainer && auditBy && guardName && trainingDate) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainingStatus && auditBy && guardName && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 	} else if (trainingStatus && trainer && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainingStatus && auditBy && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainingStatus && guardName && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 	} else if (trainer && auditBy && trainingDate) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainer && guardName && trainingDate) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (auditBy && guardName && trainingDate) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainingStatus && trainer && auditBy) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (trainingStatus && trainer && guardName) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (trainer && auditBy && guardName) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (trainingStatus && auditBy && guardName) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 	} else if (trainingStatus && trainingDate) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (trainer && trainingDate) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (auditBy && trainingDate) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 
 	} else if (guardName && trainingDate) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 	} else if (trainingStatus && trainer) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase()
 
 	} else if (trainingStatus && auditBy) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (trainingStatus && guardName) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (trainer && auditBy) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (trainer && guardName) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (auditBy && guardName) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (trainingDate) {
 
-		return moment.unix(element.trainingDate).format("YYYY/MM/DD") == moment(trainingDate).format("YYYY/MM/DD")
+		return moment.unix(element.trainingDate).format("YYYY/MM/DD") === moment(trainingDate).format("YYYY/MM/DD")
 
 	} else if (guardName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (auditBy) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (trainer) {
 
-		return element.trainer.trim().toUpperCase() == trainer.trim().toUpperCase()
+		return element.trainer.trim().toUpperCase() === trainer.trim().toUpperCase()
 
 	} else if (trainingStatus) {
 
-		return element.trainingStatus.trim().toUpperCase() == trainingStatus.trim().toUpperCase()
+		return element.trainingStatus.trim().toUpperCase() === trainingStatus.trim().toUpperCase()
 
 	}
 }

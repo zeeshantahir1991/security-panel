@@ -1,5 +1,4 @@
-import { AppColors, colorWithOpacity } from './../../../../assets/styles/colors'
-import { AppStyles } from './../../../../assets/styles/index'
+import { AppColors } from './../../../../assets/styles/colors'
 
 export const componentStyles = {
     container: {

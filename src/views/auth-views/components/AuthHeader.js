@@ -1,15 +1,8 @@
-import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout } from 'antd';
 import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    MenuOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
+    MenuFoldOutlined, MenuUnfoldOutlined
 } from '@ant-design/icons';
+import { Button, Col, Layout, Menu, Row } from 'antd';
+import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 
 const { Header } = Layout;
@@ -62,7 +55,7 @@ export class AuthHeader extends React.Component {
                         </div>
                         <div className="nav-right">
                             <Menu mode="horizontal">
-                                {menuItem.map((el, i) => {
+                                {menuItem.map((el) => {
                                     return (
                                         <Menu.Item>
                                             <RouteLink to={el.path}>
@@ -108,7 +101,7 @@ export class AuthHeader extends React.Component {
                         <Col xs={24} sm={24} md={0} lg={0} style={{ backgroundColor: 'white', position: 'fixed', zIndex: 1, width: '100%' }}>
                             <div className="nav-center" style={{ alignSelf: 'center', marginTop: 70 }}>
                                 <Menu mode="vertical" style={{ textAlign: 'center' }}>
-                                    {menuItem.map((el, i) => {
+                                    {menuItem.map((el) => {
                                         return (
                                             <Menu.Item>
                                                 <RouteLink to={el.path}>

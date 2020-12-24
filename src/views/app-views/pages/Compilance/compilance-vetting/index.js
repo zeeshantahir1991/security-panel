@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const vettingData = [
 	{
@@ -124,7 +114,7 @@ export class CompilanceVetting extends Component {
 	}
 
 	searchInTable = () => {
-		const { vetting, search } = this.state;
+		const { search } = this.state;
 		let userList = vettingData
 		let screenStatus = search.screenStatus
 		let auditBy = search.auditBy
@@ -150,7 +140,7 @@ export class CompilanceVetting extends Component {
 	}
 
 	render() {
-		const { vetting, userProfileVisible, selectedUser, search } = this.state;
+		const { vetting, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -232,7 +222,7 @@ export class CompilanceVetting extends Component {
 				title: 'Vetting Completed On',
 				dataIndex: 'vettingCompletedOn',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.vettingCompletedOn).unix() - moment(b.vettingCompletedOn).unix(),
 				width: 200
@@ -242,7 +232,7 @@ export class CompilanceVetting extends Component {
 				title: 'Vetting Start Date',
 				dataIndex: 'vettingStartDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.vettingStartDate).unix() - moment(b.vettingStartDate).unix(),
 				width: 200
@@ -251,7 +241,7 @@ export class CompilanceVetting extends Component {
 				title: 'Audit Date',
 				dataIndex: 'auditDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.auditDate).unix() - moment(b.auditDate).unix(),
 				width: 200
@@ -481,179 +471,179 @@ export default CompilanceVetting
 export const filterCombination = (screenStatus, auditBy, vettedBy, guardName, vettingCompletedOn, element) => {
 	if (screenStatus && auditBy && vettedBy && guardName && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 	} else if (screenStatus && auditBy && vettedBy && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (screenStatus && auditBy && guardName && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (auditBy && vettedBy && guardName && vettingCompletedOn) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (screenStatus && vettedBy && guardName && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 	} else if (screenStatus && auditBy && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (screenStatus && vettedBy && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (screenStatus && guardName && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 	} else if (auditBy && vettedBy && vettingCompletedOn) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (auditBy && guardName && vettingCompletedOn) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (vettedBy && guardName && vettingCompletedOn) {
 
-		return element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (screenStatus && auditBy && vettedBy) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase()
 
 	} else if (screenStatus && auditBy && guardName) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (auditBy && vettedBy && guardName) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (screenStatus && vettedBy && guardName) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 	} else if (screenStatus && vettingCompletedOn) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (auditBy && vettingCompletedOn) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (vettedBy && vettingCompletedOn) {
 
-		return element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 
 	} else if (guardName && vettingCompletedOn) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 	} else if (screenStatus && auditBy) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (screenStatus && vettedBy) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase()
 
 	} else if (screenStatus && guardName) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (auditBy && vettedBy) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase()
 
 	} else if (auditBy && guardName) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (vettedBy && guardName) {
 
-		return element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase() &&
-			element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase() &&
+			element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (vettingCompletedOn) {
 
-		return moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") == moment(vettingCompletedOn).format("YYYY/MM/DD")
+		return moment.unix(element.vettingCompletedOn).format("YYYY/MM/DD") === moment(vettingCompletedOn).format("YYYY/MM/DD")
 
 	} else if (guardName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (vettedBy) {
 
-		return element.vettedBy.trim().toUpperCase() == vettedBy.trim().toUpperCase()
+		return element.vettedBy.trim().toUpperCase() === vettedBy.trim().toUpperCase()
 
 	} else if (auditBy) {
 
-		return element.auditBy.trim().toUpperCase() == auditBy.trim().toUpperCase()
+		return element.auditBy.trim().toUpperCase() === auditBy.trim().toUpperCase()
 
 	} else if (screenStatus) {
 
-		return element.screenStatus.trim().toUpperCase() == screenStatus.trim().toUpperCase()
+		return element.screenStatus.trim().toUpperCase() === screenStatus.trim().toUpperCase()
 
 	}
 }

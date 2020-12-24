@@ -1,20 +1,9 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 
 
 const { Option } = Select;
@@ -85,7 +74,7 @@ export class StaticSites extends Component {
 	}
 
 	searchInTable = () => {
-		const { sites, search } = this.state;
+		const { search } = this.state;
 		let userList = sitesData
 		let status = search.status
 		let siteType = search.siteType
@@ -103,7 +92,7 @@ export class StaticSites extends Component {
 
 
 	render() {
-		const { sites, userProfileVisible, selectedUser, search } = this.state;
+		const { sites, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -246,7 +235,7 @@ export class StaticSites extends Component {
 				title: 'Create Date',
 				dataIndex: 'createDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.createDate).unix() - moment(b.createDate).unix(),
 				width: 200
@@ -410,63 +399,63 @@ export default StaticSites
 export const filterCombination = (status, siteType, createDate, siteName, element) => {
 	if (status && siteType && createDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && siteType && createDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (status && siteType && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (siteType && createDate && siteName) {
 
-		return element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && createDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && siteType) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase()
 
 	} else if (status && createDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (status && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (siteType && createDate) {
 
-		return element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (siteType && siteName) {
 
-		return element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (createDate && siteName) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	} else if (siteType) {
 
-		return element.siteType.trim().toUpperCase() == siteType.trim().toUpperCase()
+		return element.siteType.trim().toUpperCase() === siteType.trim().toUpperCase()
 
 	} else if (createDate) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	}
 }

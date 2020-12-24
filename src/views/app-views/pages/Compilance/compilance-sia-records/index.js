@@ -1,21 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const siaRecordData = [
 	{
@@ -104,7 +94,7 @@ export class SiaRecordList extends Component {
 	}
 
 	searchInTable = () => {
-		const { siaRecordList, search } = this.state;
+		const { search } = this.state;
 		let List = siaRecordData
 		let siaLicenceStatus = search.siaLicenceStatus
 		let siaLicenceLastChecked = search.siaLicenceLastChecked
@@ -121,7 +111,7 @@ export class SiaRecordList extends Component {
 
 
 	render() {
-		const { siaRecordList, userProfileVisible, selectedUser, search } = this.state;
+		const { siaRecordList, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -210,7 +200,7 @@ export class SiaRecordList extends Component {
 				title: 'Expiry Date',
 				dataIndex: 'siaLicenceExpiryDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.siaLicenceExpiryDate).unix() - moment(b.siaLicenceExpiryDate).unix(),
 				width: 200
@@ -219,7 +209,7 @@ export class SiaRecordList extends Component {
 				title: 'Last Checked',
 				dataIndex: 'siaLicenceLastChecked',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.siaLicenceLastChecked).unix() - moment(b.siaLicenceLastChecked).unix(),
 				width: 200
@@ -229,7 +219,7 @@ export class SiaRecordList extends Component {
 				title: 'Next Check',
 				dataIndex: 'siaLicenceNextCheck',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.siaLicenceNextCheck).unix() - moment(b.siaLicenceNextCheck).unix(),
 				width: 200
@@ -380,31 +370,31 @@ export default SiaRecordList
 export const filterCombination = (siaLicenceStatus, siaLicenceLastChecked, guardName, element) => {
 	if (siaLicenceStatus && siaLicenceLastChecked && guardName) {
 
-		return element.siaLicenceStatus.trim().toUpperCase() == siaLicenceStatus.trim().toUpperCase() && moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") == moment(siaLicenceLastChecked).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase() && moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (siaLicenceStatus && siaLicenceLastChecked) {
 
-		return element.siaLicenceStatus.trim().toUpperCase() == siaLicenceStatus.trim().toUpperCase() && moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") == moment(siaLicenceLastChecked).format("YYYY/MM/DD")
+		return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase() && moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD")
 
 	} else if (siaLicenceStatus && guardName) {
 
-		return element.siaLicenceStatus.trim().toUpperCase() == siaLicenceStatus.trim().toUpperCase() && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase() && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (siaLicenceLastChecked && guardName) {
 
-		return moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") == moment(siaLicenceLastChecked).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (siaLicenceLastChecked) {
 
-		return moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") == moment(siaLicenceLastChecked).format("YYYY/MM/DD")
+		return moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD")
 
 	} else if (guardName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	} else if (siaLicenceStatus) {
 
-		return element.siaLicenceStatus.trim().toUpperCase() == siaLicenceStatus.trim().toUpperCase()
+		return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase()
 
 	}
 }

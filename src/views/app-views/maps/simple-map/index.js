@@ -12,7 +12,6 @@ import MapChartWithTextureMd from './markdown/MapChartWithTexture.md';
 import MapChartWithTooltipMd from './markdown/MapChartWithTooltip.md';
 import ChoroplethMapQuantileMd from './markdown/ChoroplethMapQuantile.md';
 import ChoroplethMapQuantizeMd from "./markdown/ChoroplethMapQuantize.md";
-import StateMapMd from './markdown/StateMap.md';
 import ChoroplethMapMd from './markdown/ChoroplethMap.md';
 import ZoomingAndPannningMd from './markdown/ZoomingAndPannning.md';
 import BasicAnnotation from './BasicAnnotation';
@@ -25,7 +24,6 @@ import MapChartWithTexture from './MapChartWithTexture';
 import MapChartWithTooltip from './MapChartWithTooltip';
 import ChoroplethMapQuantile from './ChoroplethMapQuantile';
 import ChoroplethMapQuantize from "./ChoroplethMapQuantize";
-import StateMap from './StateMap';
 import ChoroplethMap from './ChoroplethMap';
 import ZoomingAndPannning from './ZoomingAndPannning';
 
@@ -43,7 +41,6 @@ export class SimpleMap extends Component {
 				<DemoCard code={MapChartWithTooltipMd}><MapChartWithTooltip /></DemoCard>
 				<DemoCard code={ChoroplethMapQuantileMd}><ChoroplethMapQuantile /></DemoCard>
 				<DemoCard code={ChoroplethMapQuantizeMd}><ChoroplethMapQuantize /></DemoCard>
-				<DemoCard code={StateMapMd}><StateMap /></DemoCard>
 				<DemoCard code={ChoroplethMapMd}><ChoroplethMap /></DemoCard>
 				<DemoCard code={ZoomingAndPannningMd}><ZoomingAndPannning /></DemoCard>
 				<ApiContainer code={IndexMd} /> 

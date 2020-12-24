@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Card, Row, Col, Form, Input, Button, message, Checkbox } from "antd";
-import { BuildOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import { AuthHeader } from "./../../components/AuthHeader"
-import { AuthFooter } from "./../../components/AuthFooter"
+import { MailOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Col, Form, Input, message, Row } from "antd";
+import React, { useState } from 'react';
 import { componentStyles } from '../login-1/styles';
+import { AuthFooter } from "./../../components/AuthFooter";
+import { AuthHeader } from "./../../components/AuthHeader";
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
@@ -15,7 +15,7 @@ const Contact = () => {
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 
-	const onSend = values => {
+	const onSend = () => {
 		setLoading(true)
 		setTimeout(() => {
 			setLoading(false)

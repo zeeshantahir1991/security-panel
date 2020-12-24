@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Card, Row, Col, Form, Input, Button, message } from "antd";
 import { LockOutlined } from '@ant-design/icons';
-import { AuthHeader } from "./../../components/AuthHeader"
-import { AuthFooter } from "./../../components/AuthFooter"
+import { Button, Card, Col, Form, Input, message, Row } from "antd";
+import React, { useState } from 'react';
 import { componentStyles } from '../login-1/styles';
+import { AuthFooter } from "./../../components/AuthFooter";
+import { AuthHeader } from "./../../components/AuthHeader";
 
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -16,7 +16,7 @@ const OTP = () => {
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 
-	const onSend = values => {
+	const onSend = () => {
 		setLoading(true)
 		setTimeout(() => {
 			setLoading(false)

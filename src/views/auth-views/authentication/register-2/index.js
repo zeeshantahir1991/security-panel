@@ -1,6 +1,6 @@
-import React from 'react'
-import RegisterForm from '../../components/RegisterForm'
-import { Row, Col } from "antd";
+import { Col, Row } from "antd";
+import React from 'react';
+import RegisterForm from '../../components/RegisterForm';
 
 const backgroundURL = '/img/others/img-17.jpg'
 const backgroundStyle = {

@@ -1,20 +1,12 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { MailOutlined, MobileOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
-import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import { GuardSidebar } from './../GuardSidebar';
+import CompilanceData from './../compilanceStepper';
+import GuardProfile from './../guard-profile/index';
 import { Stepper } from './../stepper';
-import CompilanceData from './../compilanceStepper'
-import GuardProfile from './../guard-profile/index'
-const { SubMenu } = Menu;
-const { Step } = Steps;
+import { componentStyles } from "./../styles";
 const { Option } = Select;
 
 const rules = {
@@ -77,7 +69,7 @@ const rules = {
             message: 'Please confirm your password!'
         },
         ({ getFieldValue }) => ({
-            validator(rule, value) {
+            validator(value) {
                 if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                 }
@@ -100,7 +92,6 @@ export class ViewGuard extends Component {
 
     handleChange = (type, value) => {
         console.log(`selected ${value}`);
-        const { search } = this.state;
         this.setState({
 
             [type]: value
@@ -142,8 +133,7 @@ export class ViewGuard extends Component {
     }
 
     render() {
-        const { users, userProfileVisible, selectedUser, search } = this.state;
-        const { classes, location: { pathname }, history } = this.props;
+        const {  } = this.props;
         let record = null
         let action = null
         if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
@@ -172,10 +162,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="title"
                                                 label="Title"
-                                                rules={action == "viewItem" ? null : rules.title}
+                                                rules={action === "viewItem" ? null : rules.title}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.title
                                                     :
                                                     <Select
@@ -205,10 +195,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="firstname"
                                                 label="Full Name"
-                                                rules={action == "viewItem" ? null : rules.firstname}
+                                                rules={action === "viewItem" ? null : rules.firstname}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.name :
                                                     <Input
                                                         defaultValue={record.name ? record.name : ""}
@@ -221,10 +211,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="email"
                                                 label="Email"
-                                                rules={action == "viewItem" ? null : rules.email}
+                                                rules={action === "viewItem" ? null : rules.email}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.email :
                                                     <Input
                                                         defaultValue={record.email ? record.email : ""}
@@ -238,10 +228,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="dob"
                                                 label="DOB"
-                                                rules={action == "viewItem" ? null : rules.dob}
+                                                rules={action === "viewItem" ? null : rules.dob}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
 
                                                     moment.unix(record.birthday).format("YYYY/MM/DD")
                                                     :
@@ -256,10 +246,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="mobile"
                                                 label="Mobile"
-                                                rules={action == "viewItem" ? null : rules.phoneNumber}
+                                                rules={action === "viewItem" ? null : rules.phoneNumber}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.phoneNumber :
                                                     <Input
                                                         defaultValue={record.phoneNumber ? parseInt(record.phoneNumber) : ""}
@@ -271,10 +261,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="niNumber"
                                                 label="Ni Number"
-                                                rules={action == "viewItem" ? null : rules.niNumber}
+                                                rules={action === "viewItem" ? null : rules.niNumber}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.niNumber :
                                                     <Input
                                                         defaultValue={record.niNumber ? record.niNumber : ""}
@@ -287,10 +277,10 @@ export class ViewGuard extends Component {
                                             <Form.Item
                                                 name="origin"
                                                 label="Ethinic Origin"
-                                                rules={action == "viewItem" ? null : rules.origin}
+                                                rules={action === "viewItem" ? null : rules.origin}
                                                 hasFeedback
                                             >
-                                                {action == "viewItem" ?
+                                                {action === "viewItem" ?
                                                     record.origin
                                                     :
                                                     <Select
@@ -320,7 +310,7 @@ export class ViewGuard extends Component {
                                     <Row gutter={16} justify="center">
 
                                         <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
-                                            {action == "viewItem" ?
+                                            {action === "viewItem" ?
                                                 <Form.Item>
                                                     <Button
                                                         onClick={() => this.props.history.goBack()}

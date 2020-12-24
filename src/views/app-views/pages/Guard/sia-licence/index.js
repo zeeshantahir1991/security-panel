@@ -1,23 +1,16 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, DeleteOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Form, Input, Row, Select, Table, Tooltip } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
-import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { falseLoading, showLoading } from 'redux/actions/Auth';
 import {
 	licenseActions
 } from 'redux/actions/License';
-import {
-	showLoading, falseLoading
-} from 'redux/actions/Auth';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import { GuardSidebar } from '../GuardSidebar';
+import { AppStyles } from "../../../../../assets/styles";
 import { Stepper } from './../stepper';
+import { componentStyles } from "./../styles";
 
-const { Option } = Select;
 function mapStateToProps(state) {
 
 	return {
@@ -54,7 +47,7 @@ const rules = {
 			message: 'Please confirm your password!'
 		},
 		({ getFieldValue }) => ({
-			validator(rule, value) {
+			validator(value) {
 				if (!value || getFieldValue('password') === value) {
 					return Promise.resolve();
 				}
@@ -88,13 +81,13 @@ export class SiaLicence extends Component {
 
 
 	async addLicense() {
-		const { licenseNo, licenseData } = this.state;
+		const { licenseNo } = this.state;
 		this.props.onLoading()
 		try {
 			let data = {
 				"LicenseNo": licenseNo
 			}
-			const found = this.props?.licenseData?.find(element => element?.licenseNo?.trim() == licenseNo?.trim());
+			const found = this.props?.licenseData?.find(element => element?.licenseNo?.trim() === licenseNo?.trim());
 			if (!found) {
 				await fetch('http://localhost:3001/getLicenseInfo', {
 					method: 'POST',
@@ -121,7 +114,7 @@ export class SiaLicence extends Component {
 						}
 
 					})
-					.catch(e =>
+					.catch(() =>
 						this.setState({ errorMessage: "Please check your internet connection!" }),
 						this.timeoutHandler = setTimeout(function () {
 							this.setState({ errorMessage: "" })
@@ -153,9 +146,9 @@ export class SiaLicence extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, errorMessage } = this.state;
+		const { errorMessage } = this.state;
 		let licenseData = this.props.licenseData;
-		const { classes, location: { pathname }, history } = this.props;
+		const {  } = this.props;
 
 		const tableColumns = [
 			{

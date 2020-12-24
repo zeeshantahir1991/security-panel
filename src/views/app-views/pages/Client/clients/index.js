@@ -1,21 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const clientsData = [
 	{
@@ -123,7 +112,7 @@ export class Clients extends Component {
 	}
 
 	searchInTable = () => {
-		const { clients, search } = this.state;
+		const { search } = this.state;
 		let userList = clientsData
 		let status = search.status
 		let securityServices = search.securityServices
@@ -149,7 +138,7 @@ export class Clients extends Component {
 	}
 
 	render() {
-		const { clients, userProfileVisible, selectedUser, search } = this.state;
+		const { clients, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -257,7 +246,7 @@ export class Clients extends Component {
 				title: 'PO Start Date',
 				dataIndex: 'purchaseOrderStartDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.purchaseOrderStartDate).unix() - moment(b.purchaseOrderStartDate).unix(),
 				width: 200
@@ -267,7 +256,7 @@ export class Clients extends Component {
 				title: 'PO End Date',
 				dataIndex: 'purchaseOrderEndDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.purchaseOrderEndDate).unix() - moment(b.purchaseOrderEndDate).unix(),
 				width: 200
@@ -341,7 +330,7 @@ export class Clients extends Component {
 				title: 'Date Created',
 				dataIndex: 'dateCreated',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.dateCreated).unix() - moment(b.dateCreated).unix(),
 				width: 200
@@ -557,179 +546,179 @@ export default Clients
 export const filterCombination = (status, securityServices, purchaseStatus, clientName, dateCreated, element) => {
 	if (status && securityServices && purchaseStatus && clientName && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 	} else if (status && securityServices && purchaseStatus && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (status && securityServices && clientName && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (securityServices && purchaseStatus && clientName && dateCreated) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (status && purchaseStatus && clientName && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 	} else if (status && securityServices && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (status && purchaseStatus && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (status && clientName && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 	} else if (securityServices && purchaseStatus && dateCreated) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (securityServices && clientName && dateCreated) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (purchaseStatus && clientName && dateCreated) {
 
-		return element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (status && securityServices && purchaseStatus) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase()
 
 	} else if (status && securityServices && clientName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (securityServices && purchaseStatus && clientName) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (status && purchaseStatus && clientName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 	} else if (status && dateCreated) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (securityServices && dateCreated) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (purchaseStatus && dateCreated) {
 
-		return element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 
 	} else if (clientName && dateCreated) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 	} else if (status && securityServices) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase()
 
 	} else if (status && purchaseStatus) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase()
 
 	} else if (status && clientName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (securityServices && purchaseStatus) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase()
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase()
 
 	} else if (securityServices && clientName) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (purchaseStatus && clientName) {
 
-		return element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (dateCreated) {
 
-		return moment.unix(element.dateCreated).format("YYYY/MM/DD") == moment(dateCreated).format("YYYY/MM/DD")
+		return moment.unix(element.dateCreated).format("YYYY/MM/DD") === moment(dateCreated).format("YYYY/MM/DD")
 
 	} else if (clientName) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (purchaseStatus) {
 
-		return element.purchaseStatus.trim().toUpperCase() == purchaseStatus.trim().toUpperCase()
+		return element.purchaseStatus.trim().toUpperCase() === purchaseStatus.trim().toUpperCase()
 
 	} else if (securityServices) {
 
-		return element.securityServices.trim().toUpperCase() == securityServices.trim().toUpperCase()
+		return element.securityServices.trim().toUpperCase() === securityServices.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	}
 }

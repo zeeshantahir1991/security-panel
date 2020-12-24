@@ -1,20 +1,14 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, Checkbox, Switch } from 'antd';
 import {
-	DollarOutlined, BuildOutlined, CalendarOutlined,
-	LockOutlined, NumberOutlined, MailOutlined, BorderOutlined,
-	UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined,
-	HomeOutlined, EllipsisOutlined, EyeOutlined, DeleteOutlined,
-	ReloadOutlined, PrinterOutlined, FileExcelOutlined, UploadOutlined,
-	DownloadOutlined
+	DeleteOutlined,
+
+	DownloadOutlined, EllipsisOutlined, EyeOutlined,
+	UploadOutlined
 } from '@ant-design/icons';
-import moment from 'moment';
+import { Button, Card, Col, Dropdown, Menu, Row, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
-import { componentStyles } from "./../../styles";
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
 
 const userData = [
 	{
@@ -29,7 +23,6 @@ const userData = [
 	}
   ]
 
-const { Option } = Select;
 
 const latestTransactionOption = (
 	<Menu>
@@ -75,8 +68,8 @@ export class Docs extends Component {
 
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, selectionType } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const { users, selectionType } = this.state;
+		const {  } = this.props;
 		const tableColumns = [
 			{
 				title: 'Name',

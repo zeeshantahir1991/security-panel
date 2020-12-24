@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, DeleteOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { Col, Menu, Row } from 'antd';
+import { AppColors } from 'assets/styles/colors';
+import React from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 import { AppStyles } from "./../../../../assets/styles";
 import { componentStyles } from "./styles";
-import { connect } from "react-redux";
 
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
 
 export const GuardSidebar = ({ location: { pathname } }) => {
 

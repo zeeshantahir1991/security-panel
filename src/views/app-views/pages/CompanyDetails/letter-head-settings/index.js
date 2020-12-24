@@ -1,18 +1,10 @@
-import React, { Component } from 'react'
-import { Upload, Card, Typography, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, Checkbox, Switch } from 'antd';
-import { DollarOutlined, BuildOutlined, UploadOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { UploadOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Col, Form, Input, Row, Typography, Upload } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import InnerAppLayout from 'layouts/inner-app-layout';
-const { Text, Link } = Typography;
+const { Text } = Typography;
 const { TextArea } = Input;
-const { Option } = Select;
 
 
 export class letterHeadSettings extends Component {
@@ -31,7 +23,6 @@ export class letterHeadSettings extends Component {
 
 	handleChange = (type, event) => {
 		console.log(`selected ${event}`);
-		const { search } = this.state;
 		this.setState({
 
 			[type]: event.target.value
@@ -42,8 +33,8 @@ export class letterHeadSettings extends Component {
 
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search, name, header, desc, footer } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const { name, header, desc, footer } = this.state;
+		const {  } = this.props;
 
 		return (
 			<div style={AppStyles.marginTop50}>

@@ -1,21 +1,9 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const mobilePatrolData = [
 	{
@@ -82,7 +70,7 @@ export class MobilePatrolList extends Component {
 	}
 
 	searchInTable = () => {
-		const { mobilePatrolList, search } = this.state;
+		const { search } = this.state;
 		let List = mobilePatrolData
 		let status = search.status
 		let createDate = search.createDate
@@ -99,7 +87,7 @@ export class MobilePatrolList extends Component {
 
 
 	render() {
-		const { mobilePatrolList, userProfileVisible, selectedUser, search } = this.state;
+		const { mobilePatrolList, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -179,7 +167,7 @@ export class MobilePatrolList extends Component {
 				title: 'Create Date',
 				dataIndex: 'createDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.createDate).unix() - moment(b.createDate).unix(),
 				width: 200
@@ -319,31 +307,31 @@ export default MobilePatrolList
 export const filterCombination = (status, createDate, masterSiteName, element) => {
 	if (status && createDate && masterSiteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() == masterSiteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
 
 	} else if (status && createDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (status && masterSiteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.masterSiteName.trim().toUpperCase() == masterSiteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
 
 	} else if (createDate && masterSiteName) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() == masterSiteName.trim().toUpperCase()
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
 
 	} else if (createDate) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (masterSiteName) {
 
-		return element.masterSiteName.trim().toUpperCase() == masterSiteName.trim().toUpperCase()
+		return element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	}
 }

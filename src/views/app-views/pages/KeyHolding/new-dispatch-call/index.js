@@ -1,18 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps, Checkbox } from 'antd';
-import { BuildOutlined, CalendarOutlined, DollarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { NumberOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Form, Input, Menu, Row, Select, Steps } from 'antd';
+import React, { Component } from 'react';
+import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 
-const { SubMenu } = Menu;
-const { Step } = Steps;
 const { Option } = Select;
 
 const rules = {
@@ -147,7 +139,7 @@ const rules = {
 			message: 'Please confirm your password!'
 		},
 		({ getFieldValue }) => ({
-			validator(rule, value) {
+			validator(value) {
 				if (!value || getFieldValue('password') === value) {
 					return Promise.resolve();
 				}
@@ -173,7 +165,6 @@ export class AddKeyHoldingSite extends Component {
 
 	handleChange = (type, value) => {
 		console.log(`selected ${value}`);
-		const { search } = this.state;
 		this.setState({
 
 			[type]: value
@@ -184,8 +175,7 @@ export class AddKeyHoldingSite extends Component {
 
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const {  } = this.props;
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">

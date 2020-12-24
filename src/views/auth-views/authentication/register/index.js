@@ -1,11 +1,10 @@
-import React from 'react'
-import RegisterForm from '../../components/RegisterForm'
-import { Form, Avatar, Button, Input, DatePicker, Row, Col, message, Upload, Card } from 'antd';
-import { ROW_GUTTER } from 'constants/ThemeConstant';
 import { UserOutlined } from '@ant-design/icons';
-import Flex from 'components/shared-components/Flex'
-import { AuthHeader } from "./../../components/AuthHeader"
-import { AuthFooter } from "./../../components/AuthFooter"
+import { Avatar, Button, Col, message, Row, Upload } from 'antd';
+import Flex from 'components/shared-components/Flex';
+import React from 'react';
+import RegisterForm from '../../components/RegisterForm';
+import { AuthFooter } from "./../../components/AuthFooter";
+import { AuthHeader } from "./../../components/AuthHeader";
 
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
@@ -40,28 +39,7 @@ export class RegisterOne extends React.Component {
 		let props = this.props;
 		const { avatarUrl } = this.state;
 
-		const onFinish = values => {
-			const key = 'updatable';
-			message.loading({ content: 'Updating...', key });
-			setTimeout(() => {
-				this.setState({
-					name: values.name,
-					email: values.email,
-					userName: values.userName,
-					dateOfBirth: values.dateOfBirth,
-					phoneNumber: values.phoneNumber,
-					website: values.website,
-					address: values.address,
-					city: values.city,
-					postcode: values.postcode,
-				})
-				message.success({ content: 'Done!', key, duration: 2 });
-			}, 1000);
-		};
 
-		const onFinishFailed = errorInfo => {
-			console.log('Failed:', errorInfo);
-		};
 
 		const onUploadAavater = info => {
 			const key = 'updatable';

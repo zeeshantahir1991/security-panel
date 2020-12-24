@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Card, Row, Col, Form, Input, Button, message } from "antd";
 import { MailOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Form, Input, message, Row } from "antd";
+import React, { useState } from 'react';
 import { Link as RouteLink } from 'react-router-dom';
-import { AuthHeader } from "./../../components/AuthHeader"
-import { AuthFooter } from "./../../components/AuthFooter"
 import { componentStyles } from '../login-1/styles';
+import { AuthFooter } from "./../../components/AuthFooter";
+import { AuthHeader } from "./../../components/AuthHeader";
 const backgroundStyle = {
 	// backgroundImage: 'url(/img/others/img-17.jpg)',
 	// backgroundRepeat: 'no-repeat',
@@ -16,7 +16,7 @@ const ForgotPassword = () => {
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 
-	const onSend = values => {
+	const onSend = () => {
 		setLoading(true)
 		setTimeout(() => {
 			setLoading(false)

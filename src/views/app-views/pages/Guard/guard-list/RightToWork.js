@@ -1,17 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { CompassOutlined, NumberOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
-import { GuardSidebar } from '../GuardSidebar';
+import CompilanceData from './../compilanceStepper';
 import { Stepper } from './../stepper';
-import CompilanceData from './../compilanceStepper'
+import { componentStyles } from "./../styles";
 
 const { Option } = Select;
 
@@ -77,7 +70,7 @@ const rules = {
             message: 'Please confirm your password!'
         },
         ({ getFieldValue }) => ({
-            validator(rule, value) {
+            validator(value) {
                 if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                 }
@@ -101,7 +94,6 @@ export class RightToWork extends Component {
 
     handleChange = (type, value) => {
         console.log(`selected ${value}`);
-        const { search } = this.state;
         this.setState({
 
             [type]: value
@@ -112,8 +104,8 @@ export class RightToWork extends Component {
 
 
     render() {
-        const { users, userProfileVisible, selectedUser, search, nationality } = this.state;
-        const { classes, location: { pathname }, history } = this.props;
+        const { nationality } = this.state;
+        const {  } = this.props;
         let record = null
         let action = null
         if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
@@ -162,7 +154,7 @@ export class RightToWork extends Component {
                                             </Select>
                                         </Form.Item>
                                     </Col>
-                                    {nationality == "UnitedKingdom" ?
+                                    {nationality === "UnitedKingdom" ?
                                         <>
                                             <Col xs={24} sm={24} md={8} lg={8}>
                                                 <Form.Item
@@ -332,7 +324,7 @@ export class RightToWork extends Component {
                                 </Row>
                                 <Row gutter={16} justify="center">
                                     <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
-                                        {action == "viewItem" ?
+                                        {action === "viewItem" ?
                                             <Form.Item>
                                                 <Button
                                                     onClick={() => this.props.history.goBack()}

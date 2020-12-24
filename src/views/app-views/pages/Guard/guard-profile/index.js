@@ -1,18 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Table, Switch, Tag, Avatar, message, Upload, Button, Row, Col, Dropdown, Select, Menu, Form, Input, DatePicker, Steps } from 'antd';
-import { DollarOutlined, CalendarOutlined, LockOutlined, NumberOutlined, MailOutlined, CodepenOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { CodepenOutlined, DollarOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Card, Col, DatePicker, Form, Input, Menu, message, Row, Select, Steps, Switch } from 'antd';
+import Flex from 'components/shared-components/Flex';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
-import Flex from 'components/shared-components/Flex'
+import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
 import DocumentAndSitePreferences from './DocumentAndSitePreferences';
-const { SubMenu } = Menu;
-const { Step } = Steps;
 const { Option } = Select;
 
 const rules = {
@@ -75,7 +68,7 @@ const rules = {
             message: 'Please confirm your password!'
         },
         ({ getFieldValue }) => ({
-            validator(rule, value) {
+            validator(value) {
                 if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                 }
@@ -99,7 +92,6 @@ export class GuardProfile extends Component {
 
     handleChange = (type, value) => {
         console.log(`selected ${value}`);
-        const { search } = this.state;
         this.setState({
 
             [type]: value
@@ -110,28 +102,8 @@ export class GuardProfile extends Component {
 
     render() {
         const { avatarUrl } = this.state
-        const { classes, location: { pathname }, history, record } = this.props;
-        const onUploadAavater = info => {
-            const key = 'updatable';
-            if (info.file.status === 'uploading') {
-                message.loading({ content: 'Uploading...', key, duration: 1000 });
-                return;
-            }
-            if (info.file.status === 'done') {
-                this.getBase64(info.file.originFileObj, imageUrl =>
-                    this.setState({
-                        avatarUrl: imageUrl,
-                    }),
-                );
-                message.success({ content: 'Uploaded!', key, duration: 1.5 });
-            }
-        };
+        const { record } = this.props;
 
-        const onRemoveAvater = () => {
-            this.setState({
-                avatarUrl: ''
-            })
-        }
         return (
 
             <div style={AppStyles.marginTop50}>

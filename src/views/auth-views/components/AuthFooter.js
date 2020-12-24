@@ -1,18 +1,6 @@
-import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout } from 'antd';
-import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    MenuOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
-} from '@ant-design/icons';
-import { Link as RouteLink } from 'react-router-dom';
+import { Col, Layout, Row } from 'antd';
+import React from 'react';
 
-const { Header } = Layout;
 
 
 export class AuthFooter extends React.Component {

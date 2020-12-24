@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Card, Avatar, Dropdown, Table, Menu, Tag, Select } from 'antd';
+import { Row, Col, Button, Select } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
-import ChartWidget from 'components/shared-components/ChartWidget';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
-import GoalWidget from 'components/shared-components/GoalWidget';
 import {
   VisitorChartData,
   AnnualStatisticData,
@@ -11,53 +8,20 @@ import {
 } from './DefaultDashboardData';
 import ApexChart from "react-apexcharts";
 import { apexLineChartDefaultOption, COLOR_2 } from 'constants/ChartConstant';
-import {
-  UserAddOutlined,
-  FileExcelOutlined,
-  PrinterOutlined,
-  PlusOutlined,
-  EllipsisOutlined,
-  StopOutlined,
-  ReloadOutlined
-} from '@ant-design/icons';
-import utils from 'utils';
 import exampleService from 'services/ExampleService'
 import { withRouter } from 'react-router-dom';
 import { AppStyles } from "./../../../../assets/styles";
-import { AppColors } from "./../../../../assets/styles/colors";
 import { componentStyles } from "./../styles";
 import { GuardsList } from "../../pages/Guard/guard-list/index"
-import SearchInput from "./../../../../components/layout-components/NavSearch/SearchInput.js"
 
-const { Option } = Select;
 
-const MembersChart = props => (
-  <ApexChart {...props} />
-)
 
-const memberChartOption = {
-  ...apexLineChartDefaultOption,
-  ...{
-    chart: {
-      sparkline: {
-        enabled: true,
-      }
-    },
-    colors: [COLOR_2],
-  }
-}
 
-const pushRoute = () => {
-  console.log('execute')
-  exampleService.getPost().then(resp => {
-    console.log('resp', resp)
-  })
-}
 
 export const DefaultDashboard = (props) => {
-  const [visitorChartData] = useState(VisitorChartData);
+  const [] = useState(VisitorChartData);
   const [annualStatisticData] = useState(AnnualStatisticData);
-  const [recentTransactionData] = useState(RecentTransactionData)
+  const [] = useState(RecentTransactionData)
 
 
   // function onBlur() {

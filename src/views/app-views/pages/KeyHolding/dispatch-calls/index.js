@@ -1,21 +1,9 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const dispatchCallsData = [
 	{
@@ -106,7 +94,7 @@ export class DispatchCalls extends Component {
 	}
 
 	searchInTable = () => {
-		const { dispatchCalls, search } = this.state;
+		const { search } = this.state;
 		let userList = dispatchCallsData
 		let status = search.status
 		let incidentType = search.incidentType
@@ -132,7 +120,7 @@ export class DispatchCalls extends Component {
 	}
 
 	render() {
-		const { dispatchCalls, userProfileVisible, selectedUser, search } = this.state;
+		const { dispatchCalls, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -231,7 +219,7 @@ export class DispatchCalls extends Component {
 				title: 'Incident Date & Time',
 				dataIndex: 'incidentPeriod',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.incidentPeriod).unix() - moment(b.incidentPeriod).unix(),
 				width: 200
@@ -508,179 +496,179 @@ export default DispatchCalls
 export const filterCombination = (status, incidentType, severity, siteName, incidentPeriod, element) => {
 	if (status && incidentType && severity && siteName && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 	} else if (status && incidentType && severity && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && incidentType && siteName && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (incidentType && severity && siteName && incidentPeriod) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && severity && siteName && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 	} else if (status && incidentType && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && severity && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && siteName && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 	} else if (incidentType && severity && incidentPeriod) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (incidentType && siteName && incidentPeriod) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (severity && siteName && incidentPeriod) {
 
-		return element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && incidentType && severity) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase()
 
 	} else if (status && incidentType && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (incidentType && severity && siteName) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && severity && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 	} else if (status && incidentPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (incidentType && incidentPeriod) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (severity && incidentPeriod) {
 
-		return element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 
 	} else if (siteName && incidentPeriod) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 	} else if (status && incidentType) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase()
 
 	} else if (status && severity) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase()
 
 	} else if (status && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (incidentType && severity) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.severity.trim().toUpperCase() == severity.trim().toUpperCase()
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.severity.trim().toUpperCase() === severity.trim().toUpperCase()
 
 	} else if (incidentType && siteName) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (severity && siteName) {
 
-		return element.severity.trim().toUpperCase() == severity.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.severity.trim().toUpperCase() === severity.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (incidentPeriod) {
 
-		return moment.unix(element.incidentPeriod).format("YYYY/MM/DD") == moment(incidentPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.incidentPeriod).format("YYYY/MM/DD") === moment(incidentPeriod).format("YYYY/MM/DD")
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (severity) {
 
-		return element.severity.trim().toUpperCase() == severity.trim().toUpperCase()
+		return element.severity.trim().toUpperCase() === severity.trim().toUpperCase()
 
 	} else if (incidentType) {
 
-		return element.incidentType.trim().toUpperCase() == incidentType.trim().toUpperCase()
+		return element.incidentType.trim().toUpperCase() === incidentType.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	}
 }

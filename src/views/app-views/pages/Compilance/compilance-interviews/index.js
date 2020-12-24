@@ -1,22 +1,12 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import compilanceData from "assets/data/compilance-interviews-list.data";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import compilanceData from "assets/data/compilance-interviews-list.data";
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const interviewStatisticData = [
 	{
@@ -37,16 +27,6 @@ const interviewStatisticData = [
 
 const { Option } = Select;
 
-const rules = {
-
-	interviewer: [
-		{
-			required: true,
-			message: 'Please input your interviewer name'
-		}
-	]
-
-}
 
 export class CompilanceInterviews extends Component {
 
@@ -87,7 +67,7 @@ export class CompilanceInterviews extends Component {
 	}
 
 	searchInTable = () => {
-		const { compilance, search } = this.state;
+		const { search } = this.state;
 		let userList = compilanceData
 		let interviewStatus = search.interviewStatus
 		let interviewer = search.interviewer
@@ -98,63 +78,63 @@ export class CompilanceInterviews extends Component {
 		filteredArray = userList.filter(element => {
 			if (interviewStatus && interviewer && interviewDate && guardName) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewStatus && interviewer && interviewDate) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD")
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD")
 
 			} else if (interviewStatus && interviewer && guardName) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewer && interviewDate && guardName) {
 
-				return element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewStatus && interviewDate && guardName) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewStatus && interviewer) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase()
 
 			} else if (interviewStatus && interviewDate) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD")
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD")
 
 			} else if (interviewStatus && guardName) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase() && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase() && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewer && interviewDate) {
 
-				return element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD")
+				return element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD")
 
 			} else if (interviewer && guardName) {
 
-				return element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase() && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase() && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewDate && guardName) {
 
-				return moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD") && element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			} else if (interviewStatus) {
 
-				return element.interviewStatus.trim().toUpperCase() == interviewStatus.trim().toUpperCase()
+				return element.interviewStatus.trim().toUpperCase() === interviewStatus.trim().toUpperCase()
 
 			} else if (interviewer) {
 
-				return element.interviewer.trim().toUpperCase() == interviewer.trim().toUpperCase()
+				return element.interviewer.trim().toUpperCase() === interviewer.trim().toUpperCase()
 
 			} else if (interviewDate) {
 
-				return moment.unix(element.interviewDate).format("YYYY/MM/DD") == moment(interviewDate).format("YYYY/MM/DD")
+				return moment.unix(element.interviewDate).format("YYYY/MM/DD") === moment(interviewDate).format("YYYY/MM/DD")
 
 			} else if (guardName) {
 
-				return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+				return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 			}
 
@@ -170,7 +150,7 @@ export class CompilanceInterviews extends Component {
 	}
 
 	render() {
-		const { compilance, userProfileVisible, selectedUser, search } = this.state;
+		const { compilance, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -249,7 +229,7 @@ export class CompilanceInterviews extends Component {
 				title: 'Interview Date',
 				dataIndex: 'interviewDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
 				width: 200

@@ -1,20 +1,9 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
 
 
 const { Option } = Select;
@@ -87,7 +76,7 @@ export class KeyHoldingSites extends Component {
 	}
 
 	searchInTable = () => {
-		const { sites, search } = this.state;
+		const { search } = this.state;
 		let userList = sitesData
 		let status = search.status
 		let keyHoldingStartDate = search.keyHoldingStartDate
@@ -105,7 +94,7 @@ export class KeyHoldingSites extends Component {
 
 
 	render() {
-		const { sites, userProfileVisible, selectedUser, search } = this.state;
+		const { sites, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -233,7 +222,7 @@ export class KeyHoldingSites extends Component {
 				title: 'Create Date',
 				dataIndex: 'createDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.createDate).unix() - moment(b.createDate).unix(),
 				width: 200
@@ -242,7 +231,7 @@ export class KeyHoldingSites extends Component {
 				title: 'key Holding Start Date',
 				dataIndex: 'keyHoldingStartDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.keyHoldingStartDate).unix() - moment(b.keyHoldingStartDate).unix(),
 				width: 200
@@ -252,7 +241,7 @@ export class KeyHoldingSites extends Component {
 				title: 'key Holding End Date',
 				dataIndex: 'KeyHoldingEndDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.KeyHoldingEndDate).unix() - moment(b.KeyHoldingEndDate).unix(),
 				width: 200
@@ -397,63 +386,63 @@ export default KeyHoldingSites
 export const filterCombination = (status, keyHoldingStartDate, createDate, siteName, element) => {
 	if (status && keyHoldingStartDate && createDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && keyHoldingStartDate && createDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (status && keyHoldingStartDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (keyHoldingStartDate && createDate && siteName) {
 
-		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && createDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && keyHoldingStartDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD")
 
 	} else if (status && createDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (status && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (keyHoldingStartDate && createDate) {
 
-		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (keyHoldingStartDate && siteName) {
 
-		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (createDate && siteName) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	} else if (keyHoldingStartDate) {
 
-		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") == moment(keyHoldingStartDate).format("YYYY/MM/DD")
+		return moment.unix(element.keyHoldingStartDate).format("YYYY/MM/DD") === moment(keyHoldingStartDate).format("YYYY/MM/DD")
 
 	} else if (createDate) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") == moment(createDate).format("YYYY/MM/DD")
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	}
 }

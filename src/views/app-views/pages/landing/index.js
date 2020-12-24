@@ -1,23 +1,10 @@
-import React from 'react'
-import { Row, Col, Card, Grid, Button, Badge, Menu, Layout } from 'antd';
-import {
-	AppstoreOutlined,
-	MenuUnfoldOutlined,
-	MenuFoldOutlined,
-	MenuOutlined,
-	PieChartOutlined,
-	DesktopOutlined,
-	ContainerOutlined,
-	MailOutlined,
-} from '@ant-design/icons';
-import { Link as RouteLink } from 'react-router-dom';
+import { Button, Col, Grid, Row } from 'antd';
+import React from 'react';
+import { AuthFooter } from "../../../auth-views/components/AuthFooter";
+import { AuthHeader } from "../../../auth-views/components/AuthHeader";
 import { pricingData } from './pricingData';
-import utils from 'utils';
-import { AuthHeader } from "../../../auth-views/components/AuthHeader"
-import { AuthFooter } from "../../../auth-views/components/AuthFooter"
 
 
-const { useBreakpoint } = Grid;
 
 class Home extends React.Component {
 	constructor(props) {
@@ -70,7 +57,7 @@ class Home extends React.Component {
 
 				<Row style={{ justifyContent: 'center' }}>
 					{
-						pricingData.map((elm, i) => {
+						pricingData.map((elm) => {
 							return (
 								<>
 
@@ -80,7 +67,7 @@ class Home extends React.Component {
 												<div className="mt-4">
 													<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{elm.plan}</h1>
 												</div>
-												{elm.plan.toUpperCase() == "PLATINUM" ?
+												{elm.plan.toUpperCase() === "PLATINUM" ?
 													<div className="text-center">
 														<img className="img-fluid" src={elm.image} alt="" />
 
@@ -99,7 +86,7 @@ class Home extends React.Component {
 															<span style={{ fontSize: 40 }}>{elm.price}</span>
 														</h2>
 
-														<p style={elm.plan.toUpperCase() == "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+														<p style={elm.plan.toUpperCase() === "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
 													</div>
 												}
 
@@ -136,7 +123,7 @@ class Home extends React.Component {
 				</Row>
 				<Row>
 					{
-						pricingData.map((elm, i) => {
+						pricingData.map((elm) => {
 							return (
 								<>
 									<Col className="card" xs={24 / 2} sm={24 / 2} md={0} lg={0} >
@@ -145,7 +132,7 @@ class Home extends React.Component {
 											<div className="mt-4">
 												<h1 style={{ color: 'white', fontSize: 20 }} className="text-center font-weight-semibold">{elm.plan}</h1>
 											</div>
-											{elm.plan.toUpperCase() == "PLATINUM" ?
+											{elm.plan.toUpperCase() === "PLATINUM" ?
 												<div className="text-center">
 													<img className="img-fluid" src={elm.image} alt="" />
 
@@ -163,7 +150,7 @@ class Home extends React.Component {
 														<span className="font-size-md d-inline-block mr-1" style={{ transform: 'translate(0px, -17px)' }}>£</span>
 														<span style={{ fontSize: 25 }}>{elm.price}</span>
 													</h2>
-													<p style={elm.plan.toUpperCase() == "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
+													<p style={elm.plan.toUpperCase() === "FREE" ? { visibility: 'hidden' } : { color: 'white', fontWeight: 'bold' }} className="mb-0">{elm.duration}</p>
 												</div>
 											}
 

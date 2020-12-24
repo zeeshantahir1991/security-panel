@@ -1,21 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const keyLogRegisterData = [
 	{
@@ -108,7 +97,7 @@ export class KeyLogRegister extends Component {
 	}
 
 	searchInTable = () => {
-		const { keyLogRegisters, search } = this.state;
+		const { search } = this.state;
 		let userList = keyLogRegisterData
 		let status = search.status
 		let keyReturnPeriod = search.keyReturnPeriod
@@ -134,7 +123,7 @@ export class KeyLogRegister extends Component {
 	}
 
 	render() {
-		const { keyLogRegisters, userProfileVisible, selectedUser, search } = this.state;
+		const { keyLogRegisters, search } = this.state;
 
 		const tableColumns = [
 
@@ -440,179 +429,179 @@ export default KeyLogRegister
 export const filterCombination = (status, keyReturnPeriod, clientName, siteName, keyReceiptPeriod, element) => {
 	if (status && keyReturnPeriod && clientName && siteName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 	} else if (status && keyReturnPeriod && clientName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && keyReturnPeriod && siteName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (keyReturnPeriod && clientName && siteName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && clientName && siteName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 	} else if (status && keyReturnPeriod && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && clientName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && siteName && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 	} else if (keyReturnPeriod && clientName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (keyReturnPeriod && siteName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (clientName && siteName && keyReceiptPeriod) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (status && keyReturnPeriod && clientName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (status && keyReturnPeriod && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (keyReturnPeriod && clientName && siteName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && clientName && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 	} else if (status && keyReceiptPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (keyReturnPeriod && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (clientName && keyReceiptPeriod) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
 	} else if (siteName && keyReceiptPeriod) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 	} else if (status && keyReturnPeriod) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD")
 
 	} else if (status && clientName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (status && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (keyReturnPeriod && clientName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (keyReturnPeriod && siteName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD") &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (clientName && siteName) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (keyReceiptPeriod) {
 
-		return moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") == moment(keyReceiptPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (clientName) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (keyReturnPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") == moment(keyReturnPeriod).format("YYYY/MM/DD")
+		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD")
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	}
 }

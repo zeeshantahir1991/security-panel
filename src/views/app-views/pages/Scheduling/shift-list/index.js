@@ -1,21 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
-import moment from 'moment';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 const shiftData = [
 	{
@@ -131,7 +120,7 @@ export class ShiftList extends Component {
 	}
 
 	searchInTable = () => {
-		const { shiftList, search } = this.state;
+		const { search } = this.state;
 		let userList = shiftData
 		let guardName = search.guardName
 		let shiftType = search.shiftType
@@ -158,7 +147,7 @@ export class ShiftList extends Component {
 	}
 
 	render() {
-		const { shiftList, userProfileVisible, selectedUser, search } = this.state;
+		const { shiftList, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -220,7 +209,7 @@ export class ShiftList extends Component {
 				title: 'Shift Date',
 				dataIndex: 'shiftDate',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.shiftDate).unix() - moment(b.shiftDate).unix(),
 				width: 200
@@ -248,7 +237,7 @@ export class ShiftList extends Component {
 				title: 'Start Time',
 				dataIndex: 'shiftStartTime',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.shiftStartTime).unix() - moment(b.shiftStartTime).unix(),
 				width: 200
@@ -260,7 +249,7 @@ export class ShiftList extends Component {
 				title: 'End Time',
 				dataIndex: 'shiftEndTime',
 				render: date => (
-					<span>{date == "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.shiftEndTime).unix() - moment(b.shiftEndTime).unix(),
 				width: 200
@@ -555,194 +544,194 @@ export default ShiftList
 export const filterCombination = (guardName, shiftType, siteName, clientName, shiftStartTime, shiftEndTime, element) => {
 	if (guardName && shiftType && siteName && clientName && shiftStartTime, shiftEndTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD") &&
-			moment.unix(element.shiftEndTime).format("YYYY/MM/DD") == moment(shiftEndTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD") &&
+			moment.unix(element.shiftEndTime).format("YYYY/MM/DD") === moment(shiftEndTime).format("YYYY/MM/DD")
 
 
 	}
 	if (guardName && shiftType && siteName && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 	} else if (guardName && shiftType && siteName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (guardName && shiftType && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (shiftType && siteName && clientName && shiftStartTime) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (guardName && siteName && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 	} else if (guardName && shiftType && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (guardName && siteName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (guardName && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 	} else if (shiftType && siteName && shiftStartTime) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (shiftType && clientName && shiftStartTime) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (siteName && clientName && shiftStartTime) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (guardName && shiftType && siteName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (guardName && shiftType && clientName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (shiftType && siteName && clientName) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (guardName && siteName && clientName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 	} else if (guardName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (shiftType && shiftStartTime) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (siteName && shiftStartTime) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
 	} else if (clientName && shiftStartTime) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase() &&
-			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
+			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 	} else if (guardName && shiftType) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase()
 
 	} else if (guardName && siteName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (guardName && clientName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (shiftType && siteName) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (shiftType && clientName) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (siteName && clientName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase() &&
-			element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
+			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (shiftStartTime) {
 
-		return moment.unix(element.shiftStartTime).format("YYYY/MM/DD") == moment(shiftStartTime).format("YYYY/MM/DD")
+		return moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 	} else if (shiftEndTime) {
 
-		return moment.unix(element.shiftEndTime).format("YYYY/MM/DD") == moment(shiftEndTime).format("YYYY/MM/DD")
+		return moment.unix(element.shiftEndTime).format("YYYY/MM/DD") === moment(shiftEndTime).format("YYYY/MM/DD")
 
 	} else if (clientName) {
 
-		return element.clientName.trim().toUpperCase() == clientName.trim().toUpperCase()
+		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (shiftType) {
 
-		return element.shiftType.trim().toUpperCase() == shiftType.trim().toUpperCase()
+		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase()
 
 	} else if (guardName) {
 
-		return element.guardName.trim().toUpperCase() == guardName.trim().toUpperCase()
+		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
 
 	}
 }

@@ -1,15 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, Steps } from 'antd';
-import { BuildOutlined, CalendarOutlined, LockOutlined, DeleteOutlined, NumberOutlined, MailOutlined, BorderOutlined, UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined, HomeOutlined } from '@ant-design/icons';
+import { Col, Row, Steps } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "./../../../../assets/styles";
-import { componentStyles } from "./styles";
-import { connect } from "react-redux";
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
+import CompilanceInterviews from './../Compilance/compilance-interviews';
+import CompilanceTraining from './../Compilance/compilance-trainings';
+import CompilanceVetting from './../Compilance/compilance-vetting';
 
-import CompilanceInterviews from './../Compilance/compilance-interviews'
-import CompilanceVetting from './../Compilance/compilance-vetting'
-import CompilanceTraining from './../Compilance/compilance-trainings'
 
 const { Step } = Steps;
 
@@ -28,7 +23,7 @@ export class CompilanceData extends Component {
 
     render() {
         const { stepValue } = this.state;
-        const { location: { pathname }, history } = this.props;
+        const {  } = this.props;
         return (
             <Row justify="center">
                 <Col style={AppStyles.marginBottom50} xs={24} sm={24} md={20} lg={20} >

@@ -1,21 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, Form, Input, message, Button, Row, Col, Dropdown, Select, Menu, DatePicker } from 'antd';
-import {
-	EyeOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
-	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
-	ReloadOutlined
-} from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import StatisticWidget from 'components/shared-components/StatisticWidget';
 
 
 const { Option } = Select;
@@ -98,7 +87,7 @@ export class StaticSiteSurveys extends Component {
 	}
 
 	searchInTable = () => {
-		const { sites, search } = this.state;
+		const { search } = this.state;
 		let userList = siteSurveys
 		let status = search.status
 		let surveyor = search.surveyor
@@ -116,7 +105,7 @@ export class StaticSiteSurveys extends Component {
 
 
 	render() {
-		const { sites, userProfileVisible, selectedUser, search } = this.state;
+		const { sites, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -178,7 +167,7 @@ export class StaticSiteSurveys extends Component {
 				title: 'Survey Date',
 				dataIndex: 'surveyDate',
 				render: date => (
-					<span>{date == "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
 				sorter: (a, b) => moment(a.surveyDate).unix() - moment(b.surveyDate).unix(),
 				width: 200
@@ -379,63 +368,63 @@ export default StaticSiteSurveys
 export const filterCombination = (status, surveyor, surveyDate, siteName, element) => {
 	if (status && surveyor && surveyDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && surveyor && surveyDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD")
 
 	} else if (status && surveyor && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (surveyor && surveyDate && siteName) {
 
-		return element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && surveyDate && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status && surveyor) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase()
 
 	} else if (status && surveyDate) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD")
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD")
 
 	} else if (status && siteName) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (surveyor && surveyDate) {
 
-		return element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD")
+		return element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD")
 
 	} else if (surveyor && siteName) {
 
-		return element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase() && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase() && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (surveyDate && siteName) {
 
-		return moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD") && element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (status) {
 
-		return element.status.trim().toUpperCase() == status.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase()
 
 	} else if (surveyor) {
 
-		return element.surveyor.trim().toUpperCase() == surveyor.trim().toUpperCase()
+		return element.surveyor.trim().toUpperCase() === surveyor.trim().toUpperCase()
 
 	} else if (surveyDate) {
 
-		return moment.unix(element.surveyDate).format("YYYY/MM/DD") == moment(surveyDate).format("YYYY/MM/DD")
+		return moment.unix(element.surveyDate).format("YYYY/MM/DD") === moment(surveyDate).format("YYYY/MM/DD")
 
 	} else if (siteName) {
 
-		return element.siteName.trim().toUpperCase() == siteName.trim().toUpperCase()
+		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	}
 }

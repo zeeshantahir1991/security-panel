@@ -1,20 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Form, Input, Checkbox, Switch } from 'antd';
 import {
-	DollarOutlined, BuildOutlined, CalendarOutlined,
-	LockOutlined, NumberOutlined, MailOutlined, BorderOutlined,
-	UserOutlined, PhoneOutlined, MobileOutlined, CompassOutlined,
-	HomeOutlined, EllipsisOutlined, EyeOutlined, DeleteOutlined,
-	ReloadOutlined, PrinterOutlined, FileExcelOutlined, UploadOutlined,
-	DownloadOutlined
+	DownloadOutlined, EllipsisOutlined,
+	UploadOutlined
 } from '@ant-design/icons';
-import moment from 'moment';
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { Card, Col, Dropdown, Menu, Row, Select, Table } from 'antd';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
-import { componentStyles } from "../../styles";
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { Link as RouteLink } from 'react-router-dom';
-import { AppColors } from 'assets/styles/colors';
 
 const preferredData = [
 	{
@@ -48,7 +38,6 @@ const bannedData = [
 
 	}
 ]
-const { Option } = Select;
 
 const latestTransactionOption = (
 	<Menu>
@@ -94,8 +83,8 @@ export class SitePreferrences extends Component {
 
 
 	render() {
-		const { preferred, banned, userProfileVisible, selectedUser, search, selectionType } = this.state;
-		const { classes, location: { pathname }, history } = this.props;
+		const { preferred, banned } = this.state;
+		const {  } = this.props;
 		const tableColumnsPreferred = [
 			{
 				title: 'Site Name',

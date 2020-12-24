@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button, Row, Col, Dropdown, Select, Menu, Progress } from 'antd';
 import {
-	EditOutlined, DeleteOutlined,
-	UserAddOutlined,
-	FileExcelOutlined,
+	DeleteOutlined, EditOutlined,
+
+
+
+
+	EllipsisOutlined, FileExcelOutlined,
 	PrinterOutlined,
-	PlusOutlined,
-	EllipsisOutlined,
-	StopOutlined,
+
+
+
 	ReloadOutlined
 } from '@ant-design/icons';
-import moment from 'moment';
-import GuardsView from './GuardsView';
+import { Button, Card, Col, Dropdown, Menu, Progress, Row, Select, Table, Tag, Tooltip } from 'antd';
+import userData from "assets/data/user-list.data.json";
+import { AppColors } from 'assets/styles/colors';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../../../dashboards/styles";
-import SearchInput from "../../../../../components/layout-components/NavSearch/SearchInput.js"
-import userData from "assets/data/user-list.data.json";
-import Position from 'views/app-views/components/data-display/carousel/Position';
-import { AppColors } from 'assets/styles/colors';
 
 const { Option } = Select;
 
@@ -75,7 +75,7 @@ export class GuardsList extends Component {
 
 	// deleteUser = userId => {
 	// 	this.setState({
-	// 		users: this.state.users.filter(item => item.id !== userId),
+	// 		users: this.state.users.filter(item => item.id !=== userId),
 	// 	})
 	// 	message.success({ content: `Deleted user ${userId}`, duration: 2 });
 	// }
@@ -105,7 +105,7 @@ export class GuardsList extends Component {
 
 	}
 	searchInTable = () => {
-		const { users, search } = this.state;
+		const { search } = this.state;
 		let userList = userData
 		let empType = search.empType
 		let subcontractName = search.subcontractName
@@ -116,63 +116,63 @@ export class GuardsList extends Component {
 		filteredArray = userList.filter(element => {
 			if (empType && subcontractName && position && status) {
 
-				return element.empType == empType && element.subcontractName == subcontractName && element.position == position && element.status == status
+				return element.empType === empType && element.subcontractName === subcontractName && element.position === position && element.status === status
 			
 			} else if (empType && subcontractName && position) {
 
-				return element.empType == empType && element.subcontractName == subcontractName && element.position == position
+				return element.empType === empType && element.subcontractName === subcontractName && element.position === position
 
 			} else if (empType && subcontractName && status) {
 
-				return element.empType == empType && element.subcontractName == subcontractName && element.status == status
+				return element.empType === empType && element.subcontractName === subcontractName && element.status === status
 
 			} else if (subcontractName && position && status) {
 
-				return element.subcontractName == subcontractName && element.position == position && element.status == status
+				return element.subcontractName === subcontractName && element.position === position && element.status === status
 
 			} else if (empType && position && status) {
 
-				return element.empType == empType && element.position == position && element.status == status
+				return element.empType === empType && element.position === position && element.status === status
 
 			} else if (empType && subcontractName) {
 
-				return element.empType == empType && element.subcontractName == subcontractName
+				return element.empType === empType && element.subcontractName === subcontractName
 
 			} else if (empType && position) {
 
-				return element.empType == empType && element.position == position
+				return element.empType === empType && element.position === position
 
 			} else if (empType && status) {
 
-				return element.empType == empType && element.status == status
+				return element.empType === empType && element.status === status
 
 			} else if (subcontractName && position) {
 
-				return element.subcontractName == subcontractName && element.position == position
+				return element.subcontractName === subcontractName && element.position === position
 
 			} else if (subcontractName && status) {
 
-				return element.subcontractName == subcontractName && element.status == status
+				return element.subcontractName === subcontractName && element.status === status
 
 			} else if (position && status) {
 
-				return element.position == position && element.status == status
+				return element.position === position && element.status === status
 
 			} else if (empType) {
 
-				return element.empType == empType
+				return element.empType === empType
 
 			} else if (subcontractName) {
 
-				return element.subcontractName == subcontractName
+				return element.subcontractName === subcontractName
 
 			} else if (position) {
 
-				return element.position == position
+				return element.position === position
 
 			} else if (status) {
 
-				return element.status == status
+				return element.status === status
 
 			}
 
@@ -189,7 +189,7 @@ export class GuardsList extends Component {
 	}
 
 	render() {
-		const { users, userProfileVisible, selectedUser, search } = this.state;
+		const { users, search } = this.state;
 
 		const tableColumns = [
 			

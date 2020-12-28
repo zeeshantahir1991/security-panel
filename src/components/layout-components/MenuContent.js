@@ -60,9 +60,9 @@ const SideNavContent = (props) => {
               borderTopWidth: 0,
               borderLeftWidth: 0,
               borderRightWidth: 0,
-              borderStyle: menu.title == "sidenav.dashboard" && !navCollapsed ? "solid" : null
+              borderStyle: menu.title === "sidenav.dashboard" && !navCollapsed ? "solid" : null
             }}
-            title={menu.title == "sidenav.dashboard" ? setLocale(localization, menu.title) : null}
+            title={menu.title === "sidenav.dashboard" ? setLocale(localization, menu.title) : null}
           >
             {menu.submenu.map((subMenuFirst) =>
               subMenuFirst.submenu.length > 0 ? (

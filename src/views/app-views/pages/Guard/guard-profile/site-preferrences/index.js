@@ -2,7 +2,7 @@ import {
 	DownloadOutlined, EllipsisOutlined,
 	UploadOutlined
 } from '@ant-design/icons';
-import { Card, Col, Dropdown, Menu, Row, Select, Table } from 'antd';
+import { Card, Col, Dropdown, Menu, Row, Table } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 

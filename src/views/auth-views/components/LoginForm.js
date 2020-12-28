@@ -5,14 +5,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { Link as RouteLink, useHistory } from "react-router-dom";
-import {
-	hideAuthMessage, showAuthMessage, showLoading, signIn,
-
-
-
-
-	signInWithFacebook, signInWithGoogle
-} from 'redux/actions/Auth';
+import { hideAuthMessage, showAuthMessage, showLoading, signIn } from 'redux/actions/Auth';
 import { componentStyles } from '../authentication/login-1/styles';
 import { AppStyles } from "./../../../assets/styles/index";
 
@@ -23,8 +16,6 @@ export const LoginForm = props => {
 		otherSignIn,
 		hideAuthMessage,
 		showLoading,
-		signInWithGoogle,
-		signInWithFacebook,
 		extra,
 		signIn,
 		token,
@@ -179,8 +170,7 @@ const mapDispatchToProps = {
 	showAuthMessage,
 	showLoading,
 	hideAuthMessage,
-	signInWithGoogle,
-	signInWithFacebook
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

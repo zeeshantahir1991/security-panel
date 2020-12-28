@@ -1,5 +1,5 @@
 import { CodepenOutlined, DollarOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Button, Card, Col, DatePicker, Form, Input, Menu, message, Row, Select, Steps, Switch } from 'antd';
+import { Avatar, Button, Card, Col, DatePicker, Form, Input, Row, Select, Switch } from 'antd';
 import Flex from 'components/shared-components/Flex';
 import moment from 'moment';
 import React, { Component } from 'react';

@@ -1,5 +1,5 @@
 import { BuildOutlined, CompassOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Checkbox, Col, Form, Input, Menu, Row, Select, Steps } from 'antd';
+import { Button, Card, Checkbox, Col, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";

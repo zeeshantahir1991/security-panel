@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table } from "antd";
 import { DndProvider, DragSource, DropTarget } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
+import  { HTML5Backend } from "react-dnd-html5-backend";
 import update from "immutability-helper";
 
 let dragingIndex = -1;

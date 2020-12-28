@@ -1,4 +1,3 @@
-import React from 'react'
 import { AppColors } from './colors'
 
 export const AppStyles = {
@@ -316,11 +315,6 @@ export const AppStyles = {
     },
     horizontallLineWidth88Dashed: {
         width: '88%', marginLeft: '6%', marginRight: '6%',
-        borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0,
-        borderBottomWidth: 1, borderBottomColor: AppColors.gray, borderStyle: 'dashed'
-    },
-    horizontallLineWidth100Dashed: {
-        width: '100%',
         borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0,
         borderBottomWidth: 1, borderBottomColor: AppColors.gray, borderStyle: 'dashed'
     },

@@ -1,5 +1,5 @@
 import { LockOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Form, Input, Menu, Row, Select, Steps } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 import { AppStyles } from "../../../../../assets/styles";

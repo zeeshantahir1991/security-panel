@@ -1,4 +1,4 @@
-import { Button, Col, Grid, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 import React from 'react';
 import { AuthFooter } from "../../../auth-views/components/AuthFooter";
 import { AuthHeader } from "../../../auth-views/components/AuthHeader";

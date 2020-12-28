@@ -1,4 +1,4 @@
-import { Card, Col, Form, Menu, Row, Select, Steps } from 'antd';
+import { Card, Col, Form, Row } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
 import { componentStyles } from "./../styles";

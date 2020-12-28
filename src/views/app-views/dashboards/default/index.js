@@ -1,18 +1,14 @@
-import React, { useState } from "react";
-import { Row, Col, Button, Select } from 'antd';
+import { Button, Col, Row } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
-import {
-  VisitorChartData,
-  AnnualStatisticData,
-  RecentTransactionData
-} from './DefaultDashboardData';
-import ApexChart from "react-apexcharts";
-import { apexLineChartDefaultOption, COLOR_2 } from 'constants/ChartConstant';
-import exampleService from 'services/ExampleService'
+import React, { useState } from "react";
 import { withRouter } from 'react-router-dom';
+import { GuardsList } from "../../pages/Guard/guard-list/index";
 import { AppStyles } from "./../../../../assets/styles";
 import { componentStyles } from "./../styles";
-import { GuardsList } from "../../pages/Guard/guard-list/index"
+import {
+  AnnualStatisticData,
+  RecentTransactionData, VisitorChartData
+} from './DefaultDashboardData';
 
 
 

@@ -34,7 +34,6 @@ export class letterHeadSettings extends Component {
 
 	render() {
 		const { name, header, desc, footer } = this.state;
-		const {  } = this.props;
 
 		return (
 			<div style={AppStyles.marginTop50}>

@@ -19,9 +19,8 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                                 state: { action, record }
                             })}
                             icon={
-                                <div style={'/app/pages/guard-view' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
-                                    <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} />
-                                </div>
+                                <div style={'/app/pages/guard-view' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                    1                                </div>
                             } />
                         <Step status="finish" title="SIA Records"
                             style={AppStyles.pointer}
@@ -30,10 +29,9 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                                 state: { action, record }
                             })}
                             icon={
-                                <div style={'/app/pages/guard-sia-record' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pages/guard-sia-record' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                    <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
-                                </div>
+                                    2                                </div>
                             } />
                         <Step status="finish" title=" Position & Pay"
                             style={AppStyles.pointer}
@@ -42,10 +40,9 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                                 state: { action, record }
                             })}
                             icon={
-                                <div style={'/app/pages/guard-position-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pages/guard-position-pay' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                    <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
-                                </div>
+                                    3                                </div>
                             } />
                         <Step status="finish" title="Right to Work"
                             style={AppStyles.pointer}
@@ -54,10 +51,9 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                                 state: { action, record }
                             })}
                             icon={
-                                <div style={'/app/pages/guard-right-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                                <div style={'/app/pages/guard-right-work' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                    <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
-                                </div>
+                                    4                                </div>
                             } />
                     </Steps>
                 </Col>
@@ -74,33 +70,29 @@ export const Stepper = ({ location: { pathname }, history, action, record }) => 
                 <Steps>
                     <Step status="finish" title="Personal Information"
                         icon={
-                            <div style={'/app/pages/add-guard' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
-                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} />
-                            </div>
+                            <div style={'/app/pages/add-guard' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                1                            </div>
                         } />
                     <Step status="finish" title="SIA Licence"
 
                         icon={
-                            <div style={'/app/pages/sia-licence' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                            <div style={'/app/pages/sia-licence' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/driver-license.png'} alt={`logo`} />
-                            </div>
+                                2                            </div>
                         } />
                     <Step status="finish" title=" Position & Pay"
 
                         icon={
-                            <div style={'/app/pages/position-and-pay' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                            <div style={'/app/pages/position-and-pay' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/pay.png'} alt={`logo`} />
-                            </div>
+                                3                            </div>
                         } />
                     <Step status="finish" title="Right to Work"
 
                         icon={
-                            <div style={'/app/pages/right-to-work' === pathname ? AppStyles.staffSideBarIconSelectedContainer : null}>
+                            <div style={'/app/pages/right-to-work' === pathname ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
 
-                                <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/teamwork.png'} alt={`logo`} />
-                            </div>
+                                4                            </div>
                         } />
                 </Steps>
             </Col>

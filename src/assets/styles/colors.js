@@ -8,7 +8,7 @@ export function colorWithOpacity(color = '', opacity = 1) {
     b = "0x" + color[3] + color[3];
 
     // 6 digits
-  } else if (color.length == 7) {
+  } else if (color.length === 7) {
     r = "0x" + color[1] + color[2];
     g = "0x" + color[3] + color[4];
     b = "0x" + color[5] + color[6];

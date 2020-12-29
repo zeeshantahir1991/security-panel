@@ -25,7 +25,9 @@ class OrderSummary extends React.Component {
 				price: null
 			}],
 			pricingData: null,
-			billing: false
+			billing: false,
+			promoCode: "",
+			promoApplied: false
 		};
 	}
 
@@ -37,6 +39,24 @@ class OrderSummary extends React.Component {
 		})
 		return total
 	}
+
+	handleChange = (type, e) => {
+		this.setState({
+
+			[type]: e.target.value
+
+		})
+
+	}
+
+	applyCode = () => {
+		const { promoApplied, promoCode } = this.state;
+		if (promoCode) {
+			this.setState({ promoApplied: true })
+
+		}
+	}
+
 	componentDidMount() {
 		let dataArray = []
 		dataArray.push({
@@ -55,7 +75,7 @@ class OrderSummary extends React.Component {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
 		// const colCount = pricingData.length
 		// console.log('isMobile', isMobile)
-		const { invoiceData, pricingData, billing } = this.state;
+		const { invoiceData, pricingData, billing, promoApplied } = this.state;
 		return (
 			<>
 
@@ -324,32 +344,60 @@ class OrderSummary extends React.Component {
 										key="total"
 									/> */}
 								</Table>
-								<div className="d-flex justify-content-end">
-									<div className="text-right ">
-										<div className="border-bottom">
-											<p className="mb-2">
-												<span>Sub - Total amount: </span>
+								<Row style={AppStyles.flexDirectionRow}>
+									<Row style={AppStyles.flexDirectionRow}>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+											<Form layout="vertical">
+												<Form.Item
+													name="promoCode"
+													label="Promo Code"
+													// rules={rules.promoCode}
+													hasFeedback
+												>
+													<Input
+														onChange={(val) => this.handleChange("promoCode", val)}
+														style={componentStyles.borderColor} />
+												</Form.Item>
+											</Form>
+										</Col>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+											<Button onClick={this.applyCode} style={componentStyles.applyCode} htmlType="submit" block>
+												Apply Code
+										    </Button>
+										</Col>
+
+
+									</Row>
+
+									<div style={{ flex: 1 }} className="d-flex justify-content-end">
+										<div className="text-right ">
+											<div className="border-bottom">
+												<p className="mb-2">
+													<span>Sub - Total amount: </span>
+													<NumberFormat
+														displayType={'text'}
+														value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+														prefix={'$'}
+														thousandSeparator={true}
+													/>
+												</p>
+												{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+											</div>
+											<h2 className="font-weight-semibold mt-3">
+												<span className="mr-1">Grand Total: </span>
 												<NumberFormat
 													displayType={'text'}
-													value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+													// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
+													value={((Math.round((this.total()) * 100) / 100))}
 													prefix={'$'}
 													thousandSeparator={true}
 												/>
-											</p>
-											{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+											</h2>
 										</div>
-										<h2 className="font-weight-semibold mt-3">
-											<span className="mr-1">Grand Total: </span>
-											<NumberFormat
-												displayType={'text'}
-												// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
-												value={((Math.round((this.total()) * 100) / 100))}
-												prefix={'$'}
-												thousandSeparator={true}
-											/>
-										</h2>
 									</div>
-								</div>
+
+								</Row>
+								{promoApplied ? <div style={componentStyles.promoAppliedDesc}>Promo Applied!</div> : null}
 
 							</div>
 
@@ -568,17 +616,7 @@ class OrderSummary extends React.Component {
 										</p>
 									</address>
 								</div>
-								{/* <div className="mt-3 text-right">
-									<h2 className="mb-1 font-weight-semibold">Invoice #9972</h2>
 
-									<address>
-										<p>
-											<span className="font-weight-semibold text-dark font-size-md">Genting Holdings.</span><br />
-											<span>8626 Maiden Dr. </span><br />
-											<span>Niagara Falls, New York 14304</span>
-										</p>
-									</address>
-								</div> */}
 							</div>
 							<div className="mt-4">
 								<Table dataSource={invoiceData} pagination={false} className="mb-5">
@@ -596,45 +634,60 @@ class OrderSummary extends React.Component {
 										)}
 										key="price"
 									/>
-									{/* <Column
-										title="Total"
-										render={(text) => (
-											<NumberFormat
-												displayType={'text'}
-												value={(Math.round((text.price * text.quantity) * 100) / 100).toFixed(2)}
-												prefix={'$'}
-												thousandSeparator={true}
-											/>
-										)}
-										key="total"
-									/> */}
+
 								</Table>
-								<div className="d-flex justify-content-end">
-									<div className="text-right ">
-										<div className="border-bottom">
-											<p className="mb-2">
-												<span>Sub - Total amount: </span>
+								<Row style={AppStyles.flexDirectionRow}>
+									<Row style={AppStyles.flexDirectionRow}>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+											<Form layout="vertical">
+												<Form.Item
+													name="promoCode"
+													label="Promo Code"
+													// rules={rules.promoCode}
+													hasFeedback
+												>
+													<Input
+														onChange={(val) => this.handleChange("promoCode", val)}
+														style={componentStyles.borderColor} />
+												</Form.Item>
+											</Form>
+										</Col>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+											<Button onClick={this.applyCode} style={componentStyles.applyCode} htmlType="submit" block>
+												Apply Code
+										    </Button>
+										</Col>
+
+
+									</Row>
+									<div style={{ flex: 1 }} className="d-flex justify-content-end">
+										<div className="text-right ">
+											<div className="border-bottom">
+												<p className="mb-2">
+													<span>Sub - Total amount: </span>
+													<NumberFormat
+														displayType={'text'}
+														value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+														prefix={'$'}
+														thousandSeparator={true}
+													/>
+												</p>
+												{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+											</div>
+											<h4 className="font-weight-semibold mt-3">
+												<span className="mr-1">Grand Total: </span>
 												<NumberFormat
 													displayType={'text'}
-													value={(Math.round((this.total()) * 100) / 100).toFixed(2)}
+													// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
+													value={((Math.round((this.total()) * 100) / 100))}
 													prefix={'$'}
 													thousandSeparator={true}
 												/>
-											</p>
-											{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
+											</h4>
 										</div>
-										<h4 className="font-weight-semibold mt-3">
-											<span className="mr-1">Grand Total: </span>
-											<NumberFormat
-												displayType={'text'}
-												// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
-												value={((Math.round((this.total()) * 100) / 100))}
-												prefix={'$'}
-												thousandSeparator={true}
-											/>
-										</h4>
 									</div>
-								</div>
+								</Row>
+								{promoApplied ? <div style={componentStyles.promoAppliedDesc}>Promo Applied!</div> : null}
 
 							</div>
 

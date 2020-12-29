@@ -13,7 +13,7 @@ export const componentStyles = {
 
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
     cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
-
-
+    applyCode: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, marginLeft: 20 },
+    promoAppliedDesc: { color: AppColors.conifer }
 
 }

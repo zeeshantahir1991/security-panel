@@ -2,7 +2,7 @@ import { DollarOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, Form, Input, Row, Select, Switch } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import CompilanceData from './../compilanceStepper';
+import CompilanceData from '../compilanceDropDown';
 import { Stepper } from './../stepper';
 import { componentStyles } from "./../styles";
 
@@ -112,7 +112,7 @@ export class PositionAndPay extends Component {
 											rules={rules.payRate}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+											<Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={8} lg={8}>
@@ -174,43 +174,12 @@ export class PositionAndPay extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={8} sm={8} md={8} lg={8}>
-
-										<Form.Item
-											name="subcontractor"
-											label="Sub Contractor"
-											rules={rules.subcontractor}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Sub Contractor"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("subcontractor", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Subcontractor A">Subcontractor A</Option>
-												<Option value="Subcontractor B">Subcontractor B</Option>
-
-
-											</Select>
-										</Form.Item>
-									</Col>
+								
 									<Col xs={8} sm={8} md={8} lg={8} style={AppStyles.alignSelfCenter}>
 
 										<Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Status
 									</Col>
-									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}>
-
-										<Checkbox style={componentStyles.borderColor} checked>Sub Contractor's Guard ?</Checkbox>
-									</Col>
+								
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop20}>
 
 										<Checkbox style={componentStyles.borderColor} checked>Allow mobile app access ?</Checkbox>

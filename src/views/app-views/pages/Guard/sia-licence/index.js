@@ -310,7 +310,7 @@ export class SiaLicence extends Component {
 										// hasFeedback
 										>
 											<Input
-												type="number"
+												className="remove" type="number" min="0"
 												onChange={(val) => this.handleChange("licenseNo", val)}
 												style={componentStyles.borderColor} />
 										</Form.Item>

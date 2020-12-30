@@ -217,19 +217,7 @@ export class GuardsList extends Component {
 				width: 200,
 				fixed: 'left'
 			},
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-center">
-						<Tooltip title="Edit">
-							<Button type="primary" className="mr-2" icon={<EditOutlined />} 
-							onClick={() => { this.viewItem("editItem", elm) }} 
-							size="small" />
-						</Tooltip>
-					</div>
-				)
-			},
+			
 			{
 				title: 'Compilance SC',
 				dataIndex: 'compilanceSc',
@@ -376,13 +364,15 @@ export class GuardsList extends Component {
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-center">
-					
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+						<Tooltip title="Edit">
+							<Button type="primary" className="mr-2" icon={<EditOutlined />} 
+							onClick={() => { this.viewItem("editItem", elm) }} 
+							size="small" />
 						</Tooltip>
 					</div>
 				)
-			}
+			},
+
 		];
 		return (
 			<>

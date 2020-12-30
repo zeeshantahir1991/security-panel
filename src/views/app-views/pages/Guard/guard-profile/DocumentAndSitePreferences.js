@@ -1,14 +1,19 @@
-import { Card, Col, Form, Row } from 'antd';
+import { Card, Col, Form, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
 import { componentStyles } from "./../styles";
+import Docs from './docs/index'
+import Holidays from './holidays-and-availability/index'
+import SitePreferrences from './site-preferrences/index'
+
+const { Option } = Select;
 
 export class DocumentAndSitePreferences extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            type: "site"
 
         };
     }
@@ -23,26 +28,9 @@ export class DocumentAndSitePreferences extends Component {
 
     }
 
-    goTo = (value) => {
-
-        if (value === "docs") {
-            this.props.history.push({
-                pathname: '/app/pages/guard-docs'
-            })
-        } else if (value === "site-preferrences") {
-            this.props.history.push({
-                pathname: '/app/pages/site-preferrences'
-            })
-        } else if (value === "holidays") {
-
-            this.props.history.push({
-                pathname: '/app/pages/holidays-and-availability'
-            })
-        }
-
-    }
 
     render() {
+        const { type } = this.state;
 
         return (
 
@@ -50,33 +38,39 @@ export class DocumentAndSitePreferences extends Component {
                 <Row justify={'center'}>
 
                     <Col xs={24} sm={24} md={20} lg={20} >
-                        <Card className="card" title="Documents & Site Preferences" style={AppStyles.paddingBottom20}>
-                            <Form layout="vertical">
-                                <Row justify={'center'} gutter={16}>
-                                    <Col xs={24} sm={24} md={24} lg={24} >
-                                        <div style={AppStyles.marginBottom40}>
-                                            <div style={AppStyles.horizontallLineWidth100}>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={6} lg={6} >
-                                        <div onClick={() => this.goTo('site-preferrences')} style={componentStyles.documentAndSitePreferencesLinkStyle}>
-                                            Site Preferrences
-                                        </div>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={6} lg={6} >
-                                        <div onClick={() => this.goTo('holidays')} style={componentStyles.documentAndSitePreferencesLinkStyle}>
-                                            Holidays & Availability
-                                        </div>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={6} lg={6} >
-                                        <div onClick={() => this.goTo('docs')} style={componentStyles.documentAndSitePreferencesLinkStyle}>
-                                            Docs
-                                        </div>
+                        <Card
+                            extra={
+                                <Row>
+                                    <Col xs={24} sm={24} md={24} lg={24}>
+
+                                        <Select
+                                            showSearch
+                                            style={componentStyles.selectStyle}
+                                            bordered={false}
+                                            placeholder="Site Preferences"
+                                            optionFilterProp="children"
+                                            onChange={(val) => this.handleChange("type", val)}
+                                            // onFocus={onFocus}
+                                            // onBlur={onBlur}
+                                            // onSearch={onSearch}
+                                            filterOption={(input, option) =>
+                                                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                            }
+                                        >
+                                            <Option value="site">Site Preferences</Option>
+                                            <Option value="holidays">Holidays & Availability</Option>
+                                            <Option value="docs">Docs</Option>
+                                        </Select>
                                     </Col>
                                 </Row>
-
-                            </Form>
+                            }
+                            className="card" title="Documents & Site Preferences" style={AppStyles.paddingBottom20}>
+                            {type === "site" ?
+                                <SitePreferrences /> :
+                                type === "holidays" ?
+                                    <Holidays /> :
+                                    <Docs />
+                            }
                         </Card>
                     </Col>
                 </Row>

@@ -228,7 +228,7 @@ export class AddGuard extends Component {
 											rules={rules.mobile}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>
@@ -238,7 +238,7 @@ export class AddGuard extends Component {
 											rules={rules.niNumber}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>

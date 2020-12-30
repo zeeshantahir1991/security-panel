@@ -2,7 +2,7 @@ import { CompassOutlined, NumberOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import CompilanceData from './../compilanceStepper';
+import CompilanceData from '../compilanceDropDown';
 import { Stepper } from './../stepper';
 import { componentStyles } from "./../styles";
 

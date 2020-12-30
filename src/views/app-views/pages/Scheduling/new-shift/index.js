@@ -377,7 +377,7 @@ export class NewShift extends Component {
 									// rules={rules.chargeRate}
 									hasFeedback
 								>
-									<Input type="number" onChange={(val) => this.handleInputChange("payRate", val)}
+									<Input min="0" type="number" onChange={(val) => this.handleInputChange("payRate", val)}
 										style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
 								</Form.Item>
 							</Col>
@@ -888,7 +888,7 @@ export class NewShift extends Component {
 													// rules={rules.checkpointDescriptor}
 													hasFeedback
 												>
-													<Input type="number" style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
+													<Input min="0" type="number" style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={24} lg={24}>

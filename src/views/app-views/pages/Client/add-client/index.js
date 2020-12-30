@@ -273,7 +273,7 @@ export class AddClient extends Component {
 											rules={rules.postcode}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -284,7 +284,7 @@ export class AddClient extends Component {
 											rules={rules.phone}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop5}>
@@ -397,7 +397,7 @@ export class AddClient extends Component {
 										rules={rules.chargeRate}
 										hasFeedback
 									>
-										<Input type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+										<Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
 									</Form.Item>
 								</Col>
 
@@ -408,7 +408,7 @@ export class AddClient extends Component {
 										rules={rules.chargeRate}
 										hasFeedback
 									>
-										<Input type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+										<Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
 									</Form.Item>
 								</Col> */}
 

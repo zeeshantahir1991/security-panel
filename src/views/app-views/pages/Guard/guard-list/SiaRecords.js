@@ -5,7 +5,7 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
-import CompilanceData from './../compilanceStepper';
+import CompilanceData from '../compilanceDropDown';
 import { Stepper } from './../stepper';
 import { componentStyles } from "./../styles";
 

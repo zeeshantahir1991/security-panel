@@ -206,7 +206,7 @@ export class manageDetails extends Component {
 											// rules={rules.regno}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={8} lg={8}>
@@ -216,7 +216,7 @@ export class manageDetails extends Component {
 											// rules={rules.vatno}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={8} lg={8}>
@@ -226,7 +226,7 @@ export class manageDetails extends Component {
 											// rules={rules.refno}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -384,7 +384,7 @@ export class manageDetails extends Component {
 											rules={rules.postcode}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -395,7 +395,7 @@ export class manageDetails extends Component {
 											rules={rules.phone}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -406,7 +406,7 @@ export class manageDetails extends Component {
 											// rules={rules.mobile}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={12} lg={12}>
@@ -416,7 +416,7 @@ export class manageDetails extends Component {
 											// rules={rules.controlroom}
 											hasFeedback
 										>
-											<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>

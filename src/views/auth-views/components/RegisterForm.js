@@ -233,7 +233,7 @@ export const RegisterForm = (props) => {
 							rules={rules.regno}
 							hasFeedback
 						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 					<Col xs={24} sm={24} md={8} lg={8}>
@@ -243,42 +243,10 @@ export const RegisterForm = (props) => {
 							rules={rules.vatno}
 							hasFeedback
 						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
-					{/* <Col xs={24} sm={24} md={8} lg={8}>
-						<Form.Item
-							name="refno"
-							label="ACS Reference Number"
-							rules={rules.refno}
-							hasFeedback
-						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-						</Form.Item>
-					</Col>
-					<Col xs={24} sm={24} md={8} lg={8}>
-						<Form.Item
-							name="expdate"
-							label="Expiry Date of Approval"
-							rules={rules.expdate}
-							hasFeedback
-						>
-							<DatePicker style={componentStyles.datePicker}
-								// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-								format={'YYYY/MM/DD'} />
-						</Form.Item>
-					</Col>
-					<Col xs={24} sm={24} md={8} lg={8}>
-						<Form.Item
-							name="controlroom"
-							label="Control Room Phone"
-							rules={rules.controlroom}
-							hasFeedback
-						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
-						</Form.Item>
-					</Col>
-				 */}
+					
 				</Row>
 				<Row className="card" gutter={16} style={componentStyles.personalInfoContainer}>
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.flexDirectionRow}>
@@ -413,7 +381,7 @@ export const RegisterForm = (props) => {
 							rules={rules.postcode}
 							hasFeedback
 						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -424,7 +392,7 @@ export const RegisterForm = (props) => {
 							rules={rules.phone}
 							hasFeedback
 						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 						</Form.Item>
 					</Col>
 
@@ -435,7 +403,7 @@ export const RegisterForm = (props) => {
 							rules={rules.mobile}
 							hasFeedback
 						>
-							<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 						</Form.Item>
 					</Col>
 

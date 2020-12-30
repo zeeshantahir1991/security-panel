@@ -65,7 +65,7 @@ const Contact = () => {
 										// rules={rules.lastname}
 										hasFeedback
 									>
-										<Input type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
+										<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 									</Form.Item>
 								</Col>
 								{/* <Col xs={24} sm={24} md={24} lg={24}>

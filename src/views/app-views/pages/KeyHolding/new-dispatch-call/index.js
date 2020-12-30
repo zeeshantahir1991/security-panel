@@ -425,7 +425,7 @@ export class AddKeyHoldingSite extends Component {
 													// rules={rules.keyNumber}
 													hasFeedback
 												>
-													<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={8} lg={8}>
@@ -435,7 +435,7 @@ export class AddKeyHoldingSite extends Component {
 													// rules={rules.keyNumber}
 													hasFeedback
 												>
-													<Input type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 												</Form.Item>
 											</Col>
 

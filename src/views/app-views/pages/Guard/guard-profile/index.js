@@ -107,7 +107,7 @@ export class GuardProfile extends Component {
         return (
 
             <div style={AppStyles.marginTop50}>
-                <Row justify={'center'}>
+                {/* <Row justify={'center'}>
 
                     <Col xs={24} sm={24} md={20} lg={20} >
                         <Card className="card" title="Guard Profile" style={AppStyles.paddingBottom20}>
@@ -125,9 +125,7 @@ export class GuardProfile extends Component {
                                         <Avatar size={90} src={avatarUrl} icon={<UserOutlined />} />
                                         <div>
                                             <div style={componentStyles.guardNameText}>{record.name}</div>
-                                            {/* <Upload onChange={onUploadAavater} showUploadList={false} action={this.avatarEndpoint}> */}
                                             <Button type="primary">Active</Button>
-                                            {/* </Upload> */}
                                         </div>
                                     </Flex>
                                 </Row>
@@ -139,7 +137,7 @@ export class GuardProfile extends Component {
                                             rules={rules.phone}
                                             hasFeedback
                                         >
-                                            <Input type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
@@ -150,7 +148,7 @@ export class GuardProfile extends Component {
                                         // hasFeedback
                                         >
                                             <Input
-                                                type="number"
+                                                min="0" className="remove" type="number"
                                                 // onChange={(val) => this.handleChange("licenseNo", val)}
                                                 style={componentStyles.borderColor} />
                                         </Form.Item>
@@ -213,7 +211,7 @@ export class GuardProfile extends Component {
                                             rules={rules.payRate}
                                             hasFeedback
                                         >
-                                            <Input type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+                                            <Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
@@ -274,6 +272,7 @@ export class GuardProfile extends Component {
                         </Card>
                     </Col>
                 </Row>
+                 */}
                 <DocumentAndSitePreferences location={this.props.location} history={this.props.history} record={record} />
 
             </div>

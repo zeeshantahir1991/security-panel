@@ -39,7 +39,7 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/mobile-patrol-sites`} component={lazy(() => import(`./MobilePatrol/mobile-patrol-sites`))} />
       <Route path={`${match.url}/add-mobile-patrol-site`} component={lazy(() => import(`./MobilePatrol/add-mobile-patrol-site`))} />
 
-      <Route path={`${match.url}/guard-view`} component={lazy(() => import(`./Guard/guard-list/ViewGuard`))} />
+      <Route path={`${match.url}/guard-view`} component={lazy(() => import(`./Guard/guard-profile/details/ViewGuard`))} />
       <Route path={`${match.url}/guard-sia-record`} component={lazy(() => import(`./Guard/guard-list/SiaRecords`))} />
       <Route path={`${match.url}/guard-position-pay`} component={lazy(() => import(`./Guard/guard-list/PositionAndPay`))} />
       <Route path={`${match.url}/guard-right-work`} component={lazy(() => import(`./Guard/guard-list/RightToWork`))} />
@@ -52,9 +52,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/new-shift`} component={lazy(() => import(`./Scheduling/new-shift`))} />
       <Route path={`${match.url}/shift-list`} component={lazy(() => import(`./Scheduling/shift-list`))} />
 
-      <Route path={`${match.url}/guard-docs`} component={lazy(() => import(`./Guard/guard-profile/docs`))} />
+      {/* <Route path={`${match.url}/guard-docs`} component={lazy(() => import(`./Guard/guard-profile/docs`))} />
       <Route path={`${match.url}/site-preferrences`} component={lazy(() => import(`./Guard/guard-profile/site-preferrences`))} />
-      <Route path={`${match.url}/holidays-and-availability`} component={lazy(() => import(`./Guard/guard-profile/holidays-and-availability`))} />
+      <Route path={`${match.url}/holidays-and-availability`} component={lazy(() => import(`./Guard/guard-profile/holidays-and-availability`))} /> */}
 
     </Switch>
   </Suspense>

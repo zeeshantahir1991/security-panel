@@ -1,19 +1,19 @@
-import { BankOutlined, CompassOutlined, NumberOutlined, StarOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { CompassOutlined, NumberOutlined } from '@ant-design/icons';
+import { Button, Col, DatePicker, Form, Input, Row, Switch } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
-const { Option } = Select;
 
 const rules = []
-
-
-export class Education extends Component {
+export class AddressHistory extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            instituteType: ""
+
+            title: '',
+            relationship: ''
+
 
         };
     }
@@ -40,48 +40,12 @@ export class Education extends Component {
                         </div>
 
                     </Col>
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="instituteType"
-                            label="Type of Institute"
-                            rules={rules.drivingLicence}
-                            hasFeedback
-                        >
-                            <Select
-                                showSearch
-                                style={componentStyles.selectStyle}
-                                bordered={false}
-                                placeholder="Type of Institute"
-                                optionFilterProp="children"
-                                onChange={(val) => this.handleChange("instituteType", val)}
-                                // onFocus={onFocus}
-                                // onBlur={onBlur}
-                                // onSearch={onSearch}
-                                filterOption={(input, option) =>
-                                    option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                }
-                            >
-                                <Option value="High School">High School</Option>
-                                <Option value="College">College</Option>
-                                <Option value="University">University</Option>
 
-                            </Select>
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="instituteName"
-                            label="Institute Name"
-                            rules={rules.instituteName}
-                            hasFeedback
-                        >
-                            <Input style={componentStyles.borderColor} prefix={<BankOutlined />} />
-                        </Form.Item>
-                    </Col>
+
                     <Col xs={24} sm={24} md={6} lg={6}>
                         <Form.Item
                             name="address1"
-                            label="Institute Address Line 1"
+                            label="Address Line 1"
                             rules={rules.address1}
                             hasFeedback
                         >
@@ -92,7 +56,7 @@ export class Education extends Component {
                     <Col xs={24} sm={24} md={6} lg={6}>
                         <Form.Item
                             name="address2"
-                            label="Institute Address Line 2"
+                            label="Address Line 2"
                             rules={rules.address2}
                             hasFeedback
                         >
@@ -145,16 +109,10 @@ export class Education extends Component {
                                 format={'YYYY/MM/DD'} />
                         </Form.Item>
                     </Col>
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="grades"
-                            label="Grades"
-                            rules={rules.grades}
-                            hasFeedback
-                        >
-                            <Input style={componentStyles.borderColor} prefix={<StarOutlined />} />
-                        </Form.Item>
-                    </Col>
+                    <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+
+                        <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Current Address
+					</Col>
 
 
 
@@ -167,7 +125,7 @@ export class Education extends Component {
                             <div style={AppStyles.marginTop40}>
                                 <Button style={componentStyles.continueButton} htmlType="submit" block>
                                     Continue
-                            </Button>
+                                </Button>
 
                             </div>
                         </Form.Item>
@@ -175,10 +133,9 @@ export class Education extends Component {
                 </Row>
             </Form>
 
-
         )
 
     }
 }
 
-export default Education
+export default AddressHistory

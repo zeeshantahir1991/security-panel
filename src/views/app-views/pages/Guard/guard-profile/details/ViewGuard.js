@@ -17,6 +17,7 @@ import EmploymentHistory from "./EmploymentHistory"
 import Education from "./Education"
 import DrivingLicence from "./DrivingLicence"
 import EmergencyContact from "./EmergencyContact"
+import AddressHistory from "./AddressHistory"
 
 
 const { Option } = Select;
@@ -150,6 +151,7 @@ export class ViewGuard extends Component {
                                             >
                                                 <Option value="personalInfo">Personal Information</Option>
                                                 <Option value="emergencyContact">Emergency Contact</Option>
+                                                <Option value="addressHistory">Address History</Option>
                                                 <Option value="drivingLicence">Driving Licence</Option>
                                                 <Option value="education">Education</Option>
                                                 <Option value="employmentHistory">Employment History</Option>
@@ -187,7 +189,10 @@ export class ViewGuard extends Component {
                                                                         <BankDetails action={action} record={record} history={this.props.history} /> :
                                                                         type === "docsUpload" ?
                                                                             <DocsUpload action={action} record={record} history={this.props.history} /> :
-                                                                            null
+                                                                            type === "addressHistory" ?
+                                                                                <AddressHistory action={action} record={record} history={this.props.history} /> :
+
+                                                                                null
                                 }
                             </Card>
                             {/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}

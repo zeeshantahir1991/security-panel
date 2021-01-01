@@ -106,5 +106,19 @@ export const componentStyles = {
         textAlign: 'center',
         cursor: 'pointer'
 
+    },
+
+    healthQuestionnaireTitle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        marginBottom: 20
+    },
+
+    
+    healthQuestionnaireTitle1: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        marginBottom: 20,
+        marginTop: 20
     }
 }

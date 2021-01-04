@@ -97,7 +97,7 @@ export class ViewGuard extends Component {
         super(props);
         this.state = {
 
-            type: "personalInfo"
+            type: "Personal Information"
 
         };
     }
@@ -130,7 +130,7 @@ export class ViewGuard extends Component {
                         </Col>
 
                         <Col xs={24} sm={24} md={20} lg={20} >
-                            <Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}
+                            <Card className="card" title={type} style={AppStyles.paddingBottom20}
                                 extra={
                                     <Row>
                                         <Col xs={24} sm={24} md={24} lg={24}>
@@ -149,17 +149,17 @@ export class ViewGuard extends Component {
                                                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                                 }
                                             >
-                                                <Option value="personalInfo">Personal Information</Option>
-                                                <Option value="emergencyContact">Emergency Contact</Option>
-                                                <Option value="addressHistory">Address History</Option>
-                                                <Option value="drivingLicence">Driving Licence</Option>
-                                                <Option value="education">Education</Option>
-                                                <Option value="employmentHistory">Employment History</Option>
-                                                <Option value="personalRef">Personal References</Option>
-                                                <Option value="criminal">Criminal Comvictions</Option>
-                                                <Option value="health">Health Questionnaire</Option>
-                                                <Option value="bankDetails">Bank Details</Option>
-                                                <Option value="docsUpload">Documents Upload</Option>
+                                                <Option value="Personal Information">Personal Information</Option>
+                                                <Option value="Emergency Contact">Emergency Contact</Option>
+                                                <Option value="Address History">Address History</Option>
+                                                <Option value="Driving Licence">Driving Licence</Option>
+                                                <Option value="Education">Education</Option>
+                                                <Option value="Employment History">Employment History</Option>
+                                                <Option value="Personal References">Personal References</Option>
+                                                <Option value="Criminal Comvictions">Criminal Comvictions</Option>
+                                                <Option value="Health Questionnaire">Health Questionnaire</Option>
+                                                <Option value="Bank Details">Bank Details</Option>
+                                                <Option value="Documents Upload">Documents Upload</Option>
 
 
 
@@ -169,27 +169,27 @@ export class ViewGuard extends Component {
                                 }
                             >
                                 {
-                                    type === "personalInfo" ?
+                                    type === "Personal Information" ?
                                         <PersonalInfo action={action} record={record} history={this.props.history} /> :
-                                        type === "emergencyContact" ?
+                                        type === "Emergency Contact" ?
                                             <EmergencyContact action={action} record={record} history={this.props.history} /> :
-                                            type === "drivingLicence" ?
+                                            type === "Driving Licence" ?
                                                 <DrivingLicence action={action} record={record} history={this.props.history} /> :
-                                                type === "education" ?
+                                                type === "Education" ?
                                                     <Education action={action} record={record} history={this.props.history} /> :
-                                                    type === "employmentHistory" ?
+                                                    type === "Employment History" ?
                                                         <EmploymentHistory action={action} record={record} history={this.props.history} /> :
-                                                        type === "personalRef" ?
+                                                        type === "Personal References" ?
                                                             <PersonalRef action={action} record={record} history={this.props.history} /> :
-                                                            type === "criminal" ?
+                                                            type === "Criminal Comvictions" ?
                                                                 <CriminalComvictions action={action} record={record} history={this.props.history} /> :
-                                                                type === "health" ?
+                                                                type === "Health Questionnaire" ?
                                                                     <HealthQuestionnaire action={action} record={record} history={this.props.history} /> :
-                                                                    type === "bankDetails" ?
+                                                                    type === "Bank Details" ?
                                                                         <BankDetails action={action} record={record} history={this.props.history} /> :
-                                                                        type === "docsUpload" ?
+                                                                        type === "Documents Upload" ?
                                                                             <DocsUpload action={action} record={record} history={this.props.history} /> :
-                                                                            type === "addressHistory" ?
+                                                                            type === "Address History" ?
                                                                                 <AddressHistory action={action} record={record} history={this.props.history} /> :
 
                                                                                 null

@@ -267,6 +267,7 @@ export class PersonalInfo extends Component {
                                 </Form.Item> :
                                 <Form.Item>
                                     <Button
+                                        onClick={() => this.props.history.goBack()}
                                         style={componentStyles.continueButton} htmlType="submit" block>
                                         Update
                                                 </Button>

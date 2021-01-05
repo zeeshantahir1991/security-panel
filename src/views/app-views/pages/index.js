@@ -56,6 +56,8 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/site-preferrences`} component={lazy(() => import(`./Guard/guard-profile/site-preferrences`))} />
       <Route path={`${match.url}/holidays-and-availability`} component={lazy(() => import(`./Guard/guard-profile/holidays-and-availability`))} /> */}
 
+      <Route path={`${match.url}/vehicles`} component={lazy(() => import(`./BackOffice/vehicles`))} />
+      <Route path={`${match.url}/add-vehicle`} component={lazy(() => import(`./BackOffice/add-vehicles`))} />
     </Switch>
   </Suspense>
 );

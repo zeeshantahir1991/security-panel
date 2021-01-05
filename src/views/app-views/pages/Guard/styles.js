@@ -16,7 +16,7 @@ export const componentStyles = {
     selectStyle: {
         width: '100%',
         borderWidth: 1,
-        borderColor: AppColors.alto,
+        borderColor: AppColors.cornFlowerBlue,
         borderStyle: 'solid',
         borderRadius: 10,
         marginRight: 20

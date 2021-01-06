@@ -20,14 +20,14 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/sub-contractors`} component={lazy(() => import(`./Contractor/sub-contractors`))} />
       <Route path={`${match.url}/add-sub-contractor`} component={lazy(() => import(`./Contractor/add-sub-contractor`))} />
 
-      <Route path={`${match.url}/compilance-templates`} component={lazy(() => import(`./Compilance/compilance-templates`))} />
-      <Route path={`${match.url}/compilance-interviews`} component={lazy(() => import(`./Compilance/compilance-interviews`))} />
-      <Route path={`${match.url}/compilance-vetting`} component={lazy(() => import(`./Compilance/compilance-vetting`))} />
-      <Route path={`${match.url}/compilance-trainings`} component={lazy(() => import(`./Compilance/compilance-trainings`))} />
-      <Route path={`${match.url}/compilance-sia-records`} component={lazy(() => import(`./Compilance/compilance-sia-records`))} />
-      <Route path={`${match.url}/site-survey`} component={lazy(() => import(`./Compilance/site-survey`))} />
-      <Route path={`${match.url}/key-receipts`} component={lazy(() => import(`./Compilance/key-receipts`))} />
-      <Route path={`${match.url}/key-log-register`} component={lazy(() => import(`./Compilance/key-log-register`))} />
+      <Route path={`${match.url}/compliance-templates`} component={lazy(() => import(`./Compliance/compliance-templates`))} />
+      <Route path={`${match.url}/compliance-interviews`} component={lazy(() => import(`./Compliance/compliance-interviews`))} />
+      <Route path={`${match.url}/compliance-vetting`} component={lazy(() => import(`./Compliance/compliance-vetting`))} />
+      <Route path={`${match.url}/compliance-trainings`} component={lazy(() => import(`./Compliance/compliance-trainings`))} />
+      <Route path={`${match.url}/compliance-sia-records`} component={lazy(() => import(`./Compliance/compliance-sia-records`))} />
+      <Route path={`${match.url}/site-survey`} component={lazy(() => import(`./Compliance/site-survey`))} />
+      <Route path={`${match.url}/key-receipts`} component={lazy(() => import(`./Compliance/key-receipts`))} />
+      <Route path={`${match.url}/key-log-register`} component={lazy(() => import(`./Compliance/key-log-register`))} />
 
       <Route path={`${match.url}/add-client`} component={lazy(() => import(`./Client/add-client`))} />
       <Route path={`${match.url}/clients`} component={lazy(() => import(`./Client/clients`))} />
@@ -40,9 +40,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-mobile-patrol-site`} component={lazy(() => import(`./MobilePatrol/add-mobile-patrol-site`))} />
 
       <Route path={`${match.url}/guard-view`} component={lazy(() => import(`./Guard/guard-profile/details/ViewGuard`))} />
-      <Route path={`${match.url}/guard-sia-record`} component={lazy(() => import(`./Guard/guard-list/SiaRecords`))} />
-      <Route path={`${match.url}/guard-position-pay`} component={lazy(() => import(`./Guard/guard-list/PositionAndPay`))} />
-      <Route path={`${match.url}/guard-right-work`} component={lazy(() => import(`./Guard/guard-list/RightToWork`))} />
+      <Route path={`${match.url}/guard-sia-record`} component={lazy(() => import(`./Guard/guard-profile/details/SiaRecords`))} />
+      <Route path={`${match.url}/guard-position-pay`} component={lazy(() => import(`./Guard/guard-profile/details/PositionAndPay`))} />
+      <Route path={`${match.url}/guard-right-work`} component={lazy(() => import(`./Guard/guard-profile/details/RightToWork`))} />
 
       <Route path={`${match.url}/key-holding-sites`} component={lazy(() => import(`./KeyHolding/key-holding-sites`))} />
       <Route path={`${match.url}/add-key-holding`} component={lazy(() => import(`./KeyHolding/add-key-holding`))} />

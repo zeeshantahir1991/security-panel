@@ -1,4 +1,4 @@
-import { Card, Col, Form, Row, Select } from 'antd';
+import { Card, Col, Form, Row, Select, Tabs } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "./../../../../../assets/styles";
 import { componentStyles } from "./../styles";
@@ -7,6 +7,7 @@ import Holidays from './holidays-and-availability/index'
 import SitePreferrences from './site-preferrences/index'
 
 const { Option } = Select;
+const { TabPane } = Tabs;
 
 export class DocumentAndSitePreferences extends Component {
 
@@ -34,47 +35,59 @@ export class DocumentAndSitePreferences extends Component {
 
         return (
 
-            <div style={AppStyles.marginTop50}>
                 <Row justify={'center'}>
 
                     <Col xs={24} sm={24} md={20} lg={20} >
+                        <div style={componentStyles.typeStyle}>
+                            Documents & Site Preferences
+                        </div>
                         <Card
-                            extra={
-                                <Row>
-                                    <Col xs={24} sm={24} md={24} lg={24}>
+                            // extra={
+                            //     <Row>
+                            //         <Col xs={24} sm={24} md={24} lg={24}>
 
-                                        <Select
-                                            showSearch
-                                            style={componentStyles.selectStyle}
-                                            bordered={false}
-                                            placeholder="Site Preferences"
-                                            optionFilterProp="children"
-                                            onChange={(val) => this.handleChange("type", val)}
-                                            // onFocus={onFocus}
-                                            // onBlur={onBlur}
-                                            // onSearch={onSearch}
-                                            filterOption={(input, option) =>
-                                                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                            }
-                                        >
-                                            <Option value="site">Site Preferences</Option>
-                                            <Option value="holidays">Holidays & Availability</Option>
-                                            <Option value="docs">Docs</Option>
-                                        </Select>
-                                    </Col>
-                                </Row>
-                            }
-                            className="card" title="Documents & Site Preferences" style={AppStyles.paddingBottom20}>
-                            {type === "site" ?
+                            //             <Select
+                            //                 showSearch
+                            //                 style={componentStyles.dropDownStyleWithWidth200}
+                            //                 bordered={false}
+                            //                 placeholder="Site Preferences"
+                            //                 optionFilterProp="children"
+                            //                 onChange={(val) => this.handleChange("type", val)}
+                            //                 // onFocus={onFocus}
+                            //                 // onBlur={onBlur}
+                            //                 // onSearch={onSearch}
+                            //                 filterOption={(input, option) =>
+                            //                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            //                 }
+                            //             >
+                            //                 <Option value="site">Site Preferences</Option>
+                            //                 <Option value="holidays">Holidays & Availability</Option>
+                            //                 <Option value="docs">Docs</Option>
+                            //             </Select>
+                            //         </Col>
+                            //     </Row>
+                            // }
+                            className="card" style={AppStyles.paddingBottom20}>
+                            <Tabs defaultActiveKey="1" tabPosition={'left'}>
+                                <TabPane tab={`Site Preferrences`} key={1}>
+                                    <SitePreferrences />
+                                </TabPane>
+                                <TabPane tab={`Holidays`} key={2} >
+                                    <Holidays />
+                                </TabPane>
+                                <TabPane tab={`Docs`} key={3} >
+                                    <Docs />
+                                </TabPane>
+                            </Tabs>
+                            {/* {type === "site" ?
                                 <SitePreferrences /> :
                                 type === "holidays" ?
                                     <Holidays /> :
                                     <Docs />
-                            }
+                            } */}
                         </Card>
                     </Col>
                 </Row>
-            </div>
         )
 
     }

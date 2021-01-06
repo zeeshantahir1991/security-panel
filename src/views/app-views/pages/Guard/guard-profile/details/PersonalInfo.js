@@ -1,11 +1,8 @@
 import { MailOutlined, MobileOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
-import CompilanceData from '../../compilanceDropDown';
-import GuardProfile from '../index';
-import { Stepper } from '../../stepper';
 import { componentStyles } from "../../styles";
 const { Option } = Select;
 
@@ -92,8 +89,8 @@ export class PersonalInfo extends Component {
 
 
     render() {
-        const {action, record} = this.props;
-   
+        const { action, record } = this.props;
+
         if (action && record) {
             return (
 
@@ -101,8 +98,8 @@ export class PersonalInfo extends Component {
                     <Row gutter={16}>
                         <Col xs={24} sm={24} md={24} lg={24} >
                             <div style={AppStyles.marginBottom40}>
-                                <div style={AppStyles.horizontallLineWidth100}>
-                                </div>
+                                {/* <div style={AppStyles.horizontallLineWidth100}>
+                                </div> */}
                             </div>
                         </Col>
                         <Col xs={24} sm={24} md={8} lg={8}>

@@ -13,6 +13,8 @@ export const componentStyles = {
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
+    cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
+
     selectStyle: {
         width: '100%',
         borderWidth: 1,
@@ -120,5 +122,21 @@ export const componentStyles = {
         fontSize: 15,
         marginBottom: 20,
         marginTop: 20
-    }
+    },
+
+    dropDownStyleWithWidth200: {
+        width: 200,
+        borderWidth: 1,
+        borderColor: AppColors.cornFlowerBlue,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginRight: 20
+    },
+
+    typeStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginBottom: 20,
+        marginTop: 20
+    },
 }

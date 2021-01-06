@@ -108,36 +108,15 @@ export class GuardsList extends Component {
 		const { search } = this.state;
 		let userList = userData
 		let empType = search.empType
-		let subcontractName = search.subcontractName
 		let position = search.position
 		let status = search.status
 
 		let filteredArray = []
 		filteredArray = userList.filter(element => {
-			if (empType && subcontractName && position && status) {
-
-				return element.empType === empType && element.subcontractName === subcontractName && element.position === position && element.status === status
-			
-			} else if (empType && subcontractName && position) {
-
-				return element.empType === empType && element.subcontractName === subcontractName && element.position === position
-
-			} else if (empType && subcontractName && status) {
-
-				return element.empType === empType && element.subcontractName === subcontractName && element.status === status
-
-			} else if (subcontractName && position && status) {
-
-				return element.subcontractName === subcontractName && element.position === position && element.status === status
-
-			} else if (empType && position && status) {
+			if (empType && position && status) {
 
 				return element.empType === empType && element.position === position && element.status === status
-
-			} else if (empType && subcontractName) {
-
-				return element.empType === empType && element.subcontractName === subcontractName
-
+			
 			} else if (empType && position) {
 
 				return element.empType === empType && element.position === position
@@ -145,14 +124,6 @@ export class GuardsList extends Component {
 			} else if (empType && status) {
 
 				return element.empType === empType && element.status === status
-
-			} else if (subcontractName && position) {
-
-				return element.subcontractName === subcontractName && element.position === position
-
-			} else if (subcontractName && status) {
-
-				return element.subcontractName === subcontractName && element.status === status
 
 			} else if (position && status) {
 
@@ -162,19 +133,16 @@ export class GuardsList extends Component {
 
 				return element.empType === empType
 
-			} else if (subcontractName) {
-
-				return element.subcontractName === subcontractName
-
 			} else if (position) {
 
 				return element.position === position
 
-			} else if (status) {
+			} else if ( status) {
 
 				return element.status === status
 
-			}
+			} 
+			
 
 		});
 		this.setState({ users: filteredArray })
@@ -219,15 +187,15 @@ export class GuardsList extends Component {
 			},
 			
 			{
-				title: 'Compilance SC',
-				dataIndex: 'compilanceSc',
+				title: 'Compliance Score',
+				dataIndex: 'complianceSc',
 				render: (_, record) => (
 					<div className="d-flex">
-						{record.compilanceSc && record.compilanceSc < 50 ? 
-						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.radicalRed}/> :
-						 record.compilanceSc && record.compilanceSc >= 50 && record.compilanceSc != 100 ?
-						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.brightSun}/> :
-						 <Progress percent={record.compilanceSc}  strokeColor={AppColors.conifer}/>
+						{record.complianceSc && record.complianceSc < 50 ? 
+						 <Progress percent={record.complianceSc}  strokeColor={AppColors.radicalRed}/> :
+						 record.complianceSc && record.complianceSc >= 50 && record.complianceSc != 100 ?
+						 <Progress percent={record.complianceSc}  strokeColor={AppColors.brightSun}/> :
+						 <Progress percent={record.complianceSc}  strokeColor={AppColors.conifer}/>
 						}
 					</div>
 				),
@@ -400,26 +368,6 @@ export class GuardsList extends Component {
 									<Option value="Employment 3">Employment 3</Option>
 								</Select>
 
-
-								<Select
-									showSearch
-									style={componentStyles.selectStyle}
-									bordered={false}
-									placeholder="Subcontractor Name"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("subcontractName", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="ABC">ABC</Option>
-									<Option value="DEF">DEF</Option>
-									<Option value="GHI">GHI</Option>
-								</Select>
-
 								<Select
 									showSearch
 									style={componentStyles.selectStyle}
@@ -489,25 +437,6 @@ export class GuardsList extends Component {
 									<Option value="Employment 3">Employment 3</Option>
 								</Select>
 
-
-								<Select
-									showSearch
-									style={componentStyles.selectStyleSM}
-									bordered={false}
-									placeholder="Subcontractor Name"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("subcontractName", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="ABC">ABC</Option>
-									<Option value="DEF">DEF</Option>
-									<Option value="GHI">GHI</Option>
-								</Select>
 
 								<Select
 									showSearch

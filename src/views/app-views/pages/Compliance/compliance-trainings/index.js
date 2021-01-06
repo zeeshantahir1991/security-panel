@@ -5,7 +5,7 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 
 const trainingData = [
 	{
@@ -64,7 +64,7 @@ const { Option } = Select;
 
 
 
-export class CompilanceTraining extends Component {
+export class ComplianceTraining extends Component {
 
 	state = {
 		training: trainingData,
@@ -438,7 +438,7 @@ export class CompilanceTraining extends Component {
 	}
 }
 
-export default CompilanceTraining
+export default ComplianceTraining
 
 
 

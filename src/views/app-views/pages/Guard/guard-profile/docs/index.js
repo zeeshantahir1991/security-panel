@@ -17,7 +17,7 @@ const userData = [
 	  "issueNumber": "1",
 	  "img": "/img/avatars/thumb-1.jpg",
 	  "desc": "xyz",
-	  "type": "Compilance",
+	  "type": "compliance",
 	  "uploadDate": 1583107200
 	 
 	}

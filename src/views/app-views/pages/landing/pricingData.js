@@ -13,7 +13,7 @@ export const pricingData = [
     //         "Scheduling Hours",
     //         "Storage",
     //         "Additional Users",
-    //         "Backoffice & Compilance",
+    //         "Backoffice & compliance",
     //         "E-signatures",
     //         "Mobile Patrol",
     //         "Key Holding",

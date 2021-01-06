@@ -1,4 +1,4 @@
-import { AppColors } from './../../../../assets/styles/colors'
+import { AppColors } from '../../../../assets/styles/colors'
 
 export const componentStyles = {
     container: {

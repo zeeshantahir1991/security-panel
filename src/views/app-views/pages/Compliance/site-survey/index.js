@@ -4,7 +4,7 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 
 
 const { Option } = Select;

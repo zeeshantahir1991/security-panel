@@ -1,12 +1,12 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
-import compilanceData from "assets/data/compilance-interviews-list.data";
+import complianceData from "assets/data/compliance-interviews-list.data";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 
 const interviewStatisticData = [
 	{
@@ -28,10 +28,10 @@ const interviewStatisticData = [
 const { Option } = Select;
 
 
-export class CompilanceInterviews extends Component {
+export class ComplianceInterviews extends Component {
 
 	state = {
-		compilance: compilanceData,
+		compliance: complianceData,
 		userProfileVisible: false,
 		selectedUser: null,
 		search: {
@@ -68,7 +68,7 @@ export class CompilanceInterviews extends Component {
 
 	searchInTable = () => {
 		const { search } = this.state;
-		let userList = compilanceData
+		let userList = complianceData
 		let interviewStatus = search.interviewStatus
 		let interviewer = search.interviewer
 		let interviewDate = search.interviewDate
@@ -139,7 +139,7 @@ export class CompilanceInterviews extends Component {
 			}
 
 		});
-		this.setState({ compilance: filteredArray })
+		this.setState({ compliance: filteredArray })
 
 	}
 
@@ -150,7 +150,7 @@ export class CompilanceInterviews extends Component {
 	}
 
 	render() {
-		const { compilance, search } = this.state;
+		const { compliance, search } = this.state;
 
 		const tableColumns = [
 			{
@@ -399,8 +399,8 @@ export class CompilanceInterviews extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Compilance Interview List" >
-							<Table bordered columns={tableColumns} dataSource={compilance} rowKey='id' scroll={{ x: 1100, y: 300 }} />
+						<Card className="card" title="compliance Interview List" >
+							<Table bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 1100, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>
@@ -411,4 +411,4 @@ export class CompilanceInterviews extends Component {
 	}
 }
 
-export default CompilanceInterviews
+export default ComplianceInterviews

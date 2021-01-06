@@ -25,8 +25,8 @@ export class DocsUpload extends Component {
                 <Row gutter={16} justify={'center'}>
                     <Col xs={24} sm={24} md={24} lg={24} >
                         <div style={AppStyles.marginBottom40}>
-                            {/* <div style={AppStyles.horizontallLineWidth100}>
-                            </div> */}
+                            <div style={AppStyles.horizontallLineWidth100}>
+                            </div>
                         </div>
                     </Col>
                     <Col xs={24} sm={24} md={12} lg={12}>

@@ -1,11 +1,7 @@
-import { MailOutlined, MobileOutlined, NumberOutlined, UserOutlined, UploadOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select, Upload} from 'antd';
-import moment from 'moment';
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Col, Form, Row, Select, Upload } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
-import CompilanceData from '../../compilanceDropDown';
-import GuardProfile from '../index';
-import { Stepper } from '../../stepper';
 import { componentStyles } from "../../styles";
 const { Option } = Select;
 
@@ -22,7 +18,6 @@ export class DocsUpload extends Component {
 
 
     render() {
-        const { action, record } = this.props;
 
         return (
 
@@ -30,8 +25,8 @@ export class DocsUpload extends Component {
                 <Row gutter={16} justify={'center'}>
                     <Col xs={24} sm={24} md={24} lg={24} >
                         <div style={AppStyles.marginBottom40}>
-                            <div style={AppStyles.horizontallLineWidth100}>
-                            </div>
+                            {/* <div style={AppStyles.horizontallLineWidth100}>
+                            </div> */}
                         </div>
                     </Col>
                     <Col xs={24} sm={24} md={12} lg={12}>

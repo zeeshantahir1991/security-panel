@@ -4,10 +4,8 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
-import { AppStyles } from "./../../../../../assets/styles";
-import CompilanceData from '../compilanceDropDown';
-import { Stepper } from './../stepper';
-import { componentStyles } from "./../styles";
+import { AppStyles } from "../../../../../../assets/styles";
+import { componentStyles } from "../../styles";
 
 const siaRecordData = [
     {
@@ -243,19 +241,20 @@ export class SiaRecordList extends Component {
             }
         ];
 
-        let record = null
-        let action = null
-        if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
-            record = this.props.location.state.record
-            action = this.props.location.state.action
-        }
+        const { action, record } = this.props;
+
         if (action && record) {
             return (
-                <div style={AppStyles.marginTop50}>
+                <div>
+                    <Col xs={24} sm={24} md={24} lg={24} >
+                        <div style={AppStyles.marginBottom40}>
+                            {/* <div style={AppStyles.horizontallLineWidth100}>
+                            </div> */}
+                        </div>
+                    </Col>
+
                     <Row gutter={16} justify="center">
-                        <Col xs={24} sm={24} md={24} lg={24} >
-                            <Stepper location={this.props.location} history={this.props.history} action={action} record={record} />
-                        </Col>
+
                         <Col xs={20} sm={20} md={20} lg={20}>
 
                             <Row gutter={16}>
@@ -370,14 +369,6 @@ export class SiaRecordList extends Component {
                             </Card>
                         </Col>
                     </Row>
-                    <div style={AppStyles.marginTop50}>
-                        <Row>
-                            <Col xs={24} sm={24} md={24} lg={24} >
-                                <CompilanceData location={this.props.location} history={this.props.history} />
-                            </Col>
-                        </Row>
-                    </div>
-                    {/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
                 </div>
             )
         }

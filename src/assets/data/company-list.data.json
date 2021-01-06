@@ -5,7 +5,7 @@
     "issueNumber": "1",
     "img": "/img/avatars/thumb-1.jpg",
     "desc": "xyz",
-    "type": "Compilance",
+    "type": "compliance",
     "uploadDate": 1583107200
    
   },
@@ -15,7 +15,7 @@
     "issueNumber": "2",
     "img": "/img/avatars/thumb-2.jpg",
     "desc": "xyz",
-    "type": "Compilance",
+    "type": "compliance",
     "uploadDate": 1583107200
   },
   {
@@ -24,7 +24,7 @@
     "issueNumber": "3",
     "img": "/img/avatars/thumb-3.jpg",
     "desc": "xyz",
-    "type": "Compilance",
+    "type": "compliance",
     "uploadDate": 1583107200
 
   }

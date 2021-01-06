@@ -5,7 +5,7 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 
 const vettingData = [
 	{
@@ -74,7 +74,7 @@ const { Option } = Select;
 
 
 
-export class CompilanceVetting extends Component {
+export class ComplianceVetting extends Component {
 
 	state = {
 		vetting: vettingData,
@@ -464,7 +464,7 @@ export class CompilanceVetting extends Component {
 	}
 }
 
-export default CompilanceVetting
+export default ComplianceVetting
 
 
 

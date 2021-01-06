@@ -4,48 +4,52 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 
-const keyLogRegisterData = [
+const keyReceiptsData = [
 	{
 		"id": "1",
-		"siteName": "Store B",
-		"clientName": "XYZ Ltd",
+		"keyReceipt": "P1234",
+		"siteName": "SITE A",
 		"status": "Received",
-		"keyReceiptPeriod": 1583107200,
-		"keyReturnPeriod": 1583107200,
-		"keyNumber": "P123",
+		"keyReceivedBy": "System User",
+		"clientName": "XYZ Ltd",
+		"keyType": "Alpha Numeric",
+		"keyNumber": "Apha Numeric",
 		"keySerialNumber": "Apha Numeric",
-		"issuedTo": "Guard Name",
-		"returnBy": "Guard",
+		"keyReceiptPeriod": 1583107200,
+		"receivedFrom": "John Smith",
 
 	},
 	{
 		"id": "2",
-		"siteName": "Store A",
-		"clientName": "ABC Ltd",
+		"keyReceipt": "P12346",
+		"siteName": "SITE B",
 		"status": "Pending",
-		"keyReceiptPeriod": 1583107200,
-		"keyReturnPeriod": 1583107200,
-		"keyNumber": "P423",
+		"keyReceivedBy": "System User",
+		"clientName": "ABC Ltd",
+		"keyType": "Alpha Numeric",
+		"keyNumber": "Apha Numeric",
 		"keySerialNumber": "Apha Numeric",
-		"issuedTo": "Guard Name",
-		"returnBy": "Guard",
+		"keyReceiptPeriod": 1583107200,
+		"receivedFrom": "John SM",
+
+
 
 	}
 ]
 
 
-const keyLogRegistersBoxArray = [
+const keyReceiptsBoxArray = [
 	{
-		title: 'Keys Released',
+		title: 'Keys Received',
 		value: '20',
 		backgroundColor: "#A6D34E"
 		// status: -11.4,
 		// subtitle: `Compare to last year (2019)`
 	},
 	{
-		title: 'Key Returned',
+		title: 'Pending Key Receipts',
 		value: '20',
 		backgroundColor: "#EF4545"
 		// status: 8.2,
@@ -57,15 +61,15 @@ const { Option } = Select;
 
 
 
-export class KeyLogRegister extends Component {
+export class KeyReceipts extends Component {
 
 	state = {
-		keyLogRegisters: keyLogRegisterData,
+		keyReceipts: keyReceiptsData,
 		userProfileVisible: false,
 		selectedUser: null,
 		search: {
 			status: "",
-			keyReturnPeriod: "",
+			keyReceivedBy: "",
 			clientName: "",
 			siteName: "",
 			keyReceiptPeriod: ""
@@ -98,9 +102,9 @@ export class KeyLogRegister extends Component {
 
 	searchInTable = () => {
 		const { search } = this.state;
-		let userList = keyLogRegisterData
+		let userList = keyReceiptsData
 		let status = search.status
-		let keyReturnPeriod = search.keyReturnPeriod
+		let keyReceivedBy = search.keyReceivedBy
 		let clientName = search.clientName
 		let siteName = search.siteName
 		let keyReceiptPeriod = search.keyReceiptPeriod
@@ -108,11 +112,11 @@ export class KeyLogRegister extends Component {
 		let filteredArray = []
 		filteredArray = userList.filter(element => {
 
-			return filterCombination(status, keyReturnPeriod, clientName, siteName, keyReceiptPeriod, element)
+			return filterCombination(status, keyReceivedBy, clientName, siteName, keyReceiptPeriod, element)
 
 
 		});
-		this.setState({ keyLogRegisters: filteredArray })
+		this.setState({ keyReceipts: filteredArray })
 
 	}
 
@@ -123,13 +127,30 @@ export class KeyLogRegister extends Component {
 	}
 
 	render() {
-		const { keyLogRegisters, search } = this.state;
+		const { keyReceipts, search } = this.state;
 
 		const tableColumns = [
-
+			{
+				title: 'Key Receipt',
+				dataIndex: 'keyReceipt',
+				render: (_, record) => (
+					<div className="d-flex">
+						<a >{record.keyReceipt} </a>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.keyReceipt.toLowerCase();
+						b = b.keyReceipt.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200,
+				fixed: 'left'
+			},
 
 			{
-				title: 'Site Name',
+				title: 'KH Site',
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
@@ -164,36 +185,18 @@ export class KeyLogRegister extends Component {
 				width: 200
 			},
 
-
 			{
-				title: 'Key Number',
-				dataIndex: 'keyNumber',
-				sorter: {
-					compare: (a, b) => a.keyNumber.length - b.keyNumber.length,
-				},
-				width: 150
-			},
-			{
-				title: 'Key Number',
-				dataIndex: 'keyNumber',
-				sorter: {
-					compare: (a, b) => a.keyNumber.length - b.keyNumber.length,
-				},
-				width: 150
-			},
-
-			{
-				title: 'Issued To',
-				dataIndex: 'issuedTo',
+				title: 'Key Type',
+				dataIndex: 'keyType',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.issuedTo}</span>
+						<span>{record.keyType}</span>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.issuedTo.toLowerCase();
-						b = b.issuedTo.toLowerCase();
+						a = a.keyType.toLowerCase();
+						b = b.keyType.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
@@ -201,17 +204,83 @@ export class KeyLogRegister extends Component {
 			},
 
 			{
-				title: 'Return By',
-				dataIndex: 'returnBy',
+				title: 'Key Number',
+				dataIndex: 'keyNumber',
+				sorter: {
+					compare: (a, b) => a.keyNumber.length - b.keyNumber.length,
+				},
+				width: 150
+			},
+			{
+				title: 'Key Number',
+				dataIndex: 'keyNumber',
+				sorter: {
+					compare: (a, b) => a.keyNumber.length - b.keyNumber.length,
+				},
+				width: 150
+			},
+
+			{
+				title: 'Key Received By',
+				dataIndex: 'keyReceivedBy',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.returnBy}</span>
+						<span>{record.keyReceivedBy}</span>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.returnBy.toLowerCase();
-						b = b.returnBy.toLowerCase();
+						a = a.keyReceivedBy.toLowerCase();
+						b = b.keyReceivedBy.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+
+			{
+				title: 'Key Received From',
+				dataIndex: 'receivedFrom',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.receivedFrom}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.receivedFrom.toLowerCase();
+						b = b.receivedFrom.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+
+			{
+				title: 'Received Date',
+				dataIndex: 'keyReceiptPeriod',
+				render: date => (
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.keyReceiptPeriod).unix() - moment(b.keyReceiptPeriod).unix(),
+				width: 200
+			},
+
+
+
+
+			{
+				title: 'Key Receipt Status',
+				dataIndex: 'status',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.status}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.status.toLowerCase();
+						b = b.status.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
@@ -244,7 +313,7 @@ export class KeyLogRegister extends Component {
 
 						<Row gutter={16}>
 							{
-								keyLogRegistersBoxArray.map((elm, i) => (
+								keyReceiptsBoxArray.map((elm, i) => (
 									<Col xs={24} sm={24} md={12} lg={12} xl={12} key={i}>
 										<StatisticWidget
 											title={elm.title}
@@ -269,7 +338,7 @@ export class KeyLogRegister extends Component {
 									showSearch
 									style={componentStyles.selectStyle}
 									bordered={false}
-									placeholder="Key Status"
+									placeholder="Key Receipt Status"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("status", val)}
 									// onFocus={onFocus}
@@ -290,11 +359,24 @@ export class KeyLogRegister extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("keyReturnPeriod", val)}
-									placeholder="Key Return Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Key Received By"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("keyReceivedBy", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="System User">System User</Option>
+									<Option value="System User">System User</Option>
+
+								</Select>
 
 								<Select
 									showSearch
@@ -326,9 +408,9 @@ export class KeyLogRegister extends Component {
 									onChange={(val) => this.handleChangeInput("siteName", val)}
 									style={componentStyles.filtersInputStyle} />
 								<Button
-									disabled={!(search.status || search.keyReturnPeriod || search.clientName || search.siteName || search.keyReceiptPeriod)}
+									disabled={!(search.status || search.keyReceivedBy || search.clientName || search.siteName || search.keyReceiptPeriod)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.keyReturnPeriod || search.clientName || search.siteName || search.keyReceiptPeriod) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.status || search.keyReceivedBy || search.clientName || search.siteName || search.keyReceiptPeriod) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
@@ -338,11 +420,12 @@ export class KeyLogRegister extends Component {
 					<Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
+
 							<Select
 									showSearch
 									style={componentStyles.selectStyleSM}
 									bordered={false}
-									placeholder="Key Status"
+									placeholder="Key Receipt Status"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("status", val)}
 									// onFocus={onFocus}
@@ -363,11 +446,24 @@ export class KeyLogRegister extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("keyReturnPeriod", val)}
-									placeholder="Key Return Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Key Received By"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("keyReceivedBy", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="System User">System User</Option>
+									<Option value="System User">System User</Option>
+
+								</Select>
 
 								<Select
 									showSearch
@@ -399,9 +495,9 @@ export class KeyLogRegister extends Component {
 									onChange={(val) => this.handleChangeInput("siteName", val)}
 									style={componentStyles.filtersInputStyle} />
 								<Button
-									disabled={!(search.status || search.keyReturnPeriod || search.clientName || search.siteName || search.keyReceiptPeriod)}
+									disabled={!(search.status || search.keyReceivedBy || search.clientName || search.siteName || search.keyReceiptPeriod)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.keyReturnPeriod || search.clientName || search.siteName || search.keyReceiptPeriod) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.status || search.keyReceivedBy || search.clientName || search.siteName || search.keyReceiptPeriod) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
@@ -410,8 +506,8 @@ export class KeyLogRegister extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Key Log Registers" >
-							<Table bordered columns={tableColumns} dataSource={keyLogRegisters} rowKey='id' scroll={{ x: 1300, y: 300 }} />
+						<Card className="card" title="Key Receipts" >
+							<Table bordered columns={tableColumns} dataSource={keyReceipts} rowKey='id' scroll={{ x: 2100, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>
@@ -422,38 +518,38 @@ export class KeyLogRegister extends Component {
 	}
 }
 
-export default KeyLogRegister
+export default KeyReceipts
 
 
 
-export const filterCombination = (status, keyReturnPeriod, clientName, siteName, keyReceiptPeriod, element) => {
-	if (status && keyReturnPeriod && clientName && siteName && keyReceiptPeriod) {
+export const filterCombination = (status, keyReceivedBy, clientName, siteName, keyReceiptPeriod, element) => {
+	if (status && keyReceivedBy && clientName && siteName && keyReceiptPeriod) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
-	} else if (status && keyReturnPeriod && clientName && keyReceiptPeriod) {
+	} else if (status && keyReceivedBy && clientName && keyReceiptPeriod) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
-	} else if (status && keyReturnPeriod && siteName && keyReceiptPeriod) {
+	} else if (status && keyReceivedBy && siteName && keyReceiptPeriod) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
-	} else if (keyReturnPeriod && clientName && siteName && keyReceiptPeriod) {
+	} else if (keyReceivedBy && clientName && siteName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
@@ -466,10 +562,10 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
-	} else if (status && keyReturnPeriod && keyReceiptPeriod) {
+	} else if (status && keyReceivedBy && keyReceiptPeriod) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
@@ -486,16 +582,16 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
-	} else if (keyReturnPeriod && clientName && keyReceiptPeriod) {
+	} else if (keyReceivedBy && clientName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
-	} else if (keyReturnPeriod && siteName && keyReceiptPeriod) {
+	} else if (keyReceivedBy && siteName && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
@@ -507,21 +603,21 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
-	} else if (status && keyReturnPeriod && clientName) {
+	} else if (status && keyReceivedBy && clientName) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
-	} else if (status && keyReturnPeriod && siteName) {
+	} else if (status && keyReceivedBy && siteName) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
-	} else if (keyReturnPeriod && clientName && siteName) {
+	} else if (keyReceivedBy && clientName && siteName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
@@ -536,9 +632,9 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
-	} else if (keyReturnPeriod && keyReceiptPeriod) {
+	} else if (keyReceivedBy && keyReceiptPeriod) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
 
@@ -553,10 +649,10 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 		return element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.keyReceiptPeriod).format("YYYY/MM/DD") === moment(keyReceiptPeriod).format("YYYY/MM/DD")
 
-	} else if (status && keyReturnPeriod) {
+	} else if (status && keyReceivedBy) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
-			moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD")
+			element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase()
 
 	} else if (status && clientName) {
 
@@ -568,14 +664,14 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
-	} else if (keyReturnPeriod && clientName) {
+	} else if (keyReceivedBy && clientName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
-	} else if (keyReturnPeriod && siteName) {
+	} else if (keyReceivedBy && siteName) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD") &&
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
 	} else if (clientName && siteName) {
@@ -595,9 +691,9 @@ export const filterCombination = (status, keyReturnPeriod, clientName, siteName,
 
 		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
-	} else if (keyReturnPeriod) {
+	} else if (keyReceivedBy) {
 
-		return moment.unix(element.keyReturnPeriod).format("YYYY/MM/DD") === moment(keyReturnPeriod).format("YYYY/MM/DD")
+		return element.keyReceivedBy.trim().toUpperCase() === keyReceivedBy.trim().toUpperCase()
 
 	} else if (status) {
 

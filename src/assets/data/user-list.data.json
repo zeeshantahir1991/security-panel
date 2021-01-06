@@ -16,7 +16,7 @@
     "title": "Miss",
     "niNumber": 12232234,
     "origin": "Asian",
-    "compilanceSc": 30,
+    "complianceSc": 30,
     "progress": 30
   },
   {
@@ -36,7 +36,7 @@
     "title": "Mr",
     "niNumber": 12232234,
     "origin": "African",
-    "compilanceSc": 50,
+    "complianceSc": 50,
     "progress": 70
   },
   {
@@ -56,7 +56,7 @@
     "title": "Mr",
     "niNumber": 12232234,
     "origin": "British",
-    "compilanceSc": 100,
+    "complianceSc": 100,
     "progress": 100
   }
 ]

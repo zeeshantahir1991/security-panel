@@ -2,7 +2,7 @@ import { Card, Col, Row, Table } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 
-const compilanceTemplatesData = [
+const complianceTemplatesData = [
 	{
 		"id": "1",
 		"templateName": "Candidate Application Template",
@@ -35,10 +35,10 @@ const compilanceTemplatesData = [
 
 
 
-export class CompilanceTemplates extends Component {
+export class ComplianceTemplates extends Component {
 
 	state = {
-		compilanceTemplates: compilanceTemplatesData,
+		complianceTemplates: complianceTemplatesData,
 
 	}
 
@@ -69,7 +69,7 @@ export class CompilanceTemplates extends Component {
 
 
 	render() {
-		const { compilanceTemplates } = this.state;
+		const { complianceTemplates } = this.state;
 
 		const tableColumns = [
 			{
@@ -124,8 +124,8 @@ export class CompilanceTemplates extends Component {
 				<Row gutter={16} justify="center">
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Compilance Template List" >
-							<Table bordered columns={tableColumns} dataSource={compilanceTemplates} rowKey='id' scroll={{ x: 600, y: 300 }} />
+						<Card className="card" title="compliance Template List" >
+							<Table bordered columns={tableColumns} dataSource={complianceTemplates} rowKey='id' scroll={{ x: 600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>
@@ -136,4 +136,4 @@ export class CompilanceTemplates extends Component {
 	}
 }
 
-export default CompilanceTemplates
+export default ComplianceTemplates

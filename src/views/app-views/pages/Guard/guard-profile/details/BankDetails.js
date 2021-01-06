@@ -20,14 +20,14 @@ export class BankDetails extends Component {
         super(props);
         this.state = {
             bankList: bankData,
-            form: false
 
         };
     }
 
 
     render() {
-        const { bankList, form } = this.state;
+        const { bankList } = this.state;
+        const { form } = this.props;
 
         const tableColumns = [
             {
@@ -111,43 +111,19 @@ export class BankDetails extends Component {
         ];
         return (
             <Row justify="center">
-
+                <Col xs={24} sm={24} md={24} lg={24} >
+                    <div style={AppStyles.marginBottom40}>
+                        <div style={AppStyles.horizontallLineWidth100}>
+                        </div>
+                    </div>
+                </Col>
                 <Col xs={24} sm={24} md={20} lg={20} >
-                    <Row gutter={16} justify="end">
 
-                        <Col xs={12} sm={12} md={4} lg={4}>
-
-                            <Form.Item>
-                                <div style={AppStyles.marginTop20Bottom40}>
-                                    <Button onClick={() => this.setState({ form: true })} style={componentStyles.continueButton} htmlType="submit" block>
-                                        Add
-                                    </Button>
-
-                                </div>
-                            </Form.Item>
-                        </Col>
-                        <Col xs={12} sm={12} md={4} lg={4}>
-
-                            <Form.Item>
-                                <div style={AppStyles.marginTop20Bottom40}>
-                                    <Button onClick={() => this.setState({ form: false })} style={componentStyles.cancelButton} htmlType="submit" block>
-                                        Remove
-                                        </Button>
-
-                                </div>
-                            </Form.Item>
-                        </Col>
-                    </Row>
                     {
                         form ?
                             <Form layout="vertical">
                                 <Row gutter={16}>
-                                    <Col xs={24} sm={24} md={24} lg={24} >
-                                        <div style={AppStyles.marginBottom40}>
-                                            {/* <div style={AppStyles.horizontallLineWidth100}>
-                            </div> */}
-                                        </div>
-                                    </Col>
+
                                     <Col xs={24} sm={24} md={6} lg={6} >
 
                                         <Form.Item
@@ -239,12 +215,16 @@ export class BankDetails extends Component {
                                     </Col>
                                 </Row>
                             </Form> :
+                            <Row>
 
-                            <Card className="card" title="Guard's Docs">
-                                <Table
+                                <Col xs={24} sm={24} md={24} lg={24} >
+                                    <Card className="card" title="Guard's Docs">
+                                        <Table
 
-                                    bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 950, y: 200 }} />
-                            </Card>
+                                            bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 950, y: 200 }} />
+                                    </Card>
+                                </Col>
+                            </Row>
 
 
                     }

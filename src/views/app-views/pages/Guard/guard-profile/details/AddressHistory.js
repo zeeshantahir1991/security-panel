@@ -1,10 +1,24 @@
-import { CompassOutlined, NumberOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Switch } from 'antd';
+import { CompassOutlined, NumberOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { Button, Col, DatePicker, Form, Input, Row, Switch, Tag, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
+import moment from 'moment';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
 
 const rules = []
+const addressData = [
+    {
+        "id": "1",
+        "address1": "Address 1",
+        "address2": "Address 2",
+        "city": "City 1",
+        "postCode": "ABC123",
+        "fromDate": 1583107200,
+        "endDate": 1583107200,
+        "status": "Active"
+
+    }
+]
 export class AddressHistory extends Component {
 
     constructor(props) {
@@ -12,7 +26,9 @@ export class AddressHistory extends Component {
         this.state = {
 
             title: '',
-            relationship: ''
+            relationship: '',
+            addressList: addressData,
+
 
 
         };
@@ -28,110 +44,248 @@ export class AddressHistory extends Component {
     }
 
     render() {
+        const { addressList } = this.state;
+        const { form } = this.props;
+        const tableColumns = [
+            {
+                title: 'Address Line 1',
+                dataIndex: 'address1',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        {record.address1}
+                    </div>
+                ),
+                sorter: {
+                    compare: (a, b) => {
+                        a = a.address1.toLowerCase();
+                        b = b.address1.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
+                },
+                width: 200
+            },
 
+            {
+                title: 'Address Line 2',
+                dataIndex: 'address2',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        {record.address1}
+                    </div>
+                ),
+                sorter: {
+                    compare: (a, b) => {
+                        a = a.address2.toLowerCase();
+                        b = b.address2.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
+                },
+                width: 200
+            },
+
+            {
+                title: 'Town/City',
+                dataIndex: 'city',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        {record.city}
+                    </div>
+                ),
+                sorter: {
+                    compare: (a, b) => {
+                        a = a.city.toLowerCase();
+                        b = b.city.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
+                },
+                width: 200
+            },
+
+            {
+                title: 'Post Code',
+                dataIndex: 'postCode',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        {record.postCode}
+                    </div>
+                ),
+                sorter: {
+                    compare: (a, b) => {
+                        a = a.postCode.toLowerCase();
+                        b = b.postCode.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
+                },
+                width: 200
+            },
+
+            {
+                title: 'From (Date)',
+                dataIndex: 'fromDate',
+                render: date => (
+                    <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+                ),
+                sorter: (a, b) => moment(a.fromDate).unix() - moment(b.fromDate).unix(),
+                width: 200
+            },
+
+            {
+                title: 'To (Date)',
+                dataIndex: 'toDate',
+                render: date => (
+                    <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+                ),
+                sorter: (a, b) => moment(a.toDate).unix() - moment(b.toDate).unix(),
+                width: 200
+            },
+
+
+            {
+                title: 'Status',
+                dataIndex: 'status',
+                render: status => (
+                    <Tag className="text-capitalize" color={status.toUpperCase() === 'ACTIVE' ? 'cyan' : 'red'}>{status}</Tag>
+                ),
+                sorter: {
+                    compare: (a, b) => a.status.length - b.status.length,
+                },
+            },
+
+            {
+                title: '',
+                dataIndex: 'actions',
+                render: (_, elm) => (
+                    <div className="text-right">
+                        <Tooltip title="View">
+                            <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+                        </Tooltip>
+                        <Tooltip title="Delete">
+                            <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+                        </Tooltip>
+                    </div>
+                )
+            }
+        ];
         return (
-
-            <Form layout="vertical">
-                <Row gutter={16}>
-                    <Col xs={24} sm={24} md={24} lg={24} >
-                        <div style={AppStyles.marginBottom40}>
-                            <div style={AppStyles.horizontallLineWidth100}>
-                            </div>
+            <Row justify="center">
+                <Col xs={24} sm={24} md={24} lg={24} >
+                    <div style={AppStyles.marginBottom40}>
+                        <div style={AppStyles.horizontallLineWidth100}>
                         </div>
-
-                    </Col>
-
-
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="address1"
-                            label="Address Line 1"
-                            rules={rules.address1}
-                            hasFeedback
-                        >
-                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="address2"
-                            label="Address Line 2"
-                            rules={rules.address2}
-                            hasFeedback
-                        >
-                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="city"
-                            label="Town / City"
-                            rules={rules.city}
-                            hasFeedback
-                        >
-                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
-                        </Form.Item>
-                    </Col>
-
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="postcode"
-                            label="Post Code"
-                            rules={rules.postcode}
-                            hasFeedback
-                        >
-                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="fromDate"
-                            label="From (Date)"
-                            rules={rules.fromDate}
-                            hasFeedback
-                        >
-                            <DatePicker style={componentStyles.datePicker}
-                                // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-                                format={'YYYY/MM/DD'} />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} sm={24} md={6} lg={6}>
-                        <Form.Item
-                            name="toDate"
-                            label="To (Date)"
-                            rules={rules.fromDate}
-                            hasFeedback
-                        >
-                            <DatePicker style={componentStyles.datePicker}
-                                // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-                                format={'YYYY/MM/DD'} />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
-
-                        <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Current Address
-					</Col>
+                    </div>
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={24} >
+                    {
+                        form == "Address History"?
+                            <Form layout="vertical">
+                                <Row gutter={16}>
 
 
 
-                </Row>
-                <Row gutter={16} justify="center">
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="address1"
+                                            label="Address Line 1"
+                                            rules={rules.address1}
+                                            hasFeedback
+                                        >
+                                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                        </Form.Item>
+                                    </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={12}>
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="address2"
+                                            label="Address Line 2"
+                                            rules={rules.address2}
+                                            hasFeedback
+                                        >
+                                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                        </Form.Item>
+                                    </Col>
 
-                        <Form.Item>
-                            <div style={AppStyles.marginTop40}>
-                                <Button style={componentStyles.continueButton} htmlType="submit" block>
-                                    Continue
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="city"
+                                            label="Town / City"
+                                            rules={rules.city}
+                                            hasFeedback
+                                        >
+                                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                        </Form.Item>
+                                    </Col>
+
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="postcode"
+                                            label="Post Code"
+                                            rules={rules.postcode}
+                                            hasFeedback
+                                        >
+                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="fromDate"
+                                            label="From (Date)"
+                                            rules={rules.fromDate}
+                                            hasFeedback
+                                        >
+                                            <DatePicker style={componentStyles.datePicker}
+                                                // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+                                                format={'YYYY/MM/DD'} />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                        <Form.Item
+                                            name="toDate"
+                                            label="To (Date)"
+                                            rules={rules.fromDate}
+                                            hasFeedback
+                                        >
+                                            <DatePicker style={componentStyles.datePicker}
+                                                // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+                                                format={'YYYY/MM/DD'} />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+
+                                        <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Current Address
+					                </Col>
+
+
+
+                                </Row>
+                                <Row gutter={16} justify="center">
+
+                                    <Col xs={12} sm={12} md={12} lg={12}>
+
+                                        <Form.Item>
+                                            <div style={AppStyles.marginTop40}>
+                                                <Button style={componentStyles.continueButton} htmlType="submit" block>
+                                                    Continue
                                 </Button>
 
-                            </div>
-                        </Form.Item>
-                    </Col>
-                </Row>
-            </Form>
+                                            </div>
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                            </Form>
+                            :
+                            <Row>
+
+                                <Col xs={24} sm={24} md={24} lg={24} >
+                                    <Card className="card" title="Address List">
+                                        <Table
+
+                                            bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1500, y: 200 }} />
+                                    </Card>
+                                </Col>
+                            </Row>
+                    }
+                </Col>
+            </Row>
 
         )
 

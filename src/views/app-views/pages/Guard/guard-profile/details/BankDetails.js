@@ -117,10 +117,10 @@ export class BankDetails extends Component {
                         </div>
                     </div>
                 </Col>
-                <Col xs={24} sm={24} md={20} lg={20} >
+                <Col xs={24} sm={24} md={24} lg={24} >
 
                     {
-                        form ?
+                        form == "Bank Details" ?
                             <Form layout="vertical">
                                 <Row gutter={16}>
 
@@ -218,7 +218,7 @@ export class BankDetails extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Guard's Docs">
+                                    <Card className="card" title="Bank List">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 950, y: 200 }} />

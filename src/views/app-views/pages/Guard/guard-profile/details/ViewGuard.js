@@ -30,7 +30,7 @@ export class ViewGuard extends Component {
         this.state = {
 
             type: "Personal Information",
-            form: false
+            form: ""
 
         };
     }
@@ -369,11 +369,11 @@ export class ViewGuard extends Component {
 
                                                 </Select>
                                             </Col>
-                                            {type == "Bank Details" ?
+                                            {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
                                                 <>
                                                     <Col xs={12} sm={12} md={4} lg={4}>
 
-                                                        <Button onClick={() => this.setState({ form: true })} style={componentStyles.continueButton} htmlType="submit" block>
+                                                        <Button onClick={() => this.setState({ form: type })} style={componentStyles.continueButton} htmlType="submit" block>
                                                             Add
                                                                 </Button>
 
@@ -399,15 +399,15 @@ export class ViewGuard extends Component {
                                             type === "Personal Information" ?
                                                 <PersonalInfo action={action} record={record} history={this.props.history} /> :
                                                 type === "Emergency Contact" ?
-                                                    <EmergencyContact action={action} record={record} history={this.props.history} /> :
+                                                    <EmergencyContact form={form} action={action} record={record} history={this.props.history} /> :
                                                     type === "Driving Licence" ?
                                                         <DrivingLicence action={action} record={record} history={this.props.history} /> :
                                                         type === "Education" ?
-                                                            <Education action={action} record={record} history={this.props.history} /> :
+                                                            <Education form={form} action={action} record={record} history={this.props.history} /> :
                                                             type === "Employment History" ?
-                                                                <EmploymentHistory action={action} record={record} history={this.props.history} /> :
+                                                                <EmploymentHistory form={form} action={action} record={record} history={this.props.history} /> :
                                                                 type === "Personal References" ?
-                                                                    <PersonalRef action={action} record={record} history={this.props.history} /> :
+                                                                    <PersonalRef form={form} action={action} record={record} history={this.props.history} /> :
                                                                     type === "Criminal Comvictions" ?
                                                                         <CriminalComvictions action={action} record={record} history={this.props.history} /> :
                                                                         type === "Health Questionnaire" ?
@@ -417,7 +417,7 @@ export class ViewGuard extends Component {
                                                                                 type === "Documents Upload" ?
                                                                                     <DocsUpload action={action} record={record} history={this.props.history} /> :
                                                                                     type === "Address History" ?
-                                                                                        <AddressHistory action={action} record={record} history={this.props.history} /> :
+                                                                                        <AddressHistory form={form} action={action} record={record} history={this.props.history} /> :
                                                                                         type === "Position & Pay" ?
                                                                                             <PositionAndPay action={action} record={record} history={this.props.history} /> :
                                                                                             type === "SIA Licence" ?

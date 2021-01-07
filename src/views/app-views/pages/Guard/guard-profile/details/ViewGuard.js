@@ -28,7 +28,7 @@ export class ViewGuard extends Component {
     super(props);
     this.state = {
       type: "Personal Information",
-      form: false,
+      form: "",
     };
   }
 
@@ -423,7 +423,7 @@ export class ViewGuard extends Component {
                                 <TabPane tab={`Documents Upload`} key={14} >
                                     <DocsUpload action={action} record={record} history={this.props.history} />
                                 </TabPane> */}
-                    <Row justify={"start"} style={AppStyles.marginBottom20}>
+<Row justify={"start"} style={AppStyles.marginBottom20}>
                       {/* {type} */}
                       <Col xs={24} sm={24} md={16} lg={16} style={{display:"flex", flexDirection:"row"}}>
                         <div
@@ -437,83 +437,66 @@ export class ViewGuard extends Component {
                         >
                           {type}
                         </div>
-                        <Select
-                          showSearch
-                          style={componentStyles.dropDownStyleWithWidth200}
-                          bordered={false}
-                          placeholder={type ? type : "Select Type"}
-                          optionFilterProp="children"
-                          onChange={(val) => this.handleChange("type", val)}
-                          // onFocus={onFocus}
-                          // onBlur={onBlur}
-                          // onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.props.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
-                        >
-                          <Option value="Personal Information">
-                            Personal Information
-                          </Option>
-                          <Option value="SIA Licence">SIA Licence</Option>
-                          <Option value="Position & Pay">Position & Pay</Option>
-                          <Option value="Right to Work">Right to Work</Option>
-                          <Option value="Emergency Contact">
-                            Emergency Contact
-                          </Option>
-                          <Option value="Address History">
-                            Address History
-                          </Option>
-                          <Option value="Driving Licence">
-                            Driving Licence
-                          </Option>
-                          <Option value="Education">Education</Option>
-                          <Option value="Employment History">
-                            Employment History
-                          </Option>
-                          <Option value="Personal References">
-                            Personal References
-                          </Option>
-                          <Option value="Criminal Comvictions">
-                            Criminal Comvictions
-                          </Option>
-                          <Option value="Health Questionnaire">
-                            Health Questionnaire
-                          </Option>
-                          <Option value="Bank Details">Bank Details</Option>
-                          <Option value="Documents Upload">
-                            Documents Upload
-                          </Option>
-                        </Select>
-                      </Col>
-                      {type == "Bank Details" ? (
-                        <>
-                          <Col xs={12} sm={12} md={4} lg={4}>
-                            <Button
-                              onClick={() => this.setState({ form: true })}
-                              style={componentStyles.continueButton}
-                              htmlType="submit"
-                              block
-                            >
-                              Add
-                            </Button>
-                          </Col>
-                          <Col xs={12} sm={12} md={4} lg={4}>
-                            <div style={AppStyles.marginLeft30}>
-                              <Button
-                                onClick={() => this.setState({ form: false })}
-                                style={componentStyles.cancelButton}
-                                htmlType="submit"
-                                block
-                              >
-                                Remove
-                              </Button>
-                            </div>
-                          </Col>
-                        </>
-                      ) : null}
-                    </Row>
+                                                <Select
+                                                    showSearch
+                                                    style={componentStyles.dropDownStyleWithWidth200}
+                                                    bordered={false}
+                                                    placeholder={type ? type : "Select Type"}
+                                                    optionFilterProp="children"
+                                                    onChange={(val) => this.handleChange("type", val)}
+                                                    // onFocus={onFocus}
+                                                    // onBlur={onBlur}
+                                                    // onSearch={onSearch}
+                                                    filterOption={(input, option) =>
+                                                        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                    }
+                                                >
+                                                    <Option value="Personal Information">Personal Information</Option>
+                                                    <Option value="SIA Licence">SIA Licence</Option>
+                                                    <Option value="Position & Pay">Position & Pay</Option>
+                                                    <Option value="Right to Work">Right to Work</Option>
+                                                    <Option value="Emergency Contact">Emergency Contact</Option>
+                                                    <Option value="Address History">Address History</Option>
+                                                    <Option value="Driving Licence">Driving Licence</Option>
+                                                    <Option value="Education">Education</Option>
+                                                    <Option value="Employment History">Employment History</Option>
+                                                    <Option value="Personal References">Personal References</Option>
+                                                    <Option value="Criminal Comvictions">Criminal Comvictions</Option>
+                                                    <Option value="Health Questionnaire">Health Questionnaire</Option>
+                                                    <Option value="Bank Details">Bank Details</Option>
+                                                    <Option value="Documents Upload">Documents Upload</Option>
+
+
+
+                                                </Select>
+                                            </Col>
+                                            {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
+                                                <>
+                                                    <Col xs={12} sm={12} md={4} lg={4}>
+
+                                                        <Button onClick={() => this.setState({ form: type })} style={componentStyles.continueButton} htmlType="submit" block>
+                                                            Add
+                                                                </Button>
+
+                                                    </Col>
+                                                    <Col xs={12} sm={12} md={4} lg={4}>
+
+                                                        <div style={AppStyles.marginLeft30}>
+                                                            <Button onClick={() => this.setState({ form: false })} style={componentStyles.cancelButton} htmlType="submit" block>
+                                                                Remove
+                                                                </Button>
+
+                                                        </div>
+                                                    </Col>
+
+                                                </>
+                                                : null
+                                            }
+
+
+
+                          
+                                        </Row>
 
                     {type === "Personal Information" ? (
                       <PersonalInfo

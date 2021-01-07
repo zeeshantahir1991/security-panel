@@ -428,7 +428,7 @@ export const AppStyles = {
     horizontallLineWidth100: { width: '100%', height: 0.5, backgroundColor: AppColors.alto },
     borderColorAlto: { borderColor: AppColors.alto },
     paddingBottom20: {
-        paddingBottom: 20
+        paddingBottom: 20,
     },
 
     sideBarIcon: { height: 30, width: 30, marginRight: 30 },

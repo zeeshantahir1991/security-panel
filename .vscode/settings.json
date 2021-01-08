@@ -1,3 +1,21 @@
 {
-    "workbench.colorTheme": "Solarized Dark"
+    "workbench.colorTheme": "Solarized Dark",
+    "css.completion.completePropertyWithSemicolon": false,
+    "better-comments.multilineComments": false,
+    "css.completion.triggerPropertyValueCompletion": false,
+    "css.validate": false,
+    "emmet.showAbbreviationSuggestions": false,
+    "git.autorefresh": false,
+    "git.confirmEmptyCommits": false,
+    "git.confirmNoVerifyCommit": false,
+    "git.confirmSync": false,
+    "git.decorations.enabled": false,
+    "git.detectSubmodules": false,
+    "git.enableStatusBarSync": false,
+    "git.openDiffOnClick": false,
+    "git.pullTags": false,
+    "git.showInlineOpenFileAction": false,
+    "git.showProgress": false,
+    "git.suggestSmartCommit": false,
+    "git.terminalAuthentication": false
 }

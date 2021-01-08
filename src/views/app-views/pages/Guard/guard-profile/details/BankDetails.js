@@ -30,33 +30,24 @@ export class BankDetails extends Component {
         const { form } = this.props;
 
         const tableColumns = [
-            {
-                title: 'Bank Name',
-                dataIndex: 'bankName',
-                render: (_, record) => (
-                    <div className="d-flex">
-                        {record.bankName}
-                    </div>
-                ),
-                sorter: {
-                    compare: (a, b) => {
-                        a = a.bankName.toLowerCase();
-                        b = b.bankName.toLowerCase();
-                        return a > b ? -1 : b > a ? 1 : 0;
-                    },
-                },
-                width: 200,
-                fixed: 'left'
-            },
-
-            {
-                title: 'Sort Code',
-                dataIndex: 'sortCode',
-                sorter: {
-                    compare: (a, b) => a.sortCode.length - b.sortCode.length,
-                },
-                width: 150
-            },
+            // {
+            //     title: 'Bank Name',
+            //     dataIndex: 'bankName',
+            //     render: (_, record) => (
+            //         <div className="d-flex">
+            //             {record.bankName}
+            //         </div>
+            //     ),
+            //     sorter: {
+            //         compare: (a, b) => {
+            //             a = a.bankName.toLowerCase();
+            //             b = b.bankName.toLowerCase();
+            //             return a > b ? -1 : b > a ? 1 : 0;
+            //         },
+            //     },
+            //     width: 200,
+            //     fixed: 'left'
+            // },
 
             {
                 title: 'Account Holder Name',
@@ -75,6 +66,17 @@ export class BankDetails extends Component {
                 },
                 width: 200,
             },
+
+            {
+                title: 'Sort Code',
+                dataIndex: 'sortCode',
+                sorter: {
+                    compare: (a, b) => a.sortCode.length - b.sortCode.length,
+                },
+                width: 150
+            },
+
+            
 
             {
                 title: 'Account Number ',
@@ -99,9 +101,9 @@ export class BankDetails extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -122,9 +124,9 @@ export class BankDetails extends Component {
                     {
                         form == "Bank Details" ?
                             <Form layout="vertical">
-                                <Row gutter={16}>
+                                <Row gutter={16} justify="center">
 
-                                    <Col xs={24} sm={24} md={6} lg={6} >
+                                    {/* <Col xs={24} sm={24} md={6} lg={6} >
 
                                         <Form.Item
                                             label="Bank Name"
@@ -140,7 +142,26 @@ export class BankDetails extends Component {
                                         >
                                             <Input style={componentStyles.borderColor} suffix={<BankOutlined />} />
                                         </Form.Item>
+                                    </Col> */}
+                                 
+                                    <Col xs={24} sm={24} md={6} lg={6} >
+
+                                        <Form.Item
+                                            label="Account Holder Name"
+                                            name="accountHolderName"
+                                            rules={
+                                                [
+                                                    {
+                                                        require: true,
+                                                        message: 'Please enter account holder name!'
+                                                    }
+                                                ]
+                                            }
+                                        >
+                                            <Input style={componentStyles.borderColor} suffix={<UserOutlined />} />
+                                        </Form.Item>
                                     </Col>
+
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             label="Sort code"
@@ -161,23 +182,7 @@ export class BankDetails extends Component {
                                         </Form.Item>
 
                                     </Col>
-                                    <Col xs={24} sm={24} md={6} lg={6} >
 
-                                        <Form.Item
-                                            label="Account Holder Name"
-                                            name="accountHolderName"
-                                            rules={
-                                                [
-                                                    {
-                                                        require: true,
-                                                        message: 'Please enter account holder name!'
-                                                    }
-                                                ]
-                                            }
-                                        >
-                                            <Input style={componentStyles.borderColor} suffix={<UserOutlined />} />
-                                        </Form.Item>
-                                    </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} >
 
                                         <Form.Item
@@ -221,7 +226,7 @@ export class BankDetails extends Component {
                                     <Card className="card" title="Bank List">
                                         <Table
 
-                                            bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 950, y: 200 }} />
+                                            bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 750, y: 200 }} />
                                     </Card>
                                 </Col>
                             </Row>

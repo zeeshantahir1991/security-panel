@@ -1,4 +1,4 @@
-import { BuildOutlined, CompassOutlined, LockOutlined, MailOutlined, MobileOutlined, NumberOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { BuildOutlined, CompassOutlined, LockOutlined, MailOutlined, MobileOutlined, NumberOutlined, PhoneOutlined, UserOutlined, InboxOutlined } from '@ant-design/icons';
 import { Alert, Avatar, Button, Col, Form, Input, Row, Select } from "antd";
 import { motion } from "framer-motion";
 import React, { useEffect } from 'react';
@@ -246,7 +246,7 @@ export const RegisterForm = (props) => {
 							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 						</Form.Item>
 					</Col>
-					
+
 				</Row>
 				<Row className="card" gutter={16} style={componentStyles.personalInfoContainer}>
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.flexDirectionRow}>
@@ -381,7 +381,7 @@ export const RegisterForm = (props) => {
 							rules={rules.postcode}
 							hasFeedback
 						>
-							<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+							<Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
 						</Form.Item>
 					</Col>
 

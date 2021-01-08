@@ -136,11 +136,19 @@ export class SiaRecordList extends Component {
             {
                 title: 'Licence Number',
                 dataIndex: 'licenceNumber',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        <span>{record.licenceNumber}</span>
+                    </div>
+                ),
                 sorter: {
-                    compare: (a, b) => a.licenceNumber.length - b.licenceNumber.length,
+                    compare: (a, b) => {
+                        a = a.licenceNumber.toLowerCase();
+                        b = b.licenceNumber.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
                 },
                 width: 200
-
             },
 
             {

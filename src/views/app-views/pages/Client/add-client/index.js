@@ -1,4 +1,4 @@
-import { BuildOutlined, CompassOutlined, DollarOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { BuildOutlined, CompassOutlined, DollarOutlined, MailOutlined, InboxOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
@@ -273,7 +273,7 @@ export class AddClient extends Component {
 											rules={rules.postcode}
 											hasFeedback
 										>
-											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+											<Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
 										</Form.Item>
 									</Col>
 

@@ -136,8 +136,5 @@ export const componentStyles = {
     typeStyle: {
         fontWeight: 'bold',
         fontSize: 20,
-        marginBottom: 20,
-        marginTop: 20,
-        marginLeft: 320
     },
 }

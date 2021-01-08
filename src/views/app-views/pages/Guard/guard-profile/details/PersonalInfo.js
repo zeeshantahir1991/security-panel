@@ -171,7 +171,7 @@ export class PersonalInfo extends Component {
                         <Col xs={24} sm={24} md={8} lg={8}>
                             <Form.Item
                                 name="dob"
-                                label="DOB"
+                                label="Date of Birth"
                                 rules={action === "viewItem" ? null : rules.dob}
                                 hasFeedback
                             >

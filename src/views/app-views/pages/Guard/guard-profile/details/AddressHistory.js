@@ -1,4 +1,4 @@
-import { CompassOutlined, NumberOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { CompassOutlined, NumberOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Form, Input, Row, Switch, Tag, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
@@ -156,9 +156,9 @@ export class AddressHistory extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -222,7 +222,7 @@ export class AddressHistory extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                            <Input  type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>

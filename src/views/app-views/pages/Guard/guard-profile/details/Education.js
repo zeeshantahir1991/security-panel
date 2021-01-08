@@ -1,4 +1,4 @@
-import { BankOutlined, CompassOutlined, NumberOutlined, StarOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { BankOutlined, CompassOutlined, NumberOutlined, StarOutlined, DeleteOutlined, EyeOutlined , InboxOutlined} from '@ant-design/icons';
 import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
@@ -156,7 +156,7 @@ export class Education extends Component {
             },
 
             {
-                title: 'From (Date)',
+                title: 'From',
                 dataIndex: 'fromDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -166,7 +166,7 @@ export class Education extends Component {
             },
 
             {
-                title: 'To (Date)',
+                title: 'To',
                 dataIndex: 'toDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -199,9 +199,9 @@ export class Education extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -264,7 +264,7 @@ export class Education extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="address1"
-                                            label="Institute Address Line 1"
+                                            label="Address Line 1"
                                             rules={rules.address1}
                                             hasFeedback
                                         >
@@ -275,7 +275,7 @@ export class Education extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="address2"
-                                            label="Institute Address Line 2"
+                                            label="Address Line 2"
                                             rules={rules.address2}
                                             hasFeedback
                                         >
@@ -301,13 +301,13 @@ export class Education extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="fromDate"
-                                            label="From (Date)"
+                                            label="From"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >
@@ -319,7 +319,7 @@ export class Education extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="toDate"
-                                            label="To (Date)"
+                                            label="To"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >

@@ -1,4 +1,4 @@
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, BookOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Form, Input, Row, Table, Tooltip } from 'antd';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -148,7 +148,7 @@ export class SiaLicence extends Component {
 	render() {
 		const { errorMessage } = this.state;
 		let licenseData = this.props.licenseData;
-		const {  } = this.props;
+		const { } = this.props;
 
 		const tableColumns = [
 			{
@@ -310,9 +310,11 @@ export class SiaLicence extends Component {
 										// hasFeedback
 										>
 											<Input
-												className="remove" type="number" min="0"
+												className="remove" type="text"
 												onChange={(val) => this.handleChange("licenseNo", val)}
-												style={componentStyles.borderColor} />
+												style={componentStyles.borderColor}
+												prefix={<BookOutlined />}
+											/>
 										</Form.Item>
 									</Col>
 

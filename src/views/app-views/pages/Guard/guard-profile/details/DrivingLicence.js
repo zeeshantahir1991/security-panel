@@ -1,4 +1,4 @@
-import { NumberOutlined } from '@ant-design/icons';
+import { BookOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Switch } from 'antd';
 import React, { Component } from 'react';
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
@@ -66,7 +66,7 @@ export class DrivingLicence extends Component {
                             rules={rules.licenceNo}
                             hasFeedback
                         >
-                            <Input style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                            <Input type={'text'} style={componentStyles.borderColor} prefix={<BookOutlined />} />
                         </Form.Item>
                     </Col>
                     <Col xs={24} sm={24} md={8} lg={8} style={AppStyles.alignSelfCenter}>

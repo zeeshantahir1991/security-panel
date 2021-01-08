@@ -1,4 +1,4 @@
-import { CompassOutlined, DollarOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { CompassOutlined, DollarOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
@@ -75,7 +75,7 @@ export class EmploymentHistory extends Component {
             },
 
             {
-                title: 'From (Date)',
+                title: 'From',
                 dataIndex: 'fromDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -83,9 +83,9 @@ export class EmploymentHistory extends Component {
                 sorter: (a, b) => moment(a.fromDate).unix() - moment(b.fromDate).unix(),
                 width: 200
             },
-
+            
             {
-                title: 'To (Date)',
+                title: 'To',
                 dataIndex: 'toDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -93,6 +93,9 @@ export class EmploymentHistory extends Component {
                 sorter: (a, b) => moment(a.toDate).unix() - moment(b.toDate).unix(),
                 width: 200
             },
+
+       
+
 
             {
                 title: 'Employer Name',
@@ -113,7 +116,7 @@ export class EmploymentHistory extends Component {
             },
 
             {
-                title: 'Employer Address Line 1',
+                title: 'Address Line 1',
                 dataIndex: 'address1',
                 render: (_, record) => (
                     <div className="d-flex">
@@ -131,7 +134,7 @@ export class EmploymentHistory extends Component {
             },
 
             {
-                title: 'Employer Address Line 2',
+                title: 'Address Line 2',
                 dataIndex: 'address2',
                 render: (_, record) => (
                     <div className="d-flex">
@@ -272,9 +275,9 @@ export class EmploymentHistory extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -299,7 +302,7 @@ export class EmploymentHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="employmentType"
-                                            label="Employment"
+                                            label="Employment Type"
                                             rules={rules.drivingLicence}
                                             hasFeedback
                                         >
@@ -307,7 +310,7 @@ export class EmploymentHistory extends Component {
                                                 showSearch
                                                 style={componentStyles.selectStyle}
                                                 bordered={false}
-                                                placeholder="Employment"
+                                                placeholder="Employment Type"
                                                 optionFilterProp="children"
                                                 onChange={(val) => this.handleChange("employmentType", val)}
                                                 // onFocus={onFocus}
@@ -326,10 +329,11 @@ export class EmploymentHistory extends Component {
                                             </Select>
                                         </Form.Item>
                                     </Col>
+                                   
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="fromDate"
-                                            label="From (Date)"
+                                            label="From"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >
@@ -341,7 +345,7 @@ export class EmploymentHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="toDate"
-                                            label="To (Date)"
+                                            label="To"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >
@@ -350,6 +354,7 @@ export class EmploymentHistory extends Component {
                                                 format={'YYYY/MM/DD'} />
                                         </Form.Item>
                                     </Col>
+                                 
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="employerName"
@@ -363,7 +368,7 @@ export class EmploymentHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="address1"
-                                            label="Employer Address Line 1"
+                                            label="Address Line 1"
                                             rules={rules.address1}
                                             hasFeedback
                                         >
@@ -374,7 +379,7 @@ export class EmploymentHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="address2"
-                                            label="Employer Address Line 2"
+                                            label="Address Line 2"
                                             rules={rules.address2}
                                             hasFeedback
                                         >
@@ -400,7 +405,7 @@ export class EmploymentHistory extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
 

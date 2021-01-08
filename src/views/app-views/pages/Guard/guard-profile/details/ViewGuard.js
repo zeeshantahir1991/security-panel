@@ -63,9 +63,7 @@ export class ViewGuard extends Component {
 
                         <Col xs={24} sm={24} md={20} lg={20} >
 
-                            <div style={componentStyles.typeStyle}>
-                                {type}
-                            </div>
+
                             <Row >
                                 <Col className="card" xs={24} sm={24} md={4} lg={4} style={{ backgroundColor: 'white' }}>
 
@@ -290,57 +288,22 @@ export class ViewGuard extends Component {
                                 <Col className="card" xs={24} sm={24} md={18} lg={18} style={{ backgroundColor: 'white', borderRadius: 10 }}>
                                     <Card style={{ border: 0 }}
                                     >
-                                        {/* <Tabs defaultActiveKey="1" tabBarGutter={16} tabPosition={'left'} style={{ backgroundColor: 'red' }} tabBarStyle={{ backgroundColor: 'white' }}>
-                                <TabPane tab={`Personal Information`} key={1}>
-                                    <PersonalInfo action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`SIA Licence`} key={2} >
-                                    <SiaRecordList action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Position & Pay`} key={3} >
-                                    <PositionAndPay action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Right to Work`} key={4} >
-                                    <RightToWork action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Emergency Contact`} key={5} >
-                                    <EmergencyContact action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Address History`} key={6} >
-                                    <AddressHistory action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Education`} key={7} >
-                                    <Education action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Employment History`} key={8} >
-                                    <EmploymentHistory action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Personal References`} key={9} >
-                                    <PersonalRef action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Criminal Comvictions`} key={10} >
-                                    <CriminalComvictions action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Driving Licence`} key={11} >
-                                    <DrivingLicence action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Health Questionnaire`} key={12} >
-                                    <HealthQuestionnaire action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Bank Details`} key={13} >
-                                    <BankDetails action={action} record={record} history={this.props.history} />
-                                </TabPane>
-                                <TabPane tab={`Documents Upload`} key={14} >
-                                    <DocsUpload action={action} record={record} history={this.props.history} />
-                                </TabPane> */}
+
                                         <Row justify={'start'} style={AppStyles.marginBottom20}>
-                                            <Col xs={24} sm={24} md={16} lg={16}>
+                                            <Col xs={6} sm={6} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+                                                <div style={componentStyles.typeStyle}>
+                                                    {type}
+                                                </div>
+                                            </Col>
+                                            <Col xs={14} sm={14} md={14} lg={14}>
 
                                                 <Select
                                                     showSearch
                                                     style={componentStyles.dropDownStyleWithWidth200}
                                                     bordered={false}
                                                     placeholder={type ? type : "Select Type"}
+                                                    value={type ? type : "Select Type"}
+
                                                     optionFilterProp="children"
                                                     onChange={(val) => this.handleChange("type", val)}
                                                     // onFocus={onFocus}
@@ -371,14 +334,14 @@ export class ViewGuard extends Component {
                                             </Col>
                                             {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
                                                 <>
-                                                    <Col xs={12} sm={12} md={4} lg={4}>
+                                                    <Col xs={4} sm={4} md={4} lg={4}>
 
                                                         <Button onClick={() => this.setState({ form: type })} style={componentStyles.continueButton} htmlType="submit" block>
                                                             Add
                                                                 </Button>
 
                                                     </Col>
-                                                    <Col xs={12} sm={12} md={4} lg={4}>
+                                                    {/* <Col xs={12} sm={12} md={4} lg={4}>
 
                                                         <div style={AppStyles.marginLeft30}>
                                                             <Button onClick={() => this.setState({ form: false })} style={componentStyles.cancelButton} htmlType="submit" block>
@@ -386,7 +349,7 @@ export class ViewGuard extends Component {
                                                                 </Button>
 
                                                         </div>
-                                                    </Col>
+                                                    </Col> */}
 
                                                 </>
                                                 : null
@@ -427,12 +390,10 @@ export class ViewGuard extends Component {
 
                                                                                                     null
                                         }
-                                        {/* </Tabs> */}
 
                                     </Card>
                                 </Col>
                             </Row>
-                            {/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
                         </Col>
 
                     </Row>
@@ -443,7 +404,13 @@ export class ViewGuard extends Component {
                             </Col>
                         </Row>
                     </div>
-                    <GuardProfile location={this.props.location} history={this.props.history} record={record} />
+                    <div style={AppStyles.marginTop50}>
+                        <Row>
+                            <Col xs={24} sm={24} md={24} lg={24} >
+                                <GuardProfile location={this.props.location} history={this.props.history} record={record} />
+                            </Col>
+                        </Row>
+                    </div>
                 </div>
             )
         }

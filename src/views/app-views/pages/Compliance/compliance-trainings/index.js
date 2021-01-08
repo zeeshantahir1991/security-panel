@@ -226,9 +226,9 @@ export class ComplianceTraining extends Component {
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-right">
-						<Tooltip title="View">
+						{/* <Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
+						</Tooltip> */}
 						<Tooltip title="Delete">
 							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
 						</Tooltip>

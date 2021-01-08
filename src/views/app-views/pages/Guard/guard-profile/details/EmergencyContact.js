@@ -1,4 +1,4 @@
-import { CompassOutlined, MailOutlined, MobileOutlined, NumberOutlined, PhoneOutlined, UserOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { CompassOutlined, MailOutlined, MobileOutlined, NumberOutlined, PhoneOutlined, UserOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
@@ -239,9 +239,9 @@ export class EmergencyContact extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -405,7 +405,7 @@ export class EmergencyContact extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
 

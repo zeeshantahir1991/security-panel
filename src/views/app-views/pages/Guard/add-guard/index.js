@@ -210,7 +210,7 @@ export class AddGuard extends Component {
 									<Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="dob"
-											label="DOB"
+											label="Date of Birth"
 											rules={rules.dob}
 											hasFeedback
 										>

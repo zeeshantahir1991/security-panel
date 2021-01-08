@@ -240,9 +240,9 @@ export class ComplianceInterviews extends Component {
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-right">
-						<Tooltip title="View">
+						{/* <Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
+						</Tooltip> */}
 						<Tooltip title="Delete">
 							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
 						</Tooltip>
@@ -399,7 +399,7 @@ export class ComplianceInterviews extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="compliance Interview List" >
+						<Card className="card" title="Compliance Interview List" >
 							<Table bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 1100, y: 300 }} />
 						</Card>
 					</Col>

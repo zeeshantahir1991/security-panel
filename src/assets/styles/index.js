@@ -227,6 +227,11 @@ export const AppStyles = {
         marginRight: 5,
         marginLeft: 5
     },
+
+    marginLeft20: {
+        marginLeft: 20
+    },
+
     marginLeft30: {
         marginLeft: 30
     },

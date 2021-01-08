@@ -1,4 +1,4 @@
-import { AuditOutlined, MailOutlined, NumberOutlined, UserOutlined, CompassOutlined, PhoneOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { AuditOutlined, MailOutlined, NumberOutlined, UserOutlined, InboxOutlined, CompassOutlined, PhoneOutlined, DeleteOutlined, FieldTimeOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Form, Input, Row, Tooltip, Card, Table } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
@@ -105,7 +105,7 @@ export class PersonalRef extends Component {
                 width: 200
             },
 
-        
+
             {
                 title: 'Town/City',
                 dataIndex: 'city',
@@ -142,27 +142,27 @@ export class PersonalRef extends Component {
                 width: 200
             },
 
-           
+
 
             {
-				title: 'Email',
-				dataIndex: 'email',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.email}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.email.toLowerCase();
-						b = b.email.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
+                title: 'Email',
+                dataIndex: 'email',
+                render: (_, record) => (
+                    <div className="d-flex">
+                        <span>{record.email}</span>
+                    </div>
+                ),
+                sorter: {
+                    compare: (a, b) => {
+                        a = a.email.toLowerCase();
+                        b = b.email.toLowerCase();
+                        return a > b ? -1 : b > a ? 1 : 0;
+                    },
+                },
+                width: 200
             },
-            
-            
+
+
             {
                 title: 'Phone',
                 dataIndex: 'phone',
@@ -200,7 +200,7 @@ export class PersonalRef extends Component {
                 width: 200
             },
 
-            
+
             {
                 title: 'Year',
                 dataIndex: 'year',
@@ -227,9 +227,9 @@ export class PersonalRef extends Component {
                 dataIndex: 'actions',
                 render: (_, elm) => (
                     <div className="text-right">
-                        <Tooltip title="View">
+                        {/* <Tooltip title="View">
                             <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title="Delete">
                             <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
                         </Tooltip>
@@ -321,7 +321,7 @@ export class PersonalRef extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
 
@@ -366,8 +366,11 @@ export class PersonalRef extends Component {
                                             hasFeedback
                                         >
                                             <div style={AppStyles.flexDirectionRow}>
-                                                <DatePicker style={componentStyles.datePicker} picker="year" />
-                                                <DatePicker style={componentStyles.datePicker} picker="month" />
+
+                                                <Input placeholder={'Year'} min="0" type="number" style={componentStyles.borderColor} prefix={<FieldTimeOutlined />} />
+                                                <div style={AppStyles.marginLeft20}>
+                                                    <Input placeholder={'Month'} min="0" type="number" style={componentStyles.borderColor} prefix={<FieldTimeOutlined />} />
+                                                </div>
                                             </div>
                                         </Form.Item>
                                     </Col>

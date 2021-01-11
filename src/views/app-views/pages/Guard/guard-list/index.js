@@ -182,7 +182,7 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 200,
+				width: 150,
 				fixed: 'left'
 			},
 			
@@ -199,7 +199,7 @@ export class GuardsList extends Component {
 						}
 					</div>
 				),
-				width: 300
+				width: 150
 			},
 
 			{
@@ -210,7 +210,7 @@ export class GuardsList extends Component {
 						 <Progress percent={record.progress}  strokeColor={AppColors.skyBlue}/>
 					</div>
 				),
-				width: 300
+				width: 150
 			},
 		
 			{
@@ -220,7 +220,7 @@ export class GuardsList extends Component {
 					<span>{moment.unix(date).format("MM/DD/YYYY")} </span>
 				),
 				sorter: (a, b) => moment(a.birthday).unix() - moment(b.birthday).unix(),
-				width: 150
+				width: 120
 			},
 			{
 				title: 'Email',
@@ -245,7 +245,7 @@ export class GuardsList extends Component {
 				sorter: {
 					compare: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
 				},
-				width: 150
+				width: 120
 			},
 			{
 				title: 'SIA License',
@@ -253,6 +253,7 @@ export class GuardsList extends Component {
 				sorter: {
 					compare: (a, b) => a.siaLicence.length - b.siaLicence.length,
 				},
+				width: 150
 			},
 			{
 				title: 'SIA Licence Expiry',
@@ -261,7 +262,7 @@ export class GuardsList extends Component {
 					<span>{moment.unix(date).format("MM/DD/YYYY")} </span>
 				),
 				sorter: (a, b) => moment(a.siaLicenceExpiry).unix() - moment(b.siaLicenceExpiry).unix(),
-				width: 200
+				width: 130
 			},
 
 			{
@@ -274,6 +275,7 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
+				width: 60
 			},
 			{
 				title: 'Pay Rate',
@@ -281,6 +283,7 @@ export class GuardsList extends Component {
 				sorter: {
 					compare: (a, b) => a.payRate.length - b.payRate.length,
 				},
+				width: 70
 			},
 			{
 				title: 'Employment Type',
@@ -297,25 +300,25 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 200
+				width: 100
 			},
-			{
-				title: 'Subcontract Name',
-				dataIndex: 'subcontractName',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.subcontractName}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.subcontractName.toLowerCase();
-						b = b.subcontractName.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
-			},
+			// {
+			// 	title: 'Subcontract Name',
+			// 	dataIndex: 'subcontractName',
+			// 	render: (_, record) => (
+			// 		<div className="d-flex">
+			// 			<span>{record.subcontractName}</span>
+			// 		</div>
+			// 	),
+			// 	sorter: {
+			// 		compare: (a, b) => {
+			// 			a = a.subcontractName.toLowerCase();
+			// 			b = b.subcontractName.toLowerCase();
+			// 			return a > b ? -1 : b > a ? 1 : 0;
+			// 		},
+			// 	},
+			// 	width: 200
+			// },
 
 			{
 				title: 'Status',
@@ -326,6 +329,7 @@ export class GuardsList extends Component {
 				sorter: {
 					compare: (a, b) => a.status.length - b.status.length,
 				},
+				width: 100
 			},
 			{
 				title: '',
@@ -338,7 +342,8 @@ export class GuardsList extends Component {
 							size="small" />
 						</Tooltip>
 					</div>
-				)
+				),
+				width:0				
 			},
 
 		];

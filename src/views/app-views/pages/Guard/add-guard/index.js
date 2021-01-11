@@ -234,7 +234,7 @@ export class AddGuard extends Component {
 									<Col xs={24} sm={24} md={12} lg={12}>
 										<Form.Item
 											name="niNumber"
-											label="Ni Number"
+											label="NI Number"
 											rules={rules.niNumber}
 											hasFeedback
 										>

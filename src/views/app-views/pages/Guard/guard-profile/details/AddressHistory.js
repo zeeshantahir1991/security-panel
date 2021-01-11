@@ -276,7 +276,7 @@ export class AddressHistory extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Address List">
+                                    <Card className="card" title="Address Details">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1500, y: 200 }} />

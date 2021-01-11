@@ -120,7 +120,7 @@ export class AddressHistory extends Component {
             },
 
             {
-                title: 'From (Date)',
+                title: 'From',
                 dataIndex: 'fromDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -130,7 +130,7 @@ export class AddressHistory extends Component {
             },
 
             {
-                title: 'To (Date)',
+                title: 'To',
                 dataIndex: 'toDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -228,7 +228,7 @@ export class AddressHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="fromDate"
-                                            label="From (Date)"
+                                            label="From"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >
@@ -240,7 +240,7 @@ export class AddressHistory extends Component {
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Form.Item
                                             name="toDate"
-                                            label="To (Date)"
+                                            label="To"
                                             rules={rules.fromDate}
                                             hasFeedback
                                         >

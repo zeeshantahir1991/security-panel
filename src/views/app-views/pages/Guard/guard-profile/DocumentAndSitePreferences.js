@@ -35,9 +35,11 @@ export class DocumentAndSitePreferences extends Component {
 
         return (
 
-            <Row justify="center" style={AppStyles.marginTop20}>
+            <Row 
+            // justify="center"
+            style={AppStyles.marginTop20}>
 
-                <Col xs={24} sm={24} md={20} lg={20} >
+                <Col xs={24} sm={24} md={24} lg={24} >
 
 
                     <Row >
@@ -100,9 +102,9 @@ export class DocumentAndSitePreferences extends Component {
                             </Menu>
 
                         </Col>
-                        <Col xs={24} sm={24} md={2} lg={2} >
+                        <Col xs={24} sm={24} md={1} lg={1} >
                         </Col>
-                        <Col className="card" xs={24} sm={24} md={18} lg={18} style={{ backgroundColor: 'white', borderRadius: 10 }}>
+                        <Col className="card" xs={24} sm={24} md={19} lg={19} style={{ backgroundColor: 'white', borderRadius: 10 }}>
                             <Card style={{ border: 0 }}
                             >
 

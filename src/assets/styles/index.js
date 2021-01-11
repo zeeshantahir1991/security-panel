@@ -101,7 +101,8 @@ export const AppStyles = {
     },
 
     marginTop50: {
-        marginTop: 50
+        marginTop: 10,
+        // backgroundColor:"green"
     },
 
     marginTop55: {
@@ -193,7 +194,8 @@ export const AppStyles = {
     },
 
     marginBottom20: {
-        marginBottom: 20
+        marginBottom: 20,
+        // backgroundColor: "orange"
     },
     marginRight30: {
         marginRight: 30

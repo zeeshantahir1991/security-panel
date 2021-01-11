@@ -331,20 +331,20 @@ export class GuardsList extends Component {
 				},
 				width: 100
 			},
-			// {
-			// 	title: '',
-			// 	dataIndex: 'actions',
-			// 	render: (_, elm) => (
-			// 		<div className="text-center">
-			// 			<Tooltip title="Edit">
-			// 				<Button type="primary" className="mr-2" icon={<EditOutlined />} 
-			// 				onClick={() => { this.viewItem("editItem", elm) }} 
-			// 				size="small" />
-			// 			</Tooltip>
-			// 		</div>
-			// 	),
-			// 	width:0				
-			// },
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-center">
+						<Tooltip title="Edit">
+							<Button type="primary" className="mr-2" icon={<EditOutlined />} 
+							onClick={() => { this.viewItem("editItem", elm) }} 
+							size="small" />
+						</Tooltip>
+					</div>
+				),
+				width:0				
+			},
 
 		];
 		return (

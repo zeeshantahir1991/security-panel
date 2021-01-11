@@ -153,24 +153,7 @@ export class ComplianceInterviews extends Component {
 		const { compliance, search } = this.state;
 
 		const tableColumns = [
-			{
-				title: 'Guard Name',
-				dataIndex: 'guardName',
-				render: (_, record) => (
-					<div className="d-flex">
-						<AvatarStatus src={record.img} name={record.guardName} />
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.guardName.toLowerCase();
-						b = b.guardName.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200,
-				fixed: 'left'
-			},
+		
 
 			{
 				title: 'Interview Status',
@@ -254,7 +237,7 @@ export class ComplianceInterviews extends Component {
 		return (
 			<>
 				<Row gutter={16} justify="center">
-					<Col xs={20} sm={20} md={20} lg={20}>
+					<Col xs={24} sm={24} md={24} lg={24}>
 
 						<Row gutter={16}>
 							{
@@ -275,7 +258,7 @@ export class ComplianceInterviews extends Component {
 					</Col>
 				</Row>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -336,7 +319,7 @@ export class ComplianceInterviews extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -398,9 +381,9 @@ export class ComplianceInterviews extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Compliance Interview List" >
-							<Table bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 1100, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 900, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

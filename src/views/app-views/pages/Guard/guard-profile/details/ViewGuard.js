@@ -59,20 +59,20 @@ export class ViewGuard extends Component {
                 <div style={AppStyles.marginTop50}>
 
 
-                    <Row 
+                    <Row
                     // justify="center"
                     >
 
-                        <Col xs={24} sm={24} md={20} lg={24} 
+                        <Col xs={24} sm={24} md={20} lg={24}
                         // style={{backgroundColor:"yellow"}}
                         >
 
 
                             <Row >
                                 <Col className="card"
-                                 xs={24} sm={24} md={4} lg={4} 
-                                 style={{ backgroundColor: 'white' }}
-                                 >
+                                    xs={24} sm={24} md={4} lg={4}
+                                    style={{ backgroundColor: 'white' }}
+                                >
 
                                     <Menu mode="vertical">
 
@@ -292,12 +292,13 @@ export class ViewGuard extends Component {
                                 </Col>
                                 <Col xs={24} sm={24} md={1} lg={1} >
                                 </Col>
-                                <Col className="card" xs={24} sm={24} md={19} lg={19} 
-                                style={{ 
-                                    backgroundColor: 'white',
-                                    borderRadius: 10}}
+                                <Col className="card" xs={24} sm={24} md={19} lg={19}
+                                    style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: 10
+                                    }}
                                 >
-                                    <Card style={{ border: 0}}
+                                    <Card style={{ border: 0 }}
                                     >
 
                                         <Row justify={'start'} style={AppStyles.marginBottom20}>
@@ -306,7 +307,7 @@ export class ViewGuard extends Component {
                                                     {type}
                                                 </div>
                                             </Col>
-                                            <Col xs={14} sm={14} md={14} lg={14}>
+                                            <Col xs={14} sm={14} md={14} lg={14} style={AppStyles.alignSelfCenter}>
 
                                                 <Select
                                                     showSearch
@@ -343,7 +344,7 @@ export class ViewGuard extends Component {
 
                                                 </Select>
                                             </Col>
-                                            {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
+                                            {/* {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
                                                 <>
                                                     <Col xs={4} sm={4} md={4} lg={4}>
 
@@ -352,19 +353,18 @@ export class ViewGuard extends Component {
                                                                 </Button>
 
                                                     </Col>
-                                                    {/* <Col xs={12} sm={12} md={4} lg={4}>
-
-                                                        <div style={AppStyles.marginLeft30}>
-                                                            <Button onClick={() => this.setState({ form: false })} style={componentStyles.cancelButton} htmlType="submit" block>
-                                                                Remove
-                                                                </Button>
-
-                                                        </div>
-                                                    </Col> */}
+                                             
 
                                                 </>
                                                 : null
-                                            }
+                                            } */}
+                                            <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
+
+                                                <div style={componentStyles.nameStyle}>
+                                                    {record.name}
+                                                </div>
+
+                                            </Col>
 
                                         </Row>
 
@@ -411,7 +411,7 @@ export class ViewGuard extends Component {
                     <div style={AppStyles.marginTop50}>
                         <Row>
                             <Col xs={24} sm={24} md={24} lg={24} >
-                                <ComplianceData location={this.props.location} history={this.props.history} />
+                                <ComplianceData location={this.props.location} history={this.props.history} record={record}/>
                             </Col>
                         </Row>
                     </div>

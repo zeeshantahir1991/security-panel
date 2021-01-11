@@ -12,16 +12,16 @@ import { AppStyles } from "../../../../../../assets/styles";
 
 const userData = [
 	{
-	  "id": "1",
-	  "name": "Eileen Horton",
-	  "issueNumber": "1",
-	  "img": "/img/avatars/thumb-1.jpg",
-	  "desc": "xyz",
-	  "type": "compliance",
-	  "uploadDate": 1583107200
-	 
+		"id": "1",
+		"name": "Eileen Horton",
+		"issueNumber": "1",
+		"img": "/img/avatars/thumb-1.jpg",
+		"desc": "xyz",
+		"type": "compliance",
+		"uploadDate": 1583107200
+
 	}
-  ]
+]
 
 
 const latestTransactionOption = (
@@ -69,7 +69,7 @@ export class Docs extends Component {
 
 	render() {
 		const { users, selectionType } = this.state;
-		const {  } = this.props;
+		const { } = this.props;
 		const tableColumns = [
 			{
 				title: 'Name',
@@ -170,7 +170,7 @@ export class Docs extends Component {
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 
-					<Col xs={24} sm={24} md={20} lg={20} >
+					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Guard's Docs" extra={cardDropdown(latestTransactionOption)}>
 							<Table
 								rowSelection={{

@@ -32,12 +32,12 @@ export class DocumentAndSitePreferences extends Component {
 
     render() {
         const { type } = this.state;
-
+        const { record } = this.props;
         return (
 
-            <Row 
-            // justify="center"
-            style={AppStyles.marginTop20}>
+            <Row
+                // justify="center"
+                style={AppStyles.marginTop20}>
 
                 <Col xs={24} sm={24} md={24} lg={24} >
 
@@ -141,7 +141,13 @@ export class DocumentAndSitePreferences extends Component {
 
                                         </Select>
                                     </Col>
+                                    <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
 
+                                        <div style={componentStyles.nameStyle}>
+                                            {record.name}
+                                        </div>
+
+                                    </Col>
 
                                 </Row>
 

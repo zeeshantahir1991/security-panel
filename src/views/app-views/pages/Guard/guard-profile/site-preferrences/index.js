@@ -187,7 +187,7 @@ export class SitePreferrences extends Component {
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 
-					<Col xs={24} sm={24} md={20} lg={20} >
+					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Preferred Sites" extra={cardDropdown(latestTransactionOption)}>
 							<Table
 

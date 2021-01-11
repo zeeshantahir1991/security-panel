@@ -34,6 +34,7 @@ export class ComplianceData extends Component {
 
     render() {
         const { type } = this.state;
+        const {record} = this.props;
         return (
            
                            
@@ -144,7 +145,13 @@ export class ComplianceData extends Component {
     
                                                     </Select>
                                                 </Col>
-                                          
+                                                <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
+
+                                                   <div style={componentStyles.nameStyle}>
+                                                        {record.name}
+                                                    </div>
+
+                                                </Col>
     
                                             </Row>
     

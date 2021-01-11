@@ -8,14 +8,5 @@
       "interviewer": "SC user A",
       "interviewDate": 1583107200
      
-    },
-    {
-      "id": "2",
-      "guardName": "Terrance Moreno",
-      "interviewStatus": "Pending",
-      "img": "/img/avatars/thumb-2.jpg",
-      "position": "Supervisor",
-      "interviewer": "EMPTY",
-      "interviewDate": "EMPTY"
     }
   ]

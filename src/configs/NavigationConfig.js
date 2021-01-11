@@ -663,7 +663,7 @@ const navigationConfig = [
   ...clientNavTree,
   ...siteNavTree,
   ...mobilepatrolNavTree,
-  ...subcontractorNavTree,
+  // ...subcontractorNavTree,
   ...optNavTree,
   ...schedulingNavTree,
   ...complianceNavTree,

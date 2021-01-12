@@ -60,7 +60,7 @@ export class PersonalRef extends Component {
             },
 
             {
-                title: 'To (Date)',
+                title: 'To',
                 dataIndex: 'toDate',
                 render: date => (
                     <span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
@@ -395,7 +395,7 @@ export class PersonalRef extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Personal Ref List">
+                                    <Card className="card" title="References">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={personalRefList} rowKey='id' scroll={{ x: 2400, y: 200 }} />

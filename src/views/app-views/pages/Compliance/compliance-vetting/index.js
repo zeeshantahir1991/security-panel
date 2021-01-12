@@ -19,30 +19,6 @@ const vettingData = [
 		"vettingStartDate": 1583107200,
 		"auditDate": 1583107200,
 
-	},
-	{
-		"id": "2",
-		"guardName": "Terrance Moreno",
-		"img": "/img/avatars/thumb-2.jpg",
-		"screenStatus": "Pending Vetting",
-		"auditBy": "Empty",
-		"vettedBy": "SC user A",
-		"vettingCompletedOn": 1583107200,
-		"vettingStartDate": 1583107200,
-		"auditDate": 1583107200,
-
-
-	},
-	{
-		"id": "3",
-		"guardName": "Ron Vargas",
-		"img": "/img/avatars/thumb-3.jpg",
-		"screenStatus": "Pending Vetting",
-		"auditBy": "Empty",
-		"vettedBy": "SC user A",
-		"vettingCompletedOn": 1583107200,
-		"vettingStartDate": 1583107200,
-		"auditDate": 1583107200,
 	}
 ]
 
@@ -143,25 +119,7 @@ export class ComplianceVetting extends Component {
 		const { vetting, search } = this.state;
 
 		const tableColumns = [
-			{
-				title: 'Guard Name',
-				dataIndex: 'guardName',
-				render: (_, record) => (
-					<div className="d-flex">
-						<AvatarStatus src={record.img} name={record.guardName} />
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.guardName.toLowerCase();
-						b = b.guardName.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200,
-				fixed: 'left'
-			},
-
+			
 			{
 				title: 'Screen Status',
 				dataIndex: 'screenStatus',
@@ -255,9 +213,9 @@ export class ComplianceVetting extends Component {
 						{/* <Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
 						</Tooltip> */}
-						<Tooltip title="Delete">
+						{/* <Tooltip title="Delete">
 							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
+						</Tooltip> */}
 					</div>
 				)
 			}
@@ -266,7 +224,7 @@ export class ComplianceVetting extends Component {
 		return (
 			<>
 				<Row gutter={16} justify="center">
-					<Col xs={20} sm={20} md={20} lg={20}>
+					<Col xs={24} sm={24} md={24} lg={24}>
 
 						<Row gutter={16}>
 							{
@@ -287,7 +245,7 @@ export class ComplianceVetting extends Component {
 					</Col>
 				</Row>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -368,7 +326,7 @@ export class ComplianceVetting extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -451,9 +409,9 @@ export class ComplianceVetting extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Vetting List" >
-							<Table bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1600, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1400, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

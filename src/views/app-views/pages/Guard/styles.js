@@ -116,7 +116,7 @@ export const componentStyles = {
         marginBottom: 20
     },
 
-    
+
     healthQuestionnaireTitle1: {
         fontWeight: 'bold',
         fontSize: 15,
@@ -136,5 +136,11 @@ export const componentStyles = {
     typeStyle: {
         fontWeight: 'bold',
         fontSize: 20,
+    },
+
+    nameStyle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'right'
     },
 }

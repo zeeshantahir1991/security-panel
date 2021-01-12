@@ -219,7 +219,7 @@ export class Education extends Component {
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} >
                     {
-                        form == "Education"?
+                        form == "Education History"?
                             <Form layout="vertical">
                                 <Row gutter={16}>
 
@@ -361,7 +361,7 @@ export class Education extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Education List">
+                                    <Card className="card" title="Education Details">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={eductaionList} rowKey='id' scroll={{ x: 2100, y: 200 }} />

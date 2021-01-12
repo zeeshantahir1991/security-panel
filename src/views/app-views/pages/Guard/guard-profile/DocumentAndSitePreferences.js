@@ -14,7 +14,7 @@ export class DocumentAndSitePreferences extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: "Site Preferrences"
+            type: "Documents and Preferences"
 
         };
     }
@@ -32,12 +32,12 @@ export class DocumentAndSitePreferences extends Component {
 
     render() {
         const { type } = this.state;
-
+        const { record } = this.props;
         return (
 
-            <Row 
-            // justify="center"
-            style={AppStyles.marginTop20}>
+            <Row
+                // justify="center"
+                style={AppStyles.marginTop20}>
 
                 <Col xs={24} sm={24} md={24} lg={24} >
 
@@ -49,19 +49,19 @@ export class DocumentAndSitePreferences extends Component {
 
                                 <Menu.Item
                                     className="menuHover"
-                                    onClick={() => this.setState({ type: "Site Preferrences" })}
-                                    style={'Site Preferrences' === type ? componentStyles.staffMenuItemSelected : null
+                                    onClick={() => this.setState({ type: "Documents and Preferences" })}
+                                    style={'Documents and Preferences' === type ? componentStyles.staffMenuItemSelected : null
                                     }
                                 >
                                     {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
 
                                     <span
                                         style={{
-                                            color: 'Site Preferrences' === type ? AppColors.pictonBlue : null
+                                            color: 'Documents and Preferences' === type ? AppColors.pictonBlue : null
                                         }}
 
                                     >
-                                        Site Preferrences
+                                        Documents and Preferences
 
                                     </span>
                                 </Menu.Item>
@@ -132,7 +132,7 @@ export class DocumentAndSitePreferences extends Component {
                                                 option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                             }
                                         >
-                                            <Option value="Site Preferrences">Site Preferrences</Option>
+                                            <Option value="Documents and Preferences">Documents and Preferences</Option>
                                             <Option value="Holidays">Holidays</Option>
                                             <Option value="Docs">Docs</Option>
 
@@ -141,12 +141,18 @@ export class DocumentAndSitePreferences extends Component {
 
                                         </Select>
                                     </Col>
+                                    <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
 
+                                        <div style={componentStyles.nameStyle}>
+                                            {record.name}
+                                        </div>
+
+                                    </Col>
 
                                 </Row>
 
 
-                                {type === "Site Preferrences" ?
+                                {type === "Documents and Preferences" ?
                                     <SitePreferrences /> :
                                     type === "Holidays" ?
                                         <Holidays /> :

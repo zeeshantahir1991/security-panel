@@ -59,20 +59,20 @@ export class ViewGuard extends Component {
                 <div style={AppStyles.marginTop50}>
 
 
-                    <Row 
+                    <Row
                     // justify="center"
                     >
 
-                        <Col xs={24} sm={24} md={20} lg={24} 
+                        <Col xs={24} sm={24} md={20} lg={24}
                         // style={{backgroundColor:"yellow"}}
                         >
 
 
                             <Row >
                                 <Col className="card"
-                                 xs={24} sm={24} md={4} lg={4} 
-                                 style={{ backgroundColor: 'white' }}
-                                 >
+                                    xs={24} sm={24} md={4} lg={4}
+                                    style={{ backgroundColor: 'white' }}
+                                >
 
                                     <Menu mode="vertical">
 
@@ -188,16 +188,16 @@ export class ViewGuard extends Component {
 
                                         <Menu.Item
                                             className="menuHover"
-                                            onClick={() => this.setState({ type: "Education" })}
-                                            style={'Education' === type ? componentStyles.staffMenuItemSelected : null
+                                            onClick={() => this.setState({ type: "Education History" })}
+                                            style={'Education History' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
                                             <span
                                                 style={{
-                                                    color: 'Education' === type ? AppColors.pictonBlue : null
+                                                    color: 'Education History' === type ? AppColors.pictonBlue : null
                                                 }}
                                             >
-                                                Education
+                                                Education History
                                                </span>
                                         </Menu.Item>
                                         <Menu.Item
@@ -230,16 +230,16 @@ export class ViewGuard extends Component {
                                         </Menu.Item>
                                         <Menu.Item
                                             className="menuHover"
-                                            onClick={() => this.setState({ type: "Criminal Comvictions" })}
-                                            style={'Criminal Comvictions' === type ? componentStyles.staffMenuItemSelected : null
+                                            onClick={() => this.setState({ type: "Criminal Conviction" })}
+                                            style={'Criminal Conviction' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
                                             <span
                                                 style={{
-                                                    color: 'Criminal Comvictions' === type ? AppColors.pictonBlue : null
+                                                    color: 'Criminal Conviction' === type ? AppColors.pictonBlue : null
                                                 }}
                                             >
-                                                Criminal Comvictions
+                                                Criminal Conviction
                                                </span>
                                         </Menu.Item>
                                         <Menu.Item
@@ -292,12 +292,13 @@ export class ViewGuard extends Component {
                                 </Col>
                                 <Col xs={24} sm={24} md={1} lg={1} >
                                 </Col>
-                                <Col className="card" xs={24} sm={24} md={19} lg={19} 
-                                style={{ 
-                                    backgroundColor: 'white',
-                                    borderRadius: 10}}
+                                <Col className="card" xs={24} sm={24} md={19} lg={19}
+                                    style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: 10
+                                    }}
                                 >
-                                    <Card style={{ border: 0}}
+                                    <Card style={{ border: 0 }}
                                     >
 
                                         <Row justify={'start'} style={AppStyles.marginBottom20}>
@@ -306,7 +307,7 @@ export class ViewGuard extends Component {
                                                     {type}
                                                 </div>
                                             </Col>
-                                            <Col xs={14} sm={14} md={14} lg={14}>
+                                            <Col xs={14} sm={14} md={14} lg={14} style={AppStyles.alignSelfCenter}>
 
                                                 <Select
                                                     showSearch
@@ -331,10 +332,10 @@ export class ViewGuard extends Component {
                                                     <Option value="Emergency Contact">Emergency Contact</Option>
                                                     <Option value="Address History">Address History</Option>
                                                     <Option value="Driving Licence">Driving Licence</Option>
-                                                    <Option value="Education">Education</Option>
+                                                    <Option value="Education History">Education History</Option>
                                                     <Option value="Employment History">Employment History</Option>
                                                     <Option value="Personal References">Personal References</Option>
-                                                    <Option value="Criminal Comvictions">Criminal Comvictions</Option>
+                                                    <Option value="Criminal Conviction">Criminal Conviction</Option>
                                                     <Option value="Health Questionnaire">Health Questionnaire</Option>
                                                     <Option value="Bank Details">Bank Details</Option>
                                                     <Option value="Documents Upload">Documents Upload</Option>
@@ -343,7 +344,7 @@ export class ViewGuard extends Component {
 
                                                 </Select>
                                             </Col>
-                                            {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
+                                            {/* {type == "Bank Details" || type == "Address History" || type == "Education" || type == "Employment History" || type == "Personal References" || type == "Emergency Contact" ?
                                                 <>
                                                     <Col xs={4} sm={4} md={4} lg={4}>
 
@@ -352,19 +353,18 @@ export class ViewGuard extends Component {
                                                                 </Button>
 
                                                     </Col>
-                                                    {/* <Col xs={12} sm={12} md={4} lg={4}>
-
-                                                        <div style={AppStyles.marginLeft30}>
-                                                            <Button onClick={() => this.setState({ form: false })} style={componentStyles.cancelButton} htmlType="submit" block>
-                                                                Remove
-                                                                </Button>
-
-                                                        </div>
-                                                    </Col> */}
+                                             
 
                                                 </>
                                                 : null
-                                            }
+                                            } */}
+                                            <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
+
+                                                <div style={componentStyles.nameStyle}>
+                                                    {record.name}
+                                                </div>
+
+                                            </Col>
 
                                         </Row>
 
@@ -376,13 +376,13 @@ export class ViewGuard extends Component {
                                                     <EmergencyContact form={form} action={action} record={record} history={this.props.history} /> :
                                                     type === "Driving Licence" ?
                                                         <DrivingLicence action={action} record={record} history={this.props.history} /> :
-                                                        type === "Education" ?
+                                                        type === "Education History" ?
                                                             <Education form={form} action={action} record={record} history={this.props.history} /> :
                                                             type === "Employment History" ?
                                                                 <EmploymentHistory form={form} action={action} record={record} history={this.props.history} /> :
                                                                 type === "Personal References" ?
                                                                     <PersonalRef form={form} action={action} record={record} history={this.props.history} /> :
-                                                                    type === "Criminal Comvictions" ?
+                                                                    type === "Criminal Conviction" ?
                                                                         <CriminalComvictions action={action} record={record} history={this.props.history} /> :
                                                                         type === "Health Questionnaire" ?
                                                                             <HealthQuestionnaire action={action} record={record} history={this.props.history} /> :
@@ -411,7 +411,7 @@ export class ViewGuard extends Component {
                     <div style={AppStyles.marginTop50}>
                         <Row>
                             <Col xs={24} sm={24} md={24} lg={24} >
-                                <ComplianceData location={this.props.location} history={this.props.history} />
+                                <ComplianceData location={this.props.location} history={this.props.history} record={record}/>
                             </Col>
                         </Row>
                     </div>

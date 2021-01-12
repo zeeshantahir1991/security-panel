@@ -223,7 +223,7 @@ export class BankDetails extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Bank List">
+                                    <Card className="card" title="Account Details">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 750, y: 200 }} />

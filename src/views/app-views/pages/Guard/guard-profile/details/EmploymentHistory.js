@@ -489,7 +489,7 @@ export class EmploymentHistory extends Component {
                             <Row>
 
                                 <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Education List">
+                                    <Card className="card" title="Employment Details">
                                         <Table
 
                                             bordered columns={tableColumns} dataSource={empHistoryList} rowKey='id' scroll={{ x: 2700, y: 200 }} />

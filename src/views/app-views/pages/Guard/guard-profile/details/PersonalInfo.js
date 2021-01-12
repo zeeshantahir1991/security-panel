@@ -83,13 +83,21 @@ export class PersonalInfo extends Component {
 
             title: "",
             origin: "",
+            action: this.props.action,
+            record: this.props.record
+
 
         };
     }
 
-
+    componentDidMount() {
+        this.setState({
+            action: this.props.action,
+            record: this.props.record
+        })
+    }
     render() {
-        const { action, record } = this.props;
+        const { record, action } = this.state;
 
         if (action && record) {
             return (
@@ -139,7 +147,7 @@ export class PersonalInfo extends Component {
                             <Form.Item
                                 name="firstname"
                                 label="Full Name"
-                                rules={action === "viewItem" ? null : rules.firstname}
+                                // rules={action === "viewItem" ? null : rules.firstname}
                                 hasFeedback
                             >
                                 {action === "viewItem" ?
@@ -172,7 +180,7 @@ export class PersonalInfo extends Component {
                             <Form.Item
                                 name="dob"
                                 label="Date of Birth"
-                                rules={action === "viewItem" ? null : rules.dob}
+                                // rules={action === "viewItem" ? null : rules.dob}
                                 hasFeedback
                             >
                                 {action === "viewItem" ?
@@ -252,25 +260,40 @@ export class PersonalInfo extends Component {
                         </Col>
                     </Row>
                     <Row gutter={16} justify="center">
+                        <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
 
-                        <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
-                            {action === "viewItem" ?
+                            <Form.Item>
+                                <Button
+                                    onClick={() => this.props.history.goBack()}
+                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                    Back
+                                                    </Button>
+                            </Form.Item>
+
+                        </Col>
+
+
+                        {action === "viewItem" ?
+                            <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
                                 <Form.Item>
                                     <Button
-                                        onClick={() => this.props.history.goBack()}
+                                        onClick={() => this.setState({ action: "editItem" })}
                                         style={componentStyles.continueButton} htmlType="submit" block>
-                                        Back
-                                                    </Button>
-                                </Form.Item> :
+                                        Edit
+                             </Button>
+                                </Form.Item>
+                            </Col> :
+                            <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
                                 <Form.Item>
                                     <Button
                                         onClick={() => this.props.history.goBack()}
                                         style={componentStyles.continueButton} htmlType="submit" block>
                                         Update
-                                                </Button>
+                                             </Button>
                                 </Form.Item>
-                            }
-                        </Col>
+                            </Col>
+                        }
+
                     </Row>
                 </Form>
 

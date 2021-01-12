@@ -39,16 +39,8 @@ export const DefaultDashboard = (props) => {
   return (
     <>
       <Row gutter={16} justify="center">
-        <Col xs={20} sm={20} md={20} lg={20}>
-          <Row gutter={16} justify="end">
+        <Col xs={24} sm={24} md={24} lg={24}>
 
-            <Col xs={20} sm={20} md={6} lg={6} xl={6} style={AppStyles.marginBottom20}>
-              <Button onClick={goToAddGuard} style={componentStyles.searchButton} htmlType="submit" block>
-                Add Guard
-		          </Button>
-            </Col>
-
-          </Row>
           <Row gutter={16}>
             {
               annualStatisticData.map((elm, i) => (

@@ -28,6 +28,8 @@ export class AddressHistory extends Component {
             title: '',
             relationship: '',
             addressList: addressData,
+            form: false,
+            edit: false
 
 
 
@@ -45,14 +47,17 @@ export class AddressHistory extends Component {
 
     render() {
         const { addressList } = this.state;
-        const { form } = this.props;
+        const { form, edit } = this.state;
         const tableColumns = [
             {
                 title: 'Address Line 1',
                 dataIndex: 'address1',
                 render: (_, record) => (
                     <div className="d-flex">
-                        {record.address1}
+                        <a onClick={() => this.setState({ edit: true })}>
+
+                            {record.address1}
+                        </a>
                     </div>
                 ),
                 sorter: {
@@ -176,7 +181,7 @@ export class AddressHistory extends Component {
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={24} >
                     {
-                        form == "Address History"?
+                        form ?
                             <Form layout="vertical">
                                 <Row gutter={16}>
 
@@ -222,7 +227,7 @@ export class AddressHistory extends Component {
                                             rules={rules.postcode}
                                             hasFeedback
                                         >
-                                            <Input  type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
@@ -258,14 +263,29 @@ export class AddressHistory extends Component {
 
                                 </Row>
                                 <Row gutter={16} justify="center">
-
-                                    <Col xs={12} sm={12} md={12} lg={12}>
+                                    <Col xs={12} sm={12} md={6} lg={6}>
 
                                         <Form.Item>
                                             <div style={AppStyles.marginTop40}>
-                                                <Button style={componentStyles.continueButton} htmlType="submit" block>
-                                                    Continue
-                                </Button>
+                                                <Button
+                                                    onClick={() => this.setState({ form: false })}
+                                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                                    Back
+                                                    </Button>
+
+                                            </div>
+                                        </Form.Item>
+                                    </Col>
+
+                                    <Col xs={12} sm={12} md={6} lg={6}>
+
+                                        <Form.Item>
+                                            <div style={AppStyles.marginTop40}>
+                                                <Button
+                                                    onClick={() => this.setState({ form: false })}
+                                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                                    Add
+                                                    </Button>
 
                                             </div>
                                         </Form.Item>
@@ -273,16 +293,139 @@ export class AddressHistory extends Component {
                                 </Row>
                             </Form>
                             :
-                            <Row>
+                            edit ?
+                                <Form layout="vertical">
+                                    <Row gutter={16}>
 
-                                <Col xs={24} sm={24} md={24} lg={24} >
-                                    <Card className="card" title="Address Details">
-                                        <Table
 
-                                            bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1500, y: 200 }} />
-                                    </Card>
-                                </Col>
-                            </Row>
+
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="address1"
+                                                label="Address Line 1"
+                                                rules={rules.address1}
+                                                hasFeedback
+                                            >
+                                                <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                            </Form.Item>
+                                        </Col>
+
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="address2"
+                                                label="Address Line 2"
+                                                rules={rules.address2}
+                                                hasFeedback
+                                            >
+                                                <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                            </Form.Item>
+                                        </Col>
+
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="city"
+                                                label="Town / City"
+                                                rules={rules.city}
+                                                hasFeedback
+                                            >
+                                                <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                            </Form.Item>
+                                        </Col>
+
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="postcode"
+                                                label="Post Code"
+                                                rules={rules.postcode}
+                                                hasFeedback
+                                            >
+                                                <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="fromDate"
+                                                label="From"
+                                                rules={rules.fromDate}
+                                                hasFeedback
+                                            >
+                                                <DatePicker style={componentStyles.datePicker}
+                                                    // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+                                                    format={'YYYY/MM/DD'} />
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={6} lg={6}>
+                                            <Form.Item
+                                                name="toDate"
+                                                label="To"
+                                                rules={rules.fromDate}
+                                                hasFeedback
+                                            >
+                                                <DatePicker style={componentStyles.datePicker}
+                                                    // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+                                                    format={'YYYY/MM/DD'} />
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+
+                                            <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> Current Address
+                                       </Col>
+
+
+
+                                    </Row>
+                                    <Row gutter={16} justify="center">
+                                        <Col xs={12} sm={12} md={6} lg={6}>
+
+                                            <Form.Item>
+                                                <div style={AppStyles.marginTop40}>
+                                                    <Button
+                                                        onClick={() => this.setState({ edit: false })}
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Back
+                                                    </Button>
+
+                                                </div>
+                                            </Form.Item>
+                                        </Col>
+
+                                        <Col xs={12} sm={12} md={6} lg={6}>
+
+                                            <Form.Item>
+                                                <div style={AppStyles.marginTop40}>
+                                                    <Button
+                                                        onClick={() => this.setState({ edit: false })}
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Update
+                                                    </Button>
+
+                                                </div>
+                                            </Form.Item>
+                                        </Col>
+                                    </Row>
+                                </Form> :
+                                <Row>
+
+                                    <Col xs={24} sm={24} md={24} lg={24} >
+                                        <Card className="card" title="Address Details" extra={
+                                            <Row gutter={16}>
+                                                <Col xs={24} sm={24} md={24} lg={24}>
+
+                                                    <Button
+                                                        onClick={() => this.setState({ form: true })}
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Add Address
+                                                    </Button>
+
+                                                </Col>
+                                            </Row>
+                                        }>
+                                            <Table
+
+                                                bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1500, y: 200 }} />
+                                        </Card>
+                                    </Col>
+                                </Row>
                     }
                 </Col>
             </Row>

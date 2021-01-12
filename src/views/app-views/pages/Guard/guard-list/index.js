@@ -220,7 +220,7 @@ export class GuardsList extends Component {
 					<span>{moment.unix(date).format("MM/DD/YYYY")} </span>
 				),
 				sorter: (a, b) => moment(a.birthday).unix() - moment(b.birthday).unix(),
-				width: 120
+				width: 200
 			},
 			{
 				title: 'Email',
@@ -262,7 +262,7 @@ export class GuardsList extends Component {
 					<span>{moment.unix(date).format("MM/DD/YYYY")} </span>
 				),
 				sorter: (a, b) => moment(a.siaLicenceExpiry).unix() - moment(b.siaLicenceExpiry).unix(),
-				width: 130
+				width: 200
 			},
 
 			{
@@ -283,7 +283,7 @@ export class GuardsList extends Component {
 				sorter: {
 					compare: (a, b) => a.payRate.length - b.payRate.length,
 				},
-				width: 70
+				width: 150
 			},
 			{
 				title: 'Employment Type',
@@ -300,7 +300,7 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 100
+				width: 200
 			},
 			// {
 			// 	title: 'Subcontract Name',
@@ -498,7 +498,7 @@ export class GuardsList extends Component {
 
 					<Col xs={20} sm={20} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 2800, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

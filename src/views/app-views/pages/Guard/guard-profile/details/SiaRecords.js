@@ -1,5 +1,5 @@
 import { DeleteOutlined, BookOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Form } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Form, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
@@ -210,9 +210,9 @@ export class SiaRecordList extends Component {
                 dataIndex: 'licenceNumber',
                 render: (_, record) => (
                     <div className="d-flex">
-                        <a onClick={() => this.editLicence(record)}>
+                        {/* <a onClick={() => this.editLicence(record)}> */}
                             <span>{record.licenceNumber}</span>
-                        </a>
+                        {/* </a> */}
                     </div>
                 ),
                 sorter: {
@@ -222,7 +222,7 @@ export class SiaRecordList extends Component {
                         return a > b ? -1 : b > a ? 1 : 0;
                     },
                 },
-                width: 110
+                width: 200
             },
 
             {
@@ -240,7 +240,7 @@ export class SiaRecordList extends Component {
                         return a > b ? -1 : b > a ? 1 : 0;
                     },
                 },
-                width: 100
+                width: 150
             },
 
             {
@@ -258,7 +258,7 @@ export class SiaRecordList extends Component {
                         return a > b ? -1 : b > a ? 1 : 0;
                     },
                 },
-                width: 70
+                width: 100
             },
 
             {
@@ -276,7 +276,7 @@ export class SiaRecordList extends Component {
                         return a > b ? -1 : b > a ? 1 : 0;
                     },
                 },
-                width: 100
+                width: 200
             },
             {
                 title: 'Expiry Date',
@@ -285,7 +285,7 @@ export class SiaRecordList extends Component {
                     <span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
                 ),
                 sorter: (a, b) => moment(a.siaLicenceExpiryDate).unix() - moment(b.siaLicenceExpiryDate).unix(),
-                width: 70
+                width: 150
             },
             {
                 title: 'Last Checked',
@@ -306,6 +306,21 @@ export class SiaRecordList extends Component {
                 sorter: (a, b) => moment(a.siaLicenceNextCheck).unix() - moment(b.siaLicenceNextCheck).unix(),
                 width: 200
             },
+
+            {
+                title: '',
+                dataIndex: 'actions',
+                render: (_, elm) => (
+                    <div className="text-right">
+                        {/* <Tooltip title="View">
+                            <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+                        </Tooltip> */}
+                        <Tooltip title="Delete">
+                            <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+                        </Tooltip>
+                    </div>
+                )
+            }
 
 
         ];
@@ -685,7 +700,7 @@ export class SiaRecordList extends Component {
                                         </Col>
                                     </Row>
                                 }>
-                                    <Table bordered columns={tableColumns} dataSource={siaRecordList} rowKey='id' scroll={{ x: 1600, y: 300 }} />
+                                    <Table bordered columns={tableColumns} dataSource={siaRecordList} rowKey='id' scroll={{ x: 1400, y: 300 }} />
                                 </Card>
                             </Col>
                         </Row>

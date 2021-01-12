@@ -94,13 +94,28 @@ export class DrivingLicence extends Component {
                 </Row>
                 <Row gutter={16} justify="center">
 
-                    <Col xs={12} sm={12} md={12} lg={12}>
+                    <Col xs={12} sm={12} md={6} lg={6}>
+
+                        <Form.Item>
+                            <div style={AppStyles.marginTop40}>
+                                <Button
+                                    onClick={() => this.props.history.goBack()}
+
+                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                    Back
+            </Button>
+
+                            </div>
+                        </Form.Item>
+                    </Col>
+
+                    <Col xs={12} sm={12} md={6} lg={6}>
 
                         <Form.Item>
                             <div style={AppStyles.marginTop40}>
                                 <Button style={componentStyles.continueButton} htmlType="submit" block>
                                     Continue
-                                </Button>
+            </Button>
 
                             </div>
                         </Form.Item>

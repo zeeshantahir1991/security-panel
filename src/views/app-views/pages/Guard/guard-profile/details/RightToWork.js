@@ -309,20 +309,20 @@ export class RightToWork extends Component {
 
                     </Row>
                     <Row gutter={16} justify="center">
-                        <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+                        <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
                             {action === "viewItem" ?
                                 <Form.Item>
                                     <Button
                                         onClick={() => this.props.history.goBack()}
                                         style={componentStyles.continueButton} htmlType="submit" block>
                                         Back
-                                                    </Button>
+                                    </Button>
                                 </Form.Item> :
                                 <Form.Item>
                                     <Button
                                         style={componentStyles.continueButton} htmlType="submit" block>
                                         Update
-                                                </Button>
+                                    </Button>
                                 </Form.Item>
                             }
                         </Col>

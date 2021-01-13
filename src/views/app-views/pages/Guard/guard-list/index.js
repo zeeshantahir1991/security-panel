@@ -159,7 +159,7 @@ export class GuardsList extends Component {
 
 	render() {
 		const { users, search } = this.state;
-		let { currStatus } = this.state;
+		let { currStatus } = this.state;		
 		const tableColumns = [
 			
 			{

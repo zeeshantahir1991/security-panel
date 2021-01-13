@@ -24,7 +24,7 @@ export class AddressHistory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            currStatus: "active",
             title: '',
             relationship: '',
             addressList: addressData,
@@ -48,6 +48,7 @@ export class AddressHistory extends Component {
     render() {
         const { addressList } = this.state;
         const { form, edit } = this.state;
+        let { currStatus } = this.state;
         const tableColumns = [
             {
                 title: 'Address Line 1',
@@ -146,15 +147,36 @@ export class AddressHistory extends Component {
 
 
             {
-                title: 'Status',
-                dataIndex: 'status',
-                render: status => (
-                    <Tag className="text-capitalize" color={status.toUpperCase() === 'ACTIVE' ? 'cyan' : 'red'}>{status}</Tag>
-                ),
-                sorter: {
-                    compare: (a, b) => a.status.length - b.status.length,
-                },
-            },
+				title: 'Status',
+				dataIndex: 'status',
+				render: () => {
+					return(					
+					<Button onClick={()=>{
+						if(currStatus == "active")
+						{
+						this.setState({currStatus: "inactive"})
+						}
+						else if(currStatus == "inactive"){
+						this.setState({currStatus: "active"})
+						}
+						}} 
+						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+				)},
+				sorter: {
+					compare: (a, b) => a.status.length - b.status.length,
+				},
+				width: 120
+			},
+            // {
+            //     title: 'Status',
+            //     dataIndex: 'status',
+            //     render: status => (
+            //         <Tag className="text-capitalize" color={status.toUpperCase() === 'ACTIVE' ? 'cyan' : 'red'}>{status}</Tag>
+            //     ),
+            //     sorter: {
+            //         compare: (a, b) => a.status.length - b.status.length,
+            //     },
+            // },
 
             // {
             //     title: '',

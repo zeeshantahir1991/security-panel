@@ -63,10 +63,10 @@ export class EmploymentHistory extends Component {
                 dataIndex: 'empType',
                 render: (_, record) => (
                     <div className="d-flex">
-                        <a onClick={() => this.setState({ edit: true })}>
+                        {/* <a onClick={() => this.setState({ edit: true })}> */}
 
                             {record.empType}
-                        </a>
+                        {/* </a> */}
                     </div>
                 ),
                 sorter: {

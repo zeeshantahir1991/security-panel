@@ -342,20 +342,19 @@ export class GuardsList extends Component {
 				},
 				width: 120
 			},
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-center">
-						<Tooltip title="Edit">
-							<Button type="primary" className="mr-2" icon={<EditOutlined />} 
-							onClick={() => { this.viewItem("editItem", elm) }} 
-							size="small" />
-						</Tooltip>
-					</div>
-				),
-				width:0				
-			},
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-center">
+			// 			<Tooltip title="Edit">
+			// 				<Button type="primary" className="mr-2" icon={<EditOutlined />} 
+			// 				onClick={() => { this.viewItem("editItem", elm) }} 
+			// 				size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	),
+			// },
 
 		];
 		return (
@@ -509,7 +508,7 @@ export class GuardsList extends Component {
 
 					<Col xs={20} sm={20} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1600, y: 300 }} />
+							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1900, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

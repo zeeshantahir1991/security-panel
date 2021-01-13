@@ -65,6 +65,7 @@ export class GuardsList extends Component {
 		users: userData,
 		userProfileVisible: false,
 		selectedUser: null,
+		currStatus: "active",
 		search: {
 			empType: "",
 			subcontractName: "",
@@ -158,7 +159,7 @@ export class GuardsList extends Component {
 
 	render() {
 		const { users, search } = this.state;
-
+		let { currStatus } = this.state;
 		const tableColumns = [
 			
 			{
@@ -275,7 +276,7 @@ export class GuardsList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 60
+				width: 100
 			},
 			{
 				title: 'Pay Rate',
@@ -323,13 +324,23 @@ export class GuardsList extends Component {
 			{
 				title: 'Status',
 				dataIndex: 'status',
-				render: status => (
-					<Tag className="text-capitalize" color={status === 'active' ? 'cyan' : 'red'}>{status}</Tag>
-				),
+				render: () => {
+					return(					
+					<Button onClick={()=>{
+						if(currStatus == "active")
+						{
+						this.setState({currStatus: "inactive"})
+						}
+						else if(currStatus == "inactive"){
+						this.setState({currStatus: "active"})
+						}
+						}} 
+						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+				)},
 				sorter: {
 					compare: (a, b) => a.status.length - b.status.length,
 				},
-				width: 100
+				width: 120
 			},
 			{
 				title: '',

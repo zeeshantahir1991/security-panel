@@ -54,10 +54,10 @@ export class AddressHistory extends Component {
                 dataIndex: 'address1',
                 render: (_, record) => (
                     <div className="d-flex">
-                        <a onClick={() => this.setState({ edit: true })}>
+                        {/* <a onClick={() => this.setState({ edit: true })}> */}
 
                             {record.address1}
-                        </a>
+                        {/* </a> */}
                     </div>
                 ),
                 sorter: {
@@ -156,20 +156,20 @@ export class AddressHistory extends Component {
                 },
             },
 
-            {
-                title: '',
-                dataIndex: 'actions',
-                render: (_, elm) => (
-                    <div className="text-right">
-                        {/* <Tooltip title="View">
-                            <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-                        </Tooltip> */}
-                        <Tooltip title="Delete">
-                            <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-                        </Tooltip>
-                    </div>
-                )
-            }
+            // {
+            //     title: '',
+            //     dataIndex: 'actions',
+            //     render: (_, elm) => (
+            //         <div className="text-right">
+            //             {/* <Tooltip title="View">
+            //                 <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+            //             </Tooltip> */}
+            //             <Tooltip title="Delete">
+            //                 <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+            //             </Tooltip>
+            //         </div>
+            //     )
+            // }
         ];
         return (
             <Row justify="center">
@@ -422,7 +422,7 @@ export class AddressHistory extends Component {
                                         }>
                                             <Table
 
-                                                bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1500, y: 200 }} />
+                                                bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1300, y: 200 }} />
                                         </Card>
                                     </Col>
                                 </Row>

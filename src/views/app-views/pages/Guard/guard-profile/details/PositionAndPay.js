@@ -167,23 +167,25 @@ export class PositionAndPay extends Component {
 
 					</Row>
 					<Row gutter={16} justify="center">
-						<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop30}>
-							{action === "viewItem" ?
-								<Form.Item>
-									<Button
-										onClick={() => this.props.history.goBack()}
-										style={componentStyles.continueButton} htmlType="submit" block>
-										Back
-                                                    
-								     </Button>
-								</Form.Item> :
-								<Form.Item>
-									<Button
-										style={componentStyles.continueButton} htmlType="submit" block>
-										Update
-                                                </Button>
-								</Form.Item>
-							}
+						<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
+							< Form.Item>
+								<Button
+									onClick={() => this.props.history.goBack()}
+									style={componentStyles.continueButton} htmlType="submit" block>
+									Back
+                                    </Button>
+							</Form.Item>
+
+
+						</Col>
+						<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
+
+							<Form.Item>
+								<Button
+									style={componentStyles.continueButton} htmlType="submit" block>
+									Update
+                                    </Button>
+							</Form.Item>
 						</Col>
 					</Row>
 				</Form>

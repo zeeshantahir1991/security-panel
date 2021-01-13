@@ -54,23 +54,23 @@ export class EmergencyContact extends Component {
         const { emergencyList } = this.state;
         const { form, edit } = this.state;
         const tableColumns = [
-            {
-                title: 'Title',
-                dataIndex: 'title',
-                render: (_, record) => (
-                    <div className="d-flex">
-                        {record.title}
-                    </div>
-                ),
-                sorter: {
-                    compare: (a, b) => {
-                        a = a.title.toLowerCase();
-                        b = b.title.toLowerCase();
-                        return a > b ? -1 : b > a ? 1 : 0;
-                    },
-                },
-                width: 200
-            },
+            // {
+            //     title: 'Title',
+            //     dataIndex: 'title',
+            //     render: (_, record) => (
+            //         <div className="d-flex">
+            //             {record.title}
+            //         </div>
+            //     ),
+            //     sorter: {
+            //         compare: (a, b) => {
+            //             a = a.title.toLowerCase();
+            //             b = b.title.toLowerCase();
+            //             return a > b ? -1 : b > a ? 1 : 0;
+            //         },
+            //     },
+            //     width: 200
+            // },
 
             {
                 title: 'Full Name',
@@ -79,7 +79,7 @@ export class EmergencyContact extends Component {
                     <div className="d-flex">
                         <a onClick={() => this.setState({ edit: true })}>
 
-                            {record.fullName}
+                            {record.title + '\xa0' + record.fullName}
                         </a>
                     </div>
                 ),
@@ -648,7 +648,7 @@ export class EmergencyContact extends Component {
                                         }>
                                             <Table
 
-                                                bordered columns={tableColumns} dataSource={emergencyList} rowKey='id' scroll={{ x: 2200, y: 200 }} />
+                                                bordered columns={tableColumns} dataSource={emergencyList} rowKey='id' scroll={{ x: 1900, y: 200 }} />
                                         </Card>
                                     </Col>
                                 </Row>

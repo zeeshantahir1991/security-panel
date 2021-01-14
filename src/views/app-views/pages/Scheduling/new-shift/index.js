@@ -1,5 +1,7 @@
 import { CheckCircleOutlined, DeleteOutlined, EyeOutlined, PoundCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Select, Table, TimePicker, Tooltip } from 'antd';
+import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Select, TimePicker, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import { AppColors } from 'assets/styles/colors';
 import React, { Component } from 'react';
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
@@ -159,7 +161,7 @@ export class NewShift extends Component {
 
 	render() {
 		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignPosition } = this.state;
-		const {  } = this.props;
+		const { } = this.props;
 		const tableColumns = [
 			{
 				title: 'Position',
@@ -914,7 +916,7 @@ export class NewShift extends Component {
 
 
 													<Card className="card" title="Assigned Positions">
-														<Table bordered columns={tableColumns} dataSource={assignPosition} rowKey='id' scroll={{ x: 600, y: 200 }} />
+														<Table searchable bordered columns={tableColumns} dataSource={assignPosition} rowKey='id' scroll={{ x: 600, y: 200 }} />
 													</Card>
 
 												</Col>

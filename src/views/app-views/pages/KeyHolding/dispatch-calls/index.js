@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
@@ -393,7 +395,7 @@ export class DispatchCalls extends Component {
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
-							<DatePicker style={componentStyles.datePicker}
+								<DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("incidentPeriod", val)}
 									placeholder="Incident Period"
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
@@ -478,7 +480,7 @@ export class DispatchCalls extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Dispatch Calls List" >
-							<Table bordered columns={tableColumns} dataSource={dispatchCalls} rowKey='id' scroll={{ x: 2000, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={dispatchCalls} rowKey='id' scroll={{ x: 2000, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

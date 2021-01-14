@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -338,7 +340,7 @@ export class KeyLogRegister extends Component {
 					<Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
-							<Select
+								<Select
 									showSearch
 									style={componentStyles.selectStyleSM}
 									bordered={false}
@@ -411,7 +413,7 @@ export class KeyLogRegister extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Key Log Registers" >
-							<Table bordered columns={tableColumns} dataSource={keyLogRegisters} rowKey='id' scroll={{ x: 1300, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={keyLogRegisters} rowKey='id' scroll={{ x: 1300, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

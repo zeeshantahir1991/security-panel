@@ -1,4 +1,6 @@
-import { Card, Col, Row, Table } from 'antd';
+import { Card, Col, Row } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 
@@ -125,7 +127,7 @@ export class ComplianceTemplates extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="compliance Template List" >
-							<Table bordered columns={tableColumns} dataSource={complianceTemplates} rowKey='id' scroll={{ x: 600, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={complianceTemplates} rowKey='id' scroll={{ x: 600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

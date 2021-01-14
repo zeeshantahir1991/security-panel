@@ -1,5 +1,7 @@
 import { BankOutlined, CreditCardOutlined, NumberOutlined, UserOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Card, Table, Tooltip } from 'antd';
+import { Button, Col, Form, Input, Row, Card, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
@@ -31,7 +33,7 @@ export class BankDetails extends Component {
         const { form, edit } = this.state;
 
         const tableColumns = [
-         
+
 
             {
                 title: 'Account Holder Name',
@@ -353,7 +355,7 @@ export class BankDetails extends Component {
                                             </Row>
                                         }>
                                             <Table
-
+                                                searchable
                                                 bordered columns={tableColumns} dataSource={bankList} rowKey='id' scroll={{ x: 750, y: 200 }} />
                                         </Card>
                                     </Col>

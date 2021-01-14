@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -352,7 +354,7 @@ export class StaticSiteSurveys extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Static Site Surveys" >
-							<Table bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1100, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1100, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

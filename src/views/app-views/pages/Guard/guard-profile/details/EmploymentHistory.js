@@ -1,5 +1,7 @@
 import { CompassOutlined, DollarOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card, Table } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import moment from 'moment';
 
@@ -65,7 +67,7 @@ export class EmploymentHistory extends Component {
                     <div className="d-flex">
                         {/* <a onClick={() => this.setState({ edit: true })}> */}
 
-                            {record.empType}
+                        {record.empType}
                         {/* </a> */}
                     </div>
                 ),
@@ -717,7 +719,7 @@ export class EmploymentHistory extends Component {
                                             </Row>
                                         }>
                                             <Table
-
+                                                searchable
                                                 bordered columns={tableColumns} dataSource={empHistoryList} rowKey='id' scroll={{ x: 2700, y: 200 }} />
                                         </Card>
                                     </Col>

@@ -4,8 +4,10 @@ import {
 	DownloadOutlined, EllipsisOutlined, EyeOutlined,
 	UploadOutlined
 } from '@ant-design/icons';
-import { Button, Card, Col, Dropdown, Menu, Row, Table, Tooltip } from 'antd';
+import { Button, Card, Col, Dropdown, Menu, Row, Tooltip } from 'antd';
 import userData from "assets/data/company-list.data.json";
+import { Table } from "ant-table-extensions";
+
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -57,7 +59,7 @@ export class Docs extends Component {
 
 	render() {
 		const { users, selectionType } = this.state;
-		const {  } = this.props;
+		const { } = this.props;
 		const tableColumns = [
 			{
 				title: 'Name',
@@ -161,6 +163,7 @@ export class Docs extends Component {
 					<Col xs={24} sm={24} md={20} lg={20} >
 						<Card className="card" title="Company Docs" extra={cardDropdown(latestTransactionOption)}>
 							<Table
+								searchable
 								rowSelection={{
 									type: selectionType,
 									...rowSelection,

@@ -1,5 +1,7 @@
 import { DeleteOutlined, BookOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Form, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Form, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
@@ -211,7 +213,7 @@ export class SiaRecordList extends Component {
                 render: (_, record) => (
                     <div className="d-flex">
                         {/* <a onClick={() => this.editLicence(record)}> */}
-                            <span>{record.licenceNumber}</span>
+                        <span>{record.licenceNumber}</span>
                         {/* </a> */}
                     </div>
                 ),
@@ -700,7 +702,7 @@ export class SiaRecordList extends Component {
                                         </Col>
                                     </Row>
                                 }>
-                                    <Table bordered columns={tableColumns} dataSource={siaRecordList} rowKey='id' scroll={{ x: 1400, y: 300 }} />
+                                    <Table searchable bordered columns={tableColumns} dataSource={siaRecordList} rowKey='id' scroll={{ x: 1400, y: 300 }} />
                                 </Card>
                             </Col>
                         </Row>
@@ -719,11 +721,11 @@ export const filterCombination = (siaLicenceStatus, siaLicenceLastChecked, eleme
 
         return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase() && moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD")
 
-    }  else if (siaLicenceLastChecked) {
+    } else if (siaLicenceLastChecked) {
 
         return moment.unix(element.siaLicenceLastChecked).format("YYYY/MM/DD") === moment(siaLicenceLastChecked).format("YYYY/MM/DD")
 
-    }  else if (siaLicenceStatus) {
+    } else if (siaLicenceStatus) {
 
         return element.siaLicenceStatus.trim().toUpperCase() === siaLicenceStatus.trim().toUpperCase()
 

@@ -4,7 +4,9 @@ import {
 	DownloadOutlined, EllipsisOutlined, EyeOutlined,
 	UploadOutlined
 } from '@ant-design/icons';
-import { Button, Card, Col, Dropdown, Menu, Row, Table, Tooltip } from 'antd';
+import { Button, Card, Col, Dropdown, Menu, Row, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -76,9 +78,9 @@ export class Docs extends Component {
 				dataIndex: 'name',
 				render: (_, record) => (
 					<div className="d-flex">
-					<a onClick={() => this.setState({ edit: true })}>
-						{/* <AvatarStatus src={record.img} name={record.name} /> */}
-						{record.name + "Documents"}
+						<a onClick={() => this.setState({ edit: true })}>
+							{/* <AvatarStatus src={record.img} name={record.name} /> */}
+							{record.name + "Documents"}
 						</a>
 					</div>
 				),
@@ -177,10 +179,7 @@ export class Docs extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Guard's Docs" extra={cardDropdown(latestTransactionOption)}>
 							<Table
-								// rowSelection={{
-								// 	type: selectionType,
-								// 	...rowSelection,
-								// }}
+								searchable
 								bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1200, y: 200 }} />
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}

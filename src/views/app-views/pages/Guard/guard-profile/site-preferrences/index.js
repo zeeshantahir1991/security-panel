@@ -2,7 +2,9 @@ import {
 	DownloadOutlined, EllipsisOutlined,
 	UploadOutlined
 } from '@ant-design/icons';
-import { Card, Col, Dropdown, Menu, Row, Table } from 'antd';
+import { Card, Col, Dropdown, Menu, Row } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 
@@ -84,7 +86,7 @@ export class SitePreferrences extends Component {
 
 	render() {
 		const { preferred, banned } = this.state;
-		const {  } = this.props;
+		const { } = this.props;
 		const tableColumnsPreferred = [
 			{
 				title: 'Site Name',
@@ -190,13 +192,13 @@ export class SitePreferrences extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Preferred Sites" extra={cardDropdown(latestTransactionOption)}>
 							<Table
-
+								searchable
 								bordered columns={tableColumnsPreferred} dataSource={preferred} rowKey='id' scroll={{ x: 400, y: 200 }} />
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 						<Card className="card" title="Banned Sites" extra={cardDropdown(latestTransactionOption)}>
 							<Table
-
+								searchable
 								bordered columns={tableColumnsBanned} dataSource={banned} rowKey='id' scroll={{ x: 600, y: 200 }} />
 						</Card>
 					</Col>

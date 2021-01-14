@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
@@ -106,7 +108,7 @@ export class ComplianceTraining extends Component {
 		const { training, search } = this.state;
 
 		const tableColumns = [
-		
+
 
 			{
 				title: 'Training Status',
@@ -388,7 +390,7 @@ export class ComplianceTraining extends Component {
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Training List" >
-							<Table bordered columns={tableColumns} dataSource={training} rowKey='id' scroll={{ x: 1200, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={training} rowKey='id' scroll={{ x: 1200, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

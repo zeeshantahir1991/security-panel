@@ -1,5 +1,7 @@
 import { AuditOutlined, MailOutlined, NumberOutlined, UserOutlined, InboxOutlined, CompassOutlined, PhoneOutlined, DeleteOutlined, FieldTimeOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Tooltip, Card, Table } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Row, Tooltip, Card } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
@@ -50,7 +52,7 @@ export class PersonalRef extends Component {
                     <div className="d-flex">
                         {/* <a onClick={() => this.setState({ edit: true })}> */}
 
-                            {record.fullName}
+                        {record.fullName}
                         {/* </a> */}
                     </div>
                 ),
@@ -591,7 +593,7 @@ export class PersonalRef extends Component {
                                             </Row>
                                         }>
                                             <Table
-
+                                                searchable
                                                 bordered columns={tableColumns} dataSource={personalRefList} rowKey='id' scroll={{ x: 2000, y: 200 }} />
                                         </Card>
                                     </Col>

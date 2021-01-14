@@ -11,7 +11,9 @@ import {
 
 	ReloadOutlined
 } from '@ant-design/icons';
-import { Button, Card, Col, Dropdown, Menu, Progress, Row, Select, Table, Tag, Tooltip } from 'antd';
+import { Button, Card, Col, Dropdown, Menu, Progress, Row, Select, Tag, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import userData from "assets/data/user-list.data.json";
 import { AppColors } from 'assets/styles/colors';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -508,7 +510,7 @@ export class GuardsList extends Component {
 
 					<Col xs={20} sm={20} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Guards List" extra={cardDropdown(latestTransactionOption)}>
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1900, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1900, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

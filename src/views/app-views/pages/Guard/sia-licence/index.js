@@ -1,5 +1,7 @@
 import { DeleteOutlined, BookOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Form, Input, Row, Table, Tooltip } from 'antd';
+import { Button, Card, Col, Form, Input, Row, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from "react-redux";
@@ -387,7 +389,7 @@ export class SiaLicence extends Component {
 									{licenseData.length !== 0 ?
 										<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 											<Card title="License List">
-												<Table bordered columns={tableColumns} dataSource={this.props.licenseData} rowKey='id' scroll={{ x: 1200, y: 200 }} />
+												<Table searchable bordered columns={tableColumns} dataSource={this.props.licenseData} rowKey='id' scroll={{ x: 1200, y: 200 }} />
 											</Card>
 										</Col> : null
 									}

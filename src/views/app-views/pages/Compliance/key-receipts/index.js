@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -421,7 +423,7 @@ export class KeyReceipts extends Component {
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
-							<Select
+								<Select
 									showSearch
 									style={componentStyles.selectStyleSM}
 									bordered={false}
@@ -507,7 +509,7 @@ export class KeyReceipts extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Key Receipts" >
-							<Table bordered columns={tableColumns} dataSource={keyReceipts} rowKey='id' scroll={{ x: 2100, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={keyReceipts} rowKey='id' scroll={{ x: 2100, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

@@ -1,5 +1,6 @@
 import { CompassOutlined, NumberOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Switch, Tag, Tooltip, Card, Table } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Row, Switch, Tag, Tooltip, Card } from 'antd';
+import { Table } from "ant-table-extensions";
 import React, { Component } from 'react';
 import moment from 'moment';
 import { AppStyles } from "../../../../../../assets/styles";
@@ -57,7 +58,7 @@ export class AddressHistory extends Component {
                     <div className="d-flex">
                         {/* <a onClick={() => this.setState({ edit: true })}> */}
 
-                            {record.address1}
+                        {record.address1}
                         {/* </a> */}
                     </div>
                 ),
@@ -147,26 +148,26 @@ export class AddressHistory extends Component {
 
 
             {
-				title: 'Status',
-				dataIndex: 'status',
-				render: () => {
-					return(					
-					<Button onClick={()=>{
-						if(currStatus == "active")
-						{
-						this.setState({currStatus: "inactive"})
-						}
-						else if(currStatus == "inactive"){
-						this.setState({currStatus: "active"})
-						}
-						}} 
-						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
-				)},
-				sorter: {
-					compare: (a, b) => a.status.length - b.status.length,
-				},
-				width: 120
-			},
+                title: 'Status',
+                dataIndex: 'status',
+                render: () => {
+                    return (
+                        <Button onClick={() => {
+                            if (currStatus == "active") {
+                                this.setState({ currStatus: "inactive" })
+                            }
+                            else if (currStatus == "inactive") {
+                                this.setState({ currStatus: "active" })
+                            }
+                        }}
+                            style={{ color: currStatus === 'active' ? 'lightgreen' : 'red', borderColor: currStatus === 'active' ? 'lightgreen' : 'red' }} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+                    )
+                },
+                sorter: {
+                    compare: (a, b) => a.status.length - b.status.length,
+                },
+                width: 120
+            },
             // {
             //     title: 'Status',
             //     dataIndex: 'status',
@@ -443,7 +444,7 @@ export class AddressHistory extends Component {
                                             </Row>
                                         }>
                                             <Table
-
+                                                searchable
                                                 bordered columns={tableColumns} dataSource={addressList} rowKey='id' scroll={{ x: 1300, y: 200 }} />
                                         </Card>
                                     </Col>

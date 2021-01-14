@@ -2,7 +2,9 @@ import {
 	DownloadOutlined, EllipsisOutlined,
 	UploadOutlined
 } from '@ant-design/icons';
-import { Card, Col, Dropdown, Menu, Row, Select, Table, Tag } from 'antd';
+import { Card, Col, Dropdown, Menu, Row, Select, Tag } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
@@ -71,7 +73,7 @@ export class Holidays extends Component {
 
 	render() {
 		const { holidaysAndAvailablity } = this.state;
-		const {  } = this.props;
+		const { } = this.props;
 		const tableColumns = [
 			{
 				title: 'From Date & Time',
@@ -135,7 +137,7 @@ export class Holidays extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Holidays" extra={cardDropdown(latestTransactionOption)}>
 							<Table
-
+								searchable
 								bordered columns={tableColumns} dataSource={holidaysAndAvailablity} rowKey='id' scroll={{ x: 800, y: 200 }} />
 						</Card>
 

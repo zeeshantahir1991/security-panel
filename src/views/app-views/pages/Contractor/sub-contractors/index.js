@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Input, Row, Select, Table, Tag, Tooltip } from 'antd';
+import { Button, Card, Col, Input, Row, Select, Tag, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import userData from "assets/data/contractor-list.data.json";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import React, { Component } from 'react';
@@ -401,7 +403,7 @@ export class ContractorList extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Sub-Contractors List" >
-							<Table bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1800, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1800, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

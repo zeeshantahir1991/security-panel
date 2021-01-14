@@ -1,5 +1,7 @@
-import { Button, Card, Col, Input, Row, Select, Table, Tag } from 'antd';
+import { Button, Card, Col, Input, Row, Select, Tag } from 'antd';
 import moment from 'moment';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
@@ -266,7 +268,7 @@ export class VehiclesList extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Vehicles List" >
-							<Table bordered columns={tableColumns} dataSource={vehicles} rowKey='id' scroll={{ x: 1100, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={vehicles} rowKey='id' scroll={{ x: 1100, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

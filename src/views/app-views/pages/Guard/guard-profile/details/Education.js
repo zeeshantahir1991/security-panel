@@ -1,5 +1,7 @@
 import { BankOutlined, CompassOutlined, NumberOutlined, StarOutlined, DeleteOutlined, EyeOutlined, InboxOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card, Table } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Row, Select, Tooltip, Card } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import React, { Component } from 'react';
 import moment from 'moment';
 import { AppStyles } from "../../../../../../assets/styles";
@@ -548,7 +550,7 @@ export class Education extends Component {
                                             </Row>
                                         }>
                                             <Table
-
+                                                searchable
                                                 bordered columns={tableColumns} dataSource={eductaionList} rowKey='id' scroll={{ x: 2100, y: 200 }} />
                                         </Card>
                                     </Col>

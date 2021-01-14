@@ -1,5 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Table, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Table } from "ant-table-extensions";
+
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
@@ -383,7 +385,7 @@ export class StaticSites extends Component {
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Static Sites List" >
-							<Table bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1800, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1800, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

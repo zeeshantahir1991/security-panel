@@ -117,12 +117,13 @@ export class PersonalInfo extends Component {
                                 rules={action === "viewItem" ? null : rules.title}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
+                                {/* {action === "viewItem" ?
                                     record.title
-                                    :
+                                    : */}
                                     <Select
                                         showSearch
                                         style={componentStyles.selectStyle}
+                                        disabled={action === "viewItem"? true: false}
                                         bordered={false}
                                         placeholder="Title"
                                         optionFilterProp="children"
@@ -139,7 +140,7 @@ export class PersonalInfo extends Component {
                                         <Option value="Miss">Miss</Option>
                                         <Option value="Mrs">Mrs</Option>
                                     </Select>
-                                }
+                                {/* } */}
 
                             </Form.Item>
                         </Col>
@@ -150,12 +151,13 @@ export class PersonalInfo extends Component {
                                 // rules={action === "viewItem" ? null : rules.firstname}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
-                                    record.name :
+                                {/* {action === "viewItem" ? */}
+                                    {/* record.name : */}
                                     <Input
                                         defaultValue={record.name ? record.name : ""}
+                                        disabled={action === "viewItem"? true: false}
                                         style={componentStyles.borderColor} prefix={<UserOutlined />} />
-                                }
+                                {/* } */}
                             </Form.Item>
                         </Col>
 
@@ -166,12 +168,13 @@ export class PersonalInfo extends Component {
                                 rules={action === "viewItem" ? null : rules.email}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
-                                    record.email :
+                                {/* {action === "viewItem" ?
+                                    record.email : */}
                                     <Input
                                         defaultValue={record.email ? record.email : ""}
+                                        disabled={action === "viewItem"? true: false}
                                         maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
-                                }
+                                {/* } */}
                             </Form.Item>
                         </Col>
 
@@ -183,14 +186,15 @@ export class PersonalInfo extends Component {
                                 // rules={action === "viewItem" ? null : rules.dob}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
+                                {/* {action === "viewItem" ?
 
                                     moment.unix(record.birthday).format("YYYY/MM/DD")
-                                    :
+                                    : */}
                                     <DatePicker style={componentStyles.datePicker}
                                         defaultValue={record.birthday ? moment.unix(record.birthday) : ""}
+                                        disabled={action === "viewItem"? true: false}
                                         format={'YYYY/MM/DD'} />
-                                }
+                                {/* } */}
 
                             </Form.Item>
                         </Col>
@@ -201,12 +205,13 @@ export class PersonalInfo extends Component {
                                 rules={action === "viewItem" ? null : rules.phoneNumber}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
-                                    record.phoneNumber :
+                                {/* {action === "viewItem" ?
+                                    record.phoneNumber : */}
                                     <Input
                                         defaultValue={record.phoneNumber ? parseInt(record.phoneNumber) : ""}
+                                        disabled={action === "viewItem"? true: false}
                                         className="remove" min="0" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
-                                }
+                                {/* } */}
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={24} md={8} lg={8}>
@@ -216,13 +221,14 @@ export class PersonalInfo extends Component {
                                 rules={action === "viewItem" ? null : rules.niNumber}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
-                                    record.niNumber :
+                                {/* {action === "viewItem" ?
+                                    record.niNumber : */}
                                     <Input
+                                        disabled={action === "viewItem"? true: false}
                                         defaultValue={record.niNumber ? record.niNumber : ""}
                                         className="remove" min="0" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 
-                                }
+                                {/* } */}
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={24} md={8} lg={8}>
@@ -232,12 +238,13 @@ export class PersonalInfo extends Component {
                                 rules={action === "viewItem" ? null : rules.origin}
                                 hasFeedback
                             >
-                                {action === "viewItem" ?
+                                {/* {action === "viewItem" ?
                                     record.origin
-                                    :
+                                    : */}
                                     <Select
                                         showSearch
                                         style={componentStyles.selectStyle}
+                                        disabled={action === "viewItem"? true: false}
                                         bordered={false}
                                         placeholder="Origin"
                                         optionFilterProp="children"
@@ -255,7 +262,7 @@ export class PersonalInfo extends Component {
                                         <Option value="Carebian">Carebian</Option>
                                         <Option value="Asian">Asian</Option>
                                     </Select>
-                                }
+                                {/* } */}
                             </Form.Item>
                         </Col>
                     </Row>

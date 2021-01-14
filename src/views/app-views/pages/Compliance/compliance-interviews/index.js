@@ -206,7 +206,7 @@ export class ComplianceInterviews extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 100
+				width: 200
 			},
 			{
 				title: 'Interview Date',
@@ -218,20 +218,20 @@ export class ComplianceInterviews extends Component {
 				width: 200
 			},
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						{/* <Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip> */}
-						{/* <Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip> */}
-					</div>
-				)
-			}
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip>
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (

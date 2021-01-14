@@ -72,11 +72,14 @@ export class Docs extends Component {
 		const { } = this.props;
 		const tableColumns = [
 			{
-				title: 'Name',
+				title: 'Document Name',
 				dataIndex: 'name',
 				render: (_, record) => (
 					<div className="d-flex">
-						<AvatarStatus src={record.img} name={record.name} />
+					<a onClick={() => this.setState({ edit: true })}>
+						{/* <AvatarStatus src={record.img} name={record.name} /> */}
+						{record.name + "Documents"}
+						</a>
 					</div>
 				),
 				sorter: {
@@ -97,7 +100,7 @@ export class Docs extends Component {
 				sorter: {
 					compare: (a, b) => a.issueNumber.length - b.issueNumber.length,
 				},
-				width: 150
+				width: 70
 			},
 
 			{
@@ -110,6 +113,7 @@ export class Docs extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
+				width: 120
 			},
 
 			{
@@ -127,7 +131,7 @@ export class Docs extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 200
+				width: 100
 			},
 
 			{
@@ -140,20 +144,20 @@ export class Docs extends Component {
 				width: 200
 			},
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
-					</div>
-				)
-			}
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip>
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		const rowSelection = {
@@ -173,10 +177,10 @@ export class Docs extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Guard's Docs" extra={cardDropdown(latestTransactionOption)}>
 							<Table
-								rowSelection={{
-									type: selectionType,
-									...rowSelection,
-								}}
+								// rowSelection={{
+								// 	type: selectionType,
+								// 	...rowSelection,
+								// }}
 								bordered columns={tableColumns} dataSource={users} rowKey='id' scroll={{ x: 1200, y: 200 }} />
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}

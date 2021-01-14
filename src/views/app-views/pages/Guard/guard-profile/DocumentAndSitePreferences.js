@@ -43,7 +43,7 @@ export class DocumentAndSitePreferences extends Component {
 
 
                     <Row >
-                        <Col className="card" xs={24} sm={24} md={4} lg={4} style={{ backgroundColor: 'white' }}>
+                        <Col className="card" xs={24} sm={24} md={4} lg={4} style={{ backgroundColor: 'white', height:"10%" }}>
 
                             <Menu mode="vertical">
 

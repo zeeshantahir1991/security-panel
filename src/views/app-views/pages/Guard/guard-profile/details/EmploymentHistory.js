@@ -65,10 +65,10 @@ export class EmploymentHistory extends Component {
                 dataIndex: 'empType',
                 render: (_, record) => (
                     <div className="d-flex">
-                        {/* <a onClick={() => this.setState({ edit: true })}> */}
+                        <a onClick={() => this.setState({ edit: true })}>
 
-                        {record.empType}
-                        {/* </a> */}
+                            {record.empType}
+                        </a>
                     </div>
                 ),
                 sorter: {
@@ -276,6 +276,21 @@ export class EmploymentHistory extends Component {
                 },
                 width: 150
             },
+
+            {
+                title: '',
+                dataIndex: 'actions',
+                render: (_, elm) => (
+                    <div className="text-right">
+                        {/* <Tooltip title="View">
+                            <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+                        </Tooltip> */}
+                        <Tooltip title="Delete">
+                            <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+                        </Tooltip>
+                    </div>
+                )
+            }
 
 
         ];

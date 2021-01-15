@@ -1,13 +1,11 @@
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import { Table } from "ant-table-extensions";
-
-import AvatarStatus from 'components/shared-components/AvatarStatus';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
+
 
 const trainingData = [
 	{
@@ -19,6 +17,8 @@ const trainingData = [
 		"auditBy": "SC user B",
 		"trainingDate": 1583107200,
 		"auditDate": 1583107200,
+		"nextTrainingDate": 1583107200,
+		"lastTrainingDate": 1583107200,
 
 	}
 ]
@@ -55,7 +55,8 @@ export class ComplianceTraining extends Component {
 			trainer: "",
 			auditBy: "",
 			guardName: "",
-			trainingDate: ""
+			trainingDate: "",
+			form: false
 		}
 	}
 
@@ -105,7 +106,7 @@ export class ComplianceTraining extends Component {
 
 
 	render() {
-		const { training, search } = this.state;
+		const { training, search, form } = this.state;
 
 		const tableColumns = [
 
@@ -183,6 +184,29 @@ export class ComplianceTraining extends Component {
 				sorter: (a, b) => moment(a.auditDate).unix() - moment(b.auditDate).unix(),
 				width: 200
 			},
+
+			{
+				title: 'Next Training Date',
+				dataIndex: 'nextTrainingDate',
+				render: date => (
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.nextTrainingDate).unix() - moment(b.nextTrainingDate).unix(),
+				width: 200
+			},
+
+			{
+				title: 'Last Training Date',
+				dataIndex: 'lastTrainingDate',
+				render: date => (
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.lastTrainingDate).unix() - moment(b.lastTrainingDate).unix(),
+				width: 200
+			},
+
+
+
 
 			{
 				title: '',
@@ -389,9 +413,160 @@ export class ComplianceTraining extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Training List" >
-							<Table searchable bordered columns={tableColumns} dataSource={training} rowKey='id' scroll={{ x: 1200, y: 300 }} />
-						</Card>
+						{form ?
+							<Card className="card" title="Add Training">
+								<Form layout="vertical">
+									<Row gutter={16}>
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<div style={AppStyles.marginBottom40}>
+												<div style={AppStyles.horizontallLineWidth100}>
+												</div>
+											</div>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="guardList"
+												label="Guard List"
+												// rules={rules.guardList}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Guard List"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("guardList", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Guard 1">Guard 1</Option>
+													<Option value="Guard 2">Guard 2</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="training"
+												label="Training"
+												// rules={rules.training}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Training"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("training", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Training 1">Training 1</Option>
+													<Option value="Training 2">Training 2</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="trainingDate"
+												label="Training Date"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="trainer"
+												label="Trainer"
+												// rules={rules.trainer}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Trainer"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("trainer", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Trainer 1">Trainer 1</Option>
+													<Option value="Trainer 2">Trainer 2</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+									</Row>
+									<Row gutter={16} justify="center">
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ form: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Back
+                                                    </Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ form: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Add
+                                                    </Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+							:
+							<Card className="card" title="Training List" extra={
+								<Row gutter={16}>
+									<Col xs={24} sm={24} md={24} lg={24}>
+
+										<Button
+											onClick={() => this.setState({ form: true })}
+											style={componentStyles.continueButton} htmlType="submit" block>
+											Add Training
+										</Button>
+
+									</Col>
+								</Row>
+							}>
+								<Table searchable bordered columns={tableColumns} dataSource={training} rowKey='id' scroll={{ x: 1200, y: 300 }} />
+							</Card>
+						}
+
 					</Col>
 				</Row>
 

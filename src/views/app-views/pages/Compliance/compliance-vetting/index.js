@@ -1,5 +1,5 @@
 import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip, Form } from 'antd';
 import { Table } from "ant-table-extensions";
 
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -58,6 +58,7 @@ export class ComplianceVetting extends Component {
 		vetting: vettingData,
 		userProfileVisible: false,
 		selectedUser: null,
+		edit: false,
 		search: {
 			screenStatus: "",
 			auditBy: "",
@@ -118,16 +119,19 @@ export class ComplianceVetting extends Component {
 	}
 
 	render() {
-		const { vetting, search } = this.state;
+		const { vetting, search, edit } = this.state;
 
 		const tableColumns = [
-			
+
 			{
 				title: 'Screen Status',
 				dataIndex: 'screenStatus',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.screenStatus}</span>
+						<a onClick={() => this.setState({ edit: true })}>
+
+							<span>{record.screenStatus}</span>
+						</a>
 					</div>
 				),
 				sorter: {
@@ -225,8 +229,8 @@ export class ComplianceVetting extends Component {
 				title: '',
 				dataIndex: 'interviewDate',
 				render: date => (
-					<div style={{justifyContent:"center", alignItems:"center", display:"flex"}}>
-					<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{alignSelf:"center"}}/>
+					<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
+						<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
 					</div>
 				),
 				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
@@ -423,9 +427,172 @@ export class ComplianceVetting extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Vetting List" >
-							<Table searchable bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1400, y: 300 }} />
-						</Card>
+						{edit ?
+							<Card className="card" title="Edit Vetting">
+								<Form layout="vertical">
+									<Row gutter={16} justify="center">
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<div style={AppStyles.marginBottom40}>
+												<div style={AppStyles.horizontallLineWidth100}>
+												</div>
+											</div>
+										</Col>
+
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="screenStatus"
+												label="Screen Status"
+												// rules={rules.training}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Screen Status"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("screenStatus", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Completed">Completed</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="auditBy"
+												label="Audit By"
+												// rules={rules.trainer}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Audit By"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("auditBy", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="SC User A">SC User A</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="vettedBy"
+												label="Vetted By"
+												// rules={rules.trainer}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Vetted By"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("vettedBy", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="SC User B">SC User B</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="completedOn"
+												label="Completed On"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="startDate"
+												label="Start Date"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="auditDate"
+												label="Audit Date"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+
+									</Row>
+									<Row gutter={16} justify="center">
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ edit: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Back
+												</Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ edit: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Update
+												</Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card> :
+							<Card className="card" title="Vetting List" >
+								<Table searchable bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1400, y: 300 }} />
+							</Card>
+						}
 					</Col>
 				</Row>
 

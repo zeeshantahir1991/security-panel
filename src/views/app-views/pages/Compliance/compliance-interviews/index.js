@@ -1,5 +1,5 @@
-import { DeleteOutlined, EyeOutlined, DownloadOutlined  } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip, Form } from 'antd';
 import complianceData from "assets/data/compliance-interviews-list.data";
 import { Table } from "ant-table-extensions";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -35,6 +35,7 @@ export class ComplianceInterviews extends Component {
 		compliance: complianceData,
 		userProfileVisible: false,
 		selectedUser: null,
+		edit: false,
 		search: {
 			interviewStatus: "",
 			interviewer: "",
@@ -151,10 +152,29 @@ export class ComplianceInterviews extends Component {
 	}
 
 	render() {
-		const { compliance, search } = this.state;
+		const { compliance, search, edit } = this.state;
 
 		const tableColumns = [
-		
+			{
+				title: 'Position',
+				dataIndex: 'position',
+				render: (_, record) => (
+					<div className="d-flex">
+						<a onClick={() => this.setState({ edit: true })}>
+
+							<span>{record.position}</span>
+						</a>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.position.toLowerCase();
+						b = b.position.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
 
 			{
 				title: 'Interview Status',
@@ -174,23 +194,7 @@ export class ComplianceInterviews extends Component {
 				width: 200
 			},
 
-			{
-				title: 'Position',
-				dataIndex: 'position',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.position}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.position.toLowerCase();
-						b = b.position.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
-			},
+
 
 			{
 				title: 'Interviewer',
@@ -222,8 +226,8 @@ export class ComplianceInterviews extends Component {
 				title: '',
 				dataIndex: 'interviewDate',
 				render: date => (
-					<div style={{justifyContent:"center", alignItems:"center", display:"flex"}}>
-					<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{alignSelf:"center"}}/>
+					<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
+						<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
 					</div>
 				),
 				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
@@ -408,9 +412,147 @@ export class ComplianceInterviews extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Compliance Interview List" >
-							<Table searchable bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 900, y: 300 }} />
-						</Card>
+						{edit ?
+							<Card className="card" title="Edit Interview">
+								<Form layout="vertical">
+									<Row gutter={16}>
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<div style={AppStyles.marginBottom40}>
+												<div style={AppStyles.horizontallLineWidth100}>
+												</div>
+											</div>
+										</Col>
+
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="position"
+												label="Position"
+												// rules={rules.training}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Position"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("position", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Security Officer">Security Officer</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="status"
+												label="Status"
+												// rules={rules.training}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Status"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("status", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="Completed">Completed</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="interviewer"
+												label="Interviewer"
+												// rules={rules.trainer}
+												hasFeedback
+											>
+												<Select
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Interviewer"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("interviewer", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="SC User A">SC User A</Option>
+
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="interviewDate"
+												label="Interview Date"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<DatePicker style={componentStyles.datePicker}
+													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+
+									</Row>
+									<Row gutter={16} justify="center">
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ edit: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Back
+                                                    </Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+
+										<Col xs={12} sm={12} md={6} lg={6}>
+
+											<Form.Item>
+												<div style={AppStyles.marginTop40}>
+													<Button
+														onClick={() => this.setState({ edit: false })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Update
+                                                    </Button>
+
+												</div>
+											</Form.Item>
+										</Col>
+									</Row>
+								</Form>
+							</Card>
+							:
+							<Card className="card" title="Compliance Interview List" >
+								<Table searchable bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 900, y: 300 }} />
+							</Card>
+						}
 					</Col>
 				</Row>
 

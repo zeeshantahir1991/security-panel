@@ -148,25 +148,18 @@ export class AddressHistory extends Component {
 
 
             {
-                title: 'Status',
+                title: 'Current Address',
                 dataIndex: 'status',
                 render: () => {
                     return (
-                        <Button onClick={() => {
-                            if (currStatus == "active") {
-                                this.setState({ currStatus: "inactive" })
-                            }
-                            else if (currStatus == "inactive") {
-                                this.setState({ currStatus: "active" })
-                            }
-                        }}
-                            style={{ color: currStatus === 'active' ? 'lightgreen' : 'red', borderColor: currStatus === 'active' ? 'lightgreen' : 'red' }} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+                        <Switch 
+                        onClick={() => { }}/>
                     )
                 },
                 sorter: {
                     compare: (a, b) => a.status.length - b.status.length,
                 },
-                width: 120
+                width: 160
             },
             // {
             //     title: 'Status',

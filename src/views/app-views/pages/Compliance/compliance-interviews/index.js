@@ -1,4 +1,4 @@
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, DownloadOutlined  } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import complianceData from "assets/data/compliance-interviews-list.data";
 import { Table } from "ant-table-extensions";
@@ -218,6 +218,17 @@ export class ComplianceInterviews extends Component {
 				sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
 				width: 200
 			},
+			{
+				title: '',
+				dataIndex: 'interviewDate',
+				render: date => (
+					<div style={{justifyContent:"center", alignItems:"center", display:"flex"}}>
+					<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{alignSelf:"center"}}/>
+					</div>
+				),
+				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				width: 200,
+			},
 
 			// {
 			// 	title: '',
@@ -299,17 +310,31 @@ export class ComplianceInterviews extends Component {
 									<Option value="SC user A">SC user A </Option>
 									<Option value="SC user B">SC user B</Option>
 								</Select>
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Interview Period"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("interviewer", val)}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="Interview Period">Interview Period </Option>
+									<Option value="From Date to Date Range">From Date to Date Range</Option>
+								</Select>
 
-								<DatePicker style={componentStyles.datePicker}
+								{/* <DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("interviewDate", val)}
 									placeholder="Interview Date"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+									defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+									format={'YYYY/MM/DD'} /> */}
 
-								<Input
+								{/* <Input
 									placeholder="Guard Name"
 									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.interviewStatus || search.interviewer || search.interviewDate || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -361,16 +386,16 @@ export class ComplianceInterviews extends Component {
 									<Option value="SC user B">SC user B</Option>
 								</Select>
 
-								<DatePicker style={componentStyles.datePicker}
+								{/* <DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("interviewDate", val)}
 									placeholder="Interview Date"
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+									format={'YYYY/MM/DD'} /> */}
 
-								<Input
+								{/* <Input
 									placeholder="Guard Name"
 									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.interviewStatus || search.interviewer || search.interviewDate || search.guardName)}
 									onClick={() => { this.searchInTable() }}

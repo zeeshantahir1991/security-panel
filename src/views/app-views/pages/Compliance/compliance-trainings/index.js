@@ -5,6 +5,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
+import { DeleteOutlined, EyeOutlined, DownloadOutlined  } from '@ant-design/icons';
 
 
 const trainingData = [
@@ -210,18 +211,15 @@ export class ComplianceTraining extends Component {
 
 			{
 				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						{/* <Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip> */}
-						{/* <Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip> */}
+				dataIndex: 'interviewDate',
+				render: date => (
+					<div style={{justifyContent:"center", alignItems:"center", display:"flex"}}>
+					<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{alignSelf:"center"}}/>
 					</div>
-				)
-			}
+				),
+				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				width: 200,
+			},
 		];
 
 		return (
@@ -315,10 +313,10 @@ export class ComplianceTraining extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<Input
+								{/* <Input
 									placeholder="Guard Name"
 									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.trainingStatus || search.trainer || search.auditBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -423,7 +421,7 @@ export class ComplianceTraining extends Component {
 												</div>
 											</div>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										{/* <Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="guardList"
 												label="Guard List"
@@ -449,7 +447,7 @@ export class ComplianceTraining extends Component {
 
 												</Select>
 											</Form.Item>
-										</Col>
+										</Col> */}
 
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item

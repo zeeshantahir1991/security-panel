@@ -1,4 +1,4 @@
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import { Table } from "ant-table-extensions";
 
@@ -207,20 +207,31 @@ export class ComplianceVetting extends Component {
 				width: 200
 			},
 
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			{/* <Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip> */}
+			// 			{/* <Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip> */}
+			// 		</div>
+			// 	)
+			// }
 			{
 				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						{/* <Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip> */}
-						{/* <Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip> */}
+				dataIndex: 'interviewDate',
+				render: date => (
+					<div style={{justifyContent:"center", alignItems:"center", display:"flex"}}>
+					<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{alignSelf:"center"}}/>
 					</div>
-				)
-			}
+				),
+				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				width: 200,
+			},
 		];
 
 		return (
@@ -314,10 +325,10 @@ export class ComplianceVetting extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<Input
+								{/* <Input
 									placeholder="Guard Name"
 									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.screenStatus || search.auditBy || search.vettedBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -396,10 +407,10 @@ export class ComplianceVetting extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<Input
+								{/* <Input
 									placeholder="Guard Name"
 									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.screenStatus || search.auditBy || search.vettedBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}

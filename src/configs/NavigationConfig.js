@@ -390,7 +390,7 @@ const complianceNavTree = [
           {
             key: "compliance-pages-complianceTemplates",
             path: "/app/pages/compliance-templates",
-            title: "compliance Templates",
+            title: "Compliance Templates",
             icon: "",
             breadcrumb: true,
             submenu: [],

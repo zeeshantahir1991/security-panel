@@ -1,11 +1,13 @@
-import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip, Form } from 'antd';
+import { FileTextOutlined, UserOutlined, DownloadOutlined, FrownOutlined, SmileOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Rate, Form } from 'antd';
 import complianceData from "assets/data/compliance-interviews-list.data";
 import { Table } from "ant-table-extensions";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
+import Textarea from 'views/app-views/components/data-entry/input/Textarea';
+
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
 
@@ -41,7 +43,7 @@ export class ComplianceInterviews extends Component {
 			interviewer: "",
 			interviewDate: "",
 			guardName: "",
-		}
+		},
 	}
 
 	handleChange = (type, value) => {
@@ -423,60 +425,38 @@ export class ComplianceInterviews extends Component {
 											</div>
 										</Col>
 
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												label="Guard Name"
+												name="guardName"
+
+											>
+												<Input
+													disabled
+													defaultValue={'Guard Name'}
+													style={componentStyles.borderColor}
+													prefix={<UserOutlined />}
+												/>
+											</Form.Item>
+
+										</Col>
 
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
-												name="position"
 												label="Position"
-												// rules={rules.training}
-												hasFeedback
-											>
-												<Select
-													showSearch
-													style={componentStyles.selectStyle}
-													bordered={false}
-													placeholder="Position"
-													optionFilterProp="children"
-													onChange={(val) => this.handleChange("position", val)}
-													// onFocus={onFocus}
-													// onBlur={onBlur}
-													// onSearch={onSearch}
-													filterOption={(input, option) =>
-														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-													}
-												>
-													<Option value="Security Officer">Security Officer</Option>
+												name="position"
 
-												</Select>
+											>
+												<Input
+													disabled
+													defaultValue={'Position'}
+													style={componentStyles.borderColor}
+													prefix={<FileTextOutlined />}
+												/>
 											</Form.Item>
+
 										</Col>
 
-										<Col xs={24} sm={24} md={6} lg={6}>
-											<Form.Item
-												name="status"
-												label="Status"
-												// rules={rules.training}
-												hasFeedback
-											>
-												<Select
-													showSearch
-													style={componentStyles.selectStyle}
-													bordered={false}
-													placeholder="Status"
-													optionFilterProp="children"
-													onChange={(val) => this.handleChange("status", val)}
-													// onFocus={onFocus}
-													// onBlur={onBlur}
-													// onSearch={onSearch}
-													filterOption={(input, option) =>
-														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-													}
-												>
-													<Option value="Completed">Completed</Option>
-
-												</Select>
-											</Form.Item>
-										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="interviewer"
@@ -506,13 +486,266 @@ export class ComplianceInterviews extends Component {
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="interviewDate"
-												label="Interview Date"
+												label="Date"
 												// rules={rules.trainingDate}
 												hasFeedback
 											>
 												<DatePicker style={componentStyles.datePicker}
 													// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
 													format={'YYYY/MM/DD'} />
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="appearance"
+												label="Appearance / Disposition"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("appearance", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="education"
+												label="Education / Qualifications / Trainings"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("education", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="skills"
+												label="Skills / Knowledge of key Requirements"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("skills", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="experience"
+												label="Experience"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("appearance", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="personality"
+												label="Personality"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("personality", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="circumstances"
+												label="Special Circumstances"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("circumstances", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="communication"
+												label="Communication"
+												// rules={rules.trainingDate}
+												hasFeedback
+											>
+												<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Rating (0-10)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("communication", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="1">1</Option>
+												<Option value="2">2</Option>
+												<Option value="3">3</Option>
+												<Option value="4">4</Option>
+												<Option value="5">5</Option>
+												<Option value="6">6</Option>
+												<Option value="7">7</Option>
+												<Option value="8">8</Option>
+												<Option value="9">9</Option>
+												<Option value="10">10</Option>
+											</Select>
+											</Form.Item>
+										</Col>
+
+										<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop20}>
+											<Form.Item
+												name="comments"
+												label="Comments On Rating"
+												// rules={rules.site}
+												hasFeedback
+											>
+												<Textarea placeholder={'Comments On Rating...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 

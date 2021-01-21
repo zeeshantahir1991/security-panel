@@ -289,25 +289,25 @@ export class SiaRecordList extends Component {
                 sorter: (a, b) => moment(a.siaLicenceExpiryDate).unix() - moment(b.siaLicenceExpiryDate).unix(),
                 width: 150
             },
-            {
-                title: 'Last Checked',
-                dataIndex: 'siaLicenceLastChecked',
-                render: date => (
-                    <span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
-                ),
-                sorter: (a, b) => moment(a.siaLicenceLastChecked).unix() - moment(b.siaLicenceLastChecked).unix(),
-                width: 200
-            },
+            // {
+            //     title: 'Last Checked',
+            //     dataIndex: 'siaLicenceLastChecked',
+            //     render: date => (
+            //         <span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+            //     ),
+            //     sorter: (a, b) => moment(a.siaLicenceLastChecked).unix() - moment(b.siaLicenceLastChecked).unix(),
+            //     width: 200
+            // },
 
-            {
-                title: 'Next Check',
-                dataIndex: 'siaLicenceNextCheck',
-                render: date => (
-                    <span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
-                ),
-                sorter: (a, b) => moment(a.siaLicenceNextCheck).unix() - moment(b.siaLicenceNextCheck).unix(),
-                width: 200
-            },
+            // {
+            //     title: 'Next Check',
+            //     dataIndex: 'siaLicenceNextCheck',
+            //     render: date => (
+            //         <span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+            //     ),
+            //     sorter: (a, b) => moment(a.siaLicenceNextCheck).unix() - moment(b.siaLicenceNextCheck).unix(),
+            //     width: 200
+            // },
 
             {
                 title: '',

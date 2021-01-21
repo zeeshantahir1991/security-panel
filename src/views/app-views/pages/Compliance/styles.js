@@ -10,6 +10,10 @@ export const componentStyles = {
     companyInfoContainer: { borderRadius: 10, padding: 20, backgroundColor: AppColors.white },
 
     borderColor: { borderColor: AppColors.alto },
+    checkboxStyle: { 
+        borderColor: AppColors.alto,
+        // marginTop:10
+     },
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
@@ -95,7 +99,10 @@ export const componentStyles = {
         marginRight: 20
     },
 
-    subCard: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
+    subCard: { 
+        backgroundColor: AppColors.alabaster1, 
+        // backgroundColor: AppColors.radicalRed, 
+        borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
     selectWhiteStyle: {
         width: '100%',
         borderWidth: 1,

@@ -1,4 +1,4 @@
-import { Card, Col, Menu, Row, Select } from 'antd';
+import { Card, Col, Menu, Row, Select, Typography } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../assets/styles";
 import { AppColors } from "../../../../assets/styles/colors"
@@ -52,6 +52,8 @@ export class ComplianceData extends Component {
                                     <Col className="card" xs={24} sm={24} md={4} lg={4} style={{ backgroundColor: 'white', height:"10%" }} >
     
                                         <Menu mode="vertical" >
+
+                                            <Menu.Item style={{ marginLeft:50}}><Typography style={{fontSize:20}} >Compliance</Typography></Menu.Item>
     
                                             <Menu.Item
                                                 className="menuHover"
@@ -104,16 +106,16 @@ export class ComplianceData extends Component {
                                             </Menu.Item>
                                             <Menu.Item
                                                 className="menuHover"
-                                                onClick={() => this.setState({ type: "SiaLicence" })}
-                                                style={'SiaLicence' === type ? componentStyles.staffMenuItemSelected : null
+                                                onClick={() => this.setState({ type: "Sia Licence Logs" })}
+                                                style={'Sia Licence Logs' === type ? componentStyles.staffMenuItemSelected : null
                                                 }
                                             >
                                                 <span
                                                     style={{
-                                                        color: 'SiaLicence' === type ? AppColors.pictonBlue : null
+                                                        color: 'Sia Licence Logs' === type ? AppColors.pictonBlue : null
                                                     }}
                                                 >
-                                                    Sia Licence
+                                                    Sia Licence Logs
                                                    </span>
                                             </Menu.Item>
                                             
@@ -155,7 +157,7 @@ export class ComplianceData extends Component {
                                                         <Option value="Interviews">Interviews</Option>
                                                         <Option value="Vetting">Vetting</Option>
                                                         <Option value="Trainings">Trainings</Option>
-                                                        <Option value="SiaLicence">Sia Licence</Option>
+                                                        <Option value="Sia Licence Logs">Sia Licence Logs</Option>
                                                   
     
     
@@ -179,7 +181,7 @@ export class ComplianceData extends Component {
                                                    < ComplianceVetting /> :
                                                      'Trainings' === type ?
                                                           < ComplianceTraining /> : 
-                                                          'SiaLicence' === type ?
+                                                          'Sia Licence Logs' === type ?
                                                           <SiaRecordList action={action} record={record} history={this.props.history} /> 
                                                           : null
                                                  }

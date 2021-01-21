@@ -67,7 +67,20 @@ export const AppStyles = {
     },
 
     marginTop10: {
-        marginTop: 10
+        marginTop: 10,
+        // display: 'flex',
+        // flexDirection:'row',
+        // backgroundColor:"red"
+    },
+    testmarginTop10: {
+        marginTop: 10,
+        display: 'flex',
+        flexDirection:'row',
+        // backgroundColor:"red"
+    },
+    testStyle: {
+        marginTop: 10,
+        // backgroundColor:"yellow"
     },
     marginTop15: {
         marginTop: 15

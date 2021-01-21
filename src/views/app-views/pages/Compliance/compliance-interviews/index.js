@@ -6,7 +6,7 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
-import Textarea from 'views/app-views/components/data-entry/input/Textarea';
+// import Input from 'views/app-views/components/data-entry/input/Input';
 
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
@@ -155,6 +155,7 @@ export class ComplianceInterviews extends Component {
 
 	render() {
 		const { compliance, search, edit } = this.state;
+		// const { TextArea } = Input;
 
 		const tableColumns = [
 			{
@@ -276,7 +277,7 @@ export class ComplianceInterviews extends Component {
 					</Col>
 				</Row>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={24} lg={24}>
+					{/* <Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -330,17 +331,6 @@ export class ComplianceInterviews extends Component {
 									<Option value="Interview Period">Interview Period </Option>
 									<Option value="From Date to Date Range">From Date to Date Range</Option>
 								</Select>
-
-								{/* <DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("interviewDate", val)}
-									placeholder="Interview Date"
-									defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} /> */}
-
-								{/* <Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.interviewStatus || search.interviewer || search.interviewDate || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -350,8 +340,8 @@ export class ComplianceInterviews extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
-					<Col xs={24} sm={24} md={0} lg={0}>
+					</Col> */}
+					{/* <Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -391,17 +381,6 @@ export class ComplianceInterviews extends Component {
 									<Option value="SC user A">SC user A </Option>
 									<Option value="SC user B">SC user B</Option>
 								</Select>
-
-								{/* <DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("interviewDate", val)}
-									placeholder="Interview Date"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} /> */}
-
-								{/* <Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.interviewStatus || search.interviewer || search.interviewDate || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -411,7 +390,7 @@ export class ComplianceInterviews extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
+					</Col> */}
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						{edit ?
@@ -497,10 +476,10 @@ export class ComplianceInterviews extends Component {
 											</Form.Item>
 										</Col>
 
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="appearance"
-												label="Appearance / Disposition"
+												label="Appearance"
 												// rules={rules.trainingDate}
 												hasFeedback
 											>
@@ -531,20 +510,20 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18}>
+										<Col xs={24} sm={24} md={21} lg={21}>
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input rows={2} placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="education"
-												label="Education / Qualifications / Trainings"
+												label="Education"
 												// rules={rules.trainingDate}
 												hasFeedback
 											>
@@ -575,20 +554,20 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18}>
+										<Col xs={24} sm={24} md={21} lg={21}>
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="skills"
-												label="Skills / Knowledge of key Requirements"
+												label="Skills"
 												// rules={rules.trainingDate}
 												hasFeedback
 											>
@@ -619,17 +598,17 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18}>
+										<Col xs={24} sm={24} md={21} lg={21}>
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="experience"
 												label="Experience"
@@ -663,17 +642,17 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18}>
+										<Col xs={24} sm={24} md={21} lg={21}>
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="personality"
 												label="Personality"
@@ -707,20 +686,20 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18}>
+										<Col xs={24} sm={24} md={21} lg={21}>
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="circumstances"
-												label="Special Circumstances"
+												label="Circumstances"
 												// rules={rules.trainingDate}
 												hasFeedback
 											>
@@ -751,18 +730,18 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={18} lg={18} >
+										<Col xs={24} sm={24} md={21} lg={21} >
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 
-										<Col xs={24} sm={24} md={6} lg={6}>
+										<Col xs={24} sm={24} md={3} lg={3}>
 											<Form.Item
 												name="communication"
 												label="Communication"
@@ -797,14 +776,14 @@ export class ComplianceInterviews extends Component {
 											</Form.Item>
 										</Col>
 
-										<Col xs={24} sm={24} md={18} lg={18} >
+										<Col xs={24} sm={24} md={21} lg={21} >
 											<Form.Item
 												name="comments"
 												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+												<Input placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 
@@ -842,7 +821,7 @@ export class ComplianceInterviews extends Component {
 							</Card>
 							:
 							<Card className="card" title="Compliance Interview List" >
-								<Table searchable bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 900, y: 300 }} />
+								<Table  bordered columns={tableColumns} dataSource={compliance} rowKey='id' scroll={{ x: 900, y: 300 }} />
 							</Card>
 						}
 					</Col>

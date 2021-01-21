@@ -266,7 +266,7 @@ export class ComplianceVetting extends Component {
 					</Col>
 				</Row>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={24} lg={24}>
+					{/* <Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -277,9 +277,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Vetting Status"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("screenStatus", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -298,9 +295,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Audit By"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("auditBy", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -316,9 +310,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Vetted By"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("vettedBy", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -330,13 +321,7 @@ export class ComplianceVetting extends Component {
 								<DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("vettingPeriod", val)}
 									placeholder="Vetting Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
-
-								{/* <Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.screenStatus || search.auditBy || search.vettedBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -346,8 +331,8 @@ export class ComplianceVetting extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
-					<Col xs={24} sm={24} md={0} lg={0}>
+					</Col> */}
+					{/* <Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -359,9 +344,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Vetting Status"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("screenStatus", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -380,9 +362,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Audit By"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("auditBy", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -398,9 +377,6 @@ export class ComplianceVetting extends Component {
 									placeholder="Vetted By"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("vettedBy", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -411,14 +387,8 @@ export class ComplianceVetting extends Component {
 
 								<DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("vettingPeriod", val)}
-									placeholder="Vetting Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+									placeholder="Vetting Period" 
 									format={'YYYY/MM/DD'} />
-
-								{/* <Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.screenStatus || search.auditBy || search.vettedBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -428,14 +398,15 @@ export class ComplianceVetting extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
+					</Col> */}
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						{edit ?
 							<Card className="card" title="Edit Vetting">
 								<Collapse defaultActiveKey={['1']} onChange={callback}>
-									<Panel header="Vetting Record" key="1">
+									<Panel header="Click here to complete Vetting" key="1">
 										<Form layout="vertical">
+										<div><h3>Personal References</h3></div>
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
@@ -485,12 +456,109 @@ export class ComplianceVetting extends Component {
 														// rules={rules.site}
 														hasFeedback
 													>
-														<Textarea placeholder={'Comments...'} style={componentStyles.borderColor} />
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
 													</Form.Item>
 												</Col>
 
 											</Row>
+											<div><h3>Employment References</h3></div>
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employerName"
+														label="Employer Name"
+														// rules={rules.chargeRate}
+														hasFeedback
+													>
+														<Input
+															disabled
+															defaultValue="Employer Name"
+															style={componentStyles.borderColor} prefix={<UserOutlined />} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employedFrom"
+														label="Employed From"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employedTo"
+														label="Employed To"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="requestSentDate"
+														label="Request Sent Date"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employmentFrom"
+														label="Employment Confirmed From"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employmentTo"
+														label="Employment Confirmed To"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24}>
+													<Form.Item
+														name="comments"
+														label="Comments"
+														// rules={rules.site}
+														hasFeedback
+													>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+
+											</Row>
+											{/* <Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="employerName"
@@ -585,129 +653,109 @@ export class ComplianceVetting extends Component {
 													</Form.Item>
 												</Col>
 
-											</Row>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employerName"
-														label="Employer Name"
-														// rules={rules.chargeRate}
-														hasFeedback
-													>
-														<Input
-															disabled
-															defaultValue="Employer Name"
-															style={componentStyles.borderColor} prefix={<UserOutlined />} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employedFrom"
-														label="Employed From"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employedTo"
-														label="Employed To"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="requestSentDate"
-														label="Request Sent Date"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employmentFrom"
-														label="Employment Confirmed From"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employmentTo"
-														label="Employment Confirmed To"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={24} lg={24}>
-													<Form.Item
-														name="comments"
-														label="Comments"
-														// rules={rules.site}
-														hasFeedback
-													>
-														<Textarea placeholder={'Comments...'} style={componentStyles.borderColor} />
-													</Form.Item>
-												</Col>
-
-											</Row>
+											</Row> */}
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked>Valid passport</Checkbox>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>Valid passport</Checkbox>													
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>Work Permit / Visa if applied</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>SIA Licence</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>Proof of Address</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>Driving Licence if applicable</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked>National Insurance</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+												</Col>
+												{/* <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
 													<Checkbox style={componentStyles.borderColor} checked>Work Permit / Visa if applied</Checkbox>
+													<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
 													<Checkbox style={componentStyles.borderColor} checked>SIA Licence</Checkbox>
+													<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
 													<Checkbox style={componentStyles.borderColor} checked>Proof of Address</Checkbox>
+													<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
 													<Checkbox style={componentStyles.borderColor} checked>Driving Licence if applicable</Checkbox>
+													<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
 													<Checkbox style={componentStyles.borderColor} checked>National Insurance</Checkbox>
+													<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
 												</Col>
+												</Col> */}
 
 												<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
 													<Form.Item
@@ -749,7 +797,7 @@ export class ComplianceVetting extends Component {
 													</Form.Item>
 												</Col>
 
-												<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
+												{/* <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
 													<Form.Item
 														name="auditBy"
 														label="Audit By"
@@ -774,12 +822,12 @@ export class ComplianceVetting extends Component {
 
 														</Select>
 													</Form.Item>
-												</Col>
+												</Col> */}
 
 
 
 
-												<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
+												{/* <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
 													<Form.Item
 														name="auditDate"
 														label="Audit Date"
@@ -790,10 +838,10 @@ export class ComplianceVetting extends Component {
 															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
 															format={'YYYY/MM/DD'} />
 													</Form.Item>
-												</Col>
+												</Col> */}
 
 											</Row>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+											{/* <Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 
 												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
 
@@ -809,7 +857,7 @@ export class ComplianceVetting extends Component {
 												</Col>
 
 
-											</Row>
+											</Row> */}
 											<Row gutter={16} justify="center">
 												<Col xs={12} sm={12} md={6} lg={6}>
 
@@ -841,8 +889,9 @@ export class ComplianceVetting extends Component {
 											</Row>
 										</Form>
 									</Panel>
-									<Panel header="Vetting - Audit" key="2">
+									<Panel header="Click here to complete Audit" key="2">
 										<Form layout="vertical">
+										<div><h3>Personal References</h3></div>
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
@@ -892,12 +941,109 @@ export class ComplianceVetting extends Component {
 														// rules={rules.site}
 														hasFeedback
 													>
-														<Textarea placeholder={'Comments...'} style={componentStyles.borderColor} />
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
 													</Form.Item>
 												</Col>
 
 											</Row>
+											<div><h3>Employment References</h3></div>
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employerName"
+														label="Employer Name"
+														// rules={rules.chargeRate}
+														hasFeedback
+													>
+														<Input
+															disabled
+															defaultValue="Employer Name"
+															style={componentStyles.borderColor} prefix={<UserOutlined />} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employedFrom"
+														label="Employed From"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employedTo"
+														label="Employed To"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="requestSentDate"
+														label="Request Sent Date"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employmentFrom"
+														label="Employment Confirmed From"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={8} lg={8}>
+													<Form.Item
+														name="employmentTo"
+														label="Employment Confirmed To"
+														// rules={rules.trainingDate}
+														hasFeedback
+													>
+														<DatePicker
+															disabled
+															style={componentStyles.datePicker}
+															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+															format={'YYYY/MM/DD'} />
+													</Form.Item>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24}>
+													<Form.Item
+														name="comments"
+														label="Comments"
+														// rules={rules.site}
+														hasFeedback
+													>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} />
+													</Form.Item>
+												</Col>
+
+											</Row>
+											{/* <Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="employerName"
@@ -992,128 +1138,68 @@ export class ComplianceVetting extends Component {
 													</Form.Item>
 												</Col>
 
-											</Row>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employerName"
-														label="Employer Name"
-														// rules={rules.chargeRate}
-														hasFeedback
-													>
-														<Input
-															disabled
-															defaultValue="Employer Name"
-															style={componentStyles.borderColor} prefix={<UserOutlined />} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employedFrom"
-														label="Employed From"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employedTo"
-														label="Employed To"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="requestSentDate"
-														label="Request Sent Date"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employmentFrom"
-														label="Employment Confirmed From"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={8} lg={8}>
-													<Form.Item
-														name="employmentTo"
-														label="Employment Confirmed To"
-														// rules={rules.trainingDate}
-														hasFeedback
-													>
-														<DatePicker
-															disabled
-															style={componentStyles.datePicker}
-															// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-															format={'YYYY/MM/DD'} />
-													</Form.Item>
-												</Col>
-												<Col xs={24} sm={24} md={24} lg={24}>
-													<Form.Item
-														name="comments"
-														label="Comments"
-														// rules={rules.site}
-														hasFeedback
-													>
-														<Textarea placeholder={'Comments...'} style={componentStyles.borderColor} />
-													</Form.Item>
-												</Col>
-
-											</Row>
+											</Row> */}
 											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
 
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>Valid passport</Checkbox>
+											<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>Valid passport</Checkbox>													
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>Work Permit / Visa if applied</Checkbox>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled/>
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>SIA Licence</Checkbox>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>Proof of Address</Checkbox>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>Work Permit / Visa if applied</Checkbox>													
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>Driving Licence if applicable</Checkbox>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled/>
+													</Form.Item>
 												</Col>
-												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop10}>
-
-													<Checkbox style={componentStyles.borderColor} checked disabled>National Insurance</Checkbox>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>SIA Licence</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled/>
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle} disabled>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>Proof of Address</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>Driving Licence if applicable</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled />
+													</Form.Item>
+												</Col>
+												</Col>
+												<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+												<Col xs={24} sm={24} md={4} lg={4} style={AppStyles.testStyle}>
+													<Checkbox style={componentStyles.checkboxStyle} checked disabled>National Insurance</Checkbox>													
+												</Col>
+												<Col xs={24} sm={24} md={20} lg={20} >
+													<Form.Item name="comments" hasFeedback>
+														<Input rows={1} placeholder={'Comments...'} style={componentStyles.borderColor} disabled />
+													</Form.Item>
+												</Col>
 												</Col>
 
 
@@ -1198,7 +1284,7 @@ export class ComplianceVetting extends Component {
 								</Collapse>
 							</Card> :
 							<Card className="card" title="Vetting List" >
-								<Table searchable bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1400, y: 300 }} />
+								<Table bordered columns={tableColumns} dataSource={vetting} rowKey='id' scroll={{ x: 1400, y: 300 }} />
 							</Card>
 						}
 					</Col>
@@ -1393,3 +1479,4 @@ export const filterCombination = (screenStatus, auditBy, vettedBy, guardName, ve
 
 	}
 }
+

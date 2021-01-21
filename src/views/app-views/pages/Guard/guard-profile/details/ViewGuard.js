@@ -411,7 +411,7 @@ export class ViewGuard extends Component {
                     <div style={AppStyles.marginTop50}>
                         <Row>
                             <Col xs={24} sm={24} md={24} lg={24} >
-                                <ComplianceData location={this.props.location} history={this.props.history} record={record}/>
+                                <ComplianceData location={this.props.location} history={this.props.history} record={record} action={action}/>
                             </Col>
                         </Row>
                     </div>

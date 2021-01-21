@@ -5,6 +5,7 @@ import { AppColors } from "../../../../assets/styles/colors"
 import ComplianceInterviews from '../Compliance/compliance-interviews';
 import ComplianceTraining from '../Compliance/compliance-trainings';
 import ComplianceVetting from '../Compliance/compliance-vetting';
+import SiaRecordList from './SiaRecords';
 import { componentStyles } from "./styles";
 const { Option } = Select;
 
@@ -34,7 +35,7 @@ export class ComplianceData extends Component {
 
     render() {
         const { type } = this.state;
-        const {record} = this.props;
+        const {record, action} = this.props;
         return (
            
                            
@@ -101,7 +102,21 @@ export class ComplianceData extends Component {
                                                     Trainings
                                                    </span>
                                             </Menu.Item>
-    
+                                            <Menu.Item
+                                                className="menuHover"
+                                                onClick={() => this.setState({ type: "SiaLicence" })}
+                                                style={'SiaLicence' === type ? componentStyles.staffMenuItemSelected : null
+                                                }
+                                            >
+                                                <span
+                                                    style={{
+                                                        color: 'SiaLicence' === type ? AppColors.pictonBlue : null
+                                                    }}
+                                                >
+                                                    Sia Licence
+                                                   </span>
+                                            </Menu.Item>
+                                            
     
     
                                         </Menu>
@@ -140,6 +155,7 @@ export class ComplianceData extends Component {
                                                         <Option value="Interviews">Interviews</Option>
                                                         <Option value="Vetting">Vetting</Option>
                                                         <Option value="Trainings">Trainings</Option>
+                                                        <Option value="SiaLicence">Sia Licence</Option>
                                                   
     
     
@@ -162,7 +178,10 @@ export class ComplianceData extends Component {
                                                   'Vetting' === type ?
                                                    < ComplianceVetting /> :
                                                      'Trainings' === type ?
-                                                          < ComplianceTraining /> : null
+                                                          < ComplianceTraining /> : 
+                                                          'SiaLicence' === type ?
+                                                          <SiaRecordList action={action} record={record} history={this.props.history} /> 
+                                                          : null
                                                  }
     
                                         </Card>

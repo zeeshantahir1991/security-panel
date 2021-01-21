@@ -483,6 +483,7 @@ export class ComplianceInterviews extends Component {
 												</Select>
 											</Form.Item>
 										</Col>
+
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="interviewDate"
@@ -495,6 +496,7 @@ export class ComplianceInterviews extends Component {
 													format={'YYYY/MM/DD'} />
 											</Form.Item>
 										</Col>
+
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="appearance"
@@ -503,30 +505,40 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("appearance", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("appearance", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={18} lg={18}>
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
 											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
@@ -537,30 +549,40 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("education", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("education", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={18} lg={18}>
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
 											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
@@ -571,33 +593,42 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("skills", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("skills", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
 											</Form.Item>
 										</Col>
-
+										<Col xs={24} sm={24} md={18} lg={18}>
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
+											>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+											</Form.Item>
+										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="experience"
@@ -606,33 +637,42 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("appearance", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("appearance", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
 											</Form.Item>
 										</Col>
-
+										<Col xs={24} sm={24} md={18} lg={18}>
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
+											>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+											</Form.Item>
+										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="personality"
@@ -641,33 +681,42 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("personality", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("personality", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
 											</Form.Item>
 										</Col>
-
+										<Col xs={24} sm={24} md={18} lg={18}>
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
+											>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
+											</Form.Item>
+										</Col>
 										<Col xs={24} sm={24} md={6} lg={6}>
 											<Form.Item
 												name="circumstances"
@@ -676,30 +725,40 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("circumstances", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("circumstances", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
+											</Form.Item>
+										</Col>
+										<Col xs={24} sm={24} md={18} lg={18} >
+											<Form.Item
+												name="comments"
+												label="Comments "
+												// rules={rules.site}
+												hasFeedback
 											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 
@@ -711,41 +770,41 @@ export class ComplianceInterviews extends Component {
 												hasFeedback
 											>
 												<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Rating (0-10)"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("communication", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="1">1</Option>
-												<Option value="2">2</Option>
-												<Option value="3">3</Option>
-												<Option value="4">4</Option>
-												<Option value="5">5</Option>
-												<Option value="6">6</Option>
-												<Option value="7">7</Option>
-												<Option value="8">8</Option>
-												<Option value="9">9</Option>
-												<Option value="10">10</Option>
-											</Select>
+													showSearch
+													style={componentStyles.selectStyle}
+													bordered={false}
+													placeholder="Rating (0-10)"
+													optionFilterProp="children"
+													onChange={(val) => this.handleChange("communication", val)}
+													// onFocus={onFocus}
+													// onBlur={onBlur}
+													// onSearch={onSearch}
+													filterOption={(input, option) =>
+														option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+													}
+												>
+													<Option value="1">1</Option>
+													<Option value="2">2</Option>
+													<Option value="3">3</Option>
+													<Option value="4">4</Option>
+													<Option value="5">5</Option>
+													<Option value="6">6</Option>
+													<Option value="7">7</Option>
+													<Option value="8">8</Option>
+													<Option value="9">9</Option>
+													<Option value="10">10</Option>
+												</Select>
 											</Form.Item>
 										</Col>
 
-										<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop20}>
+										<Col xs={24} sm={24} md={18} lg={18} >
 											<Form.Item
 												name="comments"
-												label="Comments On Rating"
+												label="Comments "
 												// rules={rules.site}
 												hasFeedback
 											>
-												<Textarea placeholder={'Comments On Rating...'} style={componentStyles.borderColor} />
+												<Textarea placeholder={'Comments ...'} style={componentStyles.borderColor} />
 											</Form.Item>
 										</Col>
 

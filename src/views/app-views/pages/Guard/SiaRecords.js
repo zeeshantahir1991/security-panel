@@ -71,7 +71,7 @@ const siaRecordStatisticData = [
         // subtitle: `Compare to last year (2019)`
     },
     {
-        title: 'Exired / Invalid / Not Found SIA Licence',
+        title: 'Expired / Invalid / Not Found SIA Licence',
         value: '20',
         backgroundColor: "#EF4545"
         // status: 8.2,
@@ -605,7 +605,7 @@ export class SiaRecordList extends Component {
                             </Col>
                         </Row>
                         <Row gutter={16} justify="center">
-                            <Col xs={0} sm={0} md={24} lg={24}>
+                            {/* <Col xs={0} sm={0} md={24} lg={24}>
                                 <Card title="Filters" style={AppStyles.paddingBottom20}>
                                     <div style={AppStyles.flexDirectionRow}>
 
@@ -644,8 +644,8 @@ export class SiaRecordList extends Component {
 					            </Button>
                                     </div>
                                 </Card>
-                            </Col>
-                            <Col xs={24} sm={24} md={0} lg={0}>
+                            </Col> */}
+                            {/* <Col xs={24} sm={24} md={0} lg={0}>
                                 <Card title="Filters" style={AppStyles.paddingBottom20}>
                                     <div style={AppStyles.justifyContentCenter}>
 
@@ -684,7 +684,7 @@ export class SiaRecordList extends Component {
 					            </Button>
                                     </div>
                                 </Card>
-                            </Col>
+                            </Col> */}
 
                             <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
                                 <Card className="card" title="SIA Record List" extra={

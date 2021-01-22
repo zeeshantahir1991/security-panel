@@ -407,7 +407,7 @@ export class ComplianceVetting extends Component {
 									<Panel header="Click here to complete Vetting" key="1">
 										<Form layout="vertical">
 										<div><h3>Personal References</h3></div>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+											<Row gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="refreeName"
@@ -462,7 +462,7 @@ export class ComplianceVetting extends Component {
 
 											</Row>
 											<div><h3>Employment References</h3></div>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+											<Row gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="employerName"
@@ -892,7 +892,7 @@ export class ComplianceVetting extends Component {
 									<Panel header="Click here to complete Audit" key="2">
 										<Form layout="vertical">
 										<div><h3>Personal References</h3></div>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+											<Row  gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="refreeName"
@@ -947,7 +947,7 @@ export class ComplianceVetting extends Component {
 
 											</Row>
 											<div><h3>Employment References</h3></div>
-											<Row className="card" gutter={16} justify="center" style={componentStyles.subCard}>
+											<Row  gutter={16} justify="center" style={componentStyles.subCard}>
 												<Col xs={24} sm={24} md={8} lg={8}>
 													<Form.Item
 														name="employerName"

@@ -100,7 +100,7 @@ export const componentStyles = {
     },
 
     subCard: { 
-        backgroundColor: AppColors.alabaster1, 
+        // backgroundColor: AppColors.alabaster1, 
         // backgroundColor: AppColors.radicalRed, 
         borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 20 },
     selectWhiteStyle: {

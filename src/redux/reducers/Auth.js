@@ -5,6 +5,7 @@ import {
 	HIDE_AUTH_MESSAGE,
 	SIGNOUT_SUCCESS,
 	SIGNUP_SUCCESS,
+	SIGNUP,
 	SHOW_LOADING,
 	SIGNIN_WITH_GOOGLE_AUTHENTICATED,
 	SIGNIN_WITH_FACEBOOK_AUTHENTICATED,
@@ -17,6 +18,8 @@ const initState = {
 	showMessage: false,
 	redirect: '',
 	token: localStorage.getItem(AUTH_TOKEN),
+	user: null,
+	userlocalstorage: null
 }
 
 const auth = (state = initState, action) => {
@@ -28,6 +31,14 @@ const auth = (state = initState, action) => {
 				redirect: '/',
 				token: action.token
 			}
+		case SIGNUP:
+			return{
+				...state,
+				loading: false,
+				redirect:'/',
+				userlocalstorage: localStorage.setItem("user", JSON.stringify(action.payload)),
+				user: action.payload
+			}	
 		case SHOW_AUTH_MESSAGE:
 			return {
 				...state,

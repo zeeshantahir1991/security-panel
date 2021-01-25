@@ -1,9 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import firebaseConfig from 'configs/FirebaseConfig';
+// import firebaseConfig from 'configs/FirebaseConfig';
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 // firebase utils
 const db = firebase.firestore()

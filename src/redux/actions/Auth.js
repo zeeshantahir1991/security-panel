@@ -14,7 +14,7 @@ import {
   SIGNIN_WITH_FACEBOOK_AUTHENTICATED,
   FALSE_LOADING
 } from '../constants/Auth';
-
+import firebase from '../../configs/FirebaseConfig'
 export const signIn = (user) => {
   return {
     type: SIGNIN,
@@ -42,10 +42,20 @@ export const signOutSuccess = () => {
 };
 
 export const signUp = (user) => {
-  return {
-    type: SIGNUP,
-    payload: user
-  };
+  firebase.auth().createUserWithEmailAndPassword(user?.email,user?.password).then((userCredential)=>{
+    var user = userCredential
+    return {
+      type: SIGNUP,
+      payload: user
+    };
+  }).catch((err)=>{
+    var errorCode = err?.code;
+    var errorMessage = err?.message;
+    return{
+      type: SIGNUP,
+      payload: errorMessage
+    }
+  })
 };
 
 export const signUpSuccess = (token) => {

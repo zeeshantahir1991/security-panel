@@ -1,6 +1,5 @@
 import { CalendarOutlined, CreditCardOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Form, Input, Row, Tooltip } from 'antd';
-import { Table } from "ant-table-extensions";
+import { Button, Card, Col, Form, Input, Row, Tooltip, Table } from 'antd';
 
 import { AppStyles } from 'assets/styles';
 import { ROW_GUTTER } from 'constants/ThemeConstant';
@@ -621,7 +620,7 @@ class OrderSummary extends React.Component {
 
 							</div>
 							<div className="mt-4">
-								<Table searchable dataSource={invoiceData} pagination={false} className="mb-5">
+								<Table dataSource={invoiceData} pagination={false} className="mb-5">
 									<Column title="No." dataIndex="key" key="key" />
 									<Column title="Package" dataIndex="package" key="package" />
 									<Column title="Billing Cycle" dataIndex="cycle" key="cycle" />

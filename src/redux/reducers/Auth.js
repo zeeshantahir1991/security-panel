@@ -30,14 +30,6 @@ const auth = (state = initState, action) => {
 				loading: false,
 				redirect: '/',
 				token: action.token
-			}
-		case SIGNUP:
-			return{
-				...state,
-				loading: false,
-				redirect:'/',
-				userlocalstorage: localStorage.setItem("user", JSON.stringify(action.payload)),
-				user: action.payload
 			}	
 		case SHOW_AUTH_MESSAGE:
 			return {

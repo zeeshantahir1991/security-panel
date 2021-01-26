@@ -70,7 +70,7 @@ class OrderSummary extends React.Component {
 			invoiceData: dataArray,
 			pricingData: this.props.location.state.data
 		})
-		console.log("jhdjshds", this.props.location.state.data)
+		// console.log("jhdjshds", this.props.location.state.data)
 	}
 	render() {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')

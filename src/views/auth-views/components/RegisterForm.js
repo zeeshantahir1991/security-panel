@@ -5,6 +5,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { hideAuthMessage, showAuthMessage, showLoading, signUp } from 'redux/actions/Auth';
+import swal from "sweetalert2"
+import FirebaseService from 'services/FirebaseService';
 import { AppStyles } from './../../../assets/styles/index';
 import { componentStyles } from "./../authentication/register/styles";
 const { Option } = Select;
@@ -159,16 +161,33 @@ export const RegisterForm = (props) => {
 	let history = useHistory();
 
 	const onSignUp = () => {
-		form.validateFields().then(values => {
-			showLoading()
-			signUp(values)
+		// console.log("running");
+		form.validateFields().then(value => {
+			// showLoading()
+			FirebaseService.signUpEmailRequest(value.email,value.password).then((res)=>
+			{
+				console.log({res});
+				if(res.user)
+				{
+					swal.fire({
+						title: "SignUp completed Successfully",
+						text: "Press OK to continue ",
+						// input: 'password',
+						// showCancelButton: true        
+					}).then((result) => {
+						goToSummary()
+					});
+				}
+			})
+			// console.log({values});
+			// signUp(values)
 		}).catch(info => {
 			console.log('Validate Failed:', info);
 		});
 	}
 
 	const goToSummary = () => {
-		console.log("goToSummary", location.state.data)
+		// console.log("goToSummary", location.state.data)
 		props.history.push({
 			pathname: '/auth/ordersummary',
 			state: { data: location.state.data }
@@ -336,7 +355,7 @@ export const RegisterForm = (props) => {
 						<Form.Item
 							name="confirm"
 							label="Re-Type Password"
-							rules={rules.confirm}
+							// rules={rules.confirm}
 						>
 							<Input.Password style={AppStyles.borderColorAlto} prefix={<LockOutlined />} />
 						</Form.Item>
@@ -440,7 +459,12 @@ export const RegisterForm = (props) => {
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button onClick={goToSummary} style={componentStyles.signUpButton} htmlType="submit" block loading={loading}>
+							<Button 
+							// onClick={goToSummary}
+							style={componentStyles.signUpButton}
+							htmlType="submit" 
+							block 
+							loading={loading}>
 								Sign Up
 					        </Button>
 						</Form.Item>

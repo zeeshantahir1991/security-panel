@@ -42,21 +42,11 @@ export const signOutSuccess = () => {
 };
 
 export const signUp = (user) => {
-  firebase.auth().createUserWithEmailAndPassword(user?.email,user?.password).then((userCredential)=>{
-    var user = userCredential
     return {
       type: SIGNUP,
       payload: user
     };
-  }).catch((err)=>{
-    var errorCode = err?.code;
-    var errorMessage = err?.message;
-    return{
-      type: SIGNUP,
-      payload: errorMessage
-    }
-  })
-};
+  }
 
 export const signUpSuccess = (token) => {
   return {

@@ -1,11 +1,12 @@
 import { Table } from "ant-table-extensions";
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select, Collapse, Checkbox } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
 import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
+const { Panel } = Collapse;
 
 
 const trainingData = [
@@ -44,7 +45,9 @@ const trainingStatisticData = [
 const { Option } = Select;
 
 
-
+function callback(key) {
+	console.log(key);
+}
 export class ComplianceTraining extends Component {
 
 	state = {
@@ -554,139 +557,289 @@ export class ComplianceTraining extends Component {
 							:
 							edit ?
 								<Card className="card" title="Edit Training">
-									<Form layout="vertical">
-										<Row gutter={16} justify="center">
-											<Col xs={24} sm={24} md={24} lg={24} >
-												<div style={AppStyles.marginBottom40}>
-													<div style={AppStyles.horizontallLineWidth100}>
-													</div>
-												</div>
-											</Col>
-											{/* <Col xs={24} sm={24} md={6} lg={6}>
-										<Form.Item
-											name="guardList"
-											label="Guard List"
-											// rules={rules.guardList}
-											hasFeedback
-										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Guard List"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("guardList", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Guard 1">Guard 1</Option>
-												<Option value="Guard 2">Guard 2</Option>
+									<Collapse defaultActiveKey={['1']} onChange={callback}>
+										<Panel header="Training record" key="1">
+											<Form layout="vertical">
+												<Row gutter={16} justify="center">
+													<Col xs={24} sm={24} md={24} lg={24} >
+														<div style={AppStyles.marginBottom40}>
+															<div style={AppStyles.horizontallLineWidth100}>
+															</div>
+														</div>
+													</Col>
 
-											</Select>
-										</Form.Item>
-									</Col> */}
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="EmploymentDate"
+															label="Employment Date"
+															// rules={rules.trainingDate}
+															hasFeedback
+														>
+															<DatePicker
 
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="training"
-													label="Training"
-													// rules={rules.training}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectStyle}
-														bordered={false}
-														placeholder="Training"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("training", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="Training 1">Training 1</Option>
-														<Option value="Training 2">Training 2</Option>
+																style={componentStyles.datePicker}
+																// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+																format={'YYYY/MM/DD'} />
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="training"
+															label="Training"
+															// rules={rules.training}
+															hasFeedback
+														>
+															<Select
 
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="trainingDate"
-													label="Training Date"
-													// rules={rules.trainingDate}
-													hasFeedback
-												>
-													<DatePicker style={componentStyles.datePicker}
-														// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
-														format={'YYYY/MM/DD'} />
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="trainer"
-													label="Trainer"
-													// rules={rules.trainer}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectStyle}
-														bordered={false}
-														placeholder="Trainer"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("trainer", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="Trainer 1">Trainer 1</Option>
-														<Option value="Trainer 2">Trainer 2</Option>
+																showSearch
+																style={componentStyles.selectStyle}
+																bordered={false}
+																placeholder="Training"
+																optionFilterProp="children"
+																onChange={(val) => this.handleChange("training", val)}
+																// onFocus={onFocus}
+																// onBlur={onBlur}
+																// onSearch={onSearch}
+																filterOption={(input, option) =>
+																	option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+																}
+															>
+																<Option value="Training 1">Training 1</Option>
+																<Option value="Training 2">Training 2</Option>
 
-													</Select>
-												</Form.Item>
-											</Col>
-										</Row>
-										<Row gutter={16} justify="center">
-											<Col xs={12} sm={12} md={6} lg={6}>
+															</Select>
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="trainingDate"
+															label="Training Date"
+															// rules={rules.trainingDate}
+															hasFeedback
+														>
+															<DatePicker style={componentStyles.datePicker}
+																// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+																format={'YYYY/MM/DD'} />
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="trainer"
+															label="Trainer"
+															// rules={rules.trainer}
+															hasFeedback
+														>
+															<Select
 
-												<Form.Item>
-													<div style={AppStyles.marginTop40}>
-														<Button
-															onClick={() => this.setState({ edit: false })}
-															style={componentStyles.continueButton} htmlType="submit" block>
-															Back
-												</Button>
+																showSearch
+																style={componentStyles.selectStyle}
+																bordered={false}
+																placeholder="Trainer"
+																optionFilterProp="children"
+																onChange={(val) => this.handleChange("trainer", val)}
+																// onFocus={onFocus}
+																// onBlur={onBlur}
+																// onSearch={onSearch}
+																filterOption={(input, option) =>
+																	option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+																}
+															>
+																<Option value="Trainer 1">Trainer 1</Option>
+																<Option value="Trainer 2">Trainer 2</Option>
 
-													</div>
-												</Form.Item>
-											</Col>
+															</Select>
+														</Form.Item>
+													</Col>
 
-											<Col xs={12} sm={12} md={6} lg={6}>
+												</Row>
+												<Row gutter={16} justify="center">
+													<Col xs={12} sm={12} md={6} lg={6}>
 
-												<Form.Item>
-													<div style={AppStyles.marginTop40}>
-														<Button
-															onClick={() => this.setState({ edit: false })}
-															style={componentStyles.continueButton} htmlType="submit" block>
-															Update
-												</Button>
+														<Form.Item>
+															<div style={AppStyles.marginTop40}>
+																<Button
+																	onClick={() => this.setState({ edit: false })}
+																	style={componentStyles.continueButton} htmlType="submit" block>
+																	Back
+												                </Button>
 
-													</div>
-												</Form.Item>
-											</Col>
-										</Row>
-									</Form>
+															</div>
+														</Form.Item>
+													</Col>
+
+													<Col xs={12} sm={12} md={6} lg={6}>
+
+														<Form.Item>
+															<div style={AppStyles.marginTop40}>
+																<Button
+																	onClick={() => this.setState({ edit: false })}
+																	style={componentStyles.continueButton} htmlType="submit" block>
+																	Update
+												                 </Button>
+
+															</div>
+														</Form.Item>
+													</Col>
+												</Row>
+											</Form>
+										</Panel>
+										<Panel header="Audit" key="2">
+											<Form layout="vertical">
+												<Row gutter={16} >
+													<Col xs={24} sm={24} md={24} lg={24} >
+														<div style={AppStyles.marginBottom40}>
+															<div style={AppStyles.horizontallLineWidth100}>
+															</div>
+														</div>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="EmploymentDate"
+															label="Employment Date"
+															// rules={rules.trainingDate}
+															hasFeedback
+														>
+															<DatePicker
+																disabled
+																style={componentStyles.datePicker}
+																// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+																format={'YYYY/MM/DD'} />
+														</Form.Item>
+													</Col>
+
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="training"
+															label="Training"
+															// rules={rules.training}
+															hasFeedback
+														>
+															<Select
+																disabled
+																showSearch
+																style={componentStyles.selectStyle}
+																bordered={false}
+																placeholder="Training"
+																optionFilterProp="children"
+																onChange={(val) => this.handleChange("training", val)}
+																// onFocus={onFocus}
+																// onBlur={onBlur}
+																// onSearch={onSearch}
+																filterOption={(input, option) =>
+																	option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+																}
+															>
+																<Option value="Training 1">Training 1</Option>
+																<Option value="Training 2">Training 2</Option>
+
+															</Select>
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="trainingDate"
+															label="Training Date"
+															// rules={rules.trainingDate}
+															hasFeedback
+														>
+															<DatePicker disabled style={componentStyles.datePicker}
+																// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+																format={'YYYY/MM/DD'} />
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="trainer"
+															label="Trainer"
+															// rules={rules.trainer}
+															hasFeedback
+														>
+															<Select
+																disabled
+																showSearch
+																style={componentStyles.selectStyle}
+																bordered={false}
+																placeholder="Trainer"
+																optionFilterProp="children"
+																onChange={(val) => this.handleChange("trainer", val)}
+																// onFocus={onFocus}
+																// onBlur={onBlur}
+																// onSearch={onSearch}
+																filterOption={(input, option) =>
+																	option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+																}
+															>
+																<Option value="Trainer 1">Trainer 1</Option>
+																<Option value="Trainer 2">Trainer 2</Option>
+
+															</Select>
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6}>
+														<Form.Item
+															name="auditBy"
+															label="Audit By"
+															// rules={rules.trainer}
+															hasFeedback
+														>
+															<Select
+
+																showSearch
+																style={componentStyles.selectStyle}
+																bordered={false}
+																placeholder="Audit By"
+																optionFilterProp="children"
+																onChange={(val) => this.handleChange("auditBy", val)}
+																// onFocus={onFocus}
+																// onBlur={onBlur}
+																// onSearch={onSearch}
+																filterOption={(input, option) =>
+																	option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+																}
+															>
+																<Option value="Audit 1">Audit 1</Option>
+																<Option value="Audit 2">Audit 2</Option>
+
+															</Select>
+														</Form.Item>
+													</Col>
+													<Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop20}>
+														<Checkbox style={componentStyles.checkboxStyle} checked>Training Record Verified</Checkbox>
+													</Col>
+												</Row>
+												<Row gutter={16} justify="center">
+													<Col xs={12} sm={12} md={6} lg={6}>
+
+														<Form.Item>
+															<div style={AppStyles.marginTop40}>
+																<Button
+																	onClick={() => this.setState({ edit: false })}
+																	style={componentStyles.continueButton} htmlType="submit" block>
+																	Back
+												                </Button>
+
+															</div>
+														</Form.Item>
+													</Col>
+
+													<Col xs={12} sm={12} md={6} lg={6}>
+
+														<Form.Item>
+															<div style={AppStyles.marginTop40}>
+																<Button
+																	onClick={() => this.setState({ edit: false })}
+																	style={componentStyles.continueButton} htmlType="submit" block>
+																	Update
+												                </Button>
+
+															</div>
+														</Form.Item>
+													</Col>
+												</Row>
+											</Form>
+										</Panel>
+									</Collapse>
+
 								</Card> :
 								<Card className="card" title="Training List" extra={
 									<Row gutter={16}>

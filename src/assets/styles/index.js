@@ -51,6 +51,13 @@ export const AppStyles = {
         display: 'flex'
     },
 
+    flexDirectionWithItemsCenter: {
+        flexDirection: 'row',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
     flexDirectionCol: {
         flexDirection: 'column'
     },
@@ -75,7 +82,7 @@ export const AppStyles = {
     testmarginTop10: {
         marginTop: 10,
         display: 'flex',
-        flexDirection:'row',
+        flexDirection: 'row',
         // backgroundColor:"red"
     },
     testStyle: {
@@ -455,8 +462,26 @@ export const AppStyles = {
     staffSideBarIcon: { height: 15, width: 15, marginTop: 10, marginBottom: 10, marginLeft: 10, marginRight: 10 },
     staffSideBarIconSelectedContainer: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue },
     stepperSelectedItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue, color: AppColors.white, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
-    stepperItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.alto, color: AppColors.black, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 }
+    stepperItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.alto, color: AppColors.black, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
 
+
+    avatarActiveButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, marginLeft: 10 },
+
+    avatarInactiveButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed, marginLeft: 10},
+
+    
+    nameWithAvatarStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'right',
+        marginLeft: 10
+    },
+
+    descAvatarStyle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'center',
+    },
 };
 
 export const ButtonStyles = {

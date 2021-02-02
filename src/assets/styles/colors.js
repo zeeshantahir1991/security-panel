@@ -41,6 +41,7 @@ export const AppColors = {
   alabaster1: '#FAFAFA',
   alabaster2: '#F7F7F7',
   gray2: '#444444',
+  gallery1: "#EEEEEE",
 
   //black
   mineShaft: '#222222',

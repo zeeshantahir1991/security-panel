@@ -1,8 +1,9 @@
 import { BuildOutlined, CompassOutlined, DollarOutlined, MailOutlined, InboxOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
-import { AppStyles } from "../../../../../assets/styles";
-import { componentStyles } from "./../styles";
+import { AppStyles } from "../../../../../../assets/styles";
+import { componentStyles } from "../../styles";
+import moment from 'moment';
 
 const { Option } = Select;
 
@@ -133,7 +134,7 @@ const rules = {
 		})
 	]
 }
-export class AddClient extends Component {
+export class EditClient extends Component {
 
 	constructor(props) {
 		super(props);
@@ -158,12 +159,12 @@ export class AddClient extends Component {
 
 
 	render() {
-		const { } = this.props;
+		const { action, record } = this.props;
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 
-					<Col xs={24} sm={24} md={20} lg={20} >
+					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Client Information" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16}>
@@ -180,7 +181,7 @@ export class AddClient extends Component {
 											rules={rules.company}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<BuildOutlined />} />
+											<Input disabled style={componentStyles.borderColor} prefix={<BuildOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={6} lg={6}>
@@ -191,8 +192,9 @@ export class AddClient extends Component {
 											hasFeedback
 										>
 											<Select
+												disabled
 												showSearch
-												style={componentStyles.selectStyle}
+												style={componentStyles.selectStyleDisabled}
 												bordered={false}
 												placeholder="Title"
 												optionFilterProp="children"
@@ -212,12 +214,13 @@ export class AddClient extends Component {
 									</Col>
 									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
-											name="fullname"
+											name="clientName"
 											label="Contact Person"
-											rules={rules.fullname}
+											// rules={rules.fullname}
 											hasFeedback
+
 										>
-											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
+											<Input disabled defaultValue={record.clientName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -225,10 +228,10 @@ export class AddClient extends Component {
 										<Form.Item
 											name="email"
 											label="Email"
-											rules={rules.email}
+											// rules={rules.email}
 											hasFeedback
 										>
-											<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
+											<Input defaultValue={record.email} disabled maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -240,7 +243,7 @@ export class AddClient extends Component {
 											rules={rules.address1}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+											<Input disabled defaultValue={record.address} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -251,7 +254,7 @@ export class AddClient extends Component {
 											rules={rules.address2}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+											<Input disabled style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -262,7 +265,7 @@ export class AddClient extends Component {
 											rules={rules.city}
 											hasFeedback
 										>
-											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+											<Input disabled style={componentStyles.borderColor} prefix={<CompassOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -273,7 +276,7 @@ export class AddClient extends Component {
 											rules={rules.postcode}
 											hasFeedback
 										>
-											<Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+											<Input disabled type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -284,19 +287,19 @@ export class AddClient extends Component {
 											rules={rules.phone}
 											hasFeedback
 										>
-											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+											<Input disabled defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop5}>
 
-										<Checkbox style={componentStyles.borderColor} checked>Status</Checkbox>
+										<Checkbox defaultValue={record.status == "inactive" ? true : false} style={componentStyles.borderColor} checked>Status</Checkbox>
 									</Col>
 								</Row>
 							</Form>
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>
-					<Col xs={24} sm={24} md={20} lg={20} >
+					<Col xs={24} sm={24} md={24} lg={24} >
 						<Card className="card" title="Security Service" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} >
@@ -310,11 +313,13 @@ export class AddClient extends Component {
 										<Form.Item
 											name="serviceStartDate"
 											label="Service Start Date"
-											rules={rules.serviceStartDate}
+											// rules={rules.serviceStartDate}
 											hasFeedback
 										>
-											<DatePicker style={componentStyles.datePicker}
-												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+											<DatePicker
+												defaultValue={record.purchaseOrderStartDate ? moment.unix(record.purchaseOrderStartDate) : ""}
+												disabled
+												style={componentStyles.datePicker}
 												format={'YYYY/MM/DD'} />
 										</Form.Item>
 									</Col>
@@ -322,11 +327,12 @@ export class AddClient extends Component {
 										<Form.Item
 											name="serviceEndDate"
 											label="Service End Date"
-											rules={rules.serviceEndDate}
+											// rules={rules.serviceEndDate}
 											hasFeedback
 										>
 											<DatePicker style={componentStyles.datePicker}
-												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+												defaultValue={record.purchaseOrderEndDate ? moment.unix(record.purchaseOrderEndDate) : ""}
+												disabled
 												format={'YYYY/MM/DD'} />
 										</Form.Item>
 									</Col>
@@ -334,12 +340,13 @@ export class AddClient extends Component {
 										<Form.Item
 											name="invoiceFrequency"
 											label="Invoice Frequency"
-											rules={rules.invoiceFrequency}
+											// rules={rules.invoiceFrequency}
 											hasFeedback
 										>
 											<Select
+												disabled
 												showSearch
-												style={componentStyles.selectStyle}
+												style={componentStyles.selectStyleDisabled}
 												bordered={false}
 												placeholder="Invoice Frequency"
 												optionFilterProp="children"
@@ -398,7 +405,7 @@ export class AddClient extends Component {
 											rules={rules.chargeRate}
 											hasFeedback
 										>
-											<Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+											<Input disabled min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
 										</Form.Item>
 									</Col>
 									{/* <Col xs={24} sm={24} md={6} lg={6}>
@@ -444,4 +451,4 @@ export class AddClient extends Component {
 	}
 }
 
-export default AddClient
+export default EditClient

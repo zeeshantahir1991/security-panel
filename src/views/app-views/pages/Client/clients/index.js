@@ -4,7 +4,7 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { Table } from "ant-table-extensions";
 import moment from 'moment';
 import React, { Component } from 'react';
-import { AppStyles } from "../../../../../assets/styles";
+import { AppStyles } from "./../../../../../assets/styles";
 import { componentStyles } from "./../styles";
 
 const clientsData = [
@@ -17,7 +17,7 @@ const clientsData = [
 		"purchaseStatus": "Expired",
 		"dateCreated": 1583107200,
 
-		"phoneNumber": "0121212",
+		"phoneNumber": "00447778596954",
 		"email": "abc@gmail.com",
 		"address": "12345",
 		"purchaseOrder": "P123",
@@ -36,7 +36,7 @@ const clientsData = [
 		"purchaseStatus": "Valid",
 		"dateCreated": 1583107200,
 
-		"phoneNumber": "0121212",
+		"phoneNumber": "00448889695897",
 		"email": "abc@gmail.com",
 		"address": "12345",
 		"purchaseOrder": "P123",
@@ -56,7 +56,7 @@ const clientsData = [
 		"purchaseStatus": "Expired",
 		"dateCreated": 1583107200,
 
-		"phoneNumber": "0121212",
+		"phoneNumber": "004488885948521",
 		"email": "abc@gmail.com",
 		"address": "12345",
 		"purchaseOrder": "P123",
@@ -138,6 +138,14 @@ export class Clients extends Component {
 		})
 	}
 
+
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/client-profile',
+			state: { action, record }
+		})
+	}
+
 	render() {
 		const { clients, search } = this.state;
 
@@ -147,7 +155,13 @@ export class Clients extends Component {
 				dataIndex: 'clientName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<AvatarStatus src={record.img} name={record.clientName} />
+						<AvatarStatus src={record.img} />
+
+						<span style={AppStyles.alignSelfCenter}>
+							<a onClick={() => this.viewItem("viewItem", record)}>
+								{record.clientName}
+							</a>
+						</span>
 					</div>
 				),
 				sorter: {
@@ -310,7 +324,17 @@ export class Clients extends Component {
 			},
 
 			{
-				title: 'Screen Status',
+				title: 'Date Created',
+				dataIndex: 'dateCreated',
+				render: date => (
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.dateCreated).unix() - moment(b.dateCreated).unix(),
+				width: 200
+			},
+
+			{
+				title: 'Status',
 				dataIndex: 'status',
 				render: (_, record) => (
 					<div className="d-flex">
@@ -324,16 +348,6 @@ export class Clients extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 200
-			},
-
-			{
-				title: 'Date Created',
-				dataIndex: 'dateCreated',
-				render: date => (
-					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
-				),
-				sorter: (a, b) => moment(a.dateCreated).unix() - moment(b.dateCreated).unix(),
 				width: 200
 			},
 
@@ -358,7 +372,7 @@ export class Clients extends Component {
 			<div style={AppStyles.marginTop50}>
 
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -442,7 +456,7 @@ export class Clients extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -527,7 +541,7 @@ export class Clients extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Client List" >
 							<Table searchable bordered columns={tableColumns} dataSource={clients} rowKey='id' scroll={{ x: 2700, y: 300 }} />
 						</Card>

@@ -121,7 +121,7 @@ export const AppStyles = {
     },
 
     marginTop50: {
-        marginTop: 10,
+        marginTop: 50,
         // backgroundColor:"green"
     },
 

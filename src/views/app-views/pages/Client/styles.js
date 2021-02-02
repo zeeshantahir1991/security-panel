@@ -125,5 +125,15 @@ export const componentStyles = {
         textAlign: 'right'
     },
 
+    selectWhiteStyle: {
+        width: '100%',
+        borderWidth: 1,
+        borderColor: AppColors.alto,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        backgroundColor: AppColors.white,
+        marginRight: 20
+    },
+
 
 }

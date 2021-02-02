@@ -10,7 +10,7 @@ import { Table } from "ant-table-extensions";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
 import React, { Component } from 'react';
-import { AppStyles } from "../../../../../../assets/styles";
+import { AppStyles } from "assets/styles";
 
 const userData = [
 	{

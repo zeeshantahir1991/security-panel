@@ -32,7 +32,7 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-client`} component={lazy(() => import(`./Client/add-client`))} />
       <Route path={`${match.url}/clients`} component={lazy(() => import(`./Client/clients`))} />
       <Route path={`${match.url}/client-profile`} component={lazy(() => import(`./Client/client-profile`))} />
-
+      <Route path={`${match.url}/site-profile`} component={lazy(() => import(`./Client/client-profile/sites/site-profile`))} />
 
       <Route path={`${match.url}/add-sg-site`} component={lazy(() => import(`./Sites/add-sg-site`))} />
       <Route path={`${match.url}/add-ds-site`} component={lazy(() => import(`./Sites/add-ds-site`))} />

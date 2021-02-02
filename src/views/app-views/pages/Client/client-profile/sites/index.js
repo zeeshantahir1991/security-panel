@@ -93,6 +93,13 @@ export class StaticSites extends Component {
 	}
 
 
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/site-profile',
+			state: { action, record }
+		})
+	}
+
 	render() {
 		const { sites, search } = this.state;
 
@@ -102,7 +109,9 @@ export class StaticSites extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<span className="d-flex">
-						{record.siteName}
+						<a onClick={() => this.viewItem("viewItem", record)}>
+							{record.siteName}
+						</a>
 					</span>
 				),
 				sorter: {
@@ -260,144 +269,149 @@ export class StaticSites extends Component {
 		];
 
 		return (
-			<div style={AppStyles.marginTop50}>
-
-				<Row gutter={16} justify="center">
+			<>
+				<Row>
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<div style={AppStyles.marginBottom40}>
 							<div style={AppStyles.horizontallLineWidth100}>
 							</div>
 						</div>
 					</Col>
-					<Col xs={0} sm={0} md={24} lg={24}>
-						<Card title="Filters" style={AppStyles.paddingBottom20}>
-							<div style={AppStyles.flexDirectionRow}>
-
-								<Select
-									showSearch
-									style={componentStyles.selectStyle}
-									bordered={false}
-									placeholder="Site Type"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("siteType", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="SG">SG</Option>
-									<Option value="DS">DS</Option>
-								</Select>
-
-								<Select
-									showSearch
-									style={componentStyles.selectStyle}
-									bordered={false}
-									placeholder="Status"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("status", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="Active">Active</Option>
-									<Option value="Inactive">Inactive</Option>
-								</Select>
-
-								<DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("createDate", val)}
-									placeholder="Create Date Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
-
-								<Input
-									placeholder="Site Name"
-									onChange={(val) => this.handleChangeInput("siteName", val)}
-									style={componentStyles.filtersInputStyle} />
-								<Button
-									disabled={!(search.status || search.siteType || search.createDate || search.siteName)}
-									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.siteType || search.createDate || search.siteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
-									htmlType="submit" block>
-									Search
-					            </Button>
-							</div>
-						</Card>
-					</Col>
-					<Col xs={24} sm={24} md={0} lg={0}>
-						<Card title="Filters" style={AppStyles.paddingBottom20}>
-							<div style={AppStyles.justifyContentCenter}>
-								<Select
-									showSearch
-									style={componentStyles.selectStyleSM}
-									bordered={false}
-									placeholder="Site Type"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("siteType", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="SG">SG</Option>
-									<Option value="DS">DS</Option>
-								</Select>
-
-								<Select
-									showSearch
-									style={componentStyles.selectStyleSM}
-									bordered={false}
-									placeholder="Status"
-									optionFilterProp="children"
-									onChange={(val) => this.handleChange("status", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-									}
-								>
-									<Option value="Active">Active</Option>
-									<Option value="Inactive">Inactive</Option>
-								</Select>
-
-								<DatePicker style={componentStyles.datePicker}
-									onChange={(val) => this.handleChange("createDate", val)}
-									placeholder="Create Date Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
-
-								<Input
-									placeholder="Site Name"
-									onChange={(val) => this.handleChangeInput("siteName", val)}
-									style={componentStyles.filtersInputStyle} />
-								<Button
-									disabled={!(search.status || search.siteType || search.createDate || search.siteName)}
-									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.siteType || search.createDate || search.siteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
-									htmlType="submit" block>
-									Search
-					            </Button>
-							</div>
-						</Card>
-					</Col>
-
-					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Static Sites List" >
-							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1800, y: 300 }} />
-						</Card>
-					</Col>
 				</Row>
+				<div style={AppStyles.marginTop20}>
 
-				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
-			</div>
+					<Row gutter={16} justify="center">
+					
+						<Col xs={0} sm={0} md={24} lg={24}>
+							<Card title="Filters" style={AppStyles.paddingBottom20}>
+								<div style={AppStyles.flexDirectionRow}>
+
+									<Select
+										showSearch
+										style={componentStyles.selectStyle}
+										bordered={false}
+										placeholder="Site Type"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("siteType", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="SG">SG</Option>
+										<Option value="DS">DS</Option>
+									</Select>
+
+									<Select
+										showSearch
+										style={componentStyles.selectStyle}
+										bordered={false}
+										placeholder="Status"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("status", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="Active">Active</Option>
+										<Option value="Inactive">Inactive</Option>
+									</Select>
+
+									<DatePicker style={componentStyles.datePicker}
+										onChange={(val) => this.handleChange("createDate", val)}
+										placeholder="Create Date Period"
+										// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+										format={'YYYY/MM/DD'} />
+
+									<Input
+										placeholder="Site Name"
+										onChange={(val) => this.handleChangeInput("siteName", val)}
+										style={componentStyles.filtersInputStyle} />
+									<Button
+										disabled={!(search.status || search.siteType || search.createDate || search.siteName)}
+										onClick={() => { this.searchInTable() }}
+										style={!(search.status || search.siteType || search.createDate || search.siteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+										htmlType="submit" block>
+										Search
+					            </Button>
+								</div>
+							</Card>
+						</Col>
+						<Col xs={24} sm={24} md={0} lg={0}>
+							<Card title="Filters" style={AppStyles.paddingBottom20}>
+								<div style={AppStyles.justifyContentCenter}>
+									<Select
+										showSearch
+										style={componentStyles.selectStyleSM}
+										bordered={false}
+										placeholder="Site Type"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("siteType", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="SG">SG</Option>
+										<Option value="DS">DS</Option>
+									</Select>
+
+									<Select
+										showSearch
+										style={componentStyles.selectStyleSM}
+										bordered={false}
+										placeholder="Status"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("status", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="Active">Active</Option>
+										<Option value="Inactive">Inactive</Option>
+									</Select>
+
+									<DatePicker style={componentStyles.datePicker}
+										onChange={(val) => this.handleChange("createDate", val)}
+										placeholder="Create Date Period"
+										// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+										format={'YYYY/MM/DD'} />
+
+									<Input
+										placeholder="Site Name"
+										onChange={(val) => this.handleChangeInput("siteName", val)}
+										style={componentStyles.filtersInputStyle} />
+									<Button
+										disabled={!(search.status || search.siteType || search.createDate || search.siteName)}
+										onClick={() => { this.searchInTable() }}
+										style={!(search.status || search.siteType || search.createDate || search.siteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+										htmlType="submit" block>
+										Search
+					            </Button>
+								</div>
+							</Card>
+						</Col>
+
+						<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
+							<Card className="card" title="Static Sites List" >
+								<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1800, y: 300 }} />
+							</Card>
+						</Col>
+					</Row>
+
+					{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+				</div>
+			</>
 		)
 	}
 }

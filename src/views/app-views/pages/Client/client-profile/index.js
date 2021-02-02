@@ -47,13 +47,13 @@ export class ClientProfile extends Component {
         }
         if (action && record) {
             return (
-                <div style={AppStyles.marginTop50}>
+                <div style={AppStyles.marginTop20}>
 
 
                     <Row
                     // justify="center"
                     >
-
+                 
                         <Col xs={24} sm={24} md={24} lg={24}
                             style={AppStyles.marginBottom50}
                         >

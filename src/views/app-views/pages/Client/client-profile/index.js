@@ -7,6 +7,8 @@ import { componentStyles } from "./../styles";
 import StaticSites from "./sites";
 import Docs from "./docs"
 import EditClient from "./details"
+import AddService from "./add-service"
+
 
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -17,7 +19,7 @@ export class ClientProfile extends Component {
         super(props);
         this.state = {
 
-            type: "Details",
+            type: "Client Information",
             form: "",
             avatarUrl: '/img/avatars/thumb-6.jpg',
             active: true
@@ -53,73 +55,7 @@ export class ClientProfile extends Component {
                     <Row
                     // justify="center"
                     >
-                 
-                        <Col xs={24} sm={24} md={24} lg={24}
-                            style={AppStyles.marginBottom50}
-                        >
-                            <Card style={AppStyles.paddingBottom20}>
-                                <Row justify="center">
-                                    <Col xs={20} sm={20} md={6} lg={6}
-                                    >
-                                        <div style={AppStyles.flexDirectionWithItemsCenter}>
-                                            <Avatar size={100} src={avatarUrl} icon={<UserOutlined />} />
-                                            <div>
-                                                <Typography style={AppStyles.nameWithAvatarStyle}>
-                                                    {record.clientName}
-                                                </Typography>
-                                                <Button
-                                                    onClick={() => this.setState({ active: !active })}
-                                                    style={active ? AppStyles.avatarActiveButton : AppStyles.avatarInactiveButton} htmlType="submit" block>
-                                                    {active ? "Active" : "Inactive"}
-                                                </Button>
 
-                                            </div>
-                                        </div>
-                                        <div style={AppStyles.marginTop20}>
-                                            <Form layout="vertical">
-                                                <Form.Item
-                                                    name="phoneNumber"
-                                                    // label="Phone Number"
-                                                    hasFeedback
-                                                >
-                                                    <Input
-                                                        disabled
-                                                        defaultValue={record.phoneNumber ? record.phoneNumber : ""}
-                                                        style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-
-                                                </Form.Item>
-                                                <Form.Item
-                                                    name="email"
-                                                    // label="Phone Number"
-                                                    hasFeedback
-                                                >
-                                                    <Input
-                                                        disabled
-                                                        defaultValue={record.email ? record.email : ""}
-                                                        style={componentStyles.borderColor} prefix={<MailOutlined />} />
-
-                                                </Form.Item>
-                                                <Form.Item
-                                                    name="chargeRate"
-                                                    // label="Phone Number"
-                                                    hasFeedback
-                                                >
-                                                    <Input
-                                                        disabled
-                                                        defaultValue={record.chargeRate ? record.chargeRate : ""}
-                                                        style={componentStyles.borderColor} prefix={<DollarOutlined />} />
-
-                                                </Form.Item>
-                                            </Form>
-
-
-                                        </div>
-
-                                    </Col>
-                                </Row>
-                            </Card>
-
-                        </Col>
 
                         <Col xs={24} sm={24} md={24} lg={24}
                         // style={{backgroundColor:"yellow"}}
@@ -136,19 +72,19 @@ export class ClientProfile extends Component {
 
                                         <Menu.Item
                                             className="menuHover"
-                                            onClick={() => this.setState({ type: "Details" })}
-                                            style={'Details' === type ? componentStyles.staffMenuItemSelected : null
+                                            onClick={() => this.setState({ type: "Client Information" })}
+                                            style={'Client Information' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
                                             {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
 
                                             <span
                                                 style={{
-                                                    color: 'Details' === type ? AppColors.pictonBlue : null
+                                                    color: 'Client Information' === type ? AppColors.pictonBlue : null
                                                 }}
 
                                             >
-                                                Details
+                                                Client Information
 
                                                 </span>
                                         </Menu.Item>
@@ -172,6 +108,24 @@ export class ClientProfile extends Component {
                                         </Menu.Item>
                                         <Menu.Item
                                             className="menuHover"
+                                            onClick={() => this.setState({ type: "Services" })}
+                                            style={'Services' === type ? componentStyles.staffMenuItemSelected : null
+                                            }
+                                        >
+                                            {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
+
+                                            <span
+                                                style={{
+                                                    color: 'Services' === type ? AppColors.pictonBlue : null
+                                                }}
+
+                                            >
+                                                Services
+
+                                                </span>
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            className="menuHover"
                                             onClick={() => this.setState({ type: "Docs" })}
                                             style={'Docs' === type ? componentStyles.staffMenuItemSelected : null
                                             }
@@ -188,6 +142,7 @@ export class ClientProfile extends Component {
 
                                                 </span>
                                         </Menu.Item>
+
 
 
 
@@ -231,8 +186,9 @@ export class ClientProfile extends Component {
                                                     }
                                                 >
 
-                                                    <Option value="Details">Details</Option>
+                                                    <Option value="Client Information">Client Information</Option>
                                                     <Option value="Sites">Sites</Option>
+                                                    <Option value="Services">Services</Option>
                                                     <Option value="Docs">Docs</Option>
 
 
@@ -243,7 +199,7 @@ export class ClientProfile extends Component {
                                             <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
 
                                                 <div style={componentStyles.nameStyle}>
-                                                    {record.name}
+                                                    {record.clientName}
                                                 </div>
 
                                             </Col>
@@ -252,13 +208,17 @@ export class ClientProfile extends Component {
 
 
                                         {
-                                            type === "Details" ?
+                                            type === "Client Information" ?
                                                 <EditClient action={action} record={record} history={this.props.history} /> :
                                                 type === "Sites" ?
                                                     <StaticSites action={action} record={record} history={this.props.history} /> :
                                                     type === "Docs" ?
                                                         <Docs action={action} record={record} history={this.props.history} /> :
-                                                        null
+                                                        type === "Services" ?
+
+                                                            <AddService action={action} record={record} history={this.props.history} /> :
+
+                                                            null
                                         }
 
                                     </Card>

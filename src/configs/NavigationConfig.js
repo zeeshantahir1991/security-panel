@@ -144,7 +144,7 @@ const siteNavTree = [
           {
             key: "site-pages-sites",
             path: "/app/pages/static-sites",
-            title: "View Sites",
+            title: "Sites",
             icon: "",
             breadcrumb: true,
             submenu: [],

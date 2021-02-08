@@ -253,7 +253,7 @@ export class ComplianceTraining extends Component {
 					</Col>
 				</Row>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={24} lg={24}>
+					{/* <Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -264,9 +264,6 @@ export class ComplianceTraining extends Component {
 									placeholder="Training Status"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("trainingStatus", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -274,10 +271,7 @@ export class ComplianceTraining extends Component {
 									<Option value="Completed">Completed</Option>
 									<Option value="Pending Training">Pending Training</Option>
 									<Option value="Pending Audit Checks">Pending Audit Checks</Option>
-
 								</Select>
-
-
 								<Select
 									showSearch
 									style={componentStyles.selectStyle}
@@ -285,9 +279,6 @@ export class ComplianceTraining extends Component {
 									placeholder="Trainer"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("trainer", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -295,7 +286,6 @@ export class ComplianceTraining extends Component {
 									<Option value="SC user A">SC user A </Option>
 									<Option value="SC user B">SC user B</Option>
 								</Select>
-
 								<Select
 									showSearch
 									style={componentStyles.selectStyle}
@@ -303,9 +293,6 @@ export class ComplianceTraining extends Component {
 									placeholder="Audit By"
 									optionFilterProp="children"
 									onChange={(val) => this.handleChange("auditBy", val)}
-									// onFocus={onFocus}
-									// onBlur={onBlur}
-									// onSearch={onSearch}
 									filterOption={(input, option) =>
 										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 									}
@@ -317,13 +304,7 @@ export class ComplianceTraining extends Component {
 								<DatePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("trainingDate", val)}
 									placeholder="Training Period"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
-
-								{/* <Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} /> */}
 								<Button
 									disabled={!(search.trainingStatus || search.trainer || search.auditBy || search.guardName)}
 									onClick={() => { this.searchInTable() }}
@@ -333,8 +314,8 @@ export class ComplianceTraining extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
-					<Col xs={24} sm={24} md={0} lg={0}>
+					</Col> */}
+					{/* <Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -415,7 +396,7 @@ export class ComplianceTraining extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
+					</Col> */}
 
 					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						{form ?
@@ -674,7 +655,7 @@ export class ComplianceTraining extends Component {
 																<Button
 																	onClick={() => this.setState({ edit: false })}
 																	style={componentStyles.continueButton} htmlType="submit" block>
-																	Update
+																	Submit
 												                 </Button>
 
 															</div>
@@ -829,7 +810,7 @@ export class ComplianceTraining extends Component {
 																<Button
 																	onClick={() => this.setState({ edit: false })}
 																	style={componentStyles.continueButton} htmlType="submit" block>
-																	Update
+																	Complete Audit
 												                </Button>
 
 															</div>

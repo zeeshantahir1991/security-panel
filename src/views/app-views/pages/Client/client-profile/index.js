@@ -108,19 +108,19 @@ export class ClientProfile extends Component {
                                         </Menu.Item>
                                         <Menu.Item
                                             className="menuHover"
-                                            onClick={() => this.setState({ type: "Services" })}
-                                            style={'Services' === type ? componentStyles.staffMenuItemSelected : null
+                                            onClick={() => this.setState({ type: "Subscribed Serivces" })}
+                                            style={'Subscribed Serivces' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
                                             {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
 
                                             <span
                                                 style={{
-                                                    color: 'Services' === type ? AppColors.pictonBlue : null
+                                                    color: 'Subscribed Serivces' === type ? AppColors.pictonBlue : null
                                                 }}
 
                                             >
-                                                Services
+                                                Subscribed Serivces
 
                                                 </span>
                                         </Menu.Item>
@@ -188,7 +188,7 @@ export class ClientProfile extends Component {
 
                                                     <Option value="Client Information">Client Information</Option>
                                                     <Option value="Sites">Sites</Option>
-                                                    <Option value="Services">Services</Option>
+                                                    <Option value="Subscribed Serivces">Subscribed Serivces</Option>
                                                     <Option value="Docs">Docs</Option>
 
 
@@ -214,7 +214,7 @@ export class ClientProfile extends Component {
                                                     <StaticSites action={action} record={record} history={this.props.history} /> :
                                                     type === "Docs" ?
                                                         <Docs action={action} record={record} history={this.props.history} /> :
-                                                        type === "Services" ?
+                                                        type === "Subscribed Serivces" ?
 
                                                             <AddService action={action} record={record} history={this.props.history} /> :
 

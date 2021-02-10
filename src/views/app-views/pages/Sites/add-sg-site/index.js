@@ -1,5 +1,5 @@
 import { BuildOutlined, CompassOutlined, MailOutlined, NumberOutlined, PhoneOutlined, UserOutlined, InboxOutlined } from '@ant-design/icons';
-import { Button, Card, Checkbox, Col, Form, Input, Row, Select } from 'antd';
+import { Button, Card, Switch, Col, Form, Input, Row, Select } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
@@ -165,7 +165,7 @@ export class AddSGSite extends Component {
 
 
 	render() {
-		const {  } = this.props;
+		const { } = this.props;
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
@@ -209,7 +209,7 @@ export class AddSGSite extends Component {
 									<Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="securityServices"
-											label="Service Types"
+											label="Site Type"
 											// rules={rules.securityServices}
 											hasFeedback
 										>
@@ -217,7 +217,7 @@ export class AddSGSite extends Component {
 												showSearch
 												style={componentStyles.selectStyle}
 												bordered={false}
-												placeholder="Service Types"
+												placeholder="Site Type"
 												optionFilterProp="children"
 												onChange={(val) => this.handleChange("securityServices", val)}
 												// onFocus={onFocus}
@@ -230,8 +230,6 @@ export class AddSGSite extends Component {
 												<Option value="DS">DS</Option>
 												<Option value="SG">SG</Option>
 												<Option value="CCTV">CCTV</Option>
-												<Option value="MP">MP</Option>
-												<Option value="KH">KH</Option>
 											</Select>
 										</Form.Item>
 									</Col>
@@ -380,10 +378,11 @@ export class AddSGSite extends Component {
 									</Col>
 
 
-									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.marginTop5}>
+									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}>
 
-										<Checkbox style={componentStyles.borderColor} checked>Status</Checkbox>
-									</Col>
+										<Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch>
+	                                        Status
+                                    </Col>
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>

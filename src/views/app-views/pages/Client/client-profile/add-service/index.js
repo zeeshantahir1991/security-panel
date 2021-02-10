@@ -36,7 +36,7 @@ export class AddService extends Component {
             securityServices: false,
             form: false,
             edit: false,
-            showKH:'false'
+            showKH: 'false'
 
 
 
@@ -255,59 +255,59 @@ export class AddService extends Component {
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>Door Service</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                            <Checkbox>Door Service</Checkbox>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} >
+                                            <Form.Item name="comments" hasFeedback>
+                                                <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                            </Form.Item>
+                                        </Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={4} lg={4} style={{ marginTop:10}}>
-													<Checkbox>Security Guard</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                            <Checkbox>Security Guard</Checkbox>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} >
+                                            <Form.Item name="comments" hasFeedback>
+                                                <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                            </Form.Item>
+                                        </Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>CCTV</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                            <Checkbox>CCTV</Checkbox>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} >
+                                            <Form.Item name="comments" hasFeedback>
+                                                <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                            </Form.Item>
+                                        </Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>Mobile Patrol</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                            <Checkbox>Mobile Patrol</Checkbox>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} >
+                                            <Form.Item name="comments" hasFeedback>
+                                                <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                            </Form.Item>
+                                        </Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>Key Holding</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                                <Col xs={24} sm={24} md={18} lg={18} style={{display:'flex', flexDirection:'row'}}>
-                                                <Col xs={24} sm={24} md={6} lg={6} style={{ marginTop:10, display: this.state.securityServices ? 'block' : 'none'}}>
-													<Typography.Text>Key Holding Flate Fee/Month</Typography.Text>
-												</Col>
-                                                <Col xs={24} sm={24} md={6} lg={6} style={{display: this.state.securityServices ? 'block' : 'none'}}>
+                                        <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                            <Checkbox onChange={() => { this.setState({ securityServices: !securityServices }) }}>Key Holding</Checkbox>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={4} lg={4} >
+                                            <Form.Item name="comments" hasFeedback>
+                                                <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={18} lg={18} style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <Col xs={24} sm={24} md={6} lg={6} style={{ marginTop: 10, display: this.state.securityServices ? 'block' : 'none' }}>
+                                                <Typography.Text>Key Holding Flate Fee/Month</Typography.Text>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={6} lg={6} style={{ display: this.state.securityServices ? 'block' : 'none' }}>
                                                 <Form.Item
                                                     name="flatRate"
                                                     // label="Key Holding Flate Fee/Month"
@@ -316,9 +316,9 @@ export class AddService extends Component {
                                                 >
                                                     <Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
                                                 </Form.Item>
-                                                </Col>
-                                                </Col>
-                                                
+                                            </Col>
+                                        </Col>
+
                                     </Col>
 
                                     {/* <Col xs={24} sm={24} md={6} lg={6}>
@@ -494,71 +494,71 @@ export class AddService extends Component {
 
 
                                         <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>Door Service</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={4} lg={4} style={{ marginTop:10}}>
-													<Checkbox>Security Guard</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>CCTV</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox>Mobile Patrol</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                    </Col>
-                                    <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
-													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>Key Holding</Checkbox>													
-												</Col>
-												<Col xs={24} sm={24} md={4} lg={4} >
-													<Form.Item name="comments" hasFeedback>
-														<Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor}/>
-													</Form.Item>
-												</Col>
-                                                <Col xs={24} sm={24} md={18} lg={18} style={{display:'flex', flexDirection:'row'}}>
-                                                <Col xs={24} sm={24} md={6} lg={6} style={{ marginTop:10, display: this.state.securityServices ? 'block' : 'none'}}>
-													<Typography.Text>Key Holding Flate Fee/Month</Typography.Text>
-												</Col>
-                                                <Col xs={24} sm={24} md={6} lg={6} style={{display: this.state.securityServices ? 'block' : 'none'}}>
-                                                <Form.Item
-                                                    name="flatRate"
-                                                    // label="Key Holding Flate Fee/Month"
-                                                    rules={rules.chargeRate}
-                                                    hasFeedback
-                                                >
-                                                    <Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+                                            <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                                <Checkbox>Door Service</Checkbox>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={4} lg={4} >
+                                                <Form.Item name="comments" hasFeedback>
+                                                    <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                 </Form.Item>
+                                            </Col>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+                                            <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                                <Checkbox>Security Guard</Checkbox>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={4} lg={4} >
+                                                <Form.Item name="comments" hasFeedback>
+                                                    <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                                </Form.Item>
+                                            </Col>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+                                            <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                                <Checkbox>CCTV</Checkbox>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={4} lg={4} >
+                                                <Form.Item name="comments" hasFeedback>
+                                                    <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                                </Form.Item>
+                                            </Col>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+                                            <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                                <Checkbox>Mobile Patrol</Checkbox>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={4} lg={4} >
+                                                <Form.Item name="comments" hasFeedback>
+                                                    <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                                </Form.Item>
+                                            </Col>
+                                        </Col>
+                                        <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
+                                            <Col xs={24} sm={24} md={4} lg={4} style={{ marginTop: 10 }}>
+                                                <Checkbox onChange={() => { this.setState({ securityServices: !securityServices }) }}>Key Holding</Checkbox>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={4} lg={4} >
+                                                <Form.Item name="comments" hasFeedback>
+                                                    <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
+                                                </Form.Item>
+                                            </Col>
+                                            <Col xs={24} sm={24} md={18} lg={18} style={{ display: 'flex', flexDirection: 'row' }}>
+                                                <Col xs={24} sm={24} md={6} lg={6} style={{ marginTop: 10, display: this.state.securityServices ? 'block' : 'none' }}>
+                                                    <Typography.Text>Key Holding Flate Fee/Month</Typography.Text>
                                                 </Col>
+                                                <Col xs={24} sm={24} md={6} lg={6} style={{ display: this.state.securityServices ? 'block' : 'none' }}>
+                                                    <Form.Item
+                                                        name="flatRate"
+                                                        // label="Key Holding Flate Fee/Month"
+                                                        rules={rules.chargeRate}
+                                                        hasFeedback
+                                                    >
+                                                        <Input min="0" type="number" style={componentStyles.borderColor} prefix={<DollarOutlined />} />
+                                                    </Form.Item>
                                                 </Col>
-                                                
-                                    </Col>
+                                            </Col>
+
+                                        </Col>
 
 
                                     </Row>

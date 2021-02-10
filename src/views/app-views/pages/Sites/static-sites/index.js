@@ -43,6 +43,8 @@ export class StaticSites extends Component {
 
 	state = {
 		sites: sitesData,
+		currStatus: "active",
+
 		search: {
 			status: "",
 			siteType: "",
@@ -92,9 +94,14 @@ export class StaticSites extends Component {
 
 	}
 
-
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/site-detail',
+			state: { action, record }
+		})
+	}
 	render() {
-		const { sites, search } = this.state;
+		const { sites, search, currStatus } = this.state;
 
 		const tableColumns = [
 			{
@@ -102,7 +109,9 @@ export class StaticSites extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<span className="d-flex">
-						{record.siteName}
+						<a onClick={() => this.viewItem("viewItem", record)}>
+							{record.siteName}
+						</a>
 					</span>
 				),
 				sorter: {
@@ -215,23 +224,6 @@ export class StaticSites extends Component {
 				width: 150
 			},
 
-			{
-				title: 'Status',
-				dataIndex: 'status',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.status}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.status.toLowerCase();
-						b = b.status.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
-			},
 
 			{
 				title: 'Create Date',
@@ -244,26 +236,38 @@ export class StaticSites extends Component {
 			},
 
 			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
-					</div>
-				)
-			}
+				title: 'Status',
+				dataIndex: 'status',
+				render: () => {
+					return (
+						<Button onClick={() => {
+							if (currStatus == "active") {
+								this.setState({ currStatus: "inactive" })
+							}
+							else if (currStatus == "inactive") {
+								this.setState({ currStatus: "active" })
+							}
+						}}
+							style={{ color: currStatus === 'active' ? 'lightgreen' : 'red', borderColor: currStatus === 'active' ? 'lightgreen' : 'red' }} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+					)
+				},
+				sorter: {
+					compare: (a, b) => {
+						a = a.status.toLowerCase();
+						b = b.status.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+
 		];
 
 		return (
 			<div style={AppStyles.marginTop50}>
 
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -323,7 +327,7 @@ export class StaticSites extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 								<Select
@@ -383,9 +387,9 @@ export class StaticSites extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Static Sites List" >
-							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1800, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>

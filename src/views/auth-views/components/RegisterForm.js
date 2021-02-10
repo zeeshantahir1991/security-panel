@@ -375,7 +375,7 @@ export const RegisterForm = (props) => {
 						<Form.Item
 							name="address2"
 							label="Address Line 2"
-							rules={rules.address2}
+							// rules={rules.address2}
 							hasFeedback
 						>
 							<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
@@ -450,7 +450,16 @@ export const RegisterForm = (props) => {
 					<Col xs={12} sm={12} md={12} lg={12}>
 
 						<Form.Item>
-							<Button style={componentStyles.signUpButton} htmlType="submit" block loading={loading}>
+							<Button style={componentStyles.signUpButton}
+							//  htmlType="submit"
+							onClick={()=>{
+								history.push({
+									pathname: '/auth/landing',
+									// state: { data }
+										})
+							}}
+							  block 
+							  loading={loading}>
 								Cancel
 					        </Button>
 						</Form.Item>

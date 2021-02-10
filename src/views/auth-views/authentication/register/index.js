@@ -75,7 +75,7 @@ export class RegisterOne extends React.Component {
 								{/* <img style={{ height: 70, width: 200 }} className="img-fluid" src="/img/logo1.png" alt="" /> */}
 								<h1 className="text-bold">Registration Form</h1>
 							</div>
-							<Row justify="center" style={{ marginBottom: 25, marginTop: 25 }}>
+							{/* <Row justify="center" style={{ marginBottom: 25, marginTop: 25 }}>
 
 								<Flex alignItems="center" mobileFlex={false} className="text-center text-md-left">
 									<Avatar size={90} src={avatarUrl} icon={<UserOutlined />} />
@@ -86,7 +86,7 @@ export class RegisterOne extends React.Component {
 										<Button className="ml-2" onClick={onRemoveAvater}>Remove</Button>
 									</div>
 								</Flex>
-							</Row>
+							</Row> */}
 							<Row justify="center">
 								<Col xs={24} sm={24} md={20} lg={20}>
 									<RegisterForm {...props} />

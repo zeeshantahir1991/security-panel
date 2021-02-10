@@ -255,8 +255,8 @@ export class AddService extends Component {
                                         </Form.Item>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>DS</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox>Door Service</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -265,8 +265,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>SG</Checkbox>													
+												<Col xs={24} sm={24} md={4} lg={4} style={{ marginTop:10}}>
+													<Checkbox>Security Guard</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -275,7 +275,7 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
 													<Checkbox>CCTV</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
@@ -285,8 +285,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>MP</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox>Mobile Patrol</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -295,8 +295,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>KH</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>Key Holding</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -343,10 +343,10 @@ export class AddService extends Component {
                                                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                                 }
                                             >
-                                                <Option value="DS">DS</Option>
+                                                <Option value="Door Service">Door Service</Option>
                                                 <Option value="SG">SG</Option>
                                                 <Option value="CCTV">CCTV</Option>
-                                                <Option value="MP">MP</Option>
+                                                <Option value="Mobile Patrol">Mobile Patrol</Option>
                                                 <Option value="KH">KH</Option>
 
                                             </Select>
@@ -494,8 +494,8 @@ export class AddService extends Component {
 
 
                                         <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>DS</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox>Door Service</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -504,8 +504,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>SG</Checkbox>													
+												<Col xs={24} sm={24} md={4} lg={4} style={{ marginTop:10}}>
+													<Checkbox>Security Guard</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -514,7 +514,7 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
 													<Checkbox>CCTV</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
@@ -524,8 +524,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox>MP</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox>Mobile Patrol</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -534,8 +534,8 @@ export class AddService extends Component {
 												</Col>
                                     </Col>
                                     <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.testmarginTop10}>
-												<Col xs={24} sm={24} md={2} lg={2} style={{ marginTop:10}}>
-													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>KH</Checkbox>													
+												<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop:10}}>
+													<Checkbox onChange={()=>{this.setState({securityServices: !securityServices})}}>Key Holding</Checkbox>													
 												</Col>
 												<Col xs={24} sm={24} md={4} lg={4} >
 													<Form.Item name="comments" hasFeedback>
@@ -604,7 +604,7 @@ export class AddService extends Component {
                                                     <Button
                                                         onClick={() => this.setState({ form: true })}
                                                         style={componentStyles.continueButton} htmlType="submit" block>
-                                                        Add New Service
+                                                        Add P.O
                                                     </Button>
 
                                                 </Col>

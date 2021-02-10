@@ -25,16 +25,16 @@ class PricingDetail extends React.Component {
 	}
 	componentDidMount() {
 		let dataArray = []
-		dataArray.push({
+		dataArray?.push({
 			key: "1",
-			package: this.props.location.state.data.plan,
+			package: this.props.location.state?.data.plan,
 			cycle: "Monthly",
-			price: this.props.location.state.data.price
+			price: this.props.location.state?.data.price
 		})
 		this.setState({
-			pricingData: this.props.location.state.data
+			pricingData: this.props.location.state?.data
 		})
-		console.log("jhdjshds", this.props.location.state.data)
+		console.log("jhdjshds", this.props.location.state?.data)
 	}
 	render() {
 		// const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')

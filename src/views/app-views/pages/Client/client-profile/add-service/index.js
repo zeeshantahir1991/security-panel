@@ -254,13 +254,14 @@ export class AddService extends Component {
                                             </Select>
                                         </Form.Item>
                                     </Col>
+
                                     <Col xs={24} sm={24} md={6} lg={6} >
                                         <Row>
-                                            <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Checkbox>Door Service</Checkbox>
                                             </Col>
-                                            <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                             </Col>
@@ -269,11 +270,11 @@ export class AddService extends Component {
 
                                     <Col xs={24} sm={24} md={6} lg={6} >
                                         <Row>
-                                            <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Checkbox>Security Guard</Checkbox>
                                             </Col>
-                                            <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                             </Col>
@@ -281,11 +282,11 @@ export class AddService extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Row>
-                                            <Col xs={8} sm={8} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Checkbox>CCTV</Checkbox>
                                             </Col>
-                                            <Col xs={16} sm={16} md={18} lg={18} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                             </Col>
@@ -293,11 +294,11 @@ export class AddService extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6}>
                                         <Row>
-                                            <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Checkbox>Mobile Patrol</Checkbox>
                                             </Col>
-                                            <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                            <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                 <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                             </Col>
@@ -307,11 +308,11 @@ export class AddService extends Component {
                                         <Row gutter={16}>
                                             <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
                                                 <Row>
-                                                    <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                                    <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                         <Checkbox onChange={() => { this.setState({ securityServices: !securityServices }) }}>Key Holding</Checkbox>
                                                     </Col>
-                                                    <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                                    <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                         <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                     </Col>
@@ -455,11 +456,11 @@ export class AddService extends Component {
 
                                         <Col xs={24} sm={24} md={6} lg={6} >
                                             <Row>
-                                                <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Checkbox>Door Service</Checkbox>
                                                 </Col>
-                                                <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                 </Col>
@@ -468,11 +469,11 @@ export class AddService extends Component {
 
                                         <Col xs={24} sm={24} md={6} lg={6} >
                                             <Row>
-                                                <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Checkbox>Security Guard</Checkbox>
                                                 </Col>
-                                                <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                 </Col>
@@ -480,11 +481,11 @@ export class AddService extends Component {
                                         </Col>
                                         <Col xs={24} sm={24} md={6} lg={6}>
                                             <Row>
-                                                <Col xs={8} sm={8} md={6} lg={6} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Checkbox>CCTV</Checkbox>
                                                 </Col>
-                                                <Col xs={16} sm={16} md={18} lg={18} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                 </Col>
@@ -492,11 +493,11 @@ export class AddService extends Component {
                                         </Col>
                                         <Col xs={24} sm={24} md={6} lg={6}>
                                             <Row>
-                                                <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Checkbox>Mobile Patrol</Checkbox>
                                                 </Col>
-                                                <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                                <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                     <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                 </Col>
@@ -506,11 +507,11 @@ export class AddService extends Component {
                                             <Row gutter={16}>
                                                 <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.alignSelfCenter}>
                                                     <Row>
-                                                        <Col xs={10} sm={10} md={8} lg={8} style={AppStyles.alignSelfCenter}>
+                                                        <Col xs={10} sm={10} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                             <Checkbox onChange={() => { this.setState({ securityServices: !securityServices }) }}>Key Holding</Checkbox>
                                                         </Col>
-                                                        <Col xs={14} sm={14} md={16} lg={16} style={AppStyles.alignSelfCenter}>
+                                                        <Col xs={14} sm={14} md={12} lg={12} style={AppStyles.alignSelfCenter}>
 
                                                             <Input type='number' rows={1} placeholder={'Charge Rate/Hour'} style={componentStyles.borderColor} />
                                                         </Col>

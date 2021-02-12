@@ -8,6 +8,7 @@ import Docs from "./docs";
 import FootPatrol from "./foot-patrol";
 import PreferedGuards from "./preferred-guards";
 import SiteInformation from "./site-information"
+import SiteSurvey from "./site-survey"
 const { TabPane } = Tabs;
 const { Option } = Select;
 
@@ -144,6 +145,24 @@ export class SiteProfile extends Component {
 
                                                 </span>
                                         </Menu.Item>
+                                        <Menu.Item
+                                            className="menuHover"
+                                            onClick={() => this.setState({ type: "Site Survey" })}
+                                            style={'Site Survey' === type ? componentStyles.staffMenuItemSelected : null
+                                            }
+                                        >
+                                            {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
+
+                                            <span
+                                                style={{
+                                                    color: 'Site Survey' === type ? AppColors.pictonBlue : null
+                                                }}
+
+                                            >
+                                                Site Survey
+
+                                                </span>
+                                        </Menu.Item>
 
 
                                     </Menu>
@@ -188,6 +207,7 @@ export class SiteProfile extends Component {
                                                     <Option value="Prefered Guards">Prefered Guards</Option>
                                                     <Option value="Foot Patrol">Foot Patrol</Option>
                                                     <Option value="Docs">Docs</Option>
+                                                    <Option value="Site Survey">Site Survey</Option>
 
 
 
@@ -214,6 +234,8 @@ export class SiteProfile extends Component {
                                                         <FootPatrol action={action} record={record} history={this.props.history} /> :
                                                         type === "Site Information" ?
                                                             <SiteInformation action={action} record={record} history={this.props.history} /> :
+                                                            type === "Site Survey" ?
+                                                                <SiteSurvey action={action} record={record} history={this.props.history} /> :
 
 
                                                             null

@@ -96,14 +96,14 @@ export class Docs extends Component {
 			},
 
 
-			{
-				title: 'Issue Number',
-				dataIndex: 'issueNumber',
-				sorter: {
-					compare: (a, b) => a.issueNumber.length - b.issueNumber.length,
-				},
-				width: 70
-			},
+			// {
+			// 	title: 'Issue Number',
+			// 	dataIndex: 'issueNumber',
+			// 	sorter: {
+			// 		compare: (a, b) => a.issueNumber.length - b.issueNumber.length,
+			// 	},
+			// 	width: 70
+			// },
 
 			{
 				title: 'Description',
@@ -118,23 +118,23 @@ export class Docs extends Component {
 				width: 120
 			},
 
-			{
-				title: 'Type',
-				dataIndex: 'type',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.type}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.type.toLowerCase();
-						b = b.type.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 100
-			},
+			// {
+			// 	title: 'Type',
+			// 	dataIndex: 'type',
+			// 	render: (_, record) => (
+			// 		<div className="d-flex">
+			// 			<span>{record.type}</span>
+			// 		</div>
+			// 	),
+			// 	sorter: {
+			// 		compare: (a, b) => {
+			// 			a = a.type.toLowerCase();
+			// 			b = b.type.toLowerCase();
+			// 			return a > b ? -1 : b > a ? 1 : 0;
+			// 		},
+			// 	},
+			// 	width: 100
+			// },
 
 			{
 				title: 'Upload Date & Time',

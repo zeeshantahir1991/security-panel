@@ -1,5 +1,5 @@
 import {
-	DeleteOutlined,
+	DownloadOutlined,
 	CheckCircleOutlined,
 	PrinterOutlined
 } from '@ant-design/icons';
@@ -7,6 +7,7 @@ import { Button, Card, Col, Dropdown, Menu, Row, Tooltip, Modal, Checkbox, Form,
 import userData from "assets/data/company-list.data.json";
 import { Table } from "ant-table-extensions";
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
+// import complianceData from "assets/data/compliance-interviews-list.data";
 import { componentStyles } from "./../../styles";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
@@ -15,27 +16,31 @@ import { AppStyles } from "assets/styles";
 
 const { Option } = Select;
 
-const footPatrolData = [
+const siteSurveyData = [
 	{
-		"id": "1",
-		"checkpointName": "Front Door",
-		"checkpointDescriptor": "cxvcxv",
-
-	},
-	{
-		"id": "2",
-		"checkpointName": "Stairs",
-		"checkpointDescriptor": "asdsad",
-	}
+        "id": "1",
+        "guardName": "Eileen Horton",
+        "interviewStatus": "Completed",
+        "img": "/img/avatars/thumb-1.jpg",
+        "position": "Security Officer",
+        "interviewer": "SC user A",
+        "interviewDate": 1583107200
+       
+      }
+	// {
+	// 	"id": "2",
+	// 	"checkpointName": "Stairs",
+	// 	"checkpointDescriptor": "asdsad",
+	// }
 ]
 
-export class FootPatrol extends Component {
+export class SiteSurvey extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 
-			footPatrol: footPatrolData,
+			siteSurvey: siteSurveyData,
 			open: false,
 			selectionType: ''
 		};
@@ -43,21 +48,23 @@ export class FootPatrol extends Component {
 
 
 	render() {
-		const { footPatrol, open, selectionType } = this.state;
+		const { siteSurvey, open, selectionType } = this.state;
 		const tableColumns = [
-
 			{
-				title: 'Checkpoint Name',
-				dataIndex: 'checkpointName',
+				title: 'Position',
+				dataIndex: 'position',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.checkpointName}</span>
+						<a onClick={() => this.setState({ edit: true })}>
+
+							<span>{record.position}</span>
+						</a>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.checkpointName.toLowerCase();
-						b = b.checkpointName.toLowerCase();
+						a = a.position.toLowerCase();
+						b = b.position.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
@@ -65,50 +72,77 @@ export class FootPatrol extends Component {
 			},
 
 			{
-				title: 'Checkpoint Descriptor',
-				dataIndex: 'checkpointDescriptor',
+				title: 'Interview Status',
+				dataIndex: 'interviewStatus',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.checkpointDescriptor}</span>
+						<span>{record.interviewStatus}</span>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.checkpointDescriptor.toLowerCase();
-						b = b.checkpointDescriptor.toLowerCase();
+						a = a.interviewStatus.toLowerCase();
+						b = b.interviewStatus.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 750
+				width: 200
 			},
 
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
 
-						<Tooltip title="Print">
-							<Button icon={<PrinterOutlined />} size="small" />
-						</Tooltip>
+			{
+				title: 'Interviewer',
+				dataIndex: 'interviewer',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.interviewer}</span>
 					</div>
 				),
-				// width: 100
+				sorter: {
+					compare: (a, b) => {
+						a = a.interviewer.toLowerCase();
+						b = b.interviewer.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
 			},
-
+			{
+				title: 'Interview Date',
+				dataIndex: 'interviewDate',
+				render: date => (
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				width: 200
+			},
 			{
 				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} size="small" />
-						</Tooltip>
+				dataIndex: 'interviewDate',
+				render: date => (
+					<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
+						<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
 					</div>
-				)
-			}
+				),
+				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				width: 200,
+			},
+
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip>
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		const rowSelection = {
@@ -214,23 +248,23 @@ export class FootPatrol extends Component {
 				<Row justify="center">
 
 					<Col xs={24} sm={24} md={24} lg={24} >
-						<Card className="card" title="Foot Patrol"
+						<Card className="card" title="Site Survey"
 							extra={
 								<Button
 									onClick={() => this.setState({ open: true })}
 									style={componentStyles.continueButton} htmlType="submit" block>
-									Add Checkpoint
+									Add Site Survey
 								        </Button>
 
 							}
 						>
 							<Table
-								searchable
-								rowSelection={{
-									type: selectionType,
-									...rowSelection,
-								}}
-								bordered columns={tableColumns} dataSource={footPatrol} rowKey='id' scroll={{ x: 600, y: 200 }} />
+								// searchable
+								// rowSelection={{
+								// 	type: selectionType,
+								// 	...rowSelection,
+								// }}
+								bordered columns={tableColumns} dataSource={siteSurvey} rowKey='id' scroll={{ x: 600, y: 200 }} />
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>
@@ -240,4 +274,4 @@ export class FootPatrol extends Component {
 	}
 }
 
-export default FootPatrol
+export default SiteSurvey

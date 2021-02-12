@@ -11,6 +11,7 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "assets/styles";
+import { componentStyles } from "./../../styles";
 
 const preferedGuardData = [
 	{
@@ -113,7 +114,37 @@ export class PreferedGuards extends Component {
 					<Row justify="center">
 					
 						<Col xs={24} sm={24} md={24} lg={24} >
-							<Card className="card" title="Preferred Guards">
+							<Card className="card" title="Preferred Guards"
+							extra={
+								<Button
+									onClick={() => this.setState({ open: true })}
+									style={componentStyles.continueButton} htmlType="submit" block>
+									Add Preferred Guard
+								        </Button>
+
+							}
+							>
+								<Table
+									searchable
+									bordered columns={tableColumns} dataSource={preferedGuards} rowKey='id' scroll={{ x: 600, y: 200 }} />
+							</Card>
+						</Col>
+					</Row>
+				</div>
+				<div style={AppStyles.marginTop20}>
+					<Row justify="center">
+					
+						<Col xs={24} sm={24} md={24} lg={24} >
+							<Card className="card" title="Banned Guards"
+							extra={
+								<Button
+									onClick={() => this.setState({ open: true })}
+									style={componentStyles.continueButton} htmlType="submit" block>
+									Add Banned Guard
+								        </Button>
+
+							}
+							>
 								<Table
 									searchable
 									bordered columns={tableColumns} dataSource={preferedGuards} rowKey='id' scroll={{ x: 600, y: 200 }} />

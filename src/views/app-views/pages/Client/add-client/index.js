@@ -277,27 +277,27 @@ export class AddClient extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={24} lg={24} style={{display:'flex', flexDirection:'row'}}>
-									<Col xs={24} sm={24} md={6} lg={6}>
-										<Form.Item
-											name="phone"
-											label="Phone"
-											rules={rules.phone}
-											hasFeedback
-										>
-											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
-										</Form.Item>
+									<Col xs={24} sm={24} md={24} lg={24} style={{ display: 'flex', flexDirection: 'row' }}>
+										<Col xs={24} sm={24} md={6} lg={6}>
+											<Form.Item
+												name="phone"
+												label="Phone"
+												rules={rules.phone}
+												hasFeedback
+											>
+												<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+											</Form.Item>
 										</Col>
-										<Col xs={24} sm={24} md={3} lg={3} style={{display:'flex', flexDirection:'row'}}>	
-										<Switch style={componentStyles.switchStyle,{marginTop:39, marginRight:10, marginLeft:5}} size="small" defaultChecked></Switch>
-										<Typography style={{color:'black', marginTop:36}}>Status</Typography> 
+										<Col xs={24} sm={24} md={3} lg={3} style={{ display: 'flex', flexDirection: 'row' }}>
+											<Switch style={componentStyles.switchStyle, { marginTop: 39, marginRight: 10, marginLeft: 5 }} size="small" defaultChecked></Switch>
+											<Typography style={{ color: 'black', marginTop: 36 }}>Status</Typography>
 										</Col>
 									</Col>
 									{/* <Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}> */}
 
-										{/* <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> */}
-			                                 {/* Status */}
-                                    {/* </Col> */}
+									{/* <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch> */}
+									{/* Status */}
+									{/* </Col> */}
 								</Row>
 								<Row gutter={16} justify="center">
 

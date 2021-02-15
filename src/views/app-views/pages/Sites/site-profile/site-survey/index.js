@@ -13,20 +13,20 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "assets/styles";
+import SiteSurveyDetail from "./../site-survey-detail"
 
 const { Option } = Select;
 
 const siteSurveyData = [
 	{
-        "id": "1",
-        "guardName": "Eileen Horton",
-        "interviewStatus": "Completed",
-        "img": "/img/avatars/thumb-1.jpg",
-        "position": "Security Officer",
-        "interviewer": "SC user A",
-        "interviewDate": 1583107200
-       
-      }
+		"id": "1",
+		"siteType": "Security Guarding",
+		"surveyor": "Completed",
+		"siteName": "Store 1 Survey",
+		"surveyStatus": "Completed",
+		"surveyDate": 1583107200
+
+	}
 	// {
 	// 	"id": "2",
 	// 	"checkpointName": "Stairs",
@@ -42,29 +42,43 @@ export class SiteSurvey extends Component {
 
 			siteSurvey: siteSurveyData,
 			open: false,
-			selectionType: ''
+			selectionType: '',
+			form: false,
+			record: null
 		};
 	}
 
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/site-survey-detail',
+			state: { action, record }
+		})
+	}
+
+	
+	callbackFunction = (form) => {
+	
+		this.setState({ form: form })
+	}
 
 	render() {
-		const { siteSurvey, open, selectionType } = this.state;
+		const { siteSurvey, open, selectionType, form, record } = this.state;
 		const tableColumns = [
 			{
-				title: 'Position',
-				dataIndex: 'position',
+				title: 'Site Name',
+				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a onClick={() => this.setState({ edit: true })}>
+						<a onClick={() => this.setState({ form: true, record: record })}>
 
-							<span>{record.position}</span>
+							<span>{record.siteName}</span>
 						</a>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.position.toLowerCase();
-						b = b.position.toLowerCase();
+						a = a.siteName.toLowerCase();
+						b = b.siteName.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
@@ -72,62 +86,87 @@ export class SiteSurvey extends Component {
 			},
 
 			{
-				title: 'Interview Status',
-				dataIndex: 'interviewStatus',
+				title: 'Survey Status',
+				dataIndex: 'surveyStatus',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.interviewStatus}</span>
+						<span>{record.surveyStatus}</span>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.interviewStatus.toLowerCase();
-						b = b.interviewStatus.toLowerCase();
+						a = a.surveyStatus.toLowerCase();
+						b = b.surveyStatus.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
 				width: 200
 			},
 
-
-
 			{
-				title: 'Interviewer',
-				dataIndex: 'interviewer',
+				title: 'Surveyor',
+				dataIndex: 'surveyor',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.interviewer}</span>
+						<span>{record.surveyor}</span>
 					</div>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.interviewer.toLowerCase();
-						b = b.interviewer.toLowerCase();
+						a = a.surveyor.toLowerCase();
+						b = b.surveyor.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
 				width: 200
 			},
+
+
+
+
 			{
-				title: 'Interview Date',
-				dataIndex: 'interviewDate',
+				title: 'Survey Date',
+				dataIndex: 'surveyDate',
 				render: date => (
 					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
 				),
-				sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				sorter: (a, b) => moment(a.surveyDate).unix() - moment(b.surveyDate).unix(),
 				width: 200
 			},
+
+
+			{
+				title: 'Site Type',
+				dataIndex: 'siteType',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.siteType}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.siteType.toLowerCase();
+						b = b.siteType.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+
+
 			{
 				title: '',
-				dataIndex: 'interviewDate',
+				dataIndex: '',
 				render: date => (
 					<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
 						<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
 					</div>
 				),
-				// sorter: (a, b) => moment(a.interviewDate).unix() - moment(b.interviewDate).unix(),
+				// sorter: (a, b) => moment(a.surveyDate).unix() - moment(b.surveyDate).unix(),
 				width: 200,
 			},
+
+
 
 			// {
 			// 	title: '',
@@ -145,19 +184,11 @@ export class SiteSurvey extends Component {
 			// }
 		];
 
-		const rowSelection = {
-			onChange: (selectedRowKeys, selectedRows) => {
-				console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-			},
-			getCheckboxProps: record => ({
-				disabled: record.name === 'Disabled User', // Column configuration not to be checked
-				name: record.name,
-			}),
-		};
+
 
 		return (
 			<>
-				<Modal title="Add Checkpoint"
+				{/* <Modal title="Add Checkpoint"
 					onCancel={() => this.setState({ open: false })}
 					visible={open}
 					footer={[
@@ -237,6 +268,7 @@ export class SiteSurvey extends Component {
 					</Form>
 
 				</Modal>
+				 */}
 				<Row>
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<div style={AppStyles.marginBottom40}>
@@ -248,25 +280,24 @@ export class SiteSurvey extends Component {
 				<Row justify="center">
 
 					<Col xs={24} sm={24} md={24} lg={24} >
-						<Card className="card" title="Site Survey"
-							extra={
-								<Button
-									onClick={() => this.setState({ open: true })}
-									style={componentStyles.continueButton} htmlType="submit" block>
-									Add Site Survey
-								        </Button>
 
-							}
-						>
-							<Table
-								// searchable
-								// rowSelection={{
-								// 	type: selectionType,
-								// 	...rowSelection,
-								// }}
-								bordered columns={tableColumns} dataSource={siteSurvey} rowKey='id' scroll={{ x: 600, y: 200 }} />
-						</Card>
-						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+						{
+							form ?
+								<SiteSurveyDetail record={record} parentCallback={this.callbackFunction}/> :
+								<Card className="card" title="Site Survey"
+								// extra={
+								// 	<Button
+								// 		onClick={() => this.setState({ open: true })}
+								// 		style={componentStyles.continueButton} htmlType="submit" block>
+								// 		Add Site Survey
+								// 	        </Button>
+
+								// }
+								>
+									<Table
+										bordered columns={tableColumns} dataSource={siteSurvey} rowKey='id' scroll={{ x: 600, y: 200 }} />
+								</Card>
+						}
 					</Col>
 				</Row>
 			</>

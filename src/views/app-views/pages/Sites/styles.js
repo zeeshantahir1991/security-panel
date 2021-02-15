@@ -11,6 +11,7 @@ export const componentStyles = {
 
     borderColor: { borderColor: AppColors.alto },
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
+    rangePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 40 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
     continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
     cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },

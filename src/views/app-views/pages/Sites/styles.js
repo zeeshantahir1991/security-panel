@@ -144,4 +144,29 @@ export const componentStyles = {
         fontSize: 15,
         textAlign: 'right'
     },
+
+
+    weekdaysStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'center'
+    },
+
+    colBorder: {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: AppColors.alto,
+        padding: 20
+    },
+
+    insideCardTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 17,
+        textAlign: 'left',
+        marginTop: 20,
+        marginBottom: 20
+    },
+
+    equipmentContainer: { backgroundColor: AppColors.alabaster2, borderRadius: 10, marginTop: 20, padding: 20, marginBottom: 40 },
+
 }

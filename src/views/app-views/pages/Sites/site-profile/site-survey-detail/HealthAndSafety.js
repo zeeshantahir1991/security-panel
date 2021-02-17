@@ -67,7 +67,7 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.firstAiderName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -79,7 +79,7 @@ export class HealthAndSafety extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.phone} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -91,7 +91,7 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.location} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -146,7 +146,7 @@ export class HealthAndSafety extends Component {
                                     // rules={rules.address1}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.patrolClockCheckPoint} style={componentStyles.borderColor} prefix={<ClockCircleOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<ClockCircleOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -158,7 +158,7 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.specialInstructions} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 
@@ -171,7 +171,7 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.specialDuties} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 

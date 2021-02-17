@@ -70,7 +70,7 @@ export class ClientAndSiteInfo extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input disabled defaultValue={record.clientName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -82,7 +82,7 @@ export class ClientAndSiteInfo extends Component {
                                     // rules={rules.address1}
                                     hasFeedback
                                 >
-                                    <Input disabled defaultValue={record.address} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -94,7 +94,7 @@ export class ClientAndSiteInfo extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input disabled defaultValue={record.clientName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -105,7 +105,7 @@ export class ClientAndSiteInfo extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input disabled defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                    <Input disabled={record ? true : false} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -117,7 +117,7 @@ export class ClientAndSiteInfo extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input disabled defaultValue={record.clientName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -129,7 +129,7 @@ export class ClientAndSiteInfo extends Component {
                                     // rules={rules.address1}
                                     hasFeedback
                                 >
-                                    <Input disabled defaultValue={record.address} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -141,7 +141,7 @@ export class ClientAndSiteInfo extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input disabled defaultValue={record.clientName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input disabled={record ? true : false} style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -152,7 +152,7 @@ export class ClientAndSiteInfo extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input disabled defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                    <Input disabled={record ? true : false} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -196,7 +196,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -217,7 +217,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -238,7 +238,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -259,7 +259,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -280,7 +280,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -301,7 +301,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
@@ -322,7 +322,7 @@ export class ClientAndSiteInfo extends Component {
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 
-                                        <Input defaultValue={record.phoneNumber} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                        <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                     </Col>
                                     <Col xs={24} sm={24} md={6} lg={6} style={componentStyles.colBorder}>
 

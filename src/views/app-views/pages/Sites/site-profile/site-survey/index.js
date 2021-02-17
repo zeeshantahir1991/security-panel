@@ -44,7 +44,8 @@ export class SiteSurvey extends Component {
 			open: false,
 			selectionType: '',
 			form: false,
-			record: null
+			record: null,
+			edit: false
 		};
 	}
 
@@ -58,18 +59,18 @@ export class SiteSurvey extends Component {
 	
 	callbackFunction = (form) => {
 	
-		this.setState({ form: form })
+		this.setState({ form: form, edit: form})
 	}
 
 	render() {
-		const { siteSurvey, open, selectionType, form, record } = this.state;
+		const { siteSurvey, open, selectionType, form, record, edit} = this.state;
 		const tableColumns = [
 			{
 				title: 'Site Name',
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a onClick={() => this.setState({ form: true, record: record })}>
+						<a onClick={() => this.setState({ edit: true, record: record })}>
 
 							<span>{record.siteName}</span>
 						</a>
@@ -282,17 +283,17 @@ export class SiteSurvey extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 
 						{
-							form ?
-								<SiteSurveyDetail record={record} parentCallback={this.callbackFunction}/> :
+							(form || edit) ?
+								<SiteSurveyDetail record={edit ? record : null} parentCallback={this.callbackFunction}/> :
 								<Card className="card" title="Site Survey"
-								// extra={
-								// 	<Button
-								// 		onClick={() => this.setState({ open: true })}
-								// 		style={componentStyles.continueButton} htmlType="submit" block>
-								// 		Add Site Survey
-								// 	        </Button>
+								extra={
+									<Button
+										onClick={() => this.setState({ form: true })}
+										style={componentStyles.continueButton} htmlType="submit" block>
+										Add Site Survey
+									        </Button>
 
-								// }
+								}
 								>
 									<Table
 										bordered columns={tableColumns} dataSource={siteSurvey} rowKey='id' scroll={{ x: 600, y: 200 }} />

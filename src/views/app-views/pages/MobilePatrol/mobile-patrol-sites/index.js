@@ -10,7 +10,7 @@ import { componentStyles } from "./../styles";
 const mobilePatrolData = [
 	{
 		"id": "1",
-		"masterSiteName": "Store 1",
+		"mpSiteName": "Store 1",
 		"status": "Active",
 		"createDate": 1583107200,
 		"clientName": "Eileen Horton",
@@ -21,7 +21,7 @@ const mobilePatrolData = [
 
 	{
 		"id": "2",
-		"masterSiteName": "Building 2",
+		"mpSiteName": "Building 2",
 		"status": "Inactive",
 		"createDate": 1583107200,
 		"clientName": "Terrance Moreno",
@@ -43,7 +43,7 @@ export class MobilePatrolList extends Component {
 		search: {
 			status: "",
 			createDate: "",
-			masterSiteName: "",
+			mpSiteName: "",
 		}
 	}
 
@@ -76,17 +76,22 @@ export class MobilePatrolList extends Component {
 		let List = mobilePatrolData
 		let status = search.status
 		let createDate = search.createDate
-		let masterSiteName = search.masterSiteName
+		let mpSiteName = search.mpSiteName
 
 		let filteredArray = []
 		filteredArray = List.filter(element => {
-			return filterCombination(status, createDate, masterSiteName, element)
+			return filterCombination(status, createDate, mpSiteName, element)
 
 		});
 		this.setState({ mobilePatrolList: filteredArray })
 
 	}
-
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/mp-profile',
+			state: { action, record }
+		})
+	}
 
 	render() {
 		const { mobilePatrolList, search } = this.state;
@@ -94,16 +99,20 @@ export class MobilePatrolList extends Component {
 		const tableColumns = [
 			{
 				title: 'Master Site Name',
-				dataIndex: 'masterSiteName',
+				dataIndex: 'mpSiteName',
 				render: (_, record) => (
 					<span className="d-flex">
-						{record.masterSiteName}
+						<a onClick={() => this.viewItem("viewItem", record)}>
+
+							{record.mpSiteName}
+						</a>
+
 					</span>
 				),
 				sorter: {
 					compare: (a, b) => {
-						a = a.masterSiteName.toLowerCase();
-						b = b.masterSiteName.toLowerCase();
+						a = a.mpSiteName.toLowerCase();
+						b = b.mpSiteName.toLowerCase();
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
@@ -129,23 +138,6 @@ export class MobilePatrolList extends Component {
 				width: 200,
 			},
 
-			{
-				title: 'Region',
-				dataIndex: 'region',
-				render: (_, record) => (
-					<span className="d-flex">
-						{record.region}
-					</span>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.region.toLowerCase();
-						b = b.region.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200,
-			},
 
 			{
 				title: 'Status',
@@ -204,7 +196,7 @@ export class MobilePatrolList extends Component {
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -235,19 +227,19 @@ export class MobilePatrolList extends Component {
 
 								<Input
 									placeholder="Master Site Name"
-									onChange={(val) => this.handleChangeInput("masterSiteName", val)}
+									onChange={(val) => this.handleChangeInput("mpSiteName", val)}
 									style={componentStyles.filtersInputStyle} />
 								<Button
-									disabled={!(search.status || search.createDate || search.masterSiteName)}
+									disabled={!(search.status || search.createDate || search.mpSiteName)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.createDate || search.masterSiteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.status || search.createDate || search.mpSiteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -278,12 +270,12 @@ export class MobilePatrolList extends Component {
 
 								<Input
 									placeholder="Master Site Name"
-									onChange={(val) => this.handleChangeInput("masterSiteName", val)}
+									onChange={(val) => this.handleChangeInput("mpSiteName", val)}
 									style={componentStyles.filtersInputStyle} />
 								<Button
-									disabled={!(search.status || search.createDate || search.masterSiteName)}
+									disabled={!(search.status || search.createDate || search.mpSiteName)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.status || search.createDate || search.masterSiteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.status || search.createDate || search.mpSiteName) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
@@ -291,9 +283,9 @@ export class MobilePatrolList extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="MP Master Sites List" >
-							<Table searchable bordered columns={tableColumns} dataSource={mobilePatrolList} rowKey='id' scroll={{ x: 1400, y: 300 }} />
+							<Table searchable bordered columns={tableColumns} dataSource={mobilePatrolList} rowKey='id' scroll={{ x: 1200, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>
@@ -306,30 +298,30 @@ export class MobilePatrolList extends Component {
 
 export default MobilePatrolList
 
-export const filterCombination = (status, createDate, masterSiteName, element) => {
-	if (status && createDate && masterSiteName) {
+export const filterCombination = (status, createDate, mpSiteName, element) => {
+	if (status && createDate && mpSiteName) {
 
-		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.mpSiteName.trim().toUpperCase() === mpSiteName.trim().toUpperCase()
 
 	} else if (status && createDate) {
 
 		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
-	} else if (status && masterSiteName) {
+	} else if (status && mpSiteName) {
 
-		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
+		return element.status.trim().toUpperCase() === status.trim().toUpperCase() && element.mpSiteName.trim().toUpperCase() === mpSiteName.trim().toUpperCase()
 
-	} else if (createDate && masterSiteName) {
+	} else if (createDate && mpSiteName) {
 
-		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
+		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD") && element.mpSiteName.trim().toUpperCase() === mpSiteName.trim().toUpperCase()
 
 	} else if (createDate) {
 
 		return moment.unix(element.createDate).format("YYYY/MM/DD") === moment(createDate).format("YYYY/MM/DD")
 
-	} else if (masterSiteName) {
+	} else if (mpSiteName) {
 
-		return element.masterSiteName.trim().toUpperCase() === masterSiteName.trim().toUpperCase()
+		return element.mpSiteName.trim().toUpperCase() === mpSiteName.trim().toUpperCase()
 
 	} else if (status) {
 

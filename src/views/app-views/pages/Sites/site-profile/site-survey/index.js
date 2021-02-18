@@ -1,6 +1,6 @@
 import {
 	DownloadOutlined,
-	CheckCircleOutlined,
+	EyeOutlined,
 	PrinterOutlined
 } from '@ant-design/icons';
 import { Button, Card, Col, Dropdown, Menu, Row, Tooltip, Modal, Checkbox, Form, Input, Select } from 'antd';
@@ -154,34 +154,35 @@ export class SiteSurvey extends Component {
 			},
 
 
-			{
-				title: '',
-				dataIndex: '',
-				render: date => (
-					<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
-						<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
-					</div>
-				),
-				// sorter: (a, b) => moment(a.surveyDate).unix() - moment(b.surveyDate).unix(),
-				width: 200,
-			},
-
-
-
 			// {
 			// 	title: '',
-			// 	dataIndex: 'actions',
-			// 	render: (_, elm) => (
-			// 		<div className="text-right">
-			// 			<Tooltip title="View">
-			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-			// 			</Tooltip>
-			// 			<Tooltip title="Delete">
-			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-			// 			</Tooltip>
+			// 	dataIndex: '',
+			// 	render: date => (
+			// 		<div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
+			// 			<Button type="primary" shape="round" icon={<DownloadOutlined />} style={{ alignSelf: "center" }} />
 			// 		</div>
-			// 	)
-			// }
+					
+			// 	),
+			// 	// sorter: (a, b) => moment(a.surveyDate).unix() - moment(b.surveyDate).unix(),
+			// 	width: 200,
+			// },
+
+
+
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+						<Tooltip title="View">
+							<Button type="primary" className="mr-2" icon={<EyeOutlined />}/>
+						</Tooltip>
+						<Tooltip title="Download">
+						<Button type="primary" className="mr-2" icon={<DownloadOutlined />} />
+						</Tooltip>
+					</div>
+				)
+			}
 		];
 
 

@@ -78,7 +78,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.numberOfStaff} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -152,7 +152,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.noOfLifts} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -163,7 +163,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.noOfFloors} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -175,7 +175,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.locationOfLifts} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -187,7 +187,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.locationOfMotorRooms} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -198,7 +198,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.action} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -209,7 +209,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.action} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -220,7 +220,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.action} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -257,7 +257,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.locationOfMotorRooms} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -267,7 +267,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.noOfFloors} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                 </Form.Item>
                             </Col>
 
@@ -307,7 +307,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.locationOfMotorRooms} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -324,7 +324,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.cctv} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -335,7 +335,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.computer} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -346,7 +346,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.vehicleBarriers} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -357,7 +357,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.patrolMonitoring} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -368,7 +368,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.alarmSystems} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 
@@ -387,7 +387,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.contractorName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -397,7 +397,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.noOfStaff} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -408,7 +408,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.identification} style={componentStyles.borderColor} />
+                                    <Input style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -475,7 +475,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.locationOfMotorRooms} style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -486,7 +486,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input defaultValue={record.emergencyName} style={componentStyles.borderColor} prefix={<UserOutlined />} />
+                                    <Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
                                 </Form.Item>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
@@ -496,7 +496,7 @@ export class SiteInformation extends Component {
                                     // rules={rules.phone}
                                     hasFeedback
                                 >
-                                    <Input defaultValue={record.phone} min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                    <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
                                 </Form.Item>
                             </Col>
 

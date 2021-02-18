@@ -148,15 +148,16 @@ export const componentStyles = {
 
     weekdaysStyle: {
         fontWeight: 'bold',
-        fontSize: 20,
-        textAlign: 'center'
+        fontSize: 15,
+        textAlign: 'center',
+        
     },
 
     colBorder: {
-        borderWidth: 2,
+        borderWidth: 1,
         borderStyle: 'solid',
         borderColor: AppColors.alto,
-        padding: 20
+        padding: 10,
     },
 
     insideCardTitleStyle: {

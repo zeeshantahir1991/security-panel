@@ -300,7 +300,7 @@ const mobilepatrolNavTree = [
           {
             key: "mobile-pages-sites",
             path: "/app/pages/mobile-patrol-sites",
-            title: "View Mobile Patrol Sites",
+            title: "View Master Sites",
             icon: "",
             breadcrumb: true,
             submenu: [],
@@ -308,7 +308,7 @@ const mobilepatrolNavTree = [
           {
             key: "mobile-pages-add-sites",
             path: "/app/pages/add-mobile-patrol-site",
-            title: "Add Mobile Patrol Site",
+            title: "Add Master Site",
             icon: "",
             breadcrumb: true,
             submenu: [],

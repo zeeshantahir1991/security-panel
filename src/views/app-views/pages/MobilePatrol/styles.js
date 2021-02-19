@@ -93,5 +93,35 @@ export const componentStyles = {
     filtersInputStyle: {
         borderColor: AppColors.alto,
         marginRight: 20
-    }
+    },
+
+    typeStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+
+    nameStyle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'right'
+    },
+
+    dropDownStyleWithWidth200: {
+        width: 200,
+        borderWidth: 1,
+        borderColor: AppColors.cornFlowerBlue,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginRight: 20
+    },
+
+    selectStyleDisabled: {
+        width: '100%',
+        borderWidth: 1,
+        backgroundColor: AppColors.gallery1,
+        borderColor: AppColors.alto,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginRight: 20
+    },
 }

@@ -42,6 +42,7 @@ const Pages = ({ match }) => (
 
       <Route path={`${match.url}/mobile-patrol-sites`} component={lazy(() => import(`./MobilePatrol/mobile-patrol-sites`))} />
       <Route path={`${match.url}/add-mobile-patrol-site`} component={lazy(() => import(`./MobilePatrol/add-mobile-patrol-site`))} />
+      <Route path={`${match.url}/mp-profile`} component={lazy(() => import(`./MobilePatrol/mp-profile`))} />
 
       <Route path={`${match.url}/guard-view`} component={lazy(() => import(`./Guard/guard-profile/details/ViewGuard`))} />
       <Route path={`${match.url}/guard-sia-record`} component={lazy(() => import(`./Guard/guard-profile/details/SiaRecords`))} />

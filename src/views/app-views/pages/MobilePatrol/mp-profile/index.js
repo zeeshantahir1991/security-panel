@@ -5,6 +5,7 @@ import { AppColors } from "assets/styles/colors";
 import React, { Component } from 'react';
 import { componentStyles } from "../styles";
 import MobilePatrolSites from "./mobile-patrol-sites";
+import MobilePatrolRoutes from "./mobile-patrol-routes";
 import PreferedGuards from "./preferred-guards";
 import SiteInformation from "./site-information"
 const { TabPane } = Tabs;
@@ -210,7 +211,7 @@ export class SiteProfile extends Component {
                                                     type === "Master Site Information " ?
                                                         <SiteInformation action={action} record={record} history={this.props.history} /> :
                                                         type === "Mobile Patrol Routes" ?
-                                                            null :
+                                                            <MobilePatrolRoutes /> :
 
 
                                                             null

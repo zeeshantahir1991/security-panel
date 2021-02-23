@@ -6,6 +6,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "assets/styles";
 import { componentStyles } from "./../../styles";
+import EditPatrolRoute from "./EditPatrolRoute"
 
 const mobilePatrolData = [
     {
@@ -195,7 +196,11 @@ export class MobilePatrolRoutes extends Component {
 
                     {
                         edit ?
-                            null :
+                            <Col xs={24} sm={24} md={24} lg={24} >
+
+                                <EditPatrolRoute />
+                            </Col>
+                            :
                             form ?
                                 <Col xs={24} sm={24} md={24} lg={24} >
                                     <Form layout="vertical">

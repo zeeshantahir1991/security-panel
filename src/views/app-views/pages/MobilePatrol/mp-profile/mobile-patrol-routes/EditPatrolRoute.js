@@ -1,20 +1,134 @@
-import { CompassOutlined, InboxOutlined, PhoneOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Select } from 'antd';
+import { CompassOutlined, InboxOutlined, PhoneOutlined, SwapOutlined, InteractionOutlined } from '@ant-design/icons';
+import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
 import { AppStyles } from "assets/styles";
 import React, { Component } from 'react';
 import { componentStyles } from "./../../styles";
+import RLDD from 'react-list-drag-and-drop/lib/RLDD';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { AppColors } from 'assets/styles/colors'
 
 
 
 
 const { Option } = Select;
-
+const { Step } = Steps;
 const rules = []
+
+
+// a little function to help us with reordering the result
+const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
+/**
+ * Moves an item from one list to another list.
+ */
+const move = (source, destination, droppableSource, droppableDestination) => {
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
+
+    destClone.splice(droppableDestination.index, 0, removed);
+
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+
+    return result;
+};
+
+const grid = 8;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+    // some basic styles to make the items look a bit nicer
+    userSelect: 'none',
+    padding: grid * 2,
+    margin: `0 0 ${grid}px 0`,
+    color: isDragging ? AppColors.mineShaft : AppColors.mineShaft,
+    // change background colour if dragging
+    background: isDragging ? AppColors.alabaster2 : AppColors.gallery1,
+
+    // styles we need to apply on draggables
+    ...draggableStyle
+});
+
+const getListStyle = isDraggingOver => ({
+    background: isDraggingOver ? 'lightgrey' : 'white',
+    padding: grid,
+    borderColor: AppColors.gallery1,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    padding: 10,
+    width: '100%',
+    height: 300,
+    marginBottom: 20
+});
+
 export class EditPatrolRoute extends Component {
 
     state = {
-        address: ""
-    }
+        items: [
+            { id: "item-0", content: "MP Site A" },
+            { id: "item-1", content: "MP Site B" },
+            { id: "item-2", content: "MP Site C" },
+            { id: "item-3", content: "MP Site D" }
+        ],
+        selected: [],
+        step: ""
+    };
+
+    /**
+     * A semi-generic way to handle multiple lists. Matches
+     * the IDs of the droppable container to the names of the
+     * source arrays stored in the state.
+     */
+    id2List = {
+        droppable: 'items',
+        droppable2: 'selected'
+    };
+
+    getList = id => this.state[this.id2List[id]];
+
+    onDragEnd = result => {
+        const { source, destination } = result;
+
+        // dropped outside the list
+        if (!destination) {
+            return;
+        }
+
+        if (source.droppableId === destination.droppableId) {
+            const items = reorder(
+                this.getList(source.droppableId),
+                source.index,
+                destination.index
+            );
+
+            let state = { items };
+
+            if (source.droppableId === 'droppable2') {
+                state = { selected: items };
+            }
+
+            this.setState(state);
+        } else {
+            const result = move(
+                this.getList(source.droppableId),
+                this.getList(destination.droppableId),
+                source,
+                destination
+            );
+
+            this.setState({
+                items: result.droppable,
+                selected: result.droppable2
+            });
+        }
+    };
 
     handleChange = (type, value) => {
         console.log(`selected ${value}`);
@@ -26,9 +140,8 @@ export class EditPatrolRoute extends Component {
     }
 
 
-
     render() {
-        const { address } = this.state;
+        const { address, items, selected, step } = this.state;
         return (
             <div>
 
@@ -133,9 +246,156 @@ export class EditPatrolRoute extends Component {
                         }
 
 
+
+                    </Row>
+
+                    <Row justify="center" style={componentStyles.dragAndDropContainer}>
+                        <Col xs={16} sm={16} md={16} lg={16}>
+                            <DragDropContext onDragEnd={this.onDragEnd}>
+                                <Row gutter={16}>
+                                    <Col className="card" xs={10} sm={10} md={10} lg={10} style={AppStyles.borderGallery2}>
+
+                                        <div style={componentStyles.dragTitle}>Mobile Patrol Sites</div>
+                                        <div style={AppStyles.marginBottom20}>
+                                            <div style={AppStyles.horizontallLineWidth100}>
+                                            </div>
+                                        </div>
+                                        <Droppable droppableId="droppable">
+                                            {(provided, snapshot) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    style={getListStyle(snapshot.isDraggingOver)}
+                                                >
+
+                                                    {this.state.items.map((item, index) => (
+                                                        <Draggable
+                                                            key={item.id}
+                                                            draggableId={item.id}
+                                                            index={index}>
+                                                            {(provided, snapshot) => (
+                                                                <div
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    style={getItemStyle(
+                                                                        snapshot.isDragging,
+                                                                        provided.draggableProps.style
+                                                                    )}>
+                                                                    <Row>
+                                                                        <Col xs={12} sm={12} md={12} lg={12} >
+                                                                            <div>
+                                                                                {item.content}
+                                                                            </div>
+
+                                                                        </Col>
+                                                                        <Col xs={12} sm={12} md={12} lg={12} style={AppStyles.textAlignRight}>
+                                                                            <InteractionOutlined style={{ fontSize: 20, color: 'lightgrey' }} />
+
+                                                                        </Col>
+                                                                    </Row>
+                                                                </div>
+                                                            )}
+                                                        </Draggable>
+                                                    ))}
+                                                    {provided.placeholder}
+                                                </div>
+                                            )}
+                                        </Droppable>
+                                    </Col>
+                                    <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfAndTextCenter}>
+                                        <SwapOutlined style={{ fontSize: 50, color: 'lightgrey' }} />
+                                    </Col>
+                                    <Col className="card" xs={10} sm={10} md={10} lg={10} style={AppStyles.borderGallery2}>
+
+                                        <div style={componentStyles.dragTitle}>Mobile Patrol Route</div>
+                                        <div style={AppStyles.marginBottom20}>
+                                            <div style={AppStyles.horizontallLineWidth100}>
+                                            </div>
+                                        </div>
+
+                                        <Droppable droppableId="droppable2">
+                                            {(provided, snapshot) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    style={getListStyle(snapshot.isDraggingOver)}
+                                                >
+
+                                                    {this.state.selected.map((item, index) => (
+                                                        <Draggable
+                                                            key={item.id}
+                                                            draggableId={item.id}
+                                                            index={index}>
+                                                            {(provided, snapshot) => (
+                                                                <div
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    style={getItemStyle(
+                                                                        snapshot.isDragging,
+                                                                        provided.draggableProps.style
+                                                                    )}>
+                                                                    <Row>
+                                                                        <Col xs={12} sm={12} md={12} lg={12} >
+                                                                            <div>
+                                                                                {item.content}
+                                                                            </div>
+
+                                                                        </Col>
+                                                                        <Col xs={12} sm={12} md={12} lg={12} style={AppStyles.textAlignRight}>
+                                                                            <InteractionOutlined style={{ fontSize: 20, color: 'lightgrey' }} />
+
+                                                                        </Col>
+                                                                    </Row>                                                                </div>
+                                                            )}
+                                                        </Draggable>
+                                                    ))}
+                                                    {provided.placeholder}
+                                                </div>
+                                            )}
+                                        </Droppable>
+
+                                    </Col>
+                                </Row>
+
+                            </DragDropContext>
+                        </Col>
+                        <Col xs={8} sm={8} md={8} lg={8} >
+
+                        </Col>
+                        <Col xs={20} sm={20} md={20} lg={20} style={AppStyles.marginTopBottom50}>
+                            <Steps>
+                                <Step title="Start"
+
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Start" })}
+                                    icon={
+                                        <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            1
+									</div>
+                                    } />
+                                <Step title="Second Step"
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Second Step" })}
+
+                                    icon={
+                                        <div style={'Second Step' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            2
+									</div>
+                                    } />
+                                <Step status="finish" title="Finish"
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Finish" })}
+
+                                    icon={
+                                        <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            3
+									 </div>
+                                    } />
+
+                            </Steps>
+                        </Col>
                     </Row>
                 </Form>
-
             </div>
         )
     }

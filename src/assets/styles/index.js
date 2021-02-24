@@ -24,6 +24,11 @@ export const AppStyles = {
         alignSelf: 'flex-end'
     },
 
+    alignSelfAndTextCenter: {
+        alignSelf: 'center',
+        textAlign: 'center'
+    },
+
     justifyContentStart: {
         justifyContent: 'flex-start'
     },
@@ -154,6 +159,12 @@ export const AppStyles = {
         marginTop: 30,
         marginBottom: 30
     },
+
+    marginTopBottom50: {
+        marginTop: 50,
+        marginBottom: 50
+    },
+
     marginTop30Bottom70: {
         marginTop: 30,
         marginBottom: 70
@@ -482,6 +493,8 @@ export const AppStyles = {
         fontSize: 15,
         textAlign: 'center',
     },
+
+    borderGallery2 :{ borderStyle: 'solid', borderColor: AppColors.gallery1, borderWidth: 2 }
 };
 
 export const ButtonStyles = {

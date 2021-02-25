@@ -390,7 +390,7 @@ export class MobilePatrolSites extends Component {
 												<Button
 													onClick={() => this.setState({ form: false, edit: false })}
 													style={componentStyles.continueButton} htmlType="submit" block>
-													{form ? "Add Checkpoint" : "Save"}
+													{form ? "Add Mobile Patrol Site" : "Save"}
 												</Button>
 											</Form.Item>
 										</Col>

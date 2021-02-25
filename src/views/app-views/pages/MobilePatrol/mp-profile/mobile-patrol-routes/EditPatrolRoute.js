@@ -1,5 +1,5 @@
 import { CompassOutlined, InboxOutlined, PhoneOutlined, SwapOutlined, InteractionOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Select, Steps } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps, Typography } from 'antd';
 import { AppStyles } from "assets/styles";
 import React, { Component } from 'react';
 import { componentStyles } from "./../../styles";
@@ -138,7 +138,6 @@ export class EditPatrolRoute extends Component {
         })
 
     }
-
 
     render() {
         const { address, items, selected, step } = this.state;
@@ -359,22 +358,19 @@ export class EditPatrolRoute extends Component {
 
                             </DragDropContext>
                         </Col>
-                        <Col xs={8} sm={8} md={8} lg={8} >
-
-                        </Col>
-                        <Col xs={20} sm={20} md={20} lg={20} style={AppStyles.marginTopBottom50}>
-                            <Steps>
-                                <Step title="Start"
+                        <Col xs={8} sm={8} md={8} lg={8}>
+                        {/* //Staaaaart Step */}
+                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, marginTop:100, display: items[0]?.content ? '': 'none'}}>
+                                <Step title= "Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-                                            1
 									</div>
-                                    } />
-                                <Step title="Second Step"
-                                    style={AppStyles.pointer}
+                                    } />                                    
+                                <Step title={items?.length && items[0]?.content}
+                                    style={AppStyles.pointer, {display: items[0]?.content !== undefined ? '' : 'none', marginRight: 30}}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -382,13 +378,127 @@ export class EditPatrolRoute extends Component {
                                             2
 									</div>
                                     } />
+                            </Steps>
+                            {/* //Secooooooond Step */}
+                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[1]?.content ? '': 'none'}}>
+                                <Step title= "Start"
+
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Start" })}
+                                    icon={
+                                        <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+									</div>
+                                    } />                                    
+                                <Step title={items?.length && items[1]?.content}
+                                    style={AppStyles.pointer, {display: items[1]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    // onClick={() => this.setState({ step: "Second Step" })}
+
+                                    icon={
+                                        <div style={'Second Step' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            2
+									</div>
+                                    } />
+                            </Steps>
+                            {/* //third Step */}
+                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[2]?.content ? '': 'none' }}>
+                                <Step title= "Start"
+
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Start" })}
+                                    icon={
+                                        <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+									</div>
+                                    } />                                    
+                                <Step title={items?.length && items[2]?.content}
+                                    style={AppStyles.pointer, {display: items[2]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    // onClick={() => this.setState({ step: "Second Step" })}
+
+                                    icon={
+                                        <div style={'Second Step' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            2
+									</div>
+                                    } />
+                            </Steps>
+                            {/* //Fooooooooorth Step */}
+                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[3]?.content ? '': 'none'}}>
+                                <Step title= "Start"
+
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Start" })}
+                                    icon={
+                                        <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+									</div>
+                                    } />                                    
+                                <Step title={items?.length && items[3]?.content}
+                                    style={AppStyles.pointer, {display: items[3]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    // onClick={() => this.setState({ step: "Second Step" })}
+
+                                    icon={
+                                        <div style={'Second Step' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            2
+									</div>
+                                    } />
+                            </Steps>
+                        </Col>
+                        <Col xs={20} sm={20} md={20} lg={20} style={AppStyles.marginTopBottom50}>
+                            <Steps current={selected?.length + 1}>
+                                <Step title= "Start"
+
+                                    style={AppStyles.pointer}
+                                    // onClick={() => this.setState({ step: "Start" })}
+                                    icon={
+                                        <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+									</div>
+                                    } />                                    
+                                <Step title={selected?.length && selected[0]?.content} subTitle="8 Miles"
+                                    style={AppStyles.pointer, {display: selected[0]?.content !== undefined ? '' : 'none'}}
+                                    // onClick={() => this.setState({ step: "Second Step" })}
+
+                                    icon={
+                                        <div style={'Second Step' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            2
+									</div>
+                                    } />
+                                <Step title={selected?.length && selected[1]?.content}
+                                    style={AppStyles.pointer , {display: selected[1]?.content !== undefined ? '' : 'none'}}
+                                    // onClick={() => this.setState({ step: "Finish" })}
+
+                                    icon={
+                                        <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            3
+									 </div>
+                                    } />
+                                <Step title={selected?.length && selected[2]?.content}
+                                    style={AppStyles.pointer , {display: selected[2]?.content !== undefined ? '' : 'none'}}
+                                    // onClick={() => this.setState({ step: "Finish" })}
+
+                                    icon={
+                                        <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            4
+									 </div>
+                                    } />
+                                 {
+                                    selected[3]?.content !== undefined 
+                                    ? 
+                                    
+                                <Step title={selected?.length && selected[3]?.content}
+                                    style={AppStyles.pointer , {display: selected[3]?.content !== undefined ? '' : 'none'}}
+                                    // onClick={() => this.setState({ step: "Finish" })}
+
+                                    icon={
+                                        <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                            5
+									 </div>
+                                    } />
+                                    :
+                                     null    
+                                 }   
                                 <Step status="finish" title="Finish"
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Finish" })}
 
                                     icon={
                                         <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-                                            3
 									 </div>
                                     } />
 

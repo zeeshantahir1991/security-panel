@@ -1,4 +1,4 @@
-import { DeleteOutlined, EyeOutlined, BuildOutlined, CompassOutlined, InboxOutlined, MailOutlined, PhoneOutlined, UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PrinterOutlined, BuildOutlined, CompassOutlined, InboxOutlined, MailOutlined, PhoneOutlined, UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Modal, Checkbox, Input, Row, Select, Tooltip, Form, Switch } from 'antd';
 import { Table } from "ant-table-extensions";
 
@@ -36,6 +36,22 @@ const mobilePatrolData = [
 	}
 ]
 
+const footPatrolData = [
+	{
+		"id": "1",
+		"checkpointName": "Front Door",
+		"checkpointDescriptor": "cxvcxv",
+
+	},
+	{
+		"id": "2",
+		"checkpointName": "Stairs",
+		"checkpointDescriptor": "asdsad",
+	}
+]
+
+
+
 
 
 const { Option } = Select;
@@ -45,6 +61,8 @@ export class MobilePatrolSites extends Component {
 
 	state = {
 		mobilePatrolList: mobilePatrolData,
+		footPatrol: footPatrolData, 
+		// tableColumnsCheckPoint,
 		open: false,
 		currStatus: 'active',
 		search: {
@@ -81,11 +99,11 @@ export class MobilePatrolSites extends Component {
 	}
 
 	displayAddCheckpointModal = () => {
-		const {open} = this.state
+		const { open } = this.state
 		console.log(open);
 		return (
-		<>
-			<Modal title="Add Checkpoint"
+			<>
+				<Modal title="Add Checkpoint"
 					onCancel={() => this.setState({ open: false })}
 					visible={this.state.open}
 					footer={[
@@ -166,12 +184,84 @@ export class MobilePatrolSites extends Component {
 					</Form>
 
 				</Modal>
-		</>
-	)}
+			</>
+		)
+	}
 
 
 	render() {
-		const { mobilePatrolList, currStatus, edit, form, open } = this.state;
+		const { mobilePatrolList, currStatus, edit, form, open, footPatrol } = this.state;
+
+		const tableColumnsCheckPoint = [
+
+			{
+				title: 'Checkpoint Name',
+				dataIndex: 'checkpointName',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>
+						<a onClick={()=>{this.setState({open: true})}}>							
+						{record.checkpointName}
+						</a>
+						</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.checkpointName.toLowerCase();
+						b = b.checkpointName.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+		
+			{
+				title: 'Checkpoint Descriptor',
+				dataIndex: 'checkpointDescriptor',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.checkpointDescriptor}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.checkpointDescriptor.toLowerCase();
+						b = b.checkpointDescriptor.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 750
+			},
+		
+		
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+		
+						<Tooltip title="Print">
+							<Button icon={<PrinterOutlined />} size="small" />
+						</Tooltip>
+					</div>
+				),
+				// width: 100
+			},
+		
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+		
+						<Tooltip title="Delete">
+							<Button danger icon={<DeleteOutlined />} size="small" />
+						</Tooltip>
+					</div>
+				)
+			}
+		];
 
 		const tableColumns = [
 			{
@@ -268,29 +358,6 @@ export class MobilePatrolSites extends Component {
 				},
 				width: 200,
 			},
-
-			{
-				title: 'Status',
-				dataIndex: 'status',
-				render: () => {
-					return(					
-					<Button onClick={()=>{
-						if(currStatus == "active")
-						{
-						this.setState({currStatus: "inactive"})
-						}
-						else if(currStatus == "inactive"){
-						this.setState({currStatus: "active"})
-						}
-						}} 
-						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
-				)},
-				sorter: {
-					compare: (a, b) => a.status.length - b.status.length,
-				},
-				width: 120
-			},
-
 			{
 				title: 'Create Date',
 				dataIndex: 'createDate',
@@ -302,24 +369,48 @@ export class MobilePatrolSites extends Component {
 			},
 
 			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button
-								onClick={() => {this.setState({open: true})}}
-								style={componentStyles.continueButton} htmlType="submit" block>
-								Add Checkpoint</Button>
-						</Tooltip>
-					</div>
-				)
-			}
+				title: 'Status',
+				dataIndex: 'status',
+				render: () => {
+					return (
+						<Button onClick={() => {
+							if (currStatus == "active") {
+								this.setState({ currStatus: "inactive" })
+							}
+							else if (currStatus == "inactive") {
+								this.setState({ currStatus: "active" })
+							}
+						}}
+							style={{ color: currStatus === 'active' ? 'lightgreen' : 'red', borderColor: currStatus === 'active' ? 'lightgreen' : 'red' }} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+					)
+				},
+				sorter: {
+					compare: (a, b) => a.status.length - b.status.length,
+				},
+				width: 120
+			},
+
+
+
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button
+			// 					onClick={() => {this.setState({open: true})}}
+			// 					style={componentStyles.continueButton} htmlType="submit" block>
+			// 					Add Checkpoint</Button>
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (
 			<div style={AppStyles.marginTop50}>
-			{open ? this.displayAddCheckpointModal(): null }
+				{open ? this.displayAddCheckpointModal() : null}
 				<Row gutter={16} justify="center">
 					{edit || form ?
 						<Col xs={24} sm={24} md={24} lg={24} >
@@ -479,6 +570,30 @@ export class MobilePatrolSites extends Component {
 											<Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch>
 	                                        Status										</Col>
 									</Row>
+									<Row justify="center">
+
+										<Col xs={24} sm={24} md={24} lg={24} >
+											<Card className="card" title="Mobile Patrol"
+												extra={
+													<Button
+														onClick={() => this.setState({ open: true })}
+														style={componentStyles.continueButton} htmlType="submit" block>
+														Add Checkpoint
+								        </Button>
+
+												}
+											>
+												<Table
+													searchable
+													// rowSelection={{
+													// 	type: selectionType,
+													// 	...rowSelection,
+													// }}
+													bordered columns={tableColumnsCheckPoint} dataSource={footPatrol} scroll={{ x: 600, y: 200 }} />
+											</Card>
+											{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+										</Col>
+									</Row>
 									<Row gutter={16} justify="center">
 
 										<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
@@ -496,7 +611,8 @@ export class MobilePatrolSites extends Component {
 							</Card>
 
 							{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
-						</Col> :
+						</Col>
+						:
 						<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 							<Card className="card" title="Mobile Patrol Sites" extra={
 								<Row gutter={16}>

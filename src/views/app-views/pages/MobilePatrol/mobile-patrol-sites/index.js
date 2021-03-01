@@ -157,6 +157,25 @@ export class MobilePatrolList extends Component {
 			// 	},
 			// 	width: 200
 			// },
+
+			{
+				title: 'Create Date',
+				dataIndex: 'createDate',
+				render: date => (
+					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.createDate).unix() - moment(b.createDate).unix(),
+				width: 200
+			},
+			{
+				title: 'MP Sites',
+				dataIndex: 'mpSites',
+				sorter: {
+					compare: (a, b) => a.mpSites.length - b.mpSites.length,
+				},
+				width: 150
+
+			},
 			{
 				title: 'Status',
 				dataIndex: 'status',
@@ -177,26 +196,6 @@ export class MobilePatrolList extends Component {
 					compare: (a, b) => a.status.length - b.status.length,
 				},
 				width: 120
-			},
-
-			{
-				title: 'Create Date',
-				dataIndex: 'createDate',
-				render: date => (
-					<span>{date === "EMPTY" ? "EMPTY" : moment.unix(date).format("YYYY/MM/DD")} </span>
-				),
-				sorter: (a, b) => moment(a.createDate).unix() - moment(b.createDate).unix(),
-				width: 200
-			},
-
-			{
-				title: 'MP Sites',
-				dataIndex: 'mpSites',
-				sorter: {
-					compare: (a, b) => a.mpSites.length - b.mpSites.length,
-				},
-				width: 150
-
 			},
 
 			// {

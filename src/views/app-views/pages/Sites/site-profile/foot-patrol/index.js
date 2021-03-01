@@ -51,7 +51,11 @@ export class FootPatrol extends Component {
 				dataIndex: 'checkpointName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<span>{record.checkpointName}</span>
+						<span>
+						<a onClick={()=>{this.setState({open: true})}}>
+						{record.checkpointName}
+						</a>
+						</span>
 					</div>
 				),
 				sorter: {

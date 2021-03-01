@@ -1,11 +1,12 @@
-import { DeleteOutlined, EyeOutlined, BuildOutlined, CompassOutlined, InboxOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip, Form, Switch } from 'antd';
+import { DeleteOutlined, EyeOutlined, BuildOutlined, CompassOutlined, InboxOutlined, MailOutlined, PhoneOutlined, UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Modal, Checkbox, Input, Row, Select, Tooltip, Form, Switch } from 'antd';
 import { Table } from "ant-table-extensions";
 
 import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "assets/styles";
 import { componentStyles } from "./../../styles";
+import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 
 const mobilePatrolData = [
 	{
@@ -44,12 +45,14 @@ export class MobilePatrolSites extends Component {
 
 	state = {
 		mobilePatrolList: mobilePatrolData,
+		open: false,
+		currStatus: 'active',
 		search: {
 			status: "",
 			createDate: "",
 			mpSiteName: "",
 			edit: false,
-			form: false
+			form: false,
 		}
 	}
 
@@ -77,9 +80,98 @@ export class MobilePatrolSites extends Component {
 
 	}
 
+	displayAddCheckpointModal = () => {
+		const {open} = this.state
+		console.log(open);
+		return (
+		<>
+			<Modal title="Add Checkpoint"
+					onCancel={() => this.setState({ open: false })}
+					visible={this.state.open}
+					footer={[
+						<Button
+							onClick={() => this.setState({ open: false })}
+							style={componentStyles.continueButton} htmlType="submit" block>
+							Add Checkpoint
+					    </Button>
+					]}
+				>
+					<Form layout="vertical">
+
+						<Row gutter={16}>
+
+							<Col xs={24} sm={24} md={12} lg={12}>
+								<Form.Item
+									name="mobilepatrolsiteName"
+									label="Mobile Patrol Site Name"
+									// rules={rules.checkpointName}
+									hasFeedback
+								>
+									<Input type="text" disabled defaultValue={'Site A'} style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
+								</Form.Item>
+							</Col>
+							<Col xs={24} sm={24} md={12} lg={12}>
+								<Form.Item
+									name="checkpointName"
+									label="Checkpoint Name"
+									// rules={rules.checkpointName}
+									hasFeedback
+								>
+									<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
+								</Form.Item>
+							</Col>
+
+							<Col xs={24} sm={24} md={24} lg={24}>
+								<Form.Item
+									name="checkpointDescriptor"
+									label="Checkpoint Descriptor"
+									// rules={rules.checkpointDescriptor}
+									hasFeedback
+								>
+									<Textarea placeholder={'Description...'} style={componentStyles.borderColor} />
+								</Form.Item>
+							</Col>
+
+							<Col xs={24} sm={24} md={8} lg={8}>
+								<Form.Item
+									name="qrScanInterval"
+									label="QR Scan Interval Minutes"
+									// rules={rules.storeLocation}
+									hasFeedback
+								>
+									<Select
+										showSearch
+										style={componentStyles.selectWhiteStyle}
+										bordered={false}
+										placeholder="QR Scan Interval Minutes"
+										optionFilterProp="children"
+										onChange={(val) => this.handleChange("qrScanInterval", val)}
+										// onFocus={onFocus}
+										// onBlur={onBlur}
+										// onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+										}
+									>
+										<Option value="30">30</Option>
+										<Option value="60">60</Option>
+									</Select>
+								</Form.Item>
+							</Col>
+							<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop5}>
+
+								<Checkbox style={componentStyles.borderColor} checked>Status</Checkbox>
+							</Col>
+						</Row>
+					</Form>
+
+				</Modal>
+		</>
+	)}
+
 
 	render() {
-		const { mobilePatrolList, search, edit, form } = this.state;
+		const { mobilePatrolList, currStatus, edit, form, open } = this.state;
 
 		const tableColumns = [
 			{
@@ -180,19 +272,23 @@ export class MobilePatrolSites extends Component {
 			{
 				title: 'Status',
 				dataIndex: 'status',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.status}</span>
-					</div>
-				),
+				render: () => {
+					return(					
+					<Button onClick={()=>{
+						if(currStatus == "active")
+						{
+						this.setState({currStatus: "inactive"})
+						}
+						else if(currStatus == "inactive"){
+						this.setState({currStatus: "active"})
+						}
+						}} 
+						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+				)},
 				sorter: {
-					compare: (a, b) => {
-						a = a.status.toLowerCase();
-						b = b.status.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
+					compare: (a, b) => a.status.length - b.status.length,
 				},
-				width: 200
+				width: 120
 			},
 
 			{
@@ -211,10 +307,10 @@ export class MobilePatrolSites extends Component {
 				render: (_, elm) => (
 					<div className="text-right">
 						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+							<Button
+								onClick={() => {this.setState({open: true})}}
+								style={componentStyles.continueButton} htmlType="submit" block>
+								Add Checkpoint</Button>
 						</Tooltip>
 					</div>
 				)
@@ -223,6 +319,7 @@ export class MobilePatrolSites extends Component {
 
 		return (
 			<div style={AppStyles.marginTop50}>
+			{open ? this.displayAddCheckpointModal(): null }
 				<Row gutter={16} justify="center">
 					{edit || form ?
 						<Col xs={24} sm={24} md={24} lg={24} >

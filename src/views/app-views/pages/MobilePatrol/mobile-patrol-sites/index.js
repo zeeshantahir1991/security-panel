@@ -40,6 +40,7 @@ export class MobilePatrolList extends Component {
 
 	state = {
 		mobilePatrolList: mobilePatrolData,
+		currStatus: "active",
 		search: {
 			status: "",
 			createDate: "",
@@ -94,7 +95,7 @@ export class MobilePatrolList extends Component {
 	}
 
 	render() {
-		const { mobilePatrolList, search } = this.state;
+		const { mobilePatrolList, search, currStatus } = this.state;
 
 		const tableColumns = [
 			{
@@ -139,22 +140,43 @@ export class MobilePatrolList extends Component {
 			},
 
 
+			// {
+			// 	title: 'Status',
+			// 	dataIndex: 'status',
+			// 	render: (_, record) => (
+			// 		<div className="d-flex">
+			// 			<span>{record.status}</span>
+			// 		</div>
+			// 	),
+			// 	sorter: {
+			// 		compare: (a, b) => {
+			// 			a = a.status.toLowerCase();
+			// 			b = b.status.toLowerCase();
+			// 			return a > b ? -1 : b > a ? 1 : 0;
+			// 		},
+			// 	},
+			// 	width: 200
+			// },
 			{
 				title: 'Status',
 				dataIndex: 'status',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.status}</span>
-					</div>
-				),
+				render: () => {
+					return(					
+					<Button onClick={()=>{
+						if(currStatus == "active")
+						{
+						this.setState({currStatus: "inactive"})
+						}
+						else if(currStatus == "inactive"){
+						this.setState({currStatus: "active"})
+						}
+						}} 
+						style={{color:currStatus === 'active' ? 'lightgreen' : 'red',borderColor:currStatus === 'active' ? 'lightgreen' : 'red'}} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+				)},
 				sorter: {
-					compare: (a, b) => {
-						a = a.status.toLowerCase();
-						b = b.status.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
+					compare: (a, b) => a.status.length - b.status.length,
 				},
-				width: 200
+				width: 120
 			},
 
 			{
@@ -177,20 +199,20 @@ export class MobilePatrolList extends Component {
 
 			},
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
-					</div>
-				)
-			}
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip>
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (

@@ -462,7 +462,7 @@ export class EditPatrolRoute extends Component {
                                 <Step title={selected?.length && selected[1]?.content}
                                     style={AppStyles.pointer , {display: selected[1]?.content !== undefined ? '' : 'none'}}
                                     // onClick={() => this.setState({ step: "Finish" })}
-
+                                    description="24 Miles"
                                     icon={
                                         <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
                                             3
@@ -505,6 +505,19 @@ export class EditPatrolRoute extends Component {
                             </Steps>
                         </Col>
                     </Row>
+                    <Row gutter={16} justify="center">
+
+                                            <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+
+                                                <Form.Item>
+                                                    <Button
+                                                        onClick={() => this.props.onSaveRoute()}
+                                                        style={componentStyles.continueButton} htmlType="submit" block>
+                                                        Save Route
+                                            </Button>
+                                                </Form.Item>
+                                            </Col>
+                                        </Row>
                 </Form>
             </div>
         )

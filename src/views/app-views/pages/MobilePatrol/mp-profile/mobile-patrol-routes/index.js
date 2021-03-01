@@ -28,18 +28,20 @@ export class MobilePatrolRoutes extends Component {
 
     state = {
         mobilePatrolList: mobilePatrolData,
+        currStatus: 'active',
         search: {
             status: "",
             createDate: "",
             mpSiteName: "",
             edit: false,
             form: false,
+            address: '',
             selectionType: ""
         }
     }
 
     handleChange = (type, value) => {
-        console.log(`selected ${value}`);
+        // console.log(`selected ${value}`, type);
         const { search } = this.state;
         this.setState({
             search: {
@@ -64,7 +66,8 @@ export class MobilePatrolRoutes extends Component {
 
 
     render() {
-        const { mobilePatrolList, search, edit, form, selectionType } = this.state;
+        const { mobilePatrolList, edit, form, currStatus } = this.state;
+        const {address} = this.state.search
 
         const tableColumns = [
 
@@ -151,33 +154,37 @@ export class MobilePatrolRoutes extends Component {
             {
                 title: 'Status',
                 dataIndex: 'status',
-                render: (_, record) => (
-                    <div className="d-flex">
-                        <span>{record.status}</span>
-                    </div>
-                ),
-                sorter: {
-                    compare: (a, b) => {
-                        a = a.status.toLowerCase();
-                        b = b.status.toLowerCase();
-                        return a > b ? -1 : b > a ? 1 : 0;
-                    },
+                render: () => {
+                    return (
+                        <Button onClick={() => {
+                            if (currStatus == "active") {
+                                this.setState({ currStatus: "inactive" })
+                            }
+                            else if (currStatus == "inactive") {
+                                this.setState({ currStatus: "active" })
+                            }
+                        }}
+                            style={{ color: currStatus === 'active' ? 'lightgreen' : 'red', borderColor: currStatus === 'active' ? 'lightgreen' : 'red' }} className="text-capitalize" color={currStatus === 'active' ? 'cyan' : 'red'}>{currStatus}</Button>
+                    )
                 },
-                width: 200
+                sorter: {
+                    compare: (a, b) => a.status.length - b.status.length,
+                },
+                width: 120
             },
 
-            {
-                title: '',
-                dataIndex: 'actions',
-                render: (_, elm) => (
-                    <div className="text-right">
+            // {
+            //     title: '',
+            //     dataIndex: 'actions',
+            //     render: (_, elm) => (
+            //         <div className="text-right">
 
-                        <Tooltip title="Delete">
-                            <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-                        </Tooltip>
-                    </div>
-                )
-            }
+            //             <Tooltip title="Delete">
+            //                 <Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+            //             </Tooltip>
+            //         </div>
+            //     )
+            // }
         ];
 
         const rowSelection = {
@@ -189,7 +196,7 @@ export class MobilePatrolRoutes extends Component {
                 name: record.name,
             }),
         };
-
+        console.log(address)
         return (
             <div style={AppStyles.marginTop50}>
                 <Row gutter={16} justify="center">
@@ -198,7 +205,7 @@ export class MobilePatrolRoutes extends Component {
                         edit ?
                             <Col xs={24} sm={24} md={24} lg={24} >
 
-                                <EditPatrolRoute />
+                                <EditPatrolRoute onSaveRoute={()=>{this.setState({edit: false})}}/>
                             </Col>
                             :
                             form ?
@@ -242,7 +249,78 @@ export class MobilePatrolRoutes extends Component {
                                                     <Input style={componentStyles.borderColor} />
                                                 </Form.Item>
                                             </Col>
-
+                                            <Col xs={24} sm={24} md={6} lg={6}>
+                                                <Form.Item
+                                                    name="address"
+                                                    label="Mobile Patrol Start From"
+                                                    // rules={rules.storeLocation}
+                                                    hasFeedback
+                                                >
+                                                    <Select
+                                                        showSearch
+                                                        style={componentStyles.selectStyle}
+                                                        bordered={false}
+                                                        placeholder="Address"
+                                                        optionFilterProp="children"
+                                                        onChange={(val) => this.handleChange("address", val)}
+                                                        // onFocus={onFocus}
+                                                        // onBlur={onBlur}
+                                                        // onSearch={onSearch}
+                                                        filterOption={(input, option) =>
+                                                            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                        }
+                                                    >
+                                                        <Option value="companyAddress">Company Address</Option>
+                                                        <Option value="guardAddress">Guard's Home Address</Option>
+                                                        <Option value="customAddress">Custom Address</Option>
+                                                    </Select>
+                                                </Form.Item>
+                                            </Col>
+                                            {address === "customAddress" ?
+                                                <>
+                                            {console.log("address =======>", address)}
+                                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                                        <Form.Item
+                                                            name="address1"
+                                                            label="Address Line 1"
+                                                            rules={rules.address1}
+                                                            hasFeedback
+                                                        >
+                                                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                                        </Form.Item>
+                                                    </Col>
+                                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                                        <Form.Item
+                                                            name="address2"
+                                                            label="Address Line 2"
+                                                            rules={rules.address1}
+                                                            hasFeedback
+                                                        >
+                                                            <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                                        </Form.Item>
+                                                    </Col>
+                                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                                        <Form.Item
+                                                            name="postcode"
+                                                            label="Post Code"
+                                                            rules={rules.postcode}
+                                                            hasFeedback
+                                                        >
+                                                            <Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+                                                        </Form.Item>
+                                                    </Col>
+                                                    <Col xs={24} sm={24} md={6} lg={6}>
+                                                        <Form.Item
+                                                            name="phone"
+                                                            label="Phone"
+                                                            rules={rules.phone}
+                                                            hasFeedback
+                                                        >
+                                                            <Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+                                                        </Form.Item>
+                                                    </Col>
+                                                </> : null
+                                            }
                                             <Col xs={24} sm={24} md={24} lg={24}>
                                                 <Form.Item
                                                     name="description"
@@ -253,9 +331,6 @@ export class MobilePatrolRoutes extends Component {
                                                     <Input.TextArea placeholder="Description..." style={componentStyles.borderColor} />
                                                 </Form.Item>
                                             </Col>
-
-
-
                                             <Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop20}>
 
 
@@ -295,11 +370,11 @@ export class MobilePatrolRoutes extends Component {
                                         </Row>
                                     } >
                                         <Table
-                                            rowSelection={{
-                                                type: selectionType,
-                                                ...rowSelection,
-                                            }}
-                                            searchable bordered columns={tableColumns} dataSource={mobilePatrolList} rowKey='id' scroll={{ x: 1000, y: 300 }} />
+                                            // rowSelection={{
+                                            //     type: selectionType,
+                                            //     ...rowSelection,
+                                            // }}
+                                            searchable bordered columns={tableColumns} dataSource={mobilePatrolList} scroll={{ x: 1000, y: 300 }} />
                                     </Card>
                                 </Col>
 

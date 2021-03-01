@@ -152,6 +152,7 @@ export class AddMPMasterSite extends Component {
 
 	handleSubmit = () => {
 		const { mpSiteName, clientName } = this.state;
+		this.props.history.push('/app/pages/mobile-patrol-sites')
 		console.log("dasdasdasdas", clientName)
 		if (!mpSiteName) {
 			this.setState({
@@ -225,7 +226,7 @@ export class AddMPMasterSite extends Component {
 								</Row>
 								<Row gutter={16} justify="center">
 
-									<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+									<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop20}>
 
 										<Form.Item>
 											<Button style={componentStyles.continueButton} onClick={() => this.handleSubmit()} htmlType="submit" block>

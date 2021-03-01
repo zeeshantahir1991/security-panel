@@ -8,6 +8,7 @@ import MobilePatrolSites from "./mobile-patrol-sites";
 import MobilePatrolRoutes from "./mobile-patrol-routes";
 import PreferedGuards from "./preferred-guards";
 import SiteInformation from "./site-information"
+import Docs from "./docs";
 const { TabPane } = Tabs;
 const { Option } = Select;
 
@@ -38,12 +39,13 @@ export class SiteProfile extends Component {
 
 
     render() {
-        const { type, form, avatarUrl, active } = this.state;
+        const { type, form, avatarUrl, active,open } = this.state;
         let record = null
         let action = null
         if (this.props.location.state && this.props.location.state.action && this.props.location.state.record) {
             record = this.props.location.state.record
             action = this.props.location.state.action
+            console.log({record})
         }
         if (action && record) {
             return (
@@ -142,6 +144,24 @@ export class SiteProfile extends Component {
 
                                                 </span>
                                         </Menu.Item>
+                                        <Menu.Item
+                                            className="menuHover"
+                                            onClick={() => this.setState({ type: "Docs" })}
+                                            style={'Docs' === type ? componentStyles.staffMenuItemSelected : null
+                                            }
+                                        >
+                                            {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
+
+                                            <span
+                                                style={{
+                                                    color: 'Docs' === type ? AppColors.pictonBlue : null
+                                                }}
+
+                                            >
+                                                Docs
+
+                                                </span>
+                                        </Menu.Item>
 
 
                                     </Menu>
@@ -186,6 +206,7 @@ export class SiteProfile extends Component {
                                                     <Option value="Prefered Guards">Prefered Guards</Option>
                                                     <Option value="Mobile Patrol Sites">Mobile Patrol Sites</Option>
                                                     <Option value="Mobile Patrol Routes">Mobile Patrol Routes</Option>
+                                                    <Option value="Docs">Docs</Option>
 
 
 
@@ -195,7 +216,7 @@ export class SiteProfile extends Component {
                                             <Col xs={4} sm={4} md={4} lg={4} style={AppStyles.alignSelfCenter}>
 
                                                 <div style={componentStyles.nameStyle}>
-                                                    {record.siteName}
+                                                    {record.mpSiteName}
                                                 </div>
 
                                             </Col>
@@ -212,6 +233,8 @@ export class SiteProfile extends Component {
                                                         <SiteInformation action={action} record={record} history={this.props.history} /> :
                                                         type === "Mobile Patrol Routes" ?
                                                             <MobilePatrolRoutes /> :
+                                                            type === "Docs" ?
+                                                                <Docs action={action} record={record} history={this.props.history} />:
 
 
                                                             null

@@ -226,11 +226,11 @@ export class FootPatrol extends Component {
 						>
 							<Table
 								searchable
-								rowSelection={{
-									type: selectionType,
-									...rowSelection,
-								}}
-								bordered columns={tableColumns} dataSource={footPatrol} rowKey='id' scroll={{ x: 600, y: 200 }} />
+								// rowSelection={{
+								// 	type: selectionType,
+								// 	...rowSelection,
+								// }}
+								bordered columns={tableColumns} dataSource={footPatrol} scroll={{ x: 600, y: 200 }} />
 						</Card>
 						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
 					</Col>

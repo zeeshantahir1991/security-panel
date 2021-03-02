@@ -1,9 +1,8 @@
 import { CompassOutlined, InboxOutlined, PhoneOutlined, SwapOutlined, InteractionOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Select, Steps, Typography } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Steps, Typography, Switch } from 'antd';
 import { AppStyles } from "assets/styles";
 import React, { Component } from 'react';
 import { componentStyles } from "./../../styles";
-import RLDD from 'react-list-drag-and-drop/lib/RLDD';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { AppColors } from 'assets/styles/colors'
 
@@ -74,10 +73,12 @@ export class EditPatrolRoute extends Component {
         items: [
             { id: "item-0", content: "MP Site A" },
             { id: "item-1", content: "MP Site B" },
+          
+        ],
+        selected: [
             { id: "item-2", content: "MP Site C" },
             { id: "item-3", content: "MP Site D" }
         ],
-        selected: [],
         step: ""
     };
 
@@ -163,15 +164,7 @@ export class EditPatrolRoute extends Component {
                             </Form.Item>
                         </Col>
 
-                        <Col xs={24} sm={24} md={6} lg={6}>
-                            <Form.Item
-                                name="siteName"
-                                label="Site Name"
-                                hasFeedback
-                            >
-                                <Input style={componentStyles.borderColor} />
-                            </Form.Item>
-                        </Col>
+
                         <Col xs={24} sm={24} md={6} lg={6}>
                             <Form.Item
                                 name="address"
@@ -194,7 +187,6 @@ export class EditPatrolRoute extends Component {
                                     }
                                 >
                                     <Option value="companyAddress">Company Address</Option>
-                                    <Option value="guardAddress">Guard's Home Address</Option>
                                     <Option value="customAddress">Custom Address</Option>
                                 </Select>
                             </Form.Item>
@@ -243,6 +235,12 @@ export class EditPatrolRoute extends Component {
                                 </Col>
                             </> : null
                         }
+                        <Col xs={24} sm={24} md={6} lg={6} style={AppStyles.marginTop40}>
+
+
+                            <Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch>
+                          Status
+                       </Col>
 
 
 
@@ -250,7 +248,7 @@ export class EditPatrolRoute extends Component {
 
                     <Row justify="center" style={componentStyles.dragAndDropContainer}>
                         <Col xs={16} sm={16} md={16} lg={16}>
-                            <DragDropContext onDragEnd={this.onDragEnd}>
+                            <DragDropContext >
                                 <Row gutter={16}>
                                     <Col className="card" xs={10} sm={10} md={10} lg={10} style={AppStyles.borderGallery2}>
 
@@ -259,7 +257,7 @@ export class EditPatrolRoute extends Component {
                                             <div style={AppStyles.horizontallLineWidth100}>
                                             </div>
                                         </div>
-                                        <Droppable droppableId="droppable">
+                                        <Droppable>
                                             {(provided, snapshot) => (
                                                 <div
                                                     ref={provided.innerRef}
@@ -268,9 +266,10 @@ export class EditPatrolRoute extends Component {
 
                                                     {this.state.items.map((item, index) => (
                                                         <Draggable
-                                                            key={item.id}
-                                                            draggableId={item.id}
-                                                            index={index}>
+                                                            // key={item.id}
+                                                            // draggableId={item.id}
+                                                            // index={index}
+                                                            >
                                                             {(provided, snapshot) => (
                                                                 <div
                                                                     ref={provided.innerRef}
@@ -312,7 +311,7 @@ export class EditPatrolRoute extends Component {
                                             </div>
                                         </div>
 
-                                        <Droppable droppableId="droppable2">
+                                        <Droppable>
                                             {(provided, snapshot) => (
                                                 <div
                                                     ref={provided.innerRef}
@@ -321,9 +320,10 @@ export class EditPatrolRoute extends Component {
 
                                                     {this.state.selected.map((item, index) => (
                                                         <Draggable
-                                                            key={item.id}
-                                                            draggableId={item.id}
-                                                            index={index}>
+                                                            // key={item.id}
+                                                            // draggableId={item.id}
+                                                            // index={index}
+                                                            >
                                                             {(provided, snapshot) => (
                                                                 <div
                                                                     ref={provided.innerRef}
@@ -359,18 +359,18 @@ export class EditPatrolRoute extends Component {
                             </DragDropContext>
                         </Col>
                         <Col xs={8} sm={8} md={8} lg={8}>
-                        {/* //Staaaaart Step */}
-                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, marginTop:100, display: items[0]?.content ? '': 'none'}}>
-                                <Step title= "Start"
+                            {/* //Staaaaart Step */}
+                            <Steps current={items?.length} style={{ marginLeft: 100, margin: 40, marginTop: 100, display: items[0]?.content ? '' : 'none' }}>
+                                <Step title="Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									</div>
-                                    } />                                    
+                                        </div>
+                                    } />
                                 <Step title={items?.length && items[0]?.content}
-                                    style={AppStyles.pointer, {display: items[0]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    style={AppStyles.pointer, { display: items[0]?.content !== undefined ? '' : 'none', marginRight: 30 }}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -380,17 +380,17 @@ export class EditPatrolRoute extends Component {
                                     } />
                             </Steps>
                             {/* //Secooooooond Step */}
-                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[1]?.content ? '': 'none'}}>
-                                <Step title= "Start"
+                            <Steps current={items?.length} style={{ marginLeft: 100, margin: 40, display: items[1]?.content ? '' : 'none' }}>
+                                <Step title="Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									</div>
-                                    } />                                    
+                                        </div>
+                                    } />
                                 <Step title={items?.length && items[1]?.content}
-                                    style={AppStyles.pointer, {display: items[1]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    style={AppStyles.pointer, { display: items[1]?.content !== undefined ? '' : 'none', marginRight: 30 }}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -400,17 +400,17 @@ export class EditPatrolRoute extends Component {
                                     } />
                             </Steps>
                             {/* //third Step */}
-                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[2]?.content ? '': 'none' }}>
-                                <Step title= "Start"
+                            <Steps current={items?.length} style={{ marginLeft: 100, margin: 40, display: items[2]?.content ? '' : 'none' }}>
+                                <Step title="Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									</div>
-                                    } />                                    
+                                        </div>
+                                    } />
                                 <Step title={items?.length && items[2]?.content}
-                                    style={AppStyles.pointer, {display: items[2]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    style={AppStyles.pointer, { display: items[2]?.content !== undefined ? '' : 'none', marginRight: 30 }}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -420,17 +420,17 @@ export class EditPatrolRoute extends Component {
                                     } />
                             </Steps>
                             {/* //Fooooooooorth Step */}
-                        <Steps current={items?.length} style={{marginLeft:100, margin: 40, display: items[3]?.content ? '': 'none'}}>
-                                <Step title= "Start"
+                            <Steps current={items?.length} style={{ marginLeft: 100, margin: 40, display: items[3]?.content ? '' : 'none' }}>
+                                <Step title="Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									</div>
-                                    } />                                    
+                                        </div>
+                                    } />
                                 <Step title={items?.length && items[3]?.content}
-                                    style={AppStyles.pointer, {display: items[3]?.content !== undefined ? '' : 'none', marginRight: 30}}
+                                    style={AppStyles.pointer, { display: items[3]?.content !== undefined ? '' : 'none', marginRight: 30 }}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -442,16 +442,16 @@ export class EditPatrolRoute extends Component {
                         </Col>
                         <Col xs={20} sm={20} md={20} lg={20} style={AppStyles.marginTopBottom50}>
                             <Steps current={selected?.length + 1}>
-                                <Step title= "Start"
+                                <Step title="Start"
 
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Start" })}
                                     icon={
                                         <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									</div>
-                                    } />                                    
+                                        </div>
+                                    } />
                                 <Step title={selected?.length && selected[0]?.content} subTitle="8 Miles"
-                                    style={AppStyles.pointer, {display: selected[0]?.content !== undefined ? '' : 'none'}}
+                                    style={AppStyles.pointer, { display: selected[0]?.content !== undefined ? '' : 'none' }}
                                     // onClick={() => this.setState({ step: "Second Step" })}
 
                                     icon={
@@ -460,7 +460,7 @@ export class EditPatrolRoute extends Component {
 									</div>
                                     } />
                                 <Step title={selected?.length && selected[1]?.content}
-                                    style={AppStyles.pointer , {display: selected[1]?.content !== undefined ? '' : 'none'}}
+                                    style={AppStyles.pointer, { display: selected[1]?.content !== undefined ? '' : 'none' }}
                                     // onClick={() => this.setState({ step: "Finish" })}
                                     description="24 Miles"
                                     icon={
@@ -469,7 +469,7 @@ export class EditPatrolRoute extends Component {
 									 </div>
                                     } />
                                 <Step title={selected?.length && selected[2]?.content}
-                                    style={AppStyles.pointer , {display: selected[2]?.content !== undefined ? '' : 'none'}}
+                                    style={AppStyles.pointer, { display: selected[2]?.content !== undefined ? '' : 'none' }}
                                     // onClick={() => this.setState({ step: "Finish" })}
 
                                     icon={
@@ -477,47 +477,48 @@ export class EditPatrolRoute extends Component {
                                             4
 									 </div>
                                     } />
-                                 {
-                                    selected[3]?.content !== undefined 
-                                    ? 
-                                    
-                                <Step title={selected?.length && selected[3]?.content}
-                                    style={AppStyles.pointer , {display: selected[3]?.content !== undefined ? '' : 'none'}}
-                                    // onClick={() => this.setState({ step: "Finish" })}
+                                {
+                                    selected[3]?.content !== undefined
+                                        ?
 
-                                    icon={
-                                        <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-                                            5
+                                        <Step title={selected?.length && selected[3]?.content}
+                                            style={AppStyles.pointer, { display: selected[3]?.content !== undefined ? '' : 'none' }}
+                                            // onClick={() => this.setState({ step: "Finish" })}
+
+                                            icon={
+                                                <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
+                                                    5
 									 </div>
-                                    } />
-                                    :
-                                     null    
-                                 }   
+                                            } />
+                                        :
+                                        null
+                                }
                                 <Step status="finish" title="Finish"
                                     style={AppStyles.pointer}
                                     // onClick={() => this.setState({ step: "Finish" })}
 
                                     icon={
                                         <div style={'Finish' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
-									 </div>
+                                        </div>
                                     } />
 
                             </Steps>
                         </Col>
                     </Row>
+                    
                     <Row gutter={16} justify="center">
 
-                                            <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
+                        <Col xs={24} sm={24} md={12} lg={12} style={AppStyles.marginTop20}>
 
-                                                <Form.Item>
-                                                    <Button
-                                                        onClick={() => this.props.onSaveRoute()}
-                                                        style={componentStyles.continueButton} htmlType="submit" block>
-                                                        Save Route
+                            <Form.Item>
+                                <Button
+                                    onClick={() => this.props.onSaveRoute()}
+                                    style={componentStyles.continueButton} htmlType="submit" block>
+                                    Save Route
                                             </Button>
-                                                </Form.Item>
-                                            </Col>
-                                        </Row>
+                            </Form.Item>
+                        </Col>
+                    </Row>
                 </Form>
             </div>
         )

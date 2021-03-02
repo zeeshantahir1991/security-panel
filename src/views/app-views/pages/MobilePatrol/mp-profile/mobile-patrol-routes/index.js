@@ -619,7 +619,8 @@ export class MobilePatrolRoutes extends Component {
                                                                 <div style={'Start' === step ? AppStyles.stepperSelectedItem : AppStyles.stepperItem}>
                                                                 </div>
                                                             } />
-                                                        <Step title={selected?.length && selected[0]?.content} subTitle="8 Miles"
+                                                        <Step title={selected?.length && selected[0]?.content} 
+                                                        description="8 Miles"
                                                             style={AppStyles.pointer, { display: selected[0]?.content !== undefined ? '' : 'none' }}
                                                             // onClick={() => this.setState({ step: "Second Step" })}
 
@@ -638,6 +639,7 @@ export class MobilePatrolRoutes extends Component {
                                                                 </div>
                                                             } />
                                                         <Step title={selected?.length && selected[2]?.content}
+                                                        description="69 Miles"
                                                             style={AppStyles.pointer, { display: selected[2]?.content !== undefined ? '' : 'none' }}
                                                             // onClick={() => this.setState({ step: "Finish" })}
 
@@ -651,6 +653,7 @@ export class MobilePatrolRoutes extends Component {
                                                                 ?
 
                                                                 <Step title={selected?.length && selected[3]?.content}
+                                                                description="10 Miles"
                                                                     style={AppStyles.pointer, { display: selected[3]?.content !== undefined ? '' : 'none' }}
                                                                     // onClick={() => this.setState({ step: "Finish" })}
 

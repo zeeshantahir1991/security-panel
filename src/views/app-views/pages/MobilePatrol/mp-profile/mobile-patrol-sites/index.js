@@ -389,23 +389,20 @@ export class MobilePatrolSites extends Component {
 				},
 				width: 120
 			},
-
-
-
-			// {
-			// 	title: '',
-			// 	dataIndex: 'actions',
-			// 	render: (_, elm) => (
-			// 		<div className="text-right">
-			// 			<Tooltip title="View">
-			// 				<Button
-			// 					onClick={() => {this.setState({open: true})}}
-			// 					style={componentStyles.continueButton} htmlType="submit" block>
-			// 					Add Checkpoint</Button>
-			// 			</Tooltip>
-			// 		</div>
-			// 	)
-			// }
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+						<Tooltip title="View">
+							<Button
+								onClick={() => {this.setState({open: true})}}
+								style={componentStyles.continueButton} htmlType="submit" block>
+								Add Checkpoint</Button>
+						</Tooltip>
+					</div>
+				)
+			}
 		];
 
 		return (

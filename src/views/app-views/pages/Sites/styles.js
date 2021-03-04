@@ -150,7 +150,7 @@ export const componentStyles = {
         fontWeight: 'bold',
         fontSize: 15,
         textAlign: 'center',
-        
+
     },
 
     colBorder: {

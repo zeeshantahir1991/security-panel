@@ -314,9 +314,9 @@ export class SiteInformation extends Component {
 
                         <Row gutter={16} className="card" style={componentStyles.equipmentContainer}>
                             <Col xs={24} sm={24} md={24} lg={24}>
-                                <Typography style={componentStyles.insideCardTitleStyle}>Client Equipment</Typography>
+                                <Typography style={componentStyles.insideCardTitleStyle}>Client Equipment ( How to Use ?)</Typography>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="cctv"
                                     label="CCTV"
@@ -324,10 +324,10 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'CCTV...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="computer"
                                     label="Computer / Fax"
@@ -335,10 +335,10 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Computer / Fax...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="vehicleBarriers"
                                     label="Vehicle Barriers"
@@ -346,10 +346,10 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Vehicle Barriers...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="patrolMonitoring"
                                     label="Patrol Monitoring Devices"
@@ -357,10 +357,10 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Patrol Monitoring Devices...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="alarmSystems"
                                     label="Alarm Systems"
@@ -368,7 +368,7 @@ export class SiteInformation extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Alarm Systems...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 
@@ -465,18 +465,47 @@ export class SiteInformation extends Component {
                         </Row>
                         <Row gutter={16} className="card" style={componentStyles.equipmentContainer}>
                             <Col xs={24} sm={24} md={24} lg={24}>
-                                <Typography style={componentStyles.insideCardTitleStyle}>Emergency</Typography>
+                                <Typography style={componentStyles.insideCardTitleStyle}> Emergency Actions</Typography>
+                            </Col>
+
+                            <Col xs={24} sm={24} md={24} lg={24}>
+                                <Typography style={componentStyles.insideCardTitleStyle}>Location of main services</Typography>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
                                 <Form.Item
-                                    name="location"
-                                    label="Location of main services"
+                                    name="water"
+                                    label="Water"
                                     // rules={rules.fullname}
                                     hasFeedback
 
                                 >
                                     <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
                                 </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={24} md={6} lg={6}>
+                                <Form.Item
+                                    name="electricity"
+                                    label="Electricity"
+                                    // rules={rules.fullname}
+                                    hasFeedback
+
+                                >
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={24} md={6} lg={6}>
+                                <Form.Item
+                                    name="gas"
+                                    label="Gas"
+                                    // rules={rules.fullname}
+                                    hasFeedback
+
+                                >
+                                    <Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={24} md={24} lg={24}>
+                                <Typography style={componentStyles.insideCardTitleStyle}>Contact</Typography>
                             </Col>
                             <Col xs={24} sm={24} md={6} lg={6}>
                                 <Form.Item

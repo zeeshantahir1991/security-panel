@@ -3,6 +3,7 @@ import { Button, Card, Col, Form, Input, Row, Select } from 'antd';
 import { AppStyles } from "assets/styles";
 import React, { Component } from 'react';
 import { componentStyles } from "./../../styles";
+import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 
 
 
@@ -110,7 +111,7 @@ export class HealthAndSafety extends Component {
                                     </div>
                                 </div>
                             </Col>
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Form.Item
                                     name="patrolCheck"
                                     label="Patrol checks required?"
@@ -139,7 +140,7 @@ export class HealthAndSafety extends Component {
 
 
 
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={8} lg={8}>
                                 <Form.Item
                                     name="patrolClockCheckPoint"
                                     label="Patrol Clock CheckPoint"
@@ -150,7 +151,7 @@ export class HealthAndSafety extends Component {
                                 </Form.Item>
                             </Col>
 
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="specialInstructions"
                                     label="Special Instructions"
@@ -158,12 +159,12 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Special Instructions...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 
 
-                            <Col xs={24} sm={24} md={6} lg={6}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
                                 <Form.Item
                                     name="specialDuties"
                                     label="Special Duties"
@@ -171,7 +172,7 @@ export class HealthAndSafety extends Component {
                                     hasFeedback
 
                                 >
-                                    <Input style={componentStyles.borderColor} />
+                                    <Textarea placeholder={'Special Duties...'} style={componentStyles.borderColor} />
                                 </Form.Item>
                             </Col>
 

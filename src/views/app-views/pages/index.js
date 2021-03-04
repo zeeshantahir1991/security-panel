@@ -56,6 +56,9 @@ const Pages = ({ match }) => (
 
       <Route path={`${match.url}/new-shift`} component={lazy(() => import(`./Scheduling/new-shift`))} />
       <Route path={`${match.url}/shift-list`} component={lazy(() => import(`./Scheduling/shift-list`))} />
+      <Route path={`${match.url}/cancelled-shifts`} component={lazy(() => import(`./Scheduling/cancelled-shifts`))} />
+      <Route path={`${match.url}/shift-detail`} component={lazy(() => import(`./Scheduling/shift-detail`))} />
+
 
       {/* <Route path={`${match.url}/guard-docs`} component={lazy(() => import(`./Guard/guard-profile/docs`))} />
       <Route path={`${match.url}/site-preferrences`} component={lazy(() => import(`./Guard/guard-profile/site-preferrences`))} />

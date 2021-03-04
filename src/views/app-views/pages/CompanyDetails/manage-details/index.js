@@ -173,7 +173,7 @@ export class manageDetails extends Component {
 
 
 	render() {
-		const {  } = this.props;
+		const { } = this.props;
 
 		return (
 			<div style={AppStyles.marginTop50}>
@@ -240,6 +240,64 @@ export class manageDetails extends Component {
 											<DatePicker style={componentStyles.datePicker}
 												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
 												format={'YYYY/MM/DD'} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={8} lg={8}>
+										<Form.Item
+											name="signinRadius"
+											label="Signin Radius"
+											// rules={rules.shiftType}
+											hasFeedback
+										>
+											<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Signin Radius (Miles)"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("signinRadius", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="10">10</Option>
+												<Option value="20">20</Option>
+												<Option value="30">30</Option>
+												<Option value="40">40</Option>
+
+											</Select>
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={8} lg={8}>
+										<Form.Item
+											name="trackingInterval"
+											label="Tracking Interval"
+											// rules={rules.shiftType}
+											hasFeedback
+										>
+											<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Tracking Interval"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("trackingInterval", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="10">10</Option>
+												<Option value="20">20</Option>
+												<Option value="30">30</Option>
+												<Option value="40">40</Option>
+
+											</Select>
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={24} lg={24}>
@@ -384,7 +442,7 @@ export class manageDetails extends Component {
 											rules={rules.postcode}
 											hasFeedback
 										>
-											<Input  type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+											<Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
 										</Form.Item>
 									</Col>
 

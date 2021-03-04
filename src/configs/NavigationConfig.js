@@ -269,13 +269,29 @@ const schedulingNavTree = [
             submenu: [],
           },
           {
+            key: "scheduling-pages-calendar",
+            path: "/app/pages",
+            title: "Calendar",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
             key: "scheduling-pages-shift-list",
             path: "/app/pages/shift-list",
             title: "Shift List",
             icon: "",
             breadcrumb: true,
             submenu: [],
-          }
+          },
+          {
+            key: "scheduling-pages-cancelled-shifts",
+            path: "/app/pages/cancelled-shifts",
+            title: "Cancelled Shifts",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
         ]
       }
     ],

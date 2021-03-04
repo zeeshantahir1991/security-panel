@@ -11,66 +11,35 @@ import { componentStyles } from "../styles";
 const shiftData = [
 	{
 		"id": "1",
-		"clientName": "John Smith",
-		"img": "/img/avatars/thumb-1.jpg",
+		"cancelledBy": "System User A",
+		"dateCancelled": 1583107200,
+		"reason": "Booking",
+		"clientName": "John",
 		"shiftType": "MP",
 		"siteName": "Site A",
-		"guardName": "John Sm",
 		"shiftStartTime": 1583107200,
 		"shiftEndTime": 1583107200,
 		"shiftDate": 1583107200,
 		"day": "Mon",
-		"chargeRate": 12,
-		"break": "No",
 		"position": "Security",
-		"payRate": 10,
-		"checkinRadius": 1,
-		"trackingInterval": 60,
-		"expenseType": "Mileage",
-		"expense": 5
+		"guardName": "John Smith"
 
 	},
 	{
 		"id": "2",
-		"clientName": "Terrance Moreno",
-		"img": "/img/avatars/thumb-2.jpg",
+		"cancelledBy": "System User B",
+		"dateCancelled": 1583107200,
+		"reason": "Shift Moved",
+		"clientName": "Smith",
 		"shiftType": "DS",
 		"siteName": "Site B",
-		"guardName": "John Sm",
 		"shiftStartTime": 1583107200,
 		"shiftEndTime": 1583107200,
 		"shiftDate": 1583107200,
-		"day": "Mon",
-		"chargeRate": 12,
-		"break": "No",
+		"day": "Tue",
 		"position": "Security",
-		"payRate": 10,
-		"checkinRadius": 1,
-		"trackingInterval": 60,
-		"expenseType": "Mileage",
-		"expense": 5
+		"guardName": "John"
 
-
-	},
-	{
-		"id": "3",
-		"clientName": "Ron Vargas",
-		"img": "/img/avatars/thumb-3.jpg",
-		"shiftType": "DS",
-		"siteName": "Site C",
-		"guardName": "John Sm",
-		"shiftStartTime": 1583107200,
-		"shiftEndTime": 1583107200,
-		"shiftDate": 1583107200,
-		"day": "Mon",
-		"chargeRate": 12,
-		"break": "30",
-		"position": "Security",
-		"payRate": 20,
-		"checkinRadius": 1,
-		"trackingInterval": 60,
-		"expenseType": "N/A",
-		"expense": 0
 
 	}
 ]
@@ -81,14 +50,14 @@ const { Option } = Select;
 
 
 
-export class ShiftList extends Component {
+export class CancelledShiftList extends Component {
 
 	state = {
-		shiftList: shiftData,
+		cancelledShiftList: shiftData,
 		userProfileVisible: false,
 		selectedUser: null,
 		search: {
-			guardName: "",
+			cancelledBy: "",
 			shiftType: "",
 			siteName: "",
 			clientName: "",
@@ -124,7 +93,7 @@ export class ShiftList extends Component {
 	searchInTable = () => {
 		const { search } = this.state;
 		let userList = shiftData
-		let guardName = search.guardName
+		let cancelledBy = search.cancelledBy
 		let shiftType = search.shiftType
 		let siteName = search.siteName
 		let clientName = search.clientName
@@ -134,44 +103,72 @@ export class ShiftList extends Component {
 		let filteredArray = []
 		filteredArray = userList.filter(element => {
 
-			return filterCombination(guardName, shiftType, siteName, clientName, shiftStartTime, shiftEndTime, element)
+			return filterCombination(cancelledBy, shiftType, siteName, clientName, shiftStartTime, shiftEndTime, element)
 
 
 		});
-		this.setState({ shiftList: filteredArray })
+		this.setState({ cancelledShiftList: filteredArray })
 
-	}
-
-	cancelledShift = (action, record) => {
-		this.props.history.push({
-			pathname: '/app/pages/cancelled-shifts',
-			state: { action, record }
-		})
-	}
-
-	viewItem = (action, record) => {
-		this.props.history.push({
-			pathname: '/app/pages/shift-detail',
-			state: { action, record }
-		})
 	}
 
 	render() {
-		const { shiftList, search } = this.state;
+		const { cancelledShiftList, search } = this.state;
 
 		const tableColumns = [
+			{
+				title: 'Cancelled By',
+				dataIndex: 'cancelledBy',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.cancelledBy}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.cancelledBy.toLowerCase();
+						b = b.cancelledBy.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200,
+				fixed: 'left'
+
+			},
+
+			{
+				title: 'Date Cancelled',
+				dataIndex: 'dateCancelled',
+				render: date => (
+					<span>{date === "TBD" ? "TBD" : moment.unix(date).format("YYYY/MM/DD")} </span>
+				),
+				sorter: (a, b) => moment(a.dateCancelled).unix() - moment(b.dateCancelled).unix(),
+				width: 200
+			},
+
+			{
+				title: 'Reason',
+				dataIndex: 'reason',
+				render: (_, record) => (
+					<div className="d-flex">
+						<span>{record.reason}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.reason.toLowerCase();
+						b = b.reason.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200
+			},
+
 			{
 				title: 'Client Name',
 				dataIndex: 'clientName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<AvatarStatus src={record.img} />
-
-						<span style={AppStyles.alignSelfCenter}>
-							<a onClick={()=>this.viewItem("viewItem", record)}>
-							{record.clientName}
-							</a>
-						</span>
+						<span >{record.clientName}</span>
 					</div>
 				),
 				sorter: {
@@ -182,7 +179,6 @@ export class ShiftList extends Component {
 					},
 				},
 				width: 200,
-				fixed: 'left'
 			},
 
 			{
@@ -271,33 +267,7 @@ export class ShiftList extends Component {
 				width: 200
 			},
 
-			{
-				title: 'Charge Rate',
-				dataIndex: 'chargeRate',
-				sorter: {
-					compare: (a, b) => a.chargeRate.length - b.chargeRate.length,
-				},
-				width: 150
 
-			},
-
-			{
-				title: 'Break',
-				dataIndex: 'break',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.break}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.break.toLowerCase();
-						b = b.break.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
-			},
 
 			{
 				title: 'Position',
@@ -335,65 +305,6 @@ export class ShiftList extends Component {
 				width: 200
 			},
 
-			{
-				title: 'Pay Rate',
-				dataIndex: 'payRate',
-				sorter: {
-					compare: (a, b) => a.payRate.length - b.payRate.length,
-				},
-				width: 150
-
-			},
-
-			{
-				title: 'Checkin Radius',
-				dataIndex: 'checkinRadius',
-				sorter: {
-					compare: (a, b) => a.checkinRadius.length - b.checkinRadius.length,
-				},
-				width: 150
-
-			},
-
-			{
-				title: 'Tracking Interval',
-				dataIndex: 'trackingInterval',
-				sorter: {
-					compare: (a, b) => a.trackingInterval.length - b.trackingInterval.length,
-				},
-				width: 150
-
-			},
-
-			{
-				title: 'Expense Type',
-				dataIndex: 'expenseType',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.expenseType}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.expenseType.toLowerCase();
-						b = b.expenseType.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
-			},
-
-			{
-				title: 'Expense',
-				dataIndex: 'expense',
-				sorter: {
-					compare: (a, b) => a.expense.length - b.expense.length,
-				},
-				width: 150
-
-			},
-
-
 
 			{
 				title: '',
@@ -401,8 +312,10 @@ export class ShiftList extends Component {
 				render: (_, elm) => (
 					<div className="text-right">
 
-						<Tooltip title="Cancel Shift">
-							<Button danger onClick={() => this.cancelledShift("cancelledShift", elm)} size="small" >Cancel Shift</Button>
+						<Tooltip title="Delete">
+							<Button danger icon={<DeleteOutlined />}
+								// onClick={() => { this.deleteUser(elm.id) }}
+								size="small" />
 						</Tooltip>
 					</div>
 				)
@@ -416,7 +329,26 @@ export class ShiftList extends Component {
 					<Col xs={0} sm={0} md={20} lg={20}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
+								<Select
+									showSearch
+									style={componentStyles.selectStyle}
+									bordered={false}
+									placeholder="Cancelled By"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("cancelledBy", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="System User A">System User A</Option>
+									<Option value="System User B">System User B</Option>
+									<Option value="System User C">System User C</Option>
+									<Option value="System User D">System User D</Option>
 
+								</Select>
 
 								<Select
 									showSearch
@@ -461,14 +393,11 @@ export class ShiftList extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+
 								<Button
-									disabled={!(search.guardName || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime)}
+									disabled={!(search.cancelledBy || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.guardName || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.cancelledBy || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
@@ -478,7 +407,26 @@ export class ShiftList extends Component {
 					<Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
+								<Select
+									showSearch
+									style={componentStyles.selectStyleSM}
+									bordered={false}
+									placeholder="Cancelled By"
+									optionFilterProp="children"
+									onChange={(val) => this.handleChange("cancelledBy", val)}
+									// onFocus={onFocus}
+									// onBlur={onBlur}
+									// onSearch={onSearch}
+									filterOption={(input, option) =>
+										option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+									}
+								>
+									<Option value="System User A">System User A</Option>
+									<Option value="System User B">System User B</Option>
+									<Option value="System User C">System User C</Option>
+									<Option value="System User D">System User D</Option>
 
+								</Select>
 
 								<Select
 									showSearch
@@ -523,14 +471,12 @@ export class ShiftList extends Component {
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
 
-								<Input
-									placeholder="Guard Name"
-									onChange={(val) => this.handleChangeInput("guardName", val)}
-									style={componentStyles.filtersInputStyle} />
+
+
 								<Button
-									disabled={!(search.guardName || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime)}
+									disabled={!(search.cancelledBy || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime)}
 									onClick={() => { this.searchInTable() }}
-									style={!(search.guardName || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
+									style={!(search.cancelledBy || search.shiftType || search.siteName || search.clientName || search.shiftStartTime || search.shiftEndTime) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 									htmlType="submit" block>
 									Search
 					            </Button>
@@ -539,8 +485,8 @@ export class ShiftList extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Shift List" >
-							<Table searchable bordered columns={tableColumns} dataSource={shiftList} rowKey='id' scroll={{ x: 3100, y: 300 }} />
+						<Card className="card" title="Cancelled Shift List" >
+							<Table searchable bordered columns={tableColumns} dataSource={cancelledShiftList} rowKey='id' scroll={{ x: 2600, y: 300 }} />
 						</Card>
 					</Col>
 				</Row>
@@ -551,14 +497,14 @@ export class ShiftList extends Component {
 	}
 }
 
-export default ShiftList
+export default CancelledShiftList
 
 
 
-export const filterCombination = (guardName, shiftType, siteName, clientName, shiftStartTime, shiftEndTime, element) => {
-	if (guardName && shiftType && siteName && clientName && shiftStartTime, shiftEndTime) {
+export const filterCombination = (cancelledBy, shiftType, siteName, clientName, shiftStartTime, shiftEndTime, element) => {
+	if (cancelledBy && shiftType && siteName && clientName && shiftStartTime, shiftEndTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
@@ -567,25 +513,25 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 
 
 	}
-	if (guardName && shiftType && siteName && clientName && shiftStartTime) {
+	if (cancelledBy && shiftType && siteName && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
-	} else if (guardName && shiftType && siteName && shiftStartTime) {
+	} else if (cancelledBy && shiftType && siteName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
-	} else if (guardName && shiftType && clientName && shiftStartTime) {
+	} else if (cancelledBy && shiftType && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
@@ -599,30 +545,30 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
-	} else if (guardName && siteName && clientName && shiftStartTime) {
+	} else if (cancelledBy && siteName && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
-	} else if (guardName && shiftType && shiftStartTime) {
+	} else if (cancelledBy && shiftType && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
-	} else if (guardName && siteName && shiftStartTime) {
+	} else if (cancelledBy && siteName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
-	} else if (guardName && clientName && shiftStartTime) {
+	} else if (cancelledBy && clientName && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
@@ -647,15 +593,15 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
-	} else if (guardName && shiftType && siteName) {
+	} else if (cancelledBy && shiftType && siteName) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
-	} else if (guardName && shiftType && clientName) {
+	} else if (cancelledBy && shiftType && clientName) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
@@ -665,14 +611,14 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
-	} else if (guardName && siteName && clientName) {
+	} else if (cancelledBy && siteName && clientName) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
-	} else if (guardName && shiftStartTime) {
+	} else if (cancelledBy && shiftStartTime) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
 
@@ -693,19 +639,19 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 		return element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase() &&
 			moment.unix(element.shiftStartTime).format("YYYY/MM/DD") === moment(shiftStartTime).format("YYYY/MM/DD")
 
-	} else if (guardName && shiftType) {
+	} else if (cancelledBy && shiftType) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase()
 
-	} else if (guardName && siteName) {
+	} else if (cancelledBy && siteName) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.siteName.trim().toUpperCase() === siteName.trim().toUpperCase()
 
-	} else if (guardName && clientName) {
+	} else if (cancelledBy && clientName) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase() &&
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase() &&
 			element.clientName.trim().toUpperCase() === clientName.trim().toUpperCase()
 
 	} else if (shiftType && siteName) {
@@ -743,9 +689,9 @@ export const filterCombination = (guardName, shiftType, siteName, clientName, sh
 
 		return element.shiftType.trim().toUpperCase() === shiftType.trim().toUpperCase()
 
-	} else if (guardName) {
+	} else if (cancelledBy) {
 
-		return element.guardName.trim().toUpperCase() === guardName.trim().toUpperCase()
+		return element.cancelledBy.trim().toUpperCase() === cancelledBy.trim().toUpperCase()
 
 	}
 }

@@ -109,5 +109,24 @@ export const componentStyles = {
         padding: 20
     },
     tableContainer: { backgroundColor: AppColors.alabaster2, borderRadius: 10, marginTop: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20, marginBottom: 20 },
+    dropDownStyleWithWidth200: {
+        width: 200,
+        borderWidth: 1,
+        borderColor: AppColors.cornFlowerBlue,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginRight: 20
+    },
+
+    typeStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+
+    nameStyle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'right'
+    },
 
 }

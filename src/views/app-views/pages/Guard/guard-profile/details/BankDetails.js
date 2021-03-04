@@ -1,10 +1,10 @@
-import { BankOutlined, CreditCardOutlined, NumberOutlined, UserOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Card, Tooltip } from 'antd';
+import { CreditCardOutlined, DeleteOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
 import { Table } from "ant-table-extensions";
-
+import { Button, Card, Col, Form, Input, Row, Tooltip } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
+
 const bankData = [
     {
         "id": "1",

@@ -225,7 +225,7 @@ export class NewShift extends Component {
 		];
 		return (
 			<div style={AppStyles.marginTop50}>
-				<Modal title="Add Checkpoint"
+				{/* <Modal title="Add Checkpoint"
 					onCancel={() => this.handleCancel('checkpoint')}
 					visible={checkpointModal}
 					footer={[
@@ -304,7 +304,7 @@ export class NewShift extends Component {
 						</Row>
 					</Form>
 
-				</Modal>
+				</Modal> */}
 				<Modal title="Assign Position"
 					onCancel={() => this.handleCancel('position')}
 					visible={positionModal}
@@ -390,7 +390,7 @@ export class NewShift extends Component {
 				</Modal>
 				<Row justify="center">
 					<Col xs={24} sm={24} md={18} lg={18} >
-						<Card className="card" title="New Shift"
+						<Card className="card" title="Add New Shift"
 							extra={
 								<div style={AppStyles.flexDirectionRow}>
 									<div style={AppStyles.marginRight20}>
@@ -400,13 +400,13 @@ export class NewShift extends Component {
 											Assign Position
 								        </Button>
 									</div>
-									<div>
+									{/* <div>
 										<Button
 											onClick={() => this.showModal('checkpoint')}
 											style={componentStyles.continueButton} htmlType="submit" block>
 											Add Checkpoint
 								        </Button>
-									</div>
+									</div> */}
 								</div>
 							}
 							style={AppStyles.paddingBottom20}>
@@ -482,7 +482,7 @@ export class NewShift extends Component {
 											<Col xs={24} sm={24} md={6} lg={6}>
 												<Form.Item
 													name="siteName"
-													label="Site Name"
+													label="Master Site Name"
 													// rules={rules.siteName}
 													hasFeedback
 												>
@@ -490,7 +490,7 @@ export class NewShift extends Component {
 														showSearch
 														style={componentStyles.selectWhiteStyle}
 														bordered={false}
-														placeholder="Site Name"
+														placeholder="Master Site Name"
 														optionFilterProp="children"
 														onChange={(val) => this.handleChange("siteName", val)}
 														// onFocus={onFocus}
@@ -517,11 +517,6 @@ export class NewShift extends Component {
 													<Input style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
 												</Form.Item>
 											</Col>
-										</Row>
-									</Col>
-									<Col xs={20} sm={20} md={22} lg={22}>
-										<Row className="card" gutter={16} style={componentStyles.addCheckpointContainer}>
-
 											<Col xs={24} sm={24} md={6} lg={6}>
 												<Form.Item
 													name="startDate"
@@ -579,254 +574,11 @@ export class NewShift extends Component {
 													/>
 												</Form.Item>
 											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="break"
-													label="Break"
-													// rules={rules.break}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Break"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("break", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="Yes">Yes</Option>
-														<Option value="No">No</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="position"
-													label="Select Position"
-													// rules={rules.position}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Select Position"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("position", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="Security">Security</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="guardName"
-													label="Select Guard"
-													// rules={rules.guardName}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Select Guard"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("guardName", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="John">John</Option>
-														<Option value="John Sm">John Sm</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="payRate"
-													label="Pay Rate"
-													// rules={rules.chargeRate}
-													hasFeedback
-												>
-													<Input style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={24} lg={24}>
-												<Form.Item
-													name="daysWeek"
-													label="Days of the week"
-													// rules={rules.shiftType}
-													hasFeedback
-												>
-													<div style={AppStyles.flexDirectionRow}>
-														<div onClick={() => this.handleDays(0)} style={{
-															backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid'
-														}}>
-															Monday
-                                                        </div>
-														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Tuesday
-                                                        </div>
-														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Wednesday
-                                                        </div>
-														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Thursday
-                                                        </div>
-														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Friday
-                                                        </div>
-														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Saturday
-                                                        </div>
-														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
-															Sunday
-                                                        </div>
-													</div>
-												</Form.Item>
-											</Col>
 										</Row>
 									</Col>
-
-								</Row>
-								<Row gutter={16} justify="center">
 									<Col xs={20} sm={20} md={22} lg={22}>
-										<Row className="card" gutter={16} justify="center" style={componentStyles.addCheckpointContainer}>
+										<Row className="card" gutter={16} style={componentStyles.addCheckpointContainer}>
 
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="checkpointName"
-													label="Checkpoint Name"
-													// rules={rules.checkpointName}
-													hasFeedback
-												>
-													<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="checkpointDescriptor"
-													label="Checkpoint Descriptor"
-													// rules={rules.checkpointDescriptor}
-													hasFeedback
-												>
-													<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="qrScanInterval"
-													label="QR Scan Interval Minutes"
-													// rules={rules.storeLocation}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="QR Scan Interval Minutes"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("qrScanInterval", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="30">30</Option>
-														<Option value="60">60</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-
-
-
-										</Row>
-									</Col>
-								</Row>
-
-								<Row gutter={16} justify="center">
-									<Col xs={20} sm={20} md={22} lg={22}>
-										<Row className="card" gutter={16} style={componentStyles.addIntervalContainer}>
-
-
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="signinRadius"
-													label="Signin Radius"
-													// rules={rules.shiftType}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Signin Radius (Miles)"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("signinRadius", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="10">10</Option>
-														<Option value="20">20</Option>
-														<Option value="30">30</Option>
-														<Option value="40">40</Option>
-
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="trackingInterval"
-													label="Tracking Interval"
-													// rules={rules.shiftType}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Tracking Interval"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("trackingInterval", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="10">10</Option>
-														<Option value="20">20</Option>
-														<Option value="30">30</Option>
-														<Option value="40">40</Option>
-
-													</Select>
-												</Form.Item>
-											</Col>
 											<Col xs={24} sm={24} md={6} lg={6}>
 												<Form.Item
 													name="callCheckInterval"
@@ -903,10 +655,104 @@ export class NewShift extends Component {
 													<Textarea placeholder={'Instructions...'} style={componentStyles.borderColor} />
 												</Form.Item>
 											</Col>
+											<Col xs={24} sm={24} md={24} lg={24}>
+												<Form.Item
+													name="daysWeek"
+													label="Days of the week"
+													// rules={rules.shiftType}
+													hasFeedback
+												>
+													<div style={AppStyles.flexDirectionRow}>
+														<div onClick={() => this.handleDays(0)} style={{
+															backgroundColor: daysWeek[0].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid'
+														}}>
+															Monday
+                                                        </div>
+														<div onClick={() => this.handleDays(1)} style={{ backgroundColor: daysWeek[1].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Tuesday
+                                                        </div>
+														<div onClick={() => this.handleDays(2)} style={{ backgroundColor: daysWeek[2].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Wednesday
+                                                        </div>
+														<div onClick={() => this.handleDays(3)} style={{ backgroundColor: daysWeek[3].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Thursday
+                                                        </div>
+														<div onClick={() => this.handleDays(4)} style={{ backgroundColor: daysWeek[4].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Friday
+                                                        </div>
+														<div onClick={() => this.handleDays(5)} style={{ backgroundColor: daysWeek[5].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Saturday
+                                                        </div>
+														<div onClick={() => this.handleDays(6)} style={{ backgroundColor: daysWeek[6].select ? AppColors.cornFlowerBlue : AppColors.white, padding: 10, width: 100, textAlign: 'center', marginRight: 10, cursor: 'pointer', borderRadius: 10, borderColor: AppColors.alto, borderWidth: 1, borderStyle: 'solid' }}>
+															Sunday
+                                                        </div>
+													</div>
+												</Form.Item>
+											</Col>
 										</Row>
 									</Col>
 
 								</Row>
+								{/* <Row gutter={16} justify="center">
+									<Col xs={20} sm={20} md={22} lg={22}>
+										<Row className="card" gutter={16} justify="center" style={componentStyles.addCheckpointContainer}>
+
+
+											<Col xs={24} sm={24} md={8} lg={8}>
+												<Form.Item
+													name="checkpointName"
+													label="Checkpoint Name"
+													// rules={rules.checkpointName}
+													hasFeedback
+												>
+													<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
+												</Form.Item>
+											</Col>
+
+											<Col xs={24} sm={24} md={8} lg={8}>
+												<Form.Item
+													name="checkpointDescriptor"
+													label="Checkpoint Descriptor"
+													// rules={rules.checkpointDescriptor}
+													hasFeedback
+												>
+													<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
+												</Form.Item>
+											</Col>
+
+											<Col xs={24} sm={24} md={8} lg={8}>
+												<Form.Item
+													name="qrScanInterval"
+													label="QR Scan Interval Minutes"
+													// rules={rules.storeLocation}
+													hasFeedback
+												>
+													<Select
+														showSearch
+														style={componentStyles.selectWhiteStyle}
+														bordered={false}
+														placeholder="QR Scan Interval Minutes"
+														optionFilterProp="children"
+														onChange={(val) => this.handleChange("qrScanInterval", val)}
+														// onFocus={onFocus}
+														// onBlur={onBlur}
+														// onSearch={onSearch}
+														filterOption={(input, option) =>
+															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+														}
+													>
+														<Option value="30">30</Option>
+														<Option value="60">60</Option>
+													</Select>
+												</Form.Item>
+											</Col>
+
+
+
+										</Row>
+									</Col>
+								</Row> */}
+
 								{assignPosition.length !== 0 ?
 									<Row gutter={16} justify="center">
 										<Col xs={20} sm={20} md={22} lg={22}>

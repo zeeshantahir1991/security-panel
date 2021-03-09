@@ -696,7 +696,7 @@ export class SiaRecordList extends Component {
                                             <Button
                                                 onClick={() => this.setState({ addLicence: true })}
                                                 style={componentStyles.continueButton} htmlType="submit" block>
-                                                Download Logs
+                                                Add SIA License
                                         </Button>
 
                                         </Col>

@@ -776,8 +776,8 @@ export class NewShift extends Component {
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>
-											<Button style={componentStyles.continueButton} htmlType="submit" block>
-												Create
+											<Button style={componentStyles.continueButton} onClick={()=>{this.props.history.push('/app/pages/shift-list')}} block>
+												Create Shift
 					                            </Button>
 										</Form.Item>
 									</Col>

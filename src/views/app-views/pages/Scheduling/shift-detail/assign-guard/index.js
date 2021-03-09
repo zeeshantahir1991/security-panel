@@ -15,6 +15,14 @@ const userData = [
 		"break": "Yes",
 		"payRate": 25,
 
+	},
+	{
+		"id": "2",
+		"guardName": "Smellet Disk",
+		"position": "Detailing",
+		"break": "No",
+		"payRate": 45,
+
 	}
 ]
 
@@ -399,14 +407,14 @@ export class AssignGuard extends Component {
 
 								<Row justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >
-										<Card className="card" title="Assign Guard" extra={
+										<Card className="card" title="Assign Guard Listing" extra={
 											<Row gutter={16}>
 												<Col xs={24} sm={24} md={24} lg={24}>
 
 													<Button
 														onClick={() => this.setState({ form: true })}
 														style={componentStyles.continueButton} htmlType="submit" block>
-														Add Assign Guard
+														Assign New Guard
                                                     </Button>
 
 												</Col>

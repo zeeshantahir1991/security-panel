@@ -175,9 +175,9 @@ export class SiteSurvey extends Component {
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-right">
-						<Tooltip title="View">
+						{/* <Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />}/>
-						</Tooltip>
+						</Tooltip> */}
 						<Tooltip title="Download">
 						<Button type="primary" className="mr-2" icon={<DownloadOutlined />} />
 						</Tooltip>

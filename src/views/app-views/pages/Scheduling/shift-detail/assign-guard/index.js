@@ -1,6 +1,6 @@
-import { PoundCircleOutlined } from '@ant-design/icons';
-import { Table } from "ant-table-extensions";
-import { Button, Card, Col, Form, Input, Row, Select } from 'antd';
+import { PoundCircleOutlined, DeleteOutlined} from '@ant-design/icons';
+import { Table} from "ant-table-extensions";
+import { Button, Card, Col, Form, Input, Row, Select, Tooltip} from 'antd';
 import { AppStyles } from "assets/styles";
 import React, { Component } from 'react';
 import { componentStyles } from "./../../styles";
@@ -88,7 +88,7 @@ export class AssignGuard extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 100
+				width: 200
 			},
 
 			{
@@ -106,7 +106,7 @@ export class AssignGuard extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
-				width: 100
+				width: 200
 			},
 
 			{
@@ -115,23 +115,21 @@ export class AssignGuard extends Component {
 				sorter: {
 					compare: (a, b) => a.payRate.length - b.payRate.length,
 				},
-				width: 70
+				width: 200
 			},
 
-			// {
-			// 	title: '',
-			// 	dataIndex: 'actions',
-			// 	render: (_, elm) => (
-			// 		<div className="text-right">
-			// 			<Tooltip title="View">
-			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-			// 			</Tooltip>
-			// 			<Tooltip title="Delete">
-			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-			// 			</Tooltip>
-			// 		</div>
-			// 	)
-			// }
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+					
+						<Tooltip title="Delete">
+							<Button danger icon={<DeleteOutlined />} size="small" />
+						</Tooltip>
+					</div>
+				)
+			}
 		];
 
 

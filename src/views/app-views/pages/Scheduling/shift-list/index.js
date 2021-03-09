@@ -160,6 +160,32 @@ export class ShiftList extends Component {
 		const { shiftList, search } = this.state;
 
 		const tableColumns = [
+
+
+			{
+				title: 'Site Name',
+				dataIndex: 'siteName',
+				render: (_, record) => (
+					<div className="d-flex">
+						<a onClick={() => this.viewItem("viewItem", record)}>
+
+							<span>{record.siteName}</span>
+						</a>
+
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.siteName.toLowerCase();
+						b = b.siteName.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				width: 200,
+				fixed: 'left'
+
+			},
+
 			{
 				title: 'Client Name',
 				dataIndex: 'clientName',
@@ -168,9 +194,7 @@ export class ShiftList extends Component {
 						<AvatarStatus src={record.img} />
 
 						<span style={AppStyles.alignSelfCenter}>
-							<a onClick={()=>this.viewItem("viewItem", record)}>
 							{record.clientName}
-							</a>
 						</span>
 					</div>
 				),
@@ -182,25 +206,6 @@ export class ShiftList extends Component {
 					},
 				},
 				width: 200,
-				fixed: 'left'
-			},
-
-			{
-				title: 'Site Name',
-				dataIndex: 'siteName',
-				render: (_, record) => (
-					<div className="d-flex">
-						<span>{record.siteName}</span>
-					</div>
-				),
-				sorter: {
-					compare: (a, b) => {
-						a = a.siteName.toLowerCase();
-						b = b.siteName.toLowerCase();
-						return a > b ? -1 : b > a ? 1 : 0;
-					},
-				},
-				width: 200
 			},
 
 			{

@@ -161,7 +161,7 @@ export class NewShift extends Component {
 
 	render() {
 		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignGuard, breakk, edit } = this.state;
-		const { } = this.props;
+		let { record } = this.props?.location?.state ? this.props?.location?.state : null;
 		const tableColumns = [
 			{
 				title: 'Guard Name',
@@ -240,7 +240,7 @@ export class NewShift extends Component {
 					<div className="text-right">
 
 						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />}  size="small" />
+							<Button danger icon={<DeleteOutlined />} size="small" />
 						</Tooltip>
 					</div>
 				)
@@ -413,7 +413,7 @@ export class NewShift extends Component {
 				</Modal> */}
 				<Row justify="center">
 					<Col xs={24} sm={24} md={18} lg={18} >
-						<Card className="card" title="Add New Shift"
+						<Card className="card" title={record ? "Edit Shift" : "Add New Shift"}
 							extra={
 								<div style={AppStyles.flexDirectionRow}>
 									{/* <div style={AppStyles.marginRight20}>
@@ -981,7 +981,7 @@ export class NewShift extends Component {
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>
-											<Button style={componentStyles.continueButton} onClick={()=>{this.props.history.push('/app/pages/shift-list')}} block>
+											<Button style={componentStyles.continueButton} onClick={() => { this.props.history.push('/app/pages/shift-list') }} block>
 												Create Shift
 					                            </Button>
 										</Form.Item>

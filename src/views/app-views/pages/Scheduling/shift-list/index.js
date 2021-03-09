@@ -151,7 +151,7 @@ export class ShiftList extends Component {
 
 	viewItem = (action, record) => {
 		this.props.history.push({
-			pathname: '/app/pages/shift-detail',
+			pathname: '/app/pages/new-shift',
 			state: { action, record }
 		})
 	}

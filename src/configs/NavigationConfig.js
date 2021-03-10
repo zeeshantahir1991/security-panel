@@ -270,7 +270,7 @@ const schedulingNavTree = [
           },
           {
             key: "scheduling-pages-calendar",
-            path: "/app/pages",
+            path: "/app/pages/calendar",
             title: "Calendar",
             icon: "",
             breadcrumb: true,

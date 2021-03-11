@@ -45,7 +45,7 @@ export class NewShift extends Component {
 			callCheckInterval: "",
 			expense: "",
 			nextPage: false,
-
+			record: this.props?.location?.state,
 			daysWeek: [
 				{
 					select: false,
@@ -158,10 +158,16 @@ export class NewShift extends Component {
 		})
 	}
 
+	componentDidMount() {
+		
+	}
+	
+
 
 	render() {
 		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignGuard, breakk, edit } = this.state;
-		let { record } = this.props?.location?.state ? this.props?.location?.state : null;
+		// let { record } = this.props?.location?.state !== undefined && this.props?.location?.state
+		const {record} = this.state;
 		const tableColumns = [
 			{
 				title: 'Guard Name',

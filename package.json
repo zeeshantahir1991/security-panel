@@ -9,6 +9,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@syncfusion/ej2-base": "^18.4.44",
+    "@syncfusion/ej2-react-schedule": "^18.4.48",
     "@vx/pattern": "0.0.199",
     "ajv": "^7.0.2",
     "ant-table-extensions": "^1.1.7",

@@ -157,7 +157,7 @@ export class ShiftList extends Component {
 							</Form>
 						</Card>
 					</Col>
-					{/* <Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -190,7 +190,7 @@ export class ShiftList extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col> */}
+					</Col>
 					{
 						noOfCols.length != 0 ?
 							<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>

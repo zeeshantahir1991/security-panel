@@ -68,5 +68,8 @@ export const AppColors = {
   martini: '#b4a19d',
 
   //Yello
-  brightSun: "#F7DE42"
+  brightSun: "#F7DE42",
+
+  //Orange
+  orange: '#FFA500'
 }

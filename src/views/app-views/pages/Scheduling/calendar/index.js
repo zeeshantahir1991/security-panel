@@ -248,7 +248,7 @@ export class Calendar extends Component {
 
 		],
 		search: {
-			selectPeriod: '',
+			selectPeriod: '1_Day',
 
 		},
 		selectedDate: '',
@@ -544,7 +544,7 @@ export class Calendar extends Component {
 			<div style={AppStyles.marginTop50}>
 
 				<Row gutter={16} justify="center">
-					<Col xs={24} sm={24} md={20} lg={20}>
+					{/* <Col xs={24} sm={24} md={20} lg={20}>
 						<Card title="Select Period" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row justify="center" gutter={16}>
@@ -575,7 +575,7 @@ export class Calendar extends Component {
 								</Row>
 							</Form>
 						</Card>
-					</Col>
+					</Col> */}
 
 					{/* {this.displayFilter()} */}
 					{

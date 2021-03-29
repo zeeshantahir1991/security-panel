@@ -44,11 +44,14 @@ export class TimelineGrouping extends SampleBase {
                                 </ResourceDirective>
                             </ResourcesDirective>
                             <ViewsDirective>
-                                <ViewDirective option='TimelineDay'/>
-                                <ViewDirective option='TimelineWeek'/>
-                                <ViewDirective option='TimelineWorkWeek'/>
-                                <ViewDirective option='TimelineMonth'/>
-                                <ViewDirective option='Agenda'/>
+                                <ViewDirective option='TimelineDay' displayName="By Day"/>
+                                <ViewDirective option='TimelineWeek' timeScale={{ enable: false }} displayName="By 1 Week"/>
+                                <ViewDirective option='TimelineWeek' timeScale={{ enable: false }} displayName="By 2 Weeks" interval="2"/>
+                                <ViewDirective option='TimelineWeek' timeScale={{ enable: false }} displayName="By 4 Weeks" interval="4"/>
+                                {/* <ViewDirective option='WorkWeek'/> */}
+                                <ViewDirective option='TimelineMonth' displayName="By 1 month"/>
+                                <ViewDirective option='TimelineMonth' displayName="By 3 months" interval="3"/>
+                                {/* <ViewDirective option='Agenda'/> */}
                             </ViewsDirective>
                             <Inject services={[TimelineViews, TimelineMonth, Agenda, Resize, DragAndDrop]}/>
                         </ScheduleComponent>

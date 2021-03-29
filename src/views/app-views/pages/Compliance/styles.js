@@ -88,7 +88,7 @@ export const componentStyles = {
         borderColor: AppColors.alto,
         borderStyle: 'solid',
         borderRadius: 10,
-        marginTop: 20
+        // marginTop: 20
     },
     searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, backgroundColor: AppColors.white },
     searchEnabledButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.white, borderWidth: 1, borderStyle: 'solid', backgroundColor: AppColors.cornFlowerBlue, borderColor: AppColors.cornFlowerBlue },

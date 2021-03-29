@@ -242,7 +242,7 @@ export class manageDetails extends Component {
 												format={'YYYY/MM/DD'} />
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									{/* <Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="signinRadius"
 											label="Signin Radius"
@@ -270,8 +270,8 @@ export class manageDetails extends Component {
 
 											</Select>
 										</Form.Item>
-									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									</Col> */}
+									{/* <Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="trackingInterval"
 											label="Tracking Interval"
@@ -299,7 +299,7 @@ export class manageDetails extends Component {
 
 											</Select>
 										</Form.Item>
-									</Col>
+									</Col> */}
 									<Col xs={24} sm={24} md={24} lg={24}>
 										<h5>Approved Sectors</h5>
 									</Col>

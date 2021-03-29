@@ -21,9 +21,9 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/add-sub-contractor`} component={lazy(() => import(`./Contractor/add-sub-contractor`))} />
 
       <Route path={`${match.url}/compliance-templates`} component={lazy(() => import(`./Compliance/compliance-templates`))} />
-      <Route path={`${match.url}/compliance-interviews`} component={lazy(() => import(`./Compliance/compliance-interviews`))} />
-      <Route path={`${match.url}/compliance-vetting`} component={lazy(() => import(`./Compliance/compliance-vetting`))} />
-      <Route path={`${match.url}/compliance-trainings`} component={lazy(() => import(`./Compliance/compliance-trainings`))} />
+      <Route path={`${match.url}/compliance-interviews`} component={lazy(() => import(`./Compliance/compliance-interviews/indexAllGuards`))} />
+      <Route path={`${match.url}/compliance-vetting`} component={lazy(() => import(`./Compliance/compliance-vetting/indexAllGuards`))} />
+      <Route path={`${match.url}/compliance-trainings`} component={lazy(() => import(`./Compliance/compliance-trainings/indexAllGuards`))} />
       <Route path={`${match.url}/compliance-sia-records`} component={lazy(() => import(`./Compliance/compliance-sia-records`))} />
       <Route path={`${match.url}/site-survey`} component={lazy(() => import(`./Compliance/site-survey`))} />
       <Route path={`${match.url}/key-receipts`} component={lazy(() => import(`./Compliance/key-receipts`))} />

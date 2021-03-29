@@ -403,14 +403,14 @@ const complianceNavTree = [
         icon: "/img/sidebar/data.png",
         breadcrumb: true,
         submenu: [
-          {
-            key: "compliance-pages-complianceTemplates",
-            path: "/app/pages/compliance-templates",
-            title: "Compliance Templates",
-            icon: "",
-            breadcrumb: true,
-            submenu: [],
-          },
+          // {
+          //   key: "compliance-pages-complianceTemplates",
+          //   path: "/app/pages/compliance-templates",
+          //   title: "Compliance Templates",
+          //   icon: "",
+          //   breadcrumb: true,
+          //   submenu: [],
+          // },
           {
             key: "compliance-pages-interviews",
             path: "/app/pages/compliance-interviews",

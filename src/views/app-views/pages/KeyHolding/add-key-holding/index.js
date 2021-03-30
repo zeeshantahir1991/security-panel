@@ -1,5 +1,5 @@
-import { LockOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { LockOutlined, NumberOutlined, UserOutlined, PhoneOutlined, BuildOutlined, CompassOutlined, InboxOutlined, MailOutlined, CodeOutlined } from '@ant-design/icons';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select, Switch } from 'antd';
 import React, { Component } from 'react';
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 import { AppStyles } from "../../../../../assets/styles";
@@ -73,6 +73,7 @@ const rules = {
 	],
 	serviceEndDate: [
 		{
+
 			required: true,
 			message: 'Please input Service End Date'
 		}
@@ -175,14 +176,14 @@ export class AddKeyHoldingSite extends Component {
 
 
 	render() {
-		const {  } = this.props;
+		const { } = this.props;
 		return (
 			<div style={AppStyles.marginTop50}>
-				<Row justify="center">
+				<Form layout="vertical">
 
-					<Col xs={24} sm={24} md={20} lg={20} >
-						<Card className="card" title="New Key Receipt" style={AppStyles.paddingBottom20}>
-							<Form layout="vertical">
+					<Row justify="center">
+						<Col xs={24} sm={24} md={20} lg={20} >
+							<Card className="card" title="Site Information" style={AppStyles.paddingBottom20}>
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >
 										<div style={AppStyles.marginBottom40}>
@@ -190,7 +191,7 @@ export class AddKeyHoldingSite extends Component {
 											</div>
 										</div>
 									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
+									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
 											name="clientName"
 											label="Client Name"
@@ -216,167 +217,97 @@ export class AddKeyHoldingSite extends Component {
 											</Select>
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
+									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
-											name="keyHoldingSite"
-											label="Key Holding Site"
-											// rules={rules.keyHoldingSite}
+											name="site"
+											label="Site name"
+											rules={rules.site}
 											hasFeedback
 										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Key Holding Site"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("keyHoldingSite", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Store 1">Store 1</Option>
-												<Option value="Building 2">Building 2</Option>
-											</Select>
+											<Input style={componentStyles.borderColor} prefix={<BuildOutlined />} />
 										</Form.Item>
 									</Col>
 
-									<Col xs={20} sm={20} md={22} lg={22}>
-										<Row className="card" gutter={16} justify="center" style={componentStyles.addKeyContainer}>
-											<Col xs={24} sm={24} md={24} lg={24}>
-												<Form.Item
-													name="keyDesc"
-													label="Key Description"
-													rules={rules.site}
-													hasFeedback
-												>
-													<Textarea placeholder={'Key Description...'} style={componentStyles.borderColor} />
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="keyType"
-													label="Key Type"
-													// rules={rules.keyHoldingSite}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Key Type"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("KeyType", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="A">A</Option>
-														<Option value="B">B</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="keyNumber"
-													label="Key Number"
-													// rules={rules.keyNumber}
-													hasFeedback
-												>
-													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-												</Form.Item>
-											</Col>
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="keySerialNumber"
-													label="Key Serial Number (Alphanumeric)"
-													// rules={rules.keyNumber}
-													hasFeedback
-												>
-													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="storeLocation"
-													label="Store Location"
-													// rules={rules.storeLocation}
-													hasFeedback
-												>
-													<Select
-														showSearch
-														style={componentStyles.selectWhiteStyle}
-														bordered={false}
-														placeholder="Store Location"
-														optionFilterProp="children"
-														onChange={(val) => this.handleChange("storeLocation", val)}
-														// onFocus={onFocus}
-														// onBlur={onBlur}
-														// onSearch={onSearch}
-														filterOption={(input, option) =>
-															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-														}
-													>
-														<Option value="South East">South East</Option>
-														<Option value="South West">South West</Option>
-													</Select>
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="secureBoxNumber"
-													label="Secure Box Number"
-													// rules={rules.keyNumber}
-													hasFeedback
-												>
-													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="pin"
-													label="PIN"
-													// rules={rules.keyNumber}
-													hasFeedback
-												>
-													<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<LockOutlined />} />
-												</Form.Item>
-											</Col>
-
-											<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
-
-												<Form.Item>
-													<Button style={componentStyles.continueButton} htmlType="submit" block>
-														Add Key
-		                                            </Button>
-												</Form.Item>
-											</Col>
-
-										</Row>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="siteAddress1"
+											label="Site Address Line 1"
+											rules={rules.siteAddress1}
+											hasFeedback
+										>
+											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop20}>
+									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
-											name="recievedBy"
-											label="Recieved By"
-											// rules={rules.recievedBy}
+											name="siteAddress2"
+											label="Site Address Line 2"
+											rules={rules.siteAddress2}
+											hasFeedback
+										>
+											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="postcode"
+											label="Post Code"
+											rules={rules.postcode}
+											hasFeedback
+										>
+											<Input type="text" style={componentStyles.borderColor} prefix={<InboxOutlined />} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="city"
+											label="Town / City"
+											rules={rules.city}
+											hasFeedback
+										>
+											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="phone"
+											label="Site Phone"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="siteEmail"
+											label="Site Email"
+											// rules={rules.siteEmail}
+											hasFeedback
+										>
+											<Input maxLength={30} style={componentStyles.borderColor} prefix={<MailOutlined />} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="title"
+											label="Title"
+											// rules={rules.title}
 											hasFeedback
 										>
 											<Select
 												showSearch
 												style={componentStyles.selectStyle}
 												bordered={false}
-												placeholder="Recieved By"
+												placeholder="Title"
 												optionFilterProp="children"
-												onChange={(val) => this.handleChange("recievedBy", val)}
+												onChange={(val) => this.handleChange("title", val)}
 												// onFocus={onFocus}
 												// onBlur={onBlur}
 												// onSearch={onSearch}
@@ -391,10 +322,10 @@ export class AddKeyHoldingSite extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop20}>
+									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
-											name="recievedFrom"
-											label="Recieved From (Full Name)"
+											name="fullname"
+											label="Site Contact Full Name"
 											// rules={rules.fullname}
 											hasFeedback
 										>
@@ -402,35 +333,240 @@ export class AddKeyHoldingSite extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop20}>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
 										<Form.Item
-											name="receiptDate"
-											label="Receipt Date"
-											rules={rules.receiptDate}
+											name="region"
+											label="Region"
+											rules={rules.region}
 											hasFeedback
 										>
-											<DatePicker style={componentStyles.datePicker}
-												//  defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-												format={'YYYY/MM/DD'} />
+											<Select
+												showSearch
+												style={componentStyles.selectStyle}
+												bordered={false}
+												placeholder="Region"
+												optionFilterProp="children"
+												onChange={(val) => this.handleChange("region", val)}
+												// onFocus={onFocus}
+												// onBlur={onBlur}
+												// onSearch={onSearch}
+												filterOption={(input, option) =>
+													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+												}
+											>
+												<Option value="South East">South East</Option>
+												<Option value="South West">South West</Option>
+											</Select>
 										</Form.Item>
 									</Col>
 
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="startDate"
+											label="Start Date"
+											// rules={rules.dob}
+											hasFeedback
+										>
+											{/* <Input type="date" style={componentStyles.borderColor} /> */}
+											<DatePicker disabled style={componentStyles.datePicker}
+												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+												format={'YYYY/MM/DD'} />
 
-									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
+										</Form.Item>
+									</Col>
 
-										<Form.Item>
-											<Button style={componentStyles.continueButton} htmlType="submit" block>
-												Create
-		                                </Button>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="endDate"
+											label="End Date"
+											// rules={rules.dob}
+											hasFeedback
+										>
+											{/* <Input type="date" style={componentStyles.borderColor} /> */}
+											<DatePicker disabled style={componentStyles.datePicker}
+												// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')}
+												format={'YYYY/MM/DD'} />
+
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="sitDesc"
+											label="Site Description"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Textarea placeholder={'Site Description...'} style={componentStyles.borderColor} />
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="sitLoc"
+											label="Site Entrance and Exit Location"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Textarea placeholder={'Site Entrance and Exit Location'} style={componentStyles.borderColor} />
+										</Form.Item>
+									</Col>
+
+								</Row>
+
+							</Card>
+							<Card className="card" title="Contact Details" style={AppStyles.paddingBottom20}>
+								<Row gutter={16} justify="center">
+									<Col xs={24} sm={24} md={24} lg={24} >
+										<div style={AppStyles.marginBottom40}>
+											<div style={AppStyles.horizontallLineWidth100}>
+											</div>
+										</div>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="contactNumber"
+											label="Local police contact number"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="reportContactNumber"
+											label="Transco (Gas Leaks) report contact number"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="clientContactNumber"
+											label="Client contact number (Emergency only) "
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
 										</Form.Item>
 									</Col>
 								</Row>
-							</Form>
-						</Card>
-						{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
-					</Col>
 
-				</Row>
+							</Card>
+							<Card className="card" title="Alarm Details" style={AppStyles.paddingBottom20}>
+								<Row gutter={16} justify="center">
+									<Col xs={24} sm={24} md={24} lg={24} >
+										<div style={AppStyles.marginBottom40}>
+											<div style={AppStyles.horizontallLineWidth100}>
+											</div>
+										</div>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="companyName"
+											label="Alarm company name"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Input style={componentStyles.borderColor} prefix={<BuildOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="alarmContactNumber"
+											label="Alarm company contact number"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<PhoneOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="alarmCode"
+											label="Alarm code"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={< CodeOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="doorAccessCode"
+											label="Door Access code"
+											// rules={rules.phone}
+											hasFeedback
+										>
+											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={< CodeOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="keyPadLocation"
+											label="Location of key pad"
+											// rules={rules.siteAddress2}
+											hasFeedback
+										>
+											<Input style={componentStyles.borderColor} prefix={<CompassOutlined />} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="adInfo"
+											label="Additional Information"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Textarea placeholder={'Additional Information'} style={componentStyles.borderColor} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="patrolGuardInst"
+											label="Patrol guard instructions"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Textarea placeholder={'Patrol guard instructions'} style={componentStyles.borderColor} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={6} lg={6}>
+										<Form.Item
+											name="emergencyProcedure"
+											label="Emergency Procedure"
+											// rules={rules.site}
+											hasFeedback
+										>
+											<Textarea placeholder={'Emergency Procedure'} style={componentStyles.borderColor} />
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}>
+
+										<Switch style={componentStyles.switchStyle} size="small" defaultChecked ></Switch>
+	                                      Status
+                                    </Col>
+
+								</Row>
+
+							</Card>
+							{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+						</Col>
+						<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
+
+							<Form.Item>
+								<Button style={componentStyles.continueButton} htmlType="submit" block>
+									Create
+                             </Button>
+							</Form.Item>
+						</Col>
+
+					</Row>
+				</Form>
 			</div>
 		)
 	}

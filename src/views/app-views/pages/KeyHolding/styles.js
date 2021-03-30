@@ -107,6 +107,41 @@ export const componentStyles = {
     },
 
     addKeyContainer: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 50, padding: 20, marginBottom: 50 },
-    addKeyNotes: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 25, padding: 20, marginBottom: 50 }
+    addKeyNotes: { backgroundColor: AppColors.alabaster1, borderRadius: 10, marginTop: 25, padding: 20, marginBottom: 50 },
+
+    filtersInputStyle: {
+        borderColor: AppColors.alto,
+        marginRight: 20
+    },
+
+    dropDownStyleWithWidth200: {
+        width: 200,
+        borderWidth: 1,
+        borderColor: AppColors.cornFlowerBlue,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        marginRight: 20
+    },
+
+    typeStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+
+    nameStyle: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'right'
+    },
+
+    selectWhiteStyle: {
+        width: '100%',
+        borderWidth: 1,
+        borderColor: AppColors.alto,
+        borderStyle: 'solid',
+        borderRadius: 10,
+        backgroundColor: AppColors.white,
+        marginRight: 20
+    },
 
 }

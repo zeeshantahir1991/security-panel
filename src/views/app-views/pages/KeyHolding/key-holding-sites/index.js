@@ -94,6 +94,12 @@ export class KeyHoldingSites extends Component {
 
 	}
 
+	viewItem = (action, record) => {
+		this.props.history.push({
+			pathname: '/app/pages/key-holding-site-profile',
+			state: { action, record }
+		})
+	}
 
 	render() {
 		const { sites, search } = this.state;
@@ -104,7 +110,10 @@ export class KeyHoldingSites extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<span className="d-flex">
-						{record.siteName}
+						<a onClick={() => this.viewItem("viewItem", record)}>
+
+							{record.siteName}
+						</a>
 					</span>
 				),
 				sorter: {
@@ -269,7 +278,7 @@ export class KeyHoldingSites extends Component {
 			<div style={AppStyles.marginTop50}>
 
 				<Row gutter={16} justify="center">
-					<Col xs={0} sm={0} md={20} lg={20}>
+					<Col xs={0} sm={0} md={24} lg={24}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
 
@@ -309,7 +318,7 @@ export class KeyHoldingSites extends Component {
 									placeholder="Site Name"
 									onChange={(val) => this.handleChangeInput("siteName", val)}
 									style={componentStyles.filtersInputStyle} />
-									
+
 								<Button
 									disabled={!(search.status || search.keyHoldingStartDate || search.createDate || search.siteName)}
 									onClick={() => { this.searchInTable() }}
@@ -320,7 +329,7 @@ export class KeyHoldingSites extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					<Col xs={24} sm={24} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -354,7 +363,7 @@ export class KeyHoldingSites extends Component {
 									placeholder="Key Holding Period"
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
 									format={'YYYY/MM/DD'} />
-									
+
 								<Input
 									placeholder="Site Name"
 									onChange={(val) => this.handleChangeInput("siteName", val)}
@@ -370,7 +379,7 @@ export class KeyHoldingSites extends Component {
 						</Card>
 					</Col>
 
-					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
+					<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Key Holding Sites List" >
 							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 2200, y: 300 }} />
 						</Card>

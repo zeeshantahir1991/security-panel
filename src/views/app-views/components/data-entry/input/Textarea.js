@@ -5,7 +5,9 @@ const { TextArea } = Input;
 
 export class Textarea extends Component {
   render() {
-    return <TextArea rows={4} />;
+    let { rows } = this.props;
+
+    return <TextArea rows={rows ? rows : 4} />;
   }
 }
 

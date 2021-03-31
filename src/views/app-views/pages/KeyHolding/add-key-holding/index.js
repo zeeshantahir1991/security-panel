@@ -398,7 +398,7 @@ export class AddKeyHoldingSite extends Component {
 											// rules={rules.site}
 											hasFeedback
 										>
-											<Textarea placeholder={'Site Description...'} style={componentStyles.borderColor} />
+											<Textarea rows={1} placeholder={'Site Description...'} style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 
@@ -409,7 +409,7 @@ export class AddKeyHoldingSite extends Component {
 											// rules={rules.site}
 											hasFeedback
 										>
-											<Textarea placeholder={'Site Entrance and Exit Location'} style={componentStyles.borderColor} />
+											<Textarea rows={1} placeholder={'Site Entrance and Exit Location'} style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 
@@ -522,7 +522,7 @@ export class AddKeyHoldingSite extends Component {
 											// rules={rules.site}
 											hasFeedback
 										>
-											<Textarea placeholder={'Additional Information'} style={componentStyles.borderColor} />
+											<Textarea rows={1} placeholder={'Additional Information'} style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={6} lg={6}>
@@ -532,7 +532,7 @@ export class AddKeyHoldingSite extends Component {
 											// rules={rules.site}
 											hasFeedback
 										>
-											<Textarea placeholder={'Patrol guard instructions'} style={componentStyles.borderColor} />
+											<Textarea rows={1} placeholder={'Patrol guard instructions'} style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={6} lg={6}>
@@ -542,7 +542,7 @@ export class AddKeyHoldingSite extends Component {
 											// rules={rules.site}
 											hasFeedback
 										>
-											<Textarea placeholder={'Emergency Procedure'} style={componentStyles.borderColor} />
+											<Textarea rows={1} placeholder={'Emergency Procedure'} style={componentStyles.borderColor} />
 										</Form.Item>
 									</Col>
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.alignSelfCenter}>

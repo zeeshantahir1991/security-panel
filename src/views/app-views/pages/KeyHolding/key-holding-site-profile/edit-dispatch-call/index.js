@@ -175,7 +175,7 @@ export class EditDispatchCall extends Component {
 
 
 	render() {
-		const {  } = this.props;
+		const { } = this.props;
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
@@ -533,7 +533,8 @@ export class EditDispatchCall extends Component {
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>
-											<Button style={componentStyles.continueButton} htmlType="submit" block>
+											<Button onClick={() => this.props.parentCallback(false)}
+												style={componentStyles.continueButton} htmlType="submit" block>
 												Dispatch
 		                                </Button>
 										</Form.Item>

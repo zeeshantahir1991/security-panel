@@ -117,6 +117,11 @@ export class DispatchCalls extends Component {
 
 	}
 
+	callbackFunction = (edit) => {
+
+		this.setState({ edit: edit })
+
+	}
 
 	render() {
 		const { dispatchCalls, search, edit } = this.state;
@@ -474,7 +479,7 @@ export class DispatchCalls extends Component {
 										style={!(search.status || search.incidentType || search.severity || search.siteName || search.incidentPeriod) ? componentStyles.searchButton : componentStyles.searchEnabledButton}
 										htmlType="submit" block>
 										Search
-				</Button>
+				                   </Button>
 								</div>
 							</Card>
 						</Col>
@@ -487,7 +492,7 @@ export class DispatchCalls extends Component {
 					</Row>
 
 					:
-					<EditDispatchCall />
+					<EditDispatchCall parentCallback={this.callbackFunction} />
 				}
 
 				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}

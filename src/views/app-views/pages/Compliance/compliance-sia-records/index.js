@@ -1,4 +1,4 @@
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { Table } from "ant-table-extensions";
@@ -244,8 +244,10 @@ export class SiaRecordList extends Component {
 						{/* <Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
 						</Tooltip> */}
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+						<Tooltip title="Download">
+							<Button type="primary" shape="round" icon={<DownloadOutlined />} 
+							// onClick={() => { this.deleteUser(elm.id) }}
+							 size="small" />
 						</Tooltip>
 					</div>
 				)
@@ -364,7 +366,19 @@ export class SiaRecordList extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="SIA Record List" >
+						<Card className="card" title="SIA Record List" extra={
+                                    <Row gutter={16}>
+                                        <Col xs={24} sm={24} md={24} lg={24}>
+
+                                            <Button
+                                                onClick={() => this.setState({ addLicence: true })}
+                                                style={componentStyles.continueButton} htmlType="submit" block>
+                                                Download Logs
+                                        </Button>
+
+                                        </Col>
+                                    </Row>
+                                } >
 							<Table searchable bordered columns={tableColumns} dataSource={siaRecordList} rowKey='id' scroll={{ x: 1800, y: 300 }} />
 						</Card>
 					</Col>

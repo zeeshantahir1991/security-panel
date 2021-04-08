@@ -1,0 +1,44 @@
+.ant-menu-submenu > .ant-menu-submenu-title .ant-menu-submenu-arrow::before {
+    content: '';
+    position: absolute;
+    background: unset !important;
+    background-image: unset !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    border-color: #f9fffe transparent transparent transparent;
+    transition: transform 0.3s ease-in-out !important;
+    transform: rotate(45deg) !important;
+    border-radius: 0 !important;
+    left: 0;
+    top: 50%;
+  }
+  
+  .ant-menu-submenu-open > .ant-menu-submenu-title .ant-menu-submenu-arrow::before {
+    content: '';
+    position: absolute;
+    background: unset !important;
+    background-image: unset !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    border-color: #f9fffe transparent transparent transparent;
+    transition: transform 0.3s ease-in-out !important;
+    transform: rotate(130deg) !important;
+    border-radius: 0 !important;
+    left: 0;
+    top: 50%;
+  }
+  
+  .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
+  .ant-menu-submenu-vertical-left > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
+  .ant-menu-submenu-vertical-right > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
+  .ant-menu-submenu-vertical > .ant-menu-submenu-title .ant-menu-submenu-arrow::after {
+    content: none !important;
+  }
+  .ant-menu > .ant-menu-submenu-selected {
+    color: red;
+    border-bottom: 2px solid red;
+  }

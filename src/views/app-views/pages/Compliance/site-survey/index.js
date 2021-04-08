@@ -1,7 +1,7 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import { Table } from "ant-table-extensions";
-
+import SiteSurveyDetail from './site-survey-detail'
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import moment from 'moment';
 import React, { Component } from 'react';
@@ -56,6 +56,11 @@ export class StaticSiteSurveys extends Component {
 
 	state = {
 		sites: siteSurveys,
+		edit: false,
+		open: false,
+		selectionType: '',
+		form: false,
+		record: null,
 		search: {
 			status: "",
 			surveyor: "",
@@ -105,9 +110,14 @@ export class StaticSiteSurveys extends Component {
 
 	}
 
+	callbackFunction = (form) => {
+	
+		this.setState({ form: form, edit: form})
+	}
+
 
 	render() {
-		const { sites, search } = this.state;
+		const { sites, search ,open, selectionType, form, record, edit} = this.state;
 
 		const tableColumns = [
 			{
@@ -115,7 +125,9 @@ export class StaticSiteSurveys extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<span className="d-flex">
-						{record.siteName}
+						<a onClick={() => this.setState({ edit: true, record: record })}>
+							<span>{record.siteName}</span>
+						</a>
 					</span>
 				),
 				sorter: {
@@ -353,9 +365,26 @@ export class StaticSiteSurveys extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Static Site Surveys" >
+						{/* <Card className="card" title="Static Site Surveys" >
 							<Table searchable bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 1100, y: 300 }} />
-						</Card>
+						</Card> */}
+						{
+							(form || edit) ?
+								<SiteSurveyDetail record={edit ? record : null} parentCallback={this.callbackFunction} /> :
+								<Card className="card" title="Site Survey"
+									extra={
+										<Button
+											onClick={() => this.setState({ form: true })}
+											style={componentStyles.continueButton} htmlType="submit" block>
+											Add Site Survey
+									        </Button>
+
+									}
+								>
+									<Table
+										bordered columns={tableColumns} dataSource={sites} rowKey='id' scroll={{ x: 600, y: 200 }} />
+								</Card>
+						}
 					</Col>
 				</Row>
 

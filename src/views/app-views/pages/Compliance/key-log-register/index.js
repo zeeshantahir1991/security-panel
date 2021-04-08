@@ -223,20 +223,20 @@ export class KeyLogRegister extends Component {
 
 
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
-					</div>
-				)
-			}
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
+			// 			</Tooltip>
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (
@@ -412,7 +412,14 @@ export class KeyLogRegister extends Component {
 					</Col>
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Key Log Registers" >
+						<Card className="card" title="Key Log Registers" extra={
+								<Button
+									onClick={() => this.setState({ open: true })}
+									style={componentStyles.continueButton} htmlType="submit" block>
+									Download
+								        </Button>
+
+							}>
 							<Table searchable bordered columns={tableColumns} dataSource={keyLogRegisters} rowKey='id' scroll={{ x: 1300, y: 300 }} />
 						</Card>
 					</Col>

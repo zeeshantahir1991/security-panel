@@ -564,7 +564,7 @@ export class KeyHoldingSiteInformation extends Component {
                                     pathname: '/app/pages/key-holding-sites',
                                     // state: { action, record }
                                 })} style={componentStyles.continueButton} htmlType="submit" block>
-                                    Create
+                                    Update
                              </Button>
                             </Form.Item>
                         </Col>

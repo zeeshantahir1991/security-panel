@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Textarea from 'views/app-views/components/data-entry/input/Textarea';
 import { AppStyles } from "../../../../../assets/styles";
 import { Table } from "ant-table-extensions";
-import { componentStyles } from "./../styles";
+import { componentStyles } from "../styles";
 import moment from 'moment';
 
 const { Option } = Select;
@@ -15,7 +15,7 @@ const sitesData = [
 		"guardName": "XYZ",
 		"position": "Security Key",
 		"securityServices": "123",
-		"day": "000",
+		"day": "0100",
 		"startTime": 1783107200,
 		"endTime": 1983107200,
 		"hours": "Johny",
@@ -29,7 +29,7 @@ const sitesData = [
 		"guardName": "ABC",
 		"position": "Entry Key",
 		"securityServices": "456",
-		"day": "000",
+		"day": "0200",
 		"startTime": 1783107200,
 		"endTime": 1983107200,
 		"hours": "Tom",
@@ -180,7 +180,7 @@ const rules = {
 		})
 	]
 }
-export class AddKeyHoldingSite extends Component {
+export class CloseDispatchCall extends Component {
 
 	constructor(props) {
 		super(props);
@@ -225,7 +225,7 @@ export class AddKeyHoldingSite extends Component {
 					},
 				},
 				// width: 5,
-				fixed:"left"
+				fixed: "left"
 			},
 
 			{
@@ -247,8 +247,8 @@ export class AddKeyHoldingSite extends Component {
 			},
 
 			{
-				title: 'Key Issue Date & Time',
-				dataIndex: 'receiptDate&time',
+				title: 'Returned By',
+				dataIndex: 'returnedBy',
 				render: (_, record) => (
 					<div className="d-flex">
 						<span>{record.expenses}</span>
@@ -264,30 +264,30 @@ export class AddKeyHoldingSite extends Component {
 				// width: 5
 			},
 			{
-				title: 'Key Issued To',
-				dataIndex: 'keyIssuedTo',
+				title: 'Key Return Date',
+				dataIndex: 'keyReturnDate',
 				render: (_, record) => (
 					<div className="d-flex">
-					<Col xs={24} sm={24} md={18} lg={18}>
-						<Select
-							showSearch
-							style={componentStyles.selectStyle}
-							bordered={false}
-							placeholder="Key Issued To"
-							optionFilterProp="children"
-							onChange={(val) => this.handleChange("keyHoldingSite", val)}
-							// onFocus={onFocus}
-							// onBlur={onBlur}
-							// onSearch={onSearch}
-							filterOption={(input, option) =>
-								option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-							}
-						>
-							<Option value="Store 1">{record.expenses}</Option>
-							<Option value="Building 2">{record.expenses}</Option>
-						</Select>
-					</Col>
-						{/* <span>{record.expenses}</span> */}
+						{/* <span>{record.startTime}</span> */}
+						<span>{moment(record.startTime).format("DD MMM YYYY")}</span>
+					</div>
+				),
+				sorter: {
+					compare: (a, b) => {
+						a = a.expenses.toLowerCase();
+						b = b.expenses.toLowerCase();
+						return a > b ? -1 : b > a ? 1 : 0;
+					},
+				},
+				// width: 100
+			},
+			{
+				title: 'Key Return Time',
+				dataIndex: 'keyReturnTime',
+				render: (_,record) => (
+					<div className="d-flex">
+						<span>{moment(record.startTime).format("hh:mm a")}</span>
+
 					</div>
 				),
 				sorter: {
@@ -302,26 +302,26 @@ export class AddKeyHoldingSite extends Component {
 
 
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" title="Release Key"
-							//  onClick={() => { this.showUserProfile(elm) }}
-							  size="medium">Release Key</Button>
-						</Tooltip>
-					</div>
-				)
-			}
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
+			// 			<Tooltip title="View">
+			// 				<Button type="primary" className="mr-2" title="Release Key"
+			// 					//  onClick={() => { this.showUserProfile(elm) }}
+			// 					size="medium">Release Key</Button>
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 		return (
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 
 					<Col xs={24} sm={24} md={20} lg={20} >
-						<Card className="card" title="New Dispatch Call" style={AppStyles.paddingBottom20}>
+						<Card className="card" title="Close Dispatch Call" style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >
@@ -440,29 +440,23 @@ export class AddKeyHoldingSite extends Component {
 
 									<Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
-											name="incidentType"
-											label="Incident"
+											name="alarmActivation"
+											label="Alarm Activation"
 											// rules={rules.keyHoldingSite}
 											hasFeedback
 										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Incident"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("incidentType", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Alarm">Alarm</Option>
-												<Option value="Arson">Arson</Option>
+											<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
 
-											</Select>
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={8} lg={8}>
+										<Form.Item
+											name="high"
+											label="High"
+											// rules={rules.keyHoldingSite}
+											hasFeedback
+										>
+											<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
 										</Form.Item>
 									</Col>
 
@@ -483,35 +477,39 @@ export class AddKeyHoldingSite extends Component {
 
 									<Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
-											name="severity"
-											label="Severity"
+											name="guardName"
+											label="Guard Name"
 											// rules={rules.keyHoldingSite}
 											hasFeedback
 										>
-											<Select
-												showSearch
-												style={componentStyles.selectStyle}
-												bordered={false}
-												placeholder="Severity"
-												optionFilterProp="children"
-												onChange={(val) => this.handleChange("severity", val)}
-												// onFocus={onFocus}
-												// onBlur={onBlur}
-												// onSearch={onSearch}
-												filterOption={(input, option) =>
-													option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-												}
-											>
-												<Option value="Low">Low</Option>
-												<Option value="Medium">Medium</Option>
-												<Option value="High">High</Option>
+											<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
 
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={12} lg={12}>
+										<Form.Item
+											name="fromdateandtime"
+											label="From Date and Time"
+											// rules={rules.keyHoldingSite}
+											hasFeedback
+										>
+											<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
 
-											</Select>
+										</Form.Item>
+									</Col>
+									<Col xs={24} sm={24} md={12} lg={12}>
+										<Form.Item
+											name="todateandtime"
+											label="To Date and Time"
+											// rules={rules.keyHoldingSite}
+											hasFeedback
+										>
+											<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
+
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={8} lg={8}>
+									{/* <Col xs={24} sm={24} md={8} lg={8}>
 										<Form.Item
 											name="assignToGuard"
 											label="Assign To Guard"
@@ -539,7 +537,7 @@ export class AddKeyHoldingSite extends Component {
 
 											</Select>
 										</Form.Item>
-									</Col>
+									</Col> */}
 
 									{/* <Col xs={20} sm={20} md={22} lg={22}>
 										<Row className="card" gutter={16} style={componentStyles.addKeyContainer}>
@@ -608,8 +606,11 @@ export class AddKeyHoldingSite extends Component {
 										</Row>
 
 									</Col> */}
+
+
+
 									<Col xs={24} sm={24} md={24} lg={24} style={AppStyles.justifyContentCenter}>
-										<Card className="card" title="Key Release"
+										<Card className="card" title="Key return"
 										// extra={
 										// 	<Button
 										// 		onClick={() => this.setState({ open: true })}
@@ -623,23 +624,11 @@ export class AddKeyHoldingSite extends Component {
 									</Col>
 									<Col xs={20} sm={20} md={22} lg={22}>
 										<Row className="card" gutter={16} style={componentStyles.addKeyNotes}>
-
-											<Col xs={24} sm={24} md={24} lg={24}>
+											<Col xs={24} sm={24} md={3} lg={3} style={{ marginTop: 35 }}> Time Claimed</Col>
+											<Col xs={24} sm={24} md={3} lg={3}>
 												<Form.Item
-													name="internalNotes"
-													label="Internal Notes"
-													rules={rules.site}
-													hasFeedback
-												>
-													<Textarea placeholder={'Internal Notes...'} style={componentStyles.borderColor} />
-												</Form.Item>
-											</Col>
-
-
-											<Col xs={24} sm={24} md={8} lg={8}>
-												<Form.Item
-													name="addedBy"
-													label="Added By (Username)"
+													name="hours"
+													label="Hours"
 													// rules={rules.keyNumber}
 													hasFeedback
 												>
@@ -647,22 +636,30 @@ export class AddKeyHoldingSite extends Component {
 												</Form.Item>
 											</Col>
 
-											<Col xs={24} sm={24} md={8} lg={8}>
+											<Col xs={24} sm={24} md={3} lg={3}>
 												<Form.Item
-													name="dateTime"
-													label="Date & Time"
+													name="minutes"
+													label="Minutes"
 													// rules={rules.keyHoldingSite}
 													hasFeedback
 												>
-													<DatePicker style={componentStyles.datePicker1}
-														// onChange={(val) => this.handleChange("incidentPeriod", val)}
-														placeholder="Select Date"
-														// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-														format={'YYYY/MM/DD'} />
+													<Input type="text" style={componentStyles.borderColor} prefix={<UserOutlined />} />
+
 												</Form.Item>
 											</Col>
 
 											<Col xs={24} sm={24} md={24} lg={24}>
+												<Form.Item
+													name="callCloseNotes"
+													label="Call Close Notes"
+													rules={rules.site}
+													hasFeedback
+												>
+													<Textarea placeholder={'Internal Notes...'} rows={2} style={componentStyles.borderColor} />
+												</Form.Item>
+											</Col>
+
+											{/* <Col xs={24} sm={24} md={24} lg={24}>
 
 												<Row justify='center'>
 													<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
@@ -674,7 +671,7 @@ export class AddKeyHoldingSite extends Component {
 														</Form.Item>
 													</Col>
 												</Row>
-											</Col>
+											</Col> */}
 
 
 										</Row>
@@ -686,8 +683,8 @@ export class AddKeyHoldingSite extends Component {
 									<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 										<Form.Item>
-											<Button style={componentStyles.continueButton} htmlType="submit" block>
-												Dispatch
+											<Button style={componentStyles.continueButton} htmlType="submit" block onClick={()=>{this.props.hideCloseDispatchCall()}}>
+												Close Call
 		                                </Button>
 										</Form.Item>
 									</Col>
@@ -703,4 +700,4 @@ export class AddKeyHoldingSite extends Component {
 	}
 }
 
-export default AddKeyHoldingSite
+export default CloseDispatchCall

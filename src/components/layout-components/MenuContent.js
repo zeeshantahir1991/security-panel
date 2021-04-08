@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { Menu, Grid } from "antd";
 import IntlMessage from "../util-components/IntlMessage";
@@ -11,6 +11,7 @@ import { onMobileNavToggle } from "redux/actions/Theme";
 import { AppColors } from "assets/styles/colors";
 import { AppStyles } from "assets/styles";
 import { componentStyles } from "./styles";
+import "./sidenav.css"
 
 const { SubMenu } = Menu;
 const { useBreakpoint } = Grid;
@@ -33,6 +34,7 @@ const setDefaultOpen = (key) => {
 };
 
 const SideNavContent = (props) => {
+  const [highlightColor, setHighlightColor] = useState('white')
   const { sideNavTheme, routeInfo, hideGroupTitle, localization, onMobileNavToggle, navCollapsed } = props;
   const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
   const closeMobileNav = () => {
@@ -44,7 +46,7 @@ const SideNavContent = (props) => {
     <Menu
       theme={sideNavTheme === SIDE_NAV_LIGHT ? "light" : "dark"}
       mode="inline"
-      style={{ height: "100%", borderRight: 0 }}
+      style={{ height: "100%", borderRight: 0}}
       defaultSelectedKeys={[routeInfo?.key]}
       defaultOpenKeys={setDefaultOpen(routeInfo?.key)}
       className={hideGroupTitle ? "hide-group-title" : ""}
@@ -60,7 +62,8 @@ const SideNavContent = (props) => {
               borderTopWidth: 0,
               borderLeftWidth: 0,
               borderRightWidth: 0,
-              borderStyle: menu.title === "sidenav.dashboard" && !navCollapsed ? "solid" : null
+              borderStyle: menu.title === "sidenav.dashboard" && !navCollapsed ? "solid" : null,
+              backgroundColor: AppColors.newGrey
             }}
             title={menu.title === "sidenav.dashboard" ? setLocale(localization, menu.title) : null}
           >
@@ -68,18 +71,21 @@ const SideNavContent = (props) => {
               subMenuFirst.submenu.length > 0 ? (
                 <SubMenu
                   style={componentStyles.subMenuBackgroundColor}
+                  onTitleMouseEnter={()=>{}}
                   icon={
                     subMenuFirst.icon ? (
-                      <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} alt={`logo`} />
+                      <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} color="white" alt={`logo`} />
 
                     ) : null
                   }
+                  className="sidenav.css"
                   key={subMenuFirst.key}
                   title={setLocale(localization, subMenuFirst.title.toUpperCase())}
                 >
                   {subMenuFirst.submenu.map((subMenuSecond) => (
                     <Menu.Item
-                      className="menuHover"
+                      style={{backgroundColor:'#becede'}}
+                      // className="menuHover"
                       key={subMenuSecond.key}>
                       {subMenuSecond.icon ? (
                         <img style={AppStyles.sideBarIcon} src={subMenuSecond.icon} alt={`logo`} />

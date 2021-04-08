@@ -1,4 +1,4 @@
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
 import { Table } from "ant-table-extensions";
 
@@ -6,6 +6,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "./../styles";
+import CloseDispatchCall from '../close-dispatch-call';
 
 const dispatchCallsData = [
 	{
@@ -60,6 +61,7 @@ export class DispatchCalls extends Component {
 
 	state = {
 		dispatchCalls: dispatchCallsData,
+		showClosedCalls: false,
 		userProfileVisible: false,
 		selectedUser: null,
 		search: {
@@ -121,8 +123,12 @@ export class DispatchCalls extends Component {
 		})
 	}
 
+	hideCloseDispatchCall = () =>{
+		this.setState({showClosedCalls: false})
+	}
+
 	render() {
-		const { dispatchCalls, search } = this.state;
+		const { dispatchCalls, search, showClosedCalls } = this.state;
 
 		const tableColumns = [
 			{
@@ -149,7 +155,7 @@ export class DispatchCalls extends Component {
 				dataIndex: 'clientName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a>{record.clientName}</a>
+						<span>{record.clientName}</span>
 					</div>
 				),
 				sorter: {
@@ -167,7 +173,7 @@ export class DispatchCalls extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a>{record.siteName}</a>
+						<span>{record.siteName}</span>
 					</div>
 				),
 				sorter: {
@@ -289,13 +295,11 @@ export class DispatchCalls extends Component {
 			{
 				title: '',
 				dataIndex: 'actions',
-				render: (_, elm) => (
+				render: (_, record) => (
 					<div className="text-right">
 						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
+							<Button type="primary" className="mr-2" onClick={()=>{this.setState({showClosedCalls: true})}}
+							 size="medium">Close</Button>
 						</Tooltip>
 					</div>
 				)
@@ -305,7 +309,10 @@ export class DispatchCalls extends Component {
 		return (
 			<div style={AppStyles.marginTop50}>
 
-				<Row gutter={16} justify="center">
+				{
+					showClosedCalls ? <CloseDispatchCall hideCloseDispatchCall={this.hideCloseDispatchCall}/> :
+
+					<Row gutter={16} justify="center">
 					<Col xs={0} sm={0} md={20} lg={20}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.flexDirectionRow}>
@@ -483,9 +490,8 @@ export class DispatchCalls extends Component {
 							<Table searchable bordered columns={tableColumns} dataSource={dispatchCalls} rowKey='id' scroll={{ x: 2000, y: 300 }} />
 						</Card>
 					</Col>
-				</Row>
-
-				{/* <GuardsView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/> */}
+				</Row>}
+				
 			</div>
 		)
 	}

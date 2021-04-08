@@ -559,7 +559,12 @@ export class AddKeyHoldingSite extends Component {
 						<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
 
 							<Form.Item>
-								<Button style={componentStyles.continueButton} htmlType="submit" block>
+								<Button style={componentStyles.continueButton} htmlType="submit" block
+								onClick={() => this.props.history.push({
+                                    pathname: '/app/pages/key-holding-sites',
+                                    // state: { action, record }
+                                })}
+								>
 									Create
                              </Button>
 							</Form.Item>

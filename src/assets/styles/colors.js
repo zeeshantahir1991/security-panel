@@ -56,6 +56,7 @@ export const AppColors = {
   cornFlowerBlue: '#60b0f4',
   pictonBlue: '#37A5E1',
   tropicalBlue: '#E6F3FA',
+  newGrey: '#7C9DBC',
 
   //silver
   silverChalice: '#AAAAAA',

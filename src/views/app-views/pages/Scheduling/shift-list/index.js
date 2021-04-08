@@ -1,5 +1,5 @@
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip } from 'antd';
+import { Button, Card, Col, DatePicker, Input, Row, Select, Tooltip,TimePicker  } from 'antd';
 import { Table } from "ant-table-extensions";
 
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../styles";
 
+const {RangePicker} = TimePicker
 const shiftData = [
 	{
 		"id": "1",
@@ -161,16 +162,31 @@ export class ShiftList extends Component {
 
 		const tableColumns = [
 
-
+			{
+				title: 'Shift Options',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+						<Tooltip title="Edit Shift">
+							<Button type="primary" onClick={() => this.viewItem("viewItem", elm)} size="small" >Edit Shift</Button>
+						</Tooltip>
+						<Tooltip title="Cancel Shift">
+							<Button type="primary" danger onClick={() => this.cancelledShift("cancelledShift", elm)} size="small" >Cancel Shift</Button>
+						</Tooltip>
+					</div>
+				),
+				width: 200,
+				fixed: 'left'
+			},
 			{
 				title: 'Site Name',
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a onClick={() => this.viewItem("viewItem", record)}>
+						{/* <a onClick={() => this.viewItem("viewItem", record)}> */}
 
 							<span>{record.siteName}</span>
-						</a>
+						{/* </a> */}
 
 					</div>
 				),
@@ -182,7 +198,7 @@ export class ShiftList extends Component {
 					},
 				},
 				width: 200,
-				fixed: 'left'
+				// fixed: 'left'
 
 			},
 
@@ -350,25 +366,25 @@ export class ShiftList extends Component {
 
 			},
 
-			{
-				title: 'Checkin Radius',
-				dataIndex: 'checkinRadius',
-				sorter: {
-					compare: (a, b) => a.checkinRadius.length - b.checkinRadius.length,
-				},
-				width: 150
+			// {
+			// 	title: 'Checkin Radius',
+			// 	dataIndex: 'checkinRadius',
+			// 	sorter: {
+			// 		compare: (a, b) => a.checkinRadius.length - b.checkinRadius.length,
+			// 	},
+			// 	width: 150
 
-			},
+			// },
 
-			{
-				title: 'Tracking Interval',
-				dataIndex: 'trackingInterval',
-				sorter: {
-					compare: (a, b) => a.trackingInterval.length - b.trackingInterval.length,
-				},
-				width: 150
+			// {
+			// 	title: 'Tracking Interval',
+			// 	dataIndex: 'trackingInterval',
+			// 	sorter: {
+			// 		compare: (a, b) => a.trackingInterval.length - b.trackingInterval.length,
+			// 	},
+			// 	width: 150
 
-			},
+			// },
 
 			{
 				title: 'Expense Type',
@@ -400,18 +416,18 @@ export class ShiftList extends Component {
 
 
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
 
-						<Tooltip title="Cancel Shift">
-							<Button danger onClick={() => this.cancelledShift("cancelledShift", elm)} size="small" >Cancel Shift</Button>
-						</Tooltip>
-					</div>
-				)
-			}
+			// 			<Tooltip title="Cancel Shift">
+			// 				<Button danger onClick={() => this.cancelledShift("cancelledShift", elm)} size="small" >Cancel Shift</Button>
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (
@@ -454,17 +470,20 @@ export class ShiftList extends Component {
 
 
 
-								<DatePicker style={componentStyles.datePicker}
+								<RangePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("shiftStartTime", val)}
-									placeholder="Shift Start Time"
+									// placeholder="Shift Start Time"
 									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+									// format={'YYYY/MM/DD'} 
 
-								<DatePicker style={componentStyles.datePicker}
+									/>
+
+								<DatePicker.RangePicker style={componentStyles.datePicker}
 									onChange={(val) => this.handleChange("shiftEndTime", val)}
-									placeholder="Shift End Time"
-									// defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
-									format={'YYYY/MM/DD'} />
+									// placeholder="Shift End Time"
+									// // defaultValue={moment('2015/01/01', 'YYYY/MM/DD')} 
+									// format={'YYYY/MM/DD'} 										
+									/>
 
 								<Input
 									placeholder="Guard Name"
@@ -480,7 +499,7 @@ export class ShiftList extends Component {
 							</div>
 						</Card>
 					</Col>
-					<Col xs={20} sm={20} md={0} lg={0}>
+					{/* <Col xs={20} sm={20} md={0} lg={0}>
 						<Card title="Filters" style={AppStyles.paddingBottom20}>
 							<div style={AppStyles.justifyContentCenter}>
 
@@ -541,7 +560,7 @@ export class ShiftList extends Component {
 					            </Button>
 							</div>
 						</Card>
-					</Col>
+					</Col> */}
 
 					<Col xs={24} sm={24} md={20} lg={20} style={AppStyles.justifyContentCenter}>
 						<Card className="card" title="Shift List" >

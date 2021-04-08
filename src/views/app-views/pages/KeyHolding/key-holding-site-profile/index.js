@@ -7,6 +7,7 @@ import { componentStyles } from "../styles";
 import Docs from "./docs";
 import KeyHoldingSiteInformation from "./key-holding-site-information"
 import SiteTimesheets from "./site-timesheets"
+import SiteKeys from "./site-keys"
 import DispatchCalls from "./dispatch-calls"
 
 const { TabPane } = Tabs;
@@ -18,7 +19,8 @@ export class KeyHoldingSiteProfile extends Component {
         super(props);
         this.state = {
 
-            type: "Key Holding Site Information",
+            // type: "Key Holding Site Information",
+            type: "Site Keys",
             form: "",
             avatarUrl: '/img/avatars/thumb-6.jpg',
             active: true
@@ -64,7 +66,7 @@ export class KeyHoldingSiteProfile extends Component {
                             <Row >
                                 <Col className="card"
                                     xs={24} sm={24} md={4} lg={4}
-                                    style={{ backgroundColor: 'white' }}
+                                    style={{ backgroundColor: 'white', height:'50vh' }}
                                 >
 
                                     <Menu mode="vertical">
@@ -89,14 +91,12 @@ export class KeyHoldingSiteProfile extends Component {
                                         </Menu.Item>
 
 
-                                        <Menu.Item
+                                        {/* <Menu.Item
                                             className="menuHover"
                                             onClick={() => this.setState({ type: "Site Timesheets" })}
                                             style={'Site Timesheets' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
-                                            {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
-
                                             <span
                                                 style={{
                                                     color: 'Site Timesheets' === type ? AppColors.pictonBlue : null
@@ -106,7 +106,7 @@ export class KeyHoldingSiteProfile extends Component {
                                                 Site Timesheets
 
                                                 </span>
-                                        </Menu.Item>
+                                        </Menu.Item> */}
 
                                         <Menu.Item
                                             className="menuHover"
@@ -128,19 +128,17 @@ export class KeyHoldingSiteProfile extends Component {
                                         </Menu.Item>
                                         <Menu.Item
                                             className="menuHover"
-                                            onClick={() => this.setState({ type: "Dispatch Activity Reports" })}
-                                            style={'Dispatch Activity Reports' === type ? componentStyles.staffMenuItemSelected : null
+                                            onClick={() => this.setState({ type: "Site Keys" })}
+                                            style={'Site Keys' === type ? componentStyles.staffMenuItemSelected : null
                                             }
                                         >
-                                            {/* <img style={AppStyles.staffSideBarIcon} src={'/img/sidebar/personal-information.png'} alt={`logo`} /> */}
-
                                             <span
                                                 style={{
-                                                    color: 'Dispatch Activity Reports' === type ? AppColors.pictonBlue : null
+                                                    color: 'Site Keys' === type ? AppColors.pictonBlue : null
                                                 }}
 
                                             >
-                                                Dispatch Activity Reports
+                                                Site Keys
 
                                                 </span>
                                         </Menu.Item>
@@ -187,8 +185,8 @@ export class KeyHoldingSiteProfile extends Component {
                                                 >
                                                     <Option value="Key Holding Site Information">Key Holding Site Information</Option>
                                                     <Option value="Docs">Docs</Option>
-                                                    <Option value="Site Timesheets">Site Timesheets</Option>
-                                                    <Option value="Dispatch Activity Reports">Dispatch Activity Reports</Option>
+                                                    <Option value="Site Keys">Site Keys</Option>
+                                                    {/* <Option value="Dispatch Activity Reports">Dispatch Activity Reports</Option> */}
 
 
 
@@ -212,8 +210,8 @@ export class KeyHoldingSiteProfile extends Component {
                                                 <Docs action={action} record={record} history={this.props.history} /> :
                                                 type === "Key Holding Site Information" ?
                                                     <KeyHoldingSiteInformation action={action} record={record} history={this.props.history} /> :
-                                                    type === "Site Timesheets" ?
-                                                        <SiteTimesheets action={action} record={record} history={this.props.history} /> :
+                                                    type === "Site Keys" ?
+                                                        <SiteKeys action={action} record={record} history={this.props.history} /> :
                                                         type === "Dispatch Activity Reports" ?
                                                             <DispatchCalls action={action} record={record} history={this.props.history} /> :
 

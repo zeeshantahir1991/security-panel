@@ -155,7 +155,7 @@ export class DispatchCalls extends Component {
 				dataIndex: 'clientName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a>{record.clientName}</a>
+						{record.clientName}
 					</div>
 				),
 				sorter: {
@@ -173,7 +173,7 @@ export class DispatchCalls extends Component {
 				dataIndex: 'siteName',
 				render: (_, record) => (
 					<div className="d-flex">
-						<a>{record.siteName}</a>
+						{record.siteName}
 					</div>
 				),
 				sorter: {
@@ -289,20 +289,16 @@ export class DispatchCalls extends Component {
 				width: 200
 			},
 
-
-
-
 			{
 				title: '',
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-right">
-						<Tooltip title="View">
-							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => { this.showUserProfile(elm) }} size="small" />
-						</Tooltip>
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />} onClick={() => { this.deleteUser(elm.id) }} size="small" />
-						</Tooltip>
+						{/* <Tooltip title="View">
+							<Button type="primary" className="mr-2"
+							 onClick={() => { this.showUserProfile(elm) }}
+							  size="medium">Release Key</Button>
+						</Tooltip> */}
 					</div>
 				)
 			}

@@ -306,20 +306,20 @@ export class CancelledShiftList extends Component {
 			},
 
 
-			{
-				title: '',
-				dataIndex: 'actions',
-				render: (_, elm) => (
-					<div className="text-right">
+			// {
+			// 	title: '',
+			// 	dataIndex: 'actions',
+			// 	render: (_, elm) => (
+			// 		<div className="text-right">
 
-						<Tooltip title="Delete">
-							<Button danger icon={<DeleteOutlined />}
-								// onClick={() => { this.deleteUser(elm.id) }}
-								size="small" />
-						</Tooltip>
-					</div>
-				)
-			}
+			// 			<Tooltip title="Delete">
+			// 				<Button danger icon={<DeleteOutlined />}
+			// 					// onClick={() => { this.deleteUser(elm.id) }}
+			// 					size="small" />
+			// 			</Tooltip>
+			// 		</div>
+			// 	)
+			// }
 		];
 
 		return (

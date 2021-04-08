@@ -165,7 +165,7 @@ export class NewShift extends Component {
 
 
 	render() {
-		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignGuard, breakk, edit } = this.state;
+		const { daysWeek, checkpointModal, positionModal, position, guardName, payRate, assignGuard, expense, edit, shiftType } = this.state;
 		// let { record } = this.props?.location?.state !== undefined && this.props?.location?.state
 		const {record} = this.state;
 		const tableColumns = [
@@ -477,6 +477,17 @@ export class NewShift extends Component {
 													</Select>
 												</Form.Item>
 											</Col>
+											
+											<Col xs={24} sm={24} md={6} lg={6}>
+												<Form.Item
+													name="chargeRate"
+													label="Charge Rate"
+													// rules={rules.chargeRate}
+													hasFeedback
+												>
+													<Input style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
+												</Form.Item>
+											</Col>
 
 											<Col xs={24} sm={24} md={6} lg={6}>
 												<Form.Item
@@ -508,12 +519,13 @@ export class NewShift extends Component {
 												</Form.Item>
 											</Col>
 
-											<Col xs={24} sm={24} md={6} lg={6}>
+											<Col xs={24} sm={24} md={6} lg={6} >
 												<Form.Item
 													name="siteName"
 													label="Master Site Name"
 													// rules={rules.siteName}
 													hasFeedback
+													style={{display: shiftType === "MP" ? 'block' : 'none' }}
 												>
 													<Select
 														showSearch
@@ -533,17 +545,6 @@ export class NewShift extends Component {
 														<Option value="Site B">Site B</Option>
 														<Option value="Site C">Site C</Option>
 													</Select>
-												</Form.Item>
-											</Col>
-
-											<Col xs={24} sm={24} md={6} lg={6}>
-												<Form.Item
-													name="chargeRate"
-													label="Charge Rate"
-													// rules={rules.chargeRate}
-													hasFeedback
-												>
-													<Input style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
 												</Form.Item>
 											</Col>
 											<Col xs={24} sm={24} md={6} lg={6}>
@@ -698,11 +699,11 @@ export class NewShift extends Component {
 													</Select>
 												</Form.Item>
 											</Col>
-											<Col xs={24} sm={24} md={6} lg={6}>
+											<Col xs={24} sm={24} md={6} lg={6} >
 												<Form.Item
 													name="expenseRate"
 													label="Expense in amount"
-													// rules={rules.checkpointDescriptor}
+													style={{display: expense === "Yes" ? 'block' : 'none' }}
 													hasFeedback
 												>
 													<Input min="0" type="number" style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
@@ -988,7 +989,7 @@ export class NewShift extends Component {
 
 										<Form.Item>
 											<Button style={componentStyles.continueButton} onClick={() => { this.props.history.push('/app/pages/shift-list') }} block>
-												Create Shift
+												{record ? 'Edit Shift' : 'Create Shift' }
 					                            </Button>
 										</Form.Item>
 									</Col>

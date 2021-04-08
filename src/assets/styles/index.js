@@ -476,7 +476,7 @@ export const AppStyles = {
     stepperItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.alto, color: AppColors.black, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
 
 
-    avatarActiveButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, marginLeft: 10 },
+    avatarActiveButton: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey, marginLeft: 10 },
 
     avatarInactiveButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed, marginLeft: 10},
 

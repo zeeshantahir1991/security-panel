@@ -31,14 +31,16 @@
     left: 0;
     top: 50%;
   }
+  .ant-menu-submenu-active {
+    background-color: crimson;
+    color:darkcyan;
+    font-weight: 200px
+  }
+    
   
   .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
   .ant-menu-submenu-vertical-left > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
   .ant-menu-submenu-vertical-right > .ant-menu-submenu-title .ant-menu-submenu-arrow::after,
   .ant-menu-submenu-vertical > .ant-menu-submenu-title .ant-menu-submenu-arrow::after {
     content: none !important;
-  }
-  .ant-menu > .ant-menu-submenu-selected {
-    color: red;
-    border-bottom: 2px solid red;
   }

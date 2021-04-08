@@ -16,7 +16,7 @@ export const componentStyles = {
     },
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
-    continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
+    continueButton: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
     selectStyle: {
         width: '100%',
         borderWidth: 1,
@@ -90,8 +90,8 @@ export const componentStyles = {
         borderRadius: 10,
         // marginTop: 20
     },
-    searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, backgroundColor: AppColors.white },
-    searchEnabledButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.white, borderWidth: 1, borderStyle: 'solid', backgroundColor: AppColors.cornFlowerBlue, borderColor: AppColors.cornFlowerBlue },
+    searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey, backgroundColor: AppColors.white },
+    searchEnabledButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.white, borderWidth: 1, borderStyle: 'solid', backgroundColor: AppColors.newGrey, borderColor: AppColors.newGrey },
 
 
     filtersInputStyle: {
@@ -125,13 +125,13 @@ export const componentStyles = {
     datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
     rangePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 40 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
-    continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
+    continueButton: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
     cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
 
     selectStyle: {
         width: '100%',
         borderWidth: 1,
-        borderColor: AppColors.cornFlowerBlue,
+        borderColor: AppColors.newGrey,
         borderStyle: 'solid',
         borderRadius: 10,
         marginRight: 20
@@ -200,8 +200,8 @@ export const componentStyles = {
         borderRadius: 10,
         marginTop: 20
     },
-    searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, backgroundColor: AppColors.white },
-    searchEnabledButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.white, borderWidth: 1, borderStyle: 'solid', backgroundColor: AppColors.cornFlowerBlue, borderColor: AppColors.cornFlowerBlue },
+    searchButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey, backgroundColor: AppColors.white },
+    searchEnabledButton: { paddingHorizontal: 100, width: '100%', borderRadius: 10, color: AppColors.white, borderWidth: 1, borderStyle: 'solid', backgroundColor: AppColors.newGrey, borderColor: AppColors.newGrey },
 
 
     filtersInputStyle: {
@@ -217,7 +217,7 @@ export const componentStyles = {
 
     documentAndSitePreferencesLinkStyle: {
         fontSize: 15,
-        color: AppColors.cornFlowerBlue,
+        color: AppColors.newGrey,
         textAlign: 'center',
         cursor: 'pointer'
 
@@ -240,7 +240,7 @@ export const componentStyles = {
     dropDownStyleWithWidth200: {
         width: 200,
         borderWidth: 1,
-        borderColor: AppColors.cornFlowerBlue,
+        borderColor: AppColors.newGrey,
         borderStyle: 'solid',
         borderRadius: 10,
         marginRight: 20

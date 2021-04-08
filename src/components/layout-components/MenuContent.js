@@ -44,9 +44,9 @@ const SideNavContent = (props) => {
   }
   return (
     <Menu
-      theme={sideNavTheme === SIDE_NAV_LIGHT ? "light" : "dark"}
+      // theme={sideNavTheme === SIDE_NAV_LIGHT ? "light" : "dark"}
       mode="inline"
-      style={{ height: "100%", borderRight: 0}}
+      style={{ height: "100%", borderRight: 0, backgroundColor: AppColors.newGrey}}
       defaultSelectedKeys={[routeInfo?.key]}
       defaultOpenKeys={setDefaultOpen(routeInfo?.key)}
       className={hideGroupTitle ? "hide-group-title" : ""}
@@ -71,14 +71,12 @@ const SideNavContent = (props) => {
               subMenuFirst.submenu.length > 0 ? (
                 <SubMenu
                   style={componentStyles.subMenuBackgroundColor}
-                  onTitleMouseEnter={()=>{}}
                   icon={
                     subMenuFirst.icon ? (
                       <img style={AppStyles.sideBarIcon} src={subMenuFirst.icon} color="white" alt={`logo`} />
 
                     ) : null
                   }
-                  className="sidenav.css"
                   key={subMenuFirst.key}
                   title={setLocale(localization, subMenuFirst.title.toUpperCase())}
                 >

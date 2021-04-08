@@ -7,19 +7,21 @@ import { AppStyles } from 'assets/styles';
 
 const StatisticWidget = ({ title, value, status, subtitle, prefix, backgroundColor }) => {
 	return (
-		<Card>
+		<Card style={{backgroundColor:'#D8E5F2'}}>
 			{title && <h4 className="mb-0">{title}</h4>}
 			<div className={`${prefix ? 'd-flex' : ''} ${title ? 'mt-3' : ''}`}>
 				{prefix ? <div className="mr-2">{prefix}</div> : null}
 				<div>
 					<div className="" style={AppStyles.flexDirectionRow}>
 						<div style={{ flex: 1 }}>
-							<div style={{ height: 70, width: 70, backgroundColor: backgroundColor, textAlign: 'center' }}>
-								<img style={{ height: 50, width: 50, marginTop: 10 }} src={'/img/bar-graph.png'} alt={`stats`} />
+							{/* <div style={{ height: 70, width: 70, backgroundColor: backgroundColor, textAlign: 'center' }}> */}
+							<div style={{ height: 70, width: 70, backgroundColor: 'white', textAlign: 'center', borderRadius:30 }}>
+								<img style={{ height: 50, width: 50, marginTop: 10, padding: 7}} src={'/img/bar-graph.png'} alt={`stats`} />
 							</div>
 						</div>
 						<div style={{ alignSelf: 'center' }}>
-							<h1 className=" font-weight-bold" style={{ color: AppColors.cornFlowerBlue }}>{value}</h1>
+							{/* <h1 className=" font-weight-bold" style={{ color: AppColors.newGrey }}>{value}</h1> */}
+							<h1 className=" font-weight-bold" style={{ color: AppColors.black }}>{value}</h1>
 						</div>
 						{
 							status ?

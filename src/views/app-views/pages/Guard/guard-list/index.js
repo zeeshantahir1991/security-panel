@@ -210,7 +210,7 @@ export class GuardsList extends Component {
 				dataIndex: 'progress',
 				render: (_, record) => (
 					<div className="d-flex">
-						 <Progress percent={record.progress}  strokeColor={AppColors.skyBlue}/>
+						 <Progress percent={record.progress}  strokeColor={AppColors.newGrey}/>
 					</div>
 				),
 				width: 150

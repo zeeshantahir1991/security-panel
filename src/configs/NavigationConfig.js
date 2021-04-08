@@ -64,7 +64,7 @@ const staffNavTree = [
         key: "staff-pages",
         path: "/app/pages",
         title: "Staff",
-        icon: "/img/sidebar/security-man1.png",
+        icon: "/img/sidebar/security-man.png",
         breadcrumb: true,
         submenu: [
           {

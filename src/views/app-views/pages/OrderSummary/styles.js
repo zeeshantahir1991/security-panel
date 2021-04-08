@@ -11,9 +11,9 @@ export const componentStyles = {
 
     borderColor: { borderColor: AppColors.alto },
 
-    continueButton: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue },
+    continueButton: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
     cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
-    applyCode: { borderRadius: 10, color: AppColors.cornFlowerBlue, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.cornFlowerBlue, marginLeft: 20 },
+    applyCode: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey, marginLeft: 20 },
     promoAppliedDesc: { color: AppColors.conifer }
 
 }

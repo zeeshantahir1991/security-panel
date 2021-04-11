@@ -1,0 +1,7 @@
+.ant-switch-checked {
+    background-color: #7C9DBC;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #7C9DBC;
+    border-color: #7C9DBC;
+  }

@@ -472,7 +472,8 @@ export const AppStyles = {
     sideBarIcon: { height: 30, width: 30, marginRight: 30 },
     staffSideBarIcon: { height: 15, width: 15, marginTop: 10, marginBottom: 10, marginLeft: 10, marginRight: 10 },
     staffSideBarIconSelectedContainer: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue },
-    stepperSelectedItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue, color: AppColors.white, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
+    // stepperSelectedItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.skyBlue, color: AppColors.white, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
+    stepperSelectedItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.newGrey, color: AppColors.white, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
     stepperItem: { height: 35, width: 35, borderRadius: 20, backgroundColor: AppColors.alto, color: AppColors.black, alignSelf: 'center', justifyContent: 'center', paddingTop: 2 },
 
 

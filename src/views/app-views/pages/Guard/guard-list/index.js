@@ -21,6 +21,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { componentStyles } from "../../../dashboards/styles";
+import './index.css'
 
 const { Option } = Select;
 

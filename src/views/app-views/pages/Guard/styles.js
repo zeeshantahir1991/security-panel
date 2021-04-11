@@ -52,7 +52,7 @@ export const componentStyles = {
     },
 
     switchStyle: {
-        marginRight: 10
+        marginRight: 10,
     },
 
     staffMenuItemSelected: {

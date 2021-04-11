@@ -3,6 +3,7 @@ import { Button, Card, Checkbox, Col, Form, Input, Row, Select, Switch } from 'a
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../../assets/styles";
 import { componentStyles } from "../../styles";
+import './details.css'
 
 const { Option } = Select;
 

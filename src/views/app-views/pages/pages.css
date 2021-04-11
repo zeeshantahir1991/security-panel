@@ -1,0 +1,11 @@
+.ant-switch-checked {
+    background-color: #7C9DBC !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #7C9DBC !important;
+    border-color: #7C9DBC !important;
+  }
+  .ant-pagination-item-active{
+    border-color: #7C9DBC !important;
+    background-color: #7C9DBC !important;
+}

@@ -53,7 +53,7 @@ export const AppStyles = {
 
     flexDirectionRow: {
         flexDirection: 'row',
-        display: 'flex'
+        display: 'flex',
     },
 
     flexDirectionWithItemsCenter: {

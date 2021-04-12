@@ -10,9 +10,9 @@ import { AuthFooter } from "../../../auth-views/components/AuthFooter";
 import { AuthHeader } from "../../../auth-views/components/AuthHeader";
 import { limits } from './limits';
 import { componentStyles } from './styles';
+import swal from 'sweetalert2';
 
 const { Column } = Table;
-
 
 
 class OrderSummary extends React.Component {
@@ -184,8 +184,15 @@ class OrderSummary extends React.Component {
 											<Form.Item>
 												<Button
 													style={componentStyles.continueButton}
+													onClick={() => {
+														swal.fire({
+															title: 'Success!',
+															text: 'Payment Completed Successfully',
+															icon: 'success'
+														})
+													}}
 													htmlType="submit" block>
-													Add Card
+													Pay Now
                                                 </Button>
 											</Form.Item>
 										</Col>
@@ -196,8 +203,13 @@ class OrderSummary extends React.Component {
 							:
 							<div style={AppStyles.flexDirectionRow}>
 								<Col className="card" xs={0} sm={0} md={12} lg={12} >
-									<div className="p-3" style={{ backgroundColor: 'white' }}>
-										<div className="mt-4">
+									<div 
+									// className="p-3" 
+									className="pb-4" 
+									style={{ backgroundColor: 'white' }}>
+										<div 
+										// className="mt-1"
+										>
 											<h1 style={{ fontSize: 40 }} className="text-center font-weight-semibold">{limits.plan}</h1>
 										</div>
 										<div style={{ visibility: 'hidden' }} className="text-center">
@@ -224,18 +236,22 @@ class OrderSummary extends React.Component {
 												}
 											</div>
 										</div>
-										<div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" >
+										{/* <div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" > */}
 											{/* <RouteLink to={'/auth/register'}> */}
-											<Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+											{/* <Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
 												{pricingData?.button.text}
-											</Button>
+											</Button> */}
 											{/* </RouteLink> */}
-										</div>
+										{/* </div> */}
 									</div>
 								</Col>
-								<Col className="card" xs={0} sm={0} md={12} lg={12} >
-									<div className="p-3" style={pricingData?.backgroundColor}>
-										<div className="mt-4">
+								<Col className="card" xs={0} sm={0} md={12} lg={12}>
+									<div 
+									className="pb-4" 
+									style={pricingData?.backgroundColor}>
+										<div 
+										// className="mt-1"
+										>
 											<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 										</div>
 										<div className="text-center">
@@ -264,14 +280,14 @@ class OrderSummary extends React.Component {
 												}
 											</div>
 										</div>
-										<div className="mt-3 text-center" style={{ marginBottom: 50 }}>
+										{/* <div className="mt-3 text-center" style={{ marginBottom: 50, paddingBottom: 39 }}> */}
 											{/* <RouteLink to={'/auth/register'}> */}
-											<Button onClick={() => this.setState({ billing: true })}
-												style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+											{/* <Button onClick={() => this.setState({ billing: true })}
+												style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, display:'none', color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
 												{pricingData?.button.text}
-											</Button>
+											</Button> */}
 											{/* </RouteLink> */}
-										</div>
+										{/* </div> */}
 									</div>
 								</Col>
 							</div>
@@ -347,7 +363,7 @@ class OrderSummary extends React.Component {
 								</Table>
 								<Row style={AppStyles.flexDirectionRow}>
 									<Row style={AppStyles.flexDirectionRow}>
-										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center', display: !billing ? 'block' : 'none' }}>
 											<Form layout="vertical">
 												<Form.Item
 													name="promoCode"
@@ -361,7 +377,7 @@ class OrderSummary extends React.Component {
 												</Form.Item>
 											</Form>
 										</Col>
-										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center' }}>
+										<Col xs={12} sm={12} md={12} lg={12} style={{ alignSelf: 'center', display: !billing ? 'block' : 'none' }}>
 											<Button onClick={this.applyCode} style={componentStyles.applyCode} htmlType="submit" block>
 												Apply Code
 										    </Button>
@@ -398,10 +414,16 @@ class OrderSummary extends React.Component {
 									</div>
 
 								</Row>
-								{promoApplied ? <div style={componentStyles.promoAppliedDesc}>Promo Applied!</div> : null}
+								{promoApplied && !billing ? <div style={componentStyles.promoAppliedDesc}>Promo Applied!</div> : null}
 
 							</div>
-
+							<div style={{ alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+								<Button onClick={() => this.setState({ billing: true })}
+									style={{ borderRadius: 12, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{/* {pricingData?.button.text} */}
+								Proceed to Payment
+							</Button>
+							</div>
 						</Card>
 					</Col>
 

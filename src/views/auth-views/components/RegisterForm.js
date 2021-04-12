@@ -178,6 +178,17 @@ export const RegisterForm = (props) => {
 						goToSummary()
 					});
 				}
+				else{
+					swal.fire({
+						title: "SignUp Failed",
+						text: res.message,
+						// input: 'password',
+						// showCancelButton: true        
+					}).then(() => {
+
+					});
+
+				}
 			})
 			// console.log({values});
 			// signUp(values)

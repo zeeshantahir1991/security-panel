@@ -302,19 +302,19 @@ export class CloseDispatchCall extends Component {
 
 
 
-			// {
-			// 	title: '',
-			// 	dataIndex: 'actions',
-			// 	render: (_, elm) => (
-			// 		<div className="text-right">
-			// 			<Tooltip title="View">
-			// 				<Button type="primary" className="mr-2" title="Release Key"
-			// 					//  onClick={() => { this.showUserProfile(elm) }}
-			// 					size="medium">Release Key</Button>
-			// 			</Tooltip>
-			// 		</div>
-			// 	)
-			// }
+			{
+				title: '',
+				dataIndex: 'actions',
+				render: (_, elm) => (
+					<div className="text-right">
+						<Tooltip title="View">
+							<Button type="primary" className="mr-2" title="Release Key"
+							//  onClick={() => { this.showUserProfile(elm) }}
+							  size="medium">Return Key</Button>
+						</Tooltip>
+					</div>
+				)
+			}
 		];
 		return (
 			<div style={AppStyles.marginTop50}>

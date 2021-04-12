@@ -662,7 +662,7 @@ export class AddKeyHoldingSite extends Component {
 												</Form.Item>
 											</Col>
 
-											<Col xs={24} sm={24} md={24} lg={24}>
+											{/* <Col xs={24} sm={24} md={24} lg={24}>
 
 												<Row justify='center'>
 													<Col xs={12} sm={12} md={12} lg={12} style={AppStyles.marginTop20}>
@@ -674,7 +674,7 @@ export class AddKeyHoldingSite extends Component {
 														</Form.Item>
 													</Col>
 												</Row>
-											</Col>
+											</Col> */}
 
 
 										</Row>

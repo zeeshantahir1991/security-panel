@@ -9,10 +9,10 @@ export const componentStyles = {
 
     companyInfoContainer: { borderRadius: 10, padding: 20, backgroundColor: AppColors.white },
 
-    borderColor: { borderColor: AppColors.alto },
-    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45 },
+    borderColor: { borderColor: AppColors.alto, borderRadius: 0 },
+    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45, borderRadius: 0 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
-    continueButton: { borderRadius: 10, color: AppColors.newGrey, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
+    continueButton: { borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
     cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
 
     selectStyle: {
@@ -20,7 +20,7 @@ export const componentStyles = {
         borderWidth: 1,
         borderColor: AppColors.newGrey,
         borderStyle: 'solid',
-        borderRadius: 10,
+        // borderRadius: 10,
         marginRight: 20
     },
 

@@ -1,9 +1,12 @@
 import { MailOutlined, MobileOutlined, NumberOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Card, Col, DatePicker, Form, Input, Row, Select } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row, Select, Typography } from 'antd';
+import { AppColors } from 'assets/styles/colors';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import { Stepper } from './../stepper';
 import { componentStyles } from "./../styles";
+import './index.css'
+const { Title } = Typography;
 const { Option } = Select;
 
 const rules = {
@@ -138,8 +141,9 @@ export class AddGuard extends Component {
 					<Col xs={24} sm={24} md={24} lg={24} >
 						<Stepper location={this.props.location} />
 					</Col>
-					<Col xs={24} sm={24} md={20} lg={20} >
-						<Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}>
+					<Col xs={24} sm={24} md={24} lg={24} >
+						<Card title={<Title level={2} style={{paddingLeft:50}}>Personal Information</Title>} style={AppStyles.paddingBottom20}>
+						{/* <Card className="card" title="Personal Information" style={AppStyles.paddingBottom20}> */}
 							<Form layout="vertical">
 								<Row gutter={16} justify="center">
 									<Col xs={24} sm={24} md={24} lg={24} >
@@ -148,7 +152,7 @@ export class AddGuard extends Component {
 											</div>
 										</div>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{ span: 4 }}>
 										<Form.Item
 											name="title"
 											label="Title"
@@ -175,7 +179,7 @@ export class AddGuard extends Component {
 											</Select>
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{  offset:2 }}>
 										<Form.Item
 											name="firstname"
 											label="First Name"
@@ -185,7 +189,7 @@ export class AddGuard extends Component {
 											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{  offset:2 }}>
 										<Form.Item
 											name="lastname"
 											label="Last Name"
@@ -195,7 +199,7 @@ export class AddGuard extends Component {
 											<Input style={componentStyles.borderColor} prefix={<UserOutlined />} />
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{  offset:2 }}>
 										<Form.Item
 											name="email"
 											label="Email"
@@ -207,7 +211,7 @@ export class AddGuard extends Component {
 									</Col>
 
 
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4}> 
 										<Form.Item
 											name="dob"
 											label="Date of Birth"
@@ -221,7 +225,7 @@ export class AddGuard extends Component {
 
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={8} lg={8}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{ offset:2 }}>
 										<Form.Item
 											name="mobile"
 											label="Mobile"
@@ -231,7 +235,7 @@ export class AddGuard extends Component {
 											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<MobileOutlined />} />
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{ offset:2 }}>
 										<Form.Item
 											name="niNumber"
 											label="NI Number"
@@ -241,7 +245,7 @@ export class AddGuard extends Component {
 											<Input min="0" className="remove" type="number" style={componentStyles.borderColor} prefix={<NumberOutlined />} />
 										</Form.Item>
 									</Col>
-									<Col xs={24} sm={24} md={12} lg={12}>
+									<Col xs={24} sm={24} md={4} lg={4} lg={{ offset:2 }}>
 										<Form.Item
 											name="origin"
 											label="Ethinic Origin"
@@ -270,11 +274,11 @@ export class AddGuard extends Component {
 										</Form.Item>
 									</Col>
 
-									<Col xs={12} sm={12} md={12} lg={12}>
+									<Col xs={12} sm={12} md={5} lg={5}>
 
 										<Form.Item>
 											<div style={AppStyles.marginTop40}>
-												<Button onClick={this.goToSiaLicence} style={componentStyles.continueButton} htmlType="submit" block>
+												<Button onClick={this.goToSiaLicence} style={componentStyles.continueButton,{backgroundColor:AppColors.newGrey, color:'white'}} htmlType="submit" block>
 													Continue
 													</Button>
 

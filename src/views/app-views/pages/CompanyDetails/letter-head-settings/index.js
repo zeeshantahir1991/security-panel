@@ -2,6 +2,7 @@ import { UploadOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Typography, Upload } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
+import OrderSummary from './OrderSummary/index';
 import { componentStyles } from "./../styles";
 const { Text } = Typography;
 const { TextArea } = Input;
@@ -39,7 +40,7 @@ export class letterHeadSettings extends Component {
 			<div style={AppStyles.marginTop50}>
 				<Row justify="center">
 
-					<Col xs={24} sm={24} md={8} lg={8} className="card" style={{ borderRadius: 10, backgroundColor: 'white' }}>
+					{/* <Col xs={24} sm={24} md={8} lg={8} className="card" style={{ borderRadius: 10, backgroundColor: 'white' }}>
 						<Form layout="vertical">
 							<Row justify="center" style={AppStyles.padding20}>
 								<Col xs={24} sm={24} md={24} lg={24}>
@@ -108,9 +109,12 @@ export class letterHeadSettings extends Component {
 							</Row>
 						</Form>
 
+					</Col> */}
+					<Col xs={24} sm={24} md={12} lg={12} style={AppStyles.textAlignCenter}>
+						<OrderSummary />
 					</Col>
-					<Col xs={24} sm={24} md={1} lg={1}></Col>
-					<Col xs={24} sm={24} md={15} lg={15}
+					{/* <Col xs={24} sm={24} md={1} lg={1}></Col> */}
+					<Col xs={24} sm={24} md={12} lg={12}
 						style={componentStyles.letterHeadPreviewContainer}
 					>
 						<LetterHeadPreview name={name} header={header} desc={desc} footer={footer} />

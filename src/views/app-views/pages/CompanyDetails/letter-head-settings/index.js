@@ -1,9 +1,11 @@
-import { UploadOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Row, Typography, Upload } from 'antd';
+import { UploadOutlined, UserOutlined, CreditCardOutlined } from '@ant-design/icons';
+import { Button, Col, Form, Input, Row, Typography, Upload, Avatar } from 'antd';
 import React, { Component } from 'react';
 import { AppStyles } from "../../../../../assets/styles";
 import OrderSummary from './OrderSummary/index';
 import { componentStyles } from "./../styles";
+import { Card } from 'antd';
+import { AppColors } from 'assets/styles/colors';
 const { Text } = Typography;
 const { TextArea } = Input;
 
@@ -14,10 +16,10 @@ export class letterHeadSettings extends Component {
 		super(props);
 		this.state = {
 
-			name: "",
-			desc: "",
-			header: "",
-			footer: ""
+			name: "Hello",
+			desc: "Noooooooo",
+			header: "Pigsy",
+			footer: "Ficcccka"
 
 		};
 	}
@@ -114,10 +116,49 @@ export class letterHeadSettings extends Component {
 						<OrderSummary />
 					</Col>
 					{/* <Col xs={24} sm={24} md={1} lg={1}></Col> */}
-					<Col xs={24} sm={24} md={12} lg={12}
-						style={componentStyles.letterHeadPreviewContainer}
+					<Col xs={24} sm={24} md={6} lg={6}        
+						style={{backgroundColor: AppColors.white}}
 					>
-						<LetterHeadPreview name={name} header={header} desc={desc} footer={footer} />
+						<div style={{justifyContent:'center', alignItems:'center', display:'flex', marginTop:20}}>
+						<h3> Existing Cards </h3>
+						</div>
+						<Card style={{ width: 300, marginTop: 16, marginLeft:20 }}>
+							<Card.Meta
+								avatar={
+									<>
+									<CreditCardOutlined style={{fontSize:'24px'}}/>
+									{/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> */}
+									</>
+								}
+								title="Visa"
+								description="**** **** **** 4242"
+							/>
+						</Card>
+						<Card style={{ width: 300, marginTop: 16, marginLeft:20 }}>
+							<Card.Meta
+								avatar={
+									<>
+									<CreditCardOutlined style={{fontSize:'24px'}}/>
+									{/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> */}
+									</>
+								}
+								title="MasterCard"
+								description="**** **** **** 5525"
+							/>
+						</Card>
+						<Card style={{ width: 300, marginTop: 16, marginLeft:20 }}>
+							<Card.Meta
+								avatar={
+									<>
+									<CreditCardOutlined style={{fontSize:'24px'}}/>
+									{/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> */}
+									</>
+								}
+								title="Union Pay"
+								description="**** **** **** 3223"
+							/>
+						</Card>
+						{/* <LetterHeadPreview name={name} header={header} desc={desc} footer={footer} /> */}
 					</Col>
 				</Row>
 			</div>

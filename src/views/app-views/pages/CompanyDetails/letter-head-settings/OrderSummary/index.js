@@ -82,10 +82,10 @@ class OrderSummary extends React.Component {
 
 				{/* <AuthHeader /> */}
 
-				<Row style={{ justifyContent: 'center', marginTop: 120, marginBottom: 100 }}>
+				<Row style={{ justifyContent: 'center' }}>
 					{/* Desktop View */}
 
-					<Col className="card" xs={0} sm={0} md={10} lg={10} >
+					<Col xs={0} sm={0} md={18} lg={18} >
 						{billing ?
 							<Card title="Add Card" style={AppStyles.paddingBottom20}>
 								<Col xs={0} sm={0} md={24} lg={24} >

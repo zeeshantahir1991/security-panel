@@ -33,7 +33,7 @@ const securityNavTree = [
           {
             key: "security-pages-letterHeadSettings",
             path: "/app/pages/letter-head-settings",
-            title: "Letter Head Settings",
+            title: "Payment Options",
             icon: "",
             breadcrumb: true,
             submenu: [],

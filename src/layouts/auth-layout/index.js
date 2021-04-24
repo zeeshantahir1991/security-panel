@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, } from "react-router-dom";
-import AuthViews from 'views/auth-views'
+// import AuthViews from 'views/auth-views'
+import AuthViews from 'components/authentication-components/index'
 
 export const AuthLayout = () => {
 	return (

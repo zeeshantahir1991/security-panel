@@ -1,16 +1,16 @@
 import { CalendarOutlined, CreditCardOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Form, Input, Row, Table, Tooltip } from 'antd';
+import { Button, Card, Col, Form, Input, Row, Tooltip, Table } from 'antd';
+
 import { AppStyles } from 'assets/styles';
 import { ROW_GUTTER } from 'constants/ThemeConstant';
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import { Link as RouteLink } from 'react-router-dom';
-import swal from 'sweetalert2';
-import { AuthFooter } from "../../../../../auth-views/components/AuthFooter";
-import { AuthHeader } from "../../../../../auth-views/components/AuthHeader";
+import { AuthFooter } from "../../headerfooter-components/AuthFooter";
+import { AuthHeader } from "../../headerfooter-components/AuthHeader";
 import { limits } from './limits';
 import { componentStyles } from './styles';
-
+import swal from 'sweetalert2';
 
 const { Column } = Table;
 
@@ -26,7 +26,7 @@ class OrderSummary extends React.Component {
 				price: null
 			}],
 			pricingData: null,
-			billing: true,
+			billing: false,
 			promoCode: "",
 			promoApplied: false
 		};
@@ -60,25 +60,15 @@ class OrderSummary extends React.Component {
 
 	componentDidMount() {
 		let dataArray = []
-		const url = new URL(window.location.href)
-		console.log(url.searchParams.get('name'))
-		const planName = url.searchParams.get('name')
-		if (planName) {			
-			swal.fire({
-				title: planName + ' Plan Selected',
-				text: 'Please select an existing card to Pay or Add a new card',
-				icon: 'success'
-			})
-		}
 		dataArray.push({
 			key: "1",
-			// package: this.props.location.state.data.plan,
+			package: this.props.location.state.data.plan,
 			cycle: "Monthly",
-			// price: this.props.location.state.data.price
+			price: this.props.location.state.data.price
 		})
 		this.setState({
 			invoiceData: dataArray,
-			// pricingData: this.props.location.state.data
+			pricingData: this.props.location.state.data
 		})
 		// console.log("jhdjshds", this.props.location.state.data)
 	}
@@ -90,12 +80,12 @@ class OrderSummary extends React.Component {
 		return (
 			<>
 
-				{/* <AuthHeader /> */}
+				<AuthHeader />
 
-				<Row style={{ justifyContent: 'center' }}>
+				<Row style={{ justifyContent: 'center', marginTop: 120, marginBottom: 100 }}>
 					{/* Desktop View */}
 
-					<Col xs={0} sm={0} md={22} lg={22} >
+					<Col className="card" xs={0} sm={0} md={10} lg={10} >
 						{billing ?
 							<Card title="Add Card" style={AppStyles.paddingBottom20}>
 								<Col xs={0} sm={0} md={24} lg={24} >
@@ -202,7 +192,7 @@ class OrderSummary extends React.Component {
 														})
 													}}
 													htmlType="submit" block>
-													Add Card
+													Pay Now
                                                 </Button>
 											</Form.Item>
 										</Col>
@@ -246,13 +236,22 @@ class OrderSummary extends React.Component {
 												}
 											</div>
 										</div>
+										{/* <div style={{ visibility: 'hidden', marginBottom: 50 }} className="mt-3 text-center" > */}
+											{/* <RouteLink to={'/auth/register'}> */}
+											{/* <Button style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+												{pricingData?.button.text}
+											</Button> */}
+											{/* </RouteLink> */}
+										{/* </div> */}
 									</div>
 								</Col>
 								<Col className="card" xs={0} sm={0} md={12} lg={12}>
 									<div 
 									className="pb-4" 
 									style={pricingData?.backgroundColor}>
-										<div>
+										<div 
+										// className="mt-1"
+										>
 											<h1 style={{ color: 'white', fontSize: 40 }} className="text-center font-weight-semibold">{pricingData?.plan}</h1>
 										</div>
 										<div className="text-center">
@@ -281,6 +280,14 @@ class OrderSummary extends React.Component {
 												}
 											</div>
 										</div>
+										{/* <div className="mt-3 text-center" style={{ marginBottom: 50, paddingBottom: 39 }}> */}
+											{/* <RouteLink to={'/auth/register'}> */}
+											{/* <Button onClick={() => this.setState({ billing: true })}
+												style={{ borderRadius: 20, paddingLeft: 50, paddingRight: 50, display:'none', color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+												{pricingData?.button.text}
+											</Button> */}
+											{/* </RouteLink> */}
+										{/* </div> */}
 									</div>
 								</Col>
 							</div>
@@ -293,7 +300,8 @@ class OrderSummary extends React.Component {
 
 					{/* Order Summary */}
 					<Col xs={0} sm={0} md={2} lg={2} style={{ alignSelf: 'center' }}></Col>
-					{/* <Col xs={0} sm={0} md={10} lg={10} style={{ alignSelf: 'center' }}>
+					<Col xs={0} sm={0} md={10} lg={10} style={{ alignSelf: 'center' }}>
+						{/* <Card style={{ marginTop: 100, marginLeft: 100, marginRight: 100 }}> */}
 						<Card className="card" style={{ paddingTop: 25, paddingBottom: 25 }}>
 							<div className="text-center">
 								<h1 className="mb-1 font-weight-semibold">Order Summary</h1>
@@ -301,6 +309,7 @@ class OrderSummary extends React.Component {
 							</div>
 							<div className="d-md-flex justify-content-md-between">
 								<div>
+									{/* <img src="/img/logo.png" alt="" /> */}
 									<address>
 										<p>
 											<span className="font-weight-semibold text-dark font-size-md">Guardspur, Inc.</span><br />
@@ -311,6 +320,17 @@ class OrderSummary extends React.Component {
 										</p>
 									</address>
 								</div>
+								{/* <div className="mt-3 text-right">
+									<h2 className="mb-1 font-weight-semibold">Invoice #9972</h2>
+
+									<address>
+										<p>
+											<span className="font-weight-semibold text-dark font-size-md">Genting Holdings.</span><br />
+											<span>8626 Maiden Dr. </span><br />
+											<span>Niagara Falls, New York 14304</span>
+										</p>
+									</address>
+								</div> */}
 							</div>
 							<div className="mt-4">
 								<Table searchable dataSource={invoiceData} pagination={false} className="mb-5">
@@ -328,6 +348,18 @@ class OrderSummary extends React.Component {
 										)}
 										key="price"
 									/>
+									{/* <Column
+										title="Total"
+										render={(text) => (
+											<NumberFormat
+												displayType={'text'}
+												value={(Math.round((text.price * text.quantity) * 100) / 100).toFixed(2)}
+												prefix={'$'}
+												thousandSeparator={true}
+											/>
+										)}
+										key="total"
+									/> */}
 								</Table>
 								<Row style={AppStyles.flexDirectionRow}>
 									<Row style={AppStyles.flexDirectionRow}>
@@ -336,6 +368,7 @@ class OrderSummary extends React.Component {
 												<Form.Item
 													name="promoCode"
 													label="Promo Code"
+													// rules={rules.promoCode}
 													hasFeedback
 												>
 													<Input
@@ -365,11 +398,13 @@ class OrderSummary extends React.Component {
 														thousandSeparator={true}
 													/>
 												</p>
+												{/* <p>vat (10%) : {(Math.round(((this.total() / 100) * 10) * 100) / 100).toFixed(2)}</p> */}
 											</div>
 											<h2 className="font-weight-semibold mt-3">
 												<span className="mr-1">Grand Total: </span>
 												<NumberFormat
 													displayType={'text'}
+													// value={((Math.round((this.total()) * 100) / 100) - (this.total() / 100) * 10).toFixed(2)}
 													value={((Math.round((this.total()) * 100) / 100))}
 													prefix={'$'}
 													thousandSeparator={true}
@@ -385,11 +420,12 @@ class OrderSummary extends React.Component {
 							<div style={{ alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
 								<Button onClick={() => this.setState({ billing: true })}
 									style={{ borderRadius: 12, paddingLeft: 50, paddingRight: 50, color: '#60b0f4', borderWidth: 1, borderStyle: 'solid', borderColor: '#60b0f4' }} type="default">
+									{/* {pricingData?.button.text} */}
 								Proceed to Payment
 							</Button>
 							</div>
 						</Card>
-					</Col> */}
+					</Col>
 
 					{/* Mobile View */}
 
@@ -684,7 +720,7 @@ class OrderSummary extends React.Component {
 
 				</Row>
 
-				{/* <AuthFooter /> */}
+				<AuthFooter />
 			</>
 		)
 	}

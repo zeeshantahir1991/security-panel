@@ -254,190 +254,9 @@ export class NewShift extends Component {
 		];
 		return (
 			<div style={AppStyles.marginTop50}>
-				{/* <Modal title="Add Checkpoint"
-					onCancel={() => this.handleCancel('checkpoint')}
-					visible={checkpointModal}
-					footer={[
-						<Button
-							style={componentStyles.continueButton} htmlType="submit" block>
-							Add Checkpoint
-					    </Button>
-					]}
-				>
-					<Form layout="vertical">
-
-						<Row gutter={16}>
-
-							<Col xs={24} sm={24} md={12} lg={12}>
-								<Form.Item
-									name="siteName"
-									label="Site Name"
-									// rules={rules.checkpointName}
-									hasFeedback
-								>
-									<Input type="text" disabled defaultValue={'Site A'} style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
-								</Form.Item>
-							</Col>
-							<Col xs={24} sm={24} md={12} lg={12}>
-								<Form.Item
-									name="checkpointName"
-									label="Checkpoint Name"
-									// rules={rules.checkpointName}
-									hasFeedback
-								>
-									<Input type="text" style={componentStyles.borderColor} prefix={<CheckCircleOutlined />} />
-								</Form.Item>
-							</Col>
-
-							<Col xs={24} sm={24} md={24} lg={24}>
-								<Form.Item
-									name="checkpointDescriptor"
-									label="Checkpoint Descriptor"
-									// rules={rules.checkpointDescriptor}
-									hasFeedback
-								>
-									<Textarea placeholder={'Description...'} style={componentStyles.borderColor} />
-								</Form.Item>
-							</Col>
-
-							<Col xs={24} sm={24} md={8} lg={8}>
-								<Form.Item
-									name="qrScanInterval"
-									label="QR Scan Interval Minutes"
-									// rules={rules.storeLocation}
-									hasFeedback
-								>
-									<Select
-										showSearch
-										style={componentStyles.selectWhiteStyle}
-										bordered={false}
-										placeholder="QR Scan Interval Minutes"
-										optionFilterProp="children"
-										onChange={(val) => this.handleChange("qrScanInterval", val)}
-										// onFocus={onFocus}
-										// onBlur={onBlur}
-										// onSearch={onSearch}
-										filterOption={(input, option) =>
-											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-										}
-									>
-										<Option value="30">30</Option>
-										<Option value="60">60</Option>
-									</Select>
-								</Form.Item>
-							</Col>
-							<Col xs={24} sm={24} md={8} lg={8} style={AppStyles.marginTop5}>
-
-								<Checkbox style={componentStyles.borderColor} checked>Status</Checkbox>
-							</Col>
-						</Row>
-					</Form>
-
-				</Modal> */}
-				{/* <Modal title="Assign Position"
-					onCancel={() => this.handleCancel('position')}
-					visible={positionModal}
-					footer={[
-						<Button
-							disabled={!(position && guardName && payRate)}
-							onClick={this.assignGuard}
-							style={componentStyles.continueButton} htmlType="submit" block>
-							Assign Position
-					    </Button>
-					]}
-				>
-					<Form layout="vertical">
-
-						<Row gutter={16}>
-
-							<Col xs={24} sm={24} md={8} lg={8}>
-								<Form.Item
-									name="position"
-									label="Select Position"
-									// rules={rules.position}
-									hasFeedback
-								>
-									<Select
-										showSearch
-										style={componentStyles.selectWhiteStyle}
-										bordered={false}
-										placeholder="Select Position"
-										optionFilterProp="children"
-										onChange={(val) => this.handleChange("position", val)}
-										// onFocus={onFocus}
-										// onBlur={onBlur}
-										// onSearch={onSearch}
-										filterOption={(input, option) =>
-											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-										}
-									>
-										<Option value="Security">Security</Option>
-									</Select>
-								</Form.Item>
-							</Col>
-							<Col xs={24} sm={24} md={8} lg={8}>
-								<Form.Item
-									name="guardName"
-									label="Select Guard"
-									// rules={rules.guardName}
-									hasFeedback
-								>
-									<Select
-										showSearch
-										style={componentStyles.selectWhiteStyle}
-										bordered={false}
-										placeholder="Select Guard"
-										optionFilterProp="children"
-										onChange={(val) => this.handleChange("guardName", val)}
-										// onFocus={onFocus}
-										// onBlur={onBlur}
-										// onSearch={onSearch}
-										filterOption={(input, option) =>
-											option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-										}
-									>
-										<Option value="John">John</Option>
-										<Option value="John Sm">John Sm</Option>
-									</Select>
-								</Form.Item>
-							</Col>
-							<Col xs={24} sm={24} md={8} lg={8}>
-								<Form.Item
-									name="payRate"
-									label="Pay Rate"
-									// rules={rules.chargeRate}
-									hasFeedback
-								>
-									<Input min="0" type="number" onChange={(val) => this.handleInputChange("payRate", val)}
-										style={componentStyles.borderColor} prefix={<PoundCircleOutlined />} />
-								</Form.Item>
-							</Col>
-
-						</Row>
-					</Form>
-
-				</Modal> */}
 				<Row justify="center">
 					<Col xs={24} sm={24} md={18} lg={18} >
 						<Card className="card" title={record ? "Edit Shift" : "Add New Shift"}
-							extra={
-								<div style={AppStyles.flexDirectionRow}>
-									{/* <div style={AppStyles.marginRight20}>
-										<Button
-											onClick={() => this.showModal('position')}
-											style={componentStyles.continueButton} htmlType="submit" block>
-											Assign Position
-								        </Button>
-									</div> */}
-									{/* <div>
-										<Button
-											onClick={() => this.showModal('checkpoint')}
-											style={componentStyles.continueButton} htmlType="submit" block>
-											Add Checkpoint
-								        </Button>
-									</div> */}
-								</div>
-							}
 							style={AppStyles.paddingBottom20}>
 							<Form layout="vertical">
 								<Row justify="center" gutter={16}>
@@ -547,6 +366,36 @@ export class NewShift extends Component {
 													</Select>
 												</Form.Item>
 											</Col>
+											<Col xs={24} sm={24} md={6} lg={6} >
+												<Form.Item
+													name="siteName"
+													label="Site Routes"
+													// rules={rules.siteName}
+													hasFeedback
+													style={{display: shiftType === "MP" ? 'block' : 'none' }}
+												>
+													<Select
+														showSearch
+														style={componentStyles.selectWhiteStyle}
+														bordered={false}
+														placeholder="Site Routes"
+														optionFilterProp="children"
+														onChange={(val) => this.handleChange("siteName", val)}
+														// onFocus={onFocus}
+														// onBlur={onBlur}
+														// onSearch={onSearch}
+														filterOption={(input, option) =>
+															option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+														}
+													>
+														<Option value="Site A">ABC</Option>
+														<Option value="Site B">XYZ</Option>
+														<Option value="Site C">DEF</Option>
+													</Select>
+												</Form.Item>
+											</Col>
+											
+											<Col xs={24} sm={24} md={18} lg={18}></Col>
 											<Col xs={24} sm={24} md={6} lg={6}>
 												<Form.Item
 													name="startDate"

@@ -39,6 +39,14 @@ const securityNavTree = [
             submenu: [],
           },
           {
+            key: "security-pages-subscriptions",
+            path: "/app/pages/subscriptions",
+            title: "Subscriptions",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
+          },
+          {
             key: "security-pages-docs",
             path: "/app/pages/docs",
             title: "Docs",
@@ -685,7 +693,7 @@ const navigationConfig = [
   ...complianceNavTree,
   ...keyholdingNavTree,
   ...backOfficeNavTree,
-  ...subAndBillingNavTree,
+  // ...subAndBillingNavTree,
   ...reportsNavTree,
   ...settingsNavTree
   // ...docsNavTree

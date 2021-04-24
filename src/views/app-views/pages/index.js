@@ -15,6 +15,7 @@ const Pages = ({ match }) => (
       <Route path={`${match.url}/right-to-work`} component={lazy(() => import(`./Guard/right-to-work`))} />
       <Route path={`${match.url}/manage-details`} component={lazy(() => import(`./CompanyDetails/manage-details`))} />
       <Route path={`${match.url}/letter-head-settings`} component={lazy(() => import(`./CompanyDetails/letter-head-settings`))} />
+      <Route path={`${match.url}/subscriptions`} component={lazy(() => import(`./CompanyDetails/subscriptions`))} />
       <Route path={`${match.url}/docs`} component={lazy(() => import(`./CompanyDetails/docs`))} />
 
       <Route path={`${match.url}/sub-contractors`} component={lazy(() => import(`./Contractor/sub-contractors`))} />

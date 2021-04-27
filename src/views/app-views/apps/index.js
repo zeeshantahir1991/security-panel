@@ -8,6 +8,8 @@ const Apps = ({ match }) => (
       <Route path={`${match.url}/calendar`} component={lazy(() => import(`./calendar`))} />
       <Route path={`${match.url}/project`} component={lazy(() => import(`./project`))} />
       <Redirect from={`${match.url}`} to={`${match.url}/mail`} />
+      <Route path={`${match.url}/chat`} component={lazy(() => import(`./chat`))} />
+
     </Switch>
   </Suspense>
 );

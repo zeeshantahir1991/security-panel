@@ -9,7 +9,7 @@ const { useBreakpoint } = Grid;
 const SideContent = props => {
 	const { sideContent, sideContentWidth = 250, border } = props
 	return (
-		<div className={`side-content ${border? 'with-border': ''}`} style={{width: `${sideContentWidth}px`}}>
+		<div className={`side-content ${border ? 'with-border' : ''}`} style={{ width: `${sideContentWidth}px` }}>
 			{sideContent}
 		</div>
 	)
@@ -24,7 +24,7 @@ const SideContentMobile = props => {
 			closable={false}
 			onClose={onSideContentClose}
 			visible={visible}
-			bodyStyle={{paddingLeft: 0, paddingRight: 0}}
+			bodyStyle={{ paddingLeft: 0, paddingRight: 0 }}
 		>
 			<div className="h-100">
 				{sideContent}
@@ -34,13 +34,13 @@ const SideContentMobile = props => {
 }
 
 export const InnerAppLayout = (props) => {
-	const { mainContent,	pageHeader, sideContentGutter = true } = props
+	const { mainContent, pageHeader, sideContentGutter = true } = props
 	const isMobile = !utils.getBreakPoint(useBreakpoint()).includes('lg')
 	const [visible, setVisible] = useState(false);
 
 	const close = (e) => {
 		setVisible(false)
-	} 
+	}
 
 	const openSideContentMobile = () => {
 		setVisible(true)
@@ -48,25 +48,29 @@ export const InnerAppLayout = (props) => {
 
 	return (
 		<div className="inner-app-layout">
-			{isMobile ? 
-				<SideContentMobile 
-					visible={visible} 
+			{isMobile ?
+				<SideContentMobile
+					visible={visible}
 					onSideContentClose={close}
 					{...props}
-				/> 
-				: 
+				/>
+				:
 				<SideContent {...props} />
 			}
-			<div className={`main-content ${pageHeader? 'has-page-header' : ''} ${sideContentGutter? 'gutter' : 'no-gutter'}`}>
-				{isMobile ? 
-					<div className={`font-size-lg mb-3 ${!sideContentGutter ? 'pt-3 px-3' : ''}`}>
-						<MenuOutlined onClick={() => openSideContentMobile()}/>
-					</div>
-					:
-					null
-				}
-				{mainContent}
-			</div>
+			{mainContent ?
+				<div className={`main-content ${pageHeader ? 'has-page-header' : ''} ${sideContentGutter ? 'gutter' : 'no-gutter'}`}>
+					{isMobile ?
+						<div className={`font-size-lg mb-3 ${!sideContentGutter ? 'pt-3 px-3' : ''}`}>
+							<MenuOutlined onClick={() => openSideContentMobile()} />
+						</div>
+						:
+						null
+					}
+					{mainContent}
+				</div>
+				: null
+			}
+
 		</div>
 	)
 }

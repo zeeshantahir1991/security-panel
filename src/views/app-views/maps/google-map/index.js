@@ -13,7 +13,7 @@ export class GoogleMap extends Component {
 	render() {
 		return (
 			<React.Fragment>
-        <DemoCard code={SimpleMd}><Simple /></DemoCard>
+                <DemoCard code={SimpleMd}><Simple /></DemoCard>
 				<DemoCard code={HoverMd}><Hover /></DemoCard>
 				<DemoCard code={EventMd}><Event /></DemoCard>
 				<ApiContainer code={IndexMd} /> 

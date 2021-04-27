@@ -241,8 +241,8 @@ const optNavTree = [
         submenu: [
           {
             key: "opt-pages",
-            path: "/app/pages",
-            title: "Operations Centre",
+            path: "/app/pages/operations",
+            title: "Operations",
             icon: "",
             breadcrumb: true,
             submenu: [],

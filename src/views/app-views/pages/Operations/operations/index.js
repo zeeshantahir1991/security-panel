@@ -11,6 +11,9 @@ import './index.css';
 import InnerAppLayout from 'layouts/inner-app-layout';
 import ChatContent from './../../../apps/chat/ChatContent';
 import ChatMenu from './../../../apps/chat/ChatMenu';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+import { Link } from 'react-router-dom'
 
 const { Option } = Select;
 const shiftsInProgress = [
@@ -58,37 +61,50 @@ const upcomingShifts = [
 
 
 export class Operations extends Component {
-
-	state = {
-		shiftsInProgress: shiftsInProgress,
-		upcomingShifts: upcomingShifts,
-		lateSignin: lateSignin,
-		earlySignoff: earlySignoff,
-		userProfileVisible: false,
-		selectedUser: null,
-		currStatus: "active",
-		series: [44, 55, 13, 43, 22],
-		options: {
-			colors: COLORS,
-			labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-			responsive: [{
-				breakpoint: 480,
-				options: {
-					chart: {
-						width: 200
-					},
-					legend: {
-						position: 'bottom'
+	constructor(props) {
+		super(props);
+		this.state = {
+			shiftsInProgress: shiftsInProgress,
+			upcomingShifts: upcomingShifts,
+			lateSignin: lateSignin,
+			earlySignoff: earlySignoff,
+			userProfileVisible: false,
+			selectedUser: null,
+			currStatus: "active",
+			series: [44, 55, 13],
+			options: {
+				colors: COLORS,
+				labels: ['Shifts yet to start', 'Shifts have been started', 'Shifts were supposed to start'],
+				responsive: [{
+					breakpoint: 480,
+					options: {
+						chart: {
+							width: 200
+						},
+						legend: {
+							position: 'bottom'
+						}
 					}
-				}
-			}]
+				}]
+			},
+
 		}
+		this.myRef = React.createRef();
 
 	}
 
 
+	componentDidMount() {
+		NotificationManager.error('Alert!', 'John Smith on shift at SITE A needs help!', 50000, () => {
+			this.scrollToTarget()
+		});
+	
+	}
 
 
+	scrollToTarget = () => {
+		this.myRef.current.scrollIntoView()
+	}
 	render() {
 		const { shiftsInProgress, upcomingShifts, lateSignin, earlySignoff } = this.state;
 		let { currStatus } = this.state;
@@ -425,6 +441,14 @@ export class Operations extends Component {
 		return (
 			<>
 				<Row gutter={16}>
+					<Col xs={24} sm={24} md={24} lg={24} xl={24}>
+
+
+						<NotificationContainer />
+
+					</Col>
+				</Row>
+				<Row gutter={16}>
 					{
 						shiftData.map((elm, i) => (
 							<Col xs={24} sm={24} md={6} lg={6} xl={6} key={i}>
@@ -476,36 +500,27 @@ export class Operations extends Component {
 						</Card>
 					</Col>
 				</Row>
-				<Row gutter={16}>
-					<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Activity">
+				<div ref={this.myRef}>
+					<Row gutter={16} >
+						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
+							<Card className="card" title="Activity">
 
-							<div className="chat">
-								<InnerAppLayout
-									sideContent={<ChatMenu {...this.props} />}
-									mainContent={null}
-									sideContentWidth={800}
-									sideContentGutter={false}
-									border
-								/>
-							</div>
-						</Card>
-					</Col>
-					<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
-						<Card className="card" title="Call Check">
+								<div className="chat">
+									<ChatMenu {...this.props} />
+								</div>
+							</Card>
+						</Col>
+						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
+							<Card className="card" title="Call Check">
 
-							<div className="chat">
-								<InnerAppLayout
-									sideContent={<ChatMenu {...this.props} />}
-									mainContent={null}
-									sideContentWidth={800}
-									sideContentGutter={false}
-									border
-								/>
-							</div>
-						</Card>
-					</Col>
-				</Row>
+								<div className="chat">
+									<ChatMenu {...this.props} />
+
+								</div>
+							</Card>
+						</Col>
+					</Row>
+				</div>
 				<Row gutter={16}
 				// justify="center"
 				>

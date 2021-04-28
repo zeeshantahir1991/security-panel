@@ -238,6 +238,14 @@ const optNavTree = [
             icon: "",
             breadcrumb: true,
             submenu: [],
+          },
+          {
+            key: "opt-pages-time-clock",
+            path: "/app/pages/time-clock",
+            title: "Time Clock",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
           }
         ]
       }

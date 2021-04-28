@@ -11,20 +11,20 @@ export const componentStyles = {
     
 
     borderColor: { borderColor: AppColors.alto, borderRadius: 10,height:'35px' },
-    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height: 45, borderRadius: 10, height:'35px' },
+    datePicker: { borderColor: AppColors.alto, width: '100%', marginRight: 20, height:45 },
     personalInfoContainer: { borderRadius: 10, padding: 20, marginTop: 50, marginBottom: 25, backgroundColor: AppColors.white },
-    continueButton: { borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
-    cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
-
     selectStyle: {
         width: '100%',
         borderWidth: 1,
-        borderColor: AppColors.newGrey,
+        borderColor: AppColors.alto,
         borderStyle: 'solid',
         borderRadius: 10,
-        marginRight: 20,
-        height:'35px'
-    },
+        marginRight: 20
+    },   
+    continueButton: { borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.newGrey },
+    cancelButton: { borderRadius: 10, color: AppColors.radicalRed, borderWidth: 1, borderStyle: 'solid', borderColor: AppColors.radicalRed },
+
+ 
 
     licenceDataContainer: {
         marginTop: 30,

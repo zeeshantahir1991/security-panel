@@ -1,5 +1,5 @@
 import { Table } from "ant-table-extensions";
-import { Card, Col, Row, Select } from 'antd';
+import { Card, Col, Row, Select, Button, notification } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
 import { COLORS } from 'constants/ChartConstant';
 import moment from 'moment';
@@ -8,12 +8,10 @@ import Chart from "react-apexcharts";
 import { AppStyles } from "../../../../../assets/styles";
 import Simple from './../../../maps/google-map/Simple';
 import './index.css';
-import InnerAppLayout from 'layouts/inner-app-layout';
-import ChatContent from './../../../apps/chat/ChatContent';
-import ChatMenu from './../../../apps/chat/ChatMenu';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import NotificationList from './NotificationList';
 import { Link } from 'react-router-dom'
+import { componentStyles } from "../styles";
+import { AppColors } from "assets/styles/colors";
 
 const { Option } = Select;
 const shiftsInProgress = [
@@ -88,6 +86,50 @@ export class Operations extends Component {
 				}]
 			},
 
+			CallCheckData: [
+				{
+					"id": 1,
+					"name": "Eileen Horton",
+					"avatar": "/img/avatars/thumb-1.jpg",
+					"unread": 3,
+					"time": "4:16PM",
+					"msg": "Wow, that was cool!"
+				},
+				{
+					"id": 2,
+					"name": "Terrance Moreno",
+					"avatar": "/img/avatars/thumb-2.jpg",
+					"time": "18/04/2020",
+					"unread": 2,
+					"msg": "Okay, Thank you!"
+
+				}
+
+
+			],
+
+			ActivityData: [
+				{
+					"id": 1,
+					"name": "Eileen Horton",
+					"avatar": "/img/avatars/thumb-1.jpg",
+					"unread": 3,
+					"time": "4:16PM",
+					"msg": "Wow, that was cool!"
+				},
+				{
+					"id": 2,
+					"name": "Terrance Moreno",
+					"avatar": "/img/avatars/thumb-2.jpg",
+					"time": "18/04/2020",
+					"unread": 2,
+					"msg": "Okay, Thank you!"
+
+				}
+
+
+			]
+
 		}
 		this.myRef = React.createRef();
 
@@ -95,18 +137,57 @@ export class Operations extends Component {
 
 
 	componentDidMount() {
-		NotificationManager.error('Alert!', 'John Smith on shift at SITE A needs help!', 50000, () => {
-			this.scrollToTarget()
-		});
-	
+		this.openNotificationWithIcon('error')
 	}
 
+	openNotificationWithIcon = (type) => {
+		notification[type]({
+			message: 'Alert!',
+			description: (
+				<div>
+					<div>
+						{'John Smith on shift at SITE A needs help!'}
+					</div>
+					<div style={AppStyles.marginTop20}>
+			
+						<Button style={componentStyles.continueButton}
+							htmlType="submit"
+							onClick={() => {
+								this.pushNotificationToList('John Smith on shift at SITE A needs help!')
+							}}
+							block>
+							Acknowledge
+					</Button>
+					</div>
+				</div>
+			),
 
+		});
+	};
 	scrollToTarget = () => {
 		this.myRef.current.scrollIntoView()
 	}
+
+	pushNotificationToList = (value) => {
+		var currentdate = new Date(); 
+
+		let ActivityData = this.state.ActivityData;
+		ActivityData.push({
+			"id": 3,
+			"name": "John Smith",
+			"avatar": "/img/avatars/thumb-2.jpg",
+			"time": currentdate.getDate() + "/"
+				+ (currentdate.getMonth() + 1) + "/"
+				+ currentdate.getFullYear(),
+			"unread": 2,
+			"msg": value
+		})
+		this.setState({ ActivityData: ActivityData },
+			this.scrollToTarget)
+
+	}
 	render() {
-		const { shiftsInProgress, upcomingShifts, lateSignin, earlySignoff } = this.state;
+		const { shiftsInProgress, upcomingShifts, lateSignin, earlySignoff, ActivityData, CallCheckData } = this.state;
 		let { currStatus } = this.state;
 		const tableColumnsShiftsInProgress = [
 
@@ -440,14 +521,7 @@ export class Operations extends Component {
 		];
 		return (
 			<>
-				<Row gutter={16}>
-					<Col xs={24} sm={24} md={24} lg={24} xl={24}>
 
-
-						<NotificationContainer />
-
-					</Col>
-				</Row>
 				<Row gutter={16}>
 					{
 						shiftData.map((elm, i) => (
@@ -463,6 +537,27 @@ export class Operations extends Component {
 						))
 					}
 				</Row>
+				<div ref={this.myRef}>
+					<Row gutter={16} >
+						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
+							<Card className="card" title="Activity">
+
+								<div className="chat">
+									<NotificationList NotData={ActivityData} {...this.props} />
+								</div>
+							</Card>
+						</Col>
+						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
+							<Card className="card" title="Call Check">
+
+								<div className="chat">
+									<NotificationList NotData={CallCheckData} {...this.props} />
+
+								</div>
+							</Card>
+						</Col>
+					</Row>
+				</div>
 				<Row gutter={16}
 				// justify="center"
 				>
@@ -500,27 +595,7 @@ export class Operations extends Component {
 						</Card>
 					</Col>
 				</Row>
-				<div ref={this.myRef}>
-					<Row gutter={16} >
-						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
-							<Card className="card" title="Activity">
 
-								<div className="chat">
-									<ChatMenu {...this.props} />
-								</div>
-							</Card>
-						</Col>
-						<Col xs={20} sm={20} md={12} lg={12} style={AppStyles.justifyContentCenter}>
-							<Card className="card" title="Call Check">
-
-								<div className="chat">
-									<ChatMenu {...this.props} />
-
-								</div>
-							</Card>
-						</Col>
-					</Row>
-				</div>
 				<Row gutter={16}
 				// justify="center"
 				>

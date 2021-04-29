@@ -165,7 +165,7 @@ export class Operations extends Component {
 		});
 	};
 	scrollToTarget = () => {
-		this.myRef.current.scrollIntoView()
+		// this.myRef.current.scrollIntoView()
 	}
 
 	pushNotificationToList = (value) => {

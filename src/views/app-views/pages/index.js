@@ -72,7 +72,7 @@ const Pages = ({ match }) => (
 
       <Route path={`${match.url}/operations`} component={lazy(() => import(`./Operations/operations`))} />
       <Route path={`${match.url}/time-clock`} component={lazy(() => import(`./Operations/time-clock`))} />
-
+      <Route path={`${match.url}/time-sheets`} component={lazy(() => import(`./Operations/time-sheets`))} />
     </Switch>
   </Suspense>
 );

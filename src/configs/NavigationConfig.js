@@ -254,6 +254,14 @@ const optNavTree = [
             icon: "",
             breadcrumb: true,
             submenu: [],
+          },
+          {
+            key: "opt-pages-time-sheets",
+            path: "/app/pages/time-sheets",
+            title: "Time Sheets",
+            icon: "",
+            breadcrumb: true,
+            submenu: [],
           }
         ]
       }

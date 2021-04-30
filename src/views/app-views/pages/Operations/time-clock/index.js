@@ -133,9 +133,9 @@ export class TimeClock extends Component {
 								record.shiftStatus.toLowerCase() == "not started" ?
 									<Button danger type="primary" size="small" >{record.shiftStatus}</Button> :
 									record.shiftStatus.toLowerCase() == "in progress" ?
-										<Button danger type="info" size="small" >{record.shiftStatus}</Button> :
+										<Button  type="info" size="small" >{record.shiftStatus}</Button> :
 										record.shiftStatus.toLowerCase() == "completed" ?
-											<Button danger type="success" size="small" >{record.shiftStatus}</Button> :
+											<Button  type="success" size="small" >{record.shiftStatus}</Button> :
 
 											null
 							}
@@ -154,9 +154,9 @@ export class TimeClock extends Component {
 						<Tooltip title="">
 							{
 								record.signInOrSignOffStatus.toLowerCase() == "not signed in" ?
-									<Button danger type="primary" size="small" >{record.signInOrSignOffStatus}</Button> :
+									<Button  type="primary" size="small" >{record.signInOrSignOffStatus}</Button> :
 									record.signInOrSignOffStatus.toLowerCase() == "on time" ?
-										<Button danger type="success" size="small" >{record.signInOrSignOffStatus}</Button> :
+										<Button  type="success" size="small" >{record.signInOrSignOffStatus}</Button> :
 										<Button danger type="warning" size="small" >{record.signInOrSignOffStatus}</Button>
 							}
 						</Tooltip>
